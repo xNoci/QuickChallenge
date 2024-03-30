@@ -2,6 +2,7 @@ package me.noci.challenges;
 
 import io.papermc.lib.PaperLib;
 import me.noci.challenges.listeners.PlayerJoinListener;
+import me.noci.challenges.listeners.PlayerQuitListener;
 import me.noci.challenges.listeners.ResourcePackStatusListener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -24,6 +25,7 @@ public class QuickChallenge extends JavaPlugin {
         PluginManager pluginManager = getServer().getPluginManager();
 
         pluginManager.registerEvents(new PlayerJoinListener(), this);
+        pluginManager.registerEvents(new PlayerQuitListener(), this);
         pluginManager.registerEvents(new ResourcePackStatusListener(), this);
     }
 
