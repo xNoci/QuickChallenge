@@ -1,6 +1,8 @@
 package me.noci.challenges;
 
 import io.papermc.lib.PaperLib;
+import me.noci.challenges.listeners.PlayerJoinListener;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class QuickChallenge extends JavaPlugin {
@@ -18,6 +20,9 @@ public class QuickChallenge extends JavaPlugin {
     }
 
     private void registerListener() {
+        PluginManager pluginManager = getServer().getPluginManager();
+
+        pluginManager.registerEvents(new PlayerJoinListener(), this);
     }
 
 }
