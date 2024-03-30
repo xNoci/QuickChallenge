@@ -22,8 +22,7 @@ public class PlayerJoinListener implements Listener {
 
         event.joinMessage(component);
 
-        player.setResourcePack(ResourcePack.URL, ResourcePack.HASH, ResourcePack.REQUIRED, ResourcePack.PROMPT);
-        
+        player.setResourcePack(ResourcePack.URL, ResourcePack.HASH, !player.isOp() && ResourcePack.REQUIRED, ResourcePack.PROMPT);
     }
 
 }
