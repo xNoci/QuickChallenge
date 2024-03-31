@@ -15,8 +15,8 @@ repositories {
 
 dependencies {
     implementation(libs.paperlib)
-    implementation(files("libs/QuickUtils.jar"))
 
+    compileOnly(files("libs/QuickUtils.jar"))
     compileOnly(libs.paper)
 
     compileOnly(libs.lombok)

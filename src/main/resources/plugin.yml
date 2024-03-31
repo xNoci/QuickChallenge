@@ -4,4 +4,4 @@ main: ${plugin.main}
 authors: ${plugin.authors}
 api-version: '1.20'
 
-depend: [ ProtocolLib ]
+depend: [ QuickUtils, ProtocolLib ]
