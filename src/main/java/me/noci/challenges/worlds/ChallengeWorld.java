@@ -28,15 +28,9 @@ public class ChallengeWorld {
     }
 
     public boolean hasEntity(Entity entity) {
-        if (overworld().filter(world -> world.getEntity(entity.getUniqueId()) != null).isPresent()) {
-            return true;
-        }
-
-        if (nether().filter(world -> world.getEntity(entity.getUniqueId()) != null).isPresent()) {
-            return true;
-        }
-
-        return theEnd().filter(world -> world.getEntity(entity.getUniqueId()) != null).isPresent();
+        if (entity == null) return false;
+        UUID entityWorldID = entity.getWorld().getUID();
+        return worlds().stream().anyMatch(world -> world.getUID().equals(entityWorldID));
     }
 
     public Optional<World> overworld() {

@@ -39,7 +39,7 @@ public class WorldController {
     public ChallengeWorld generateChallengeWorld() {
         UUID handle = UUID.randomUUID();
         plugin.getLogger().info("Creating new challenge world with handle %s...".formatted(handle));
-        
+
         long seed = handle.getMostSignificantBits();
         plugin.getLogger().info("Using seed [%s]".formatted(seed));
 
