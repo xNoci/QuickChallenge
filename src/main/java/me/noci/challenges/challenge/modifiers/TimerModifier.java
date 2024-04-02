@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 
 import java.util.List;
 
-public class TimerModifier extends DefaultChallengeModifier {
+public class TimerModifier implements ChallengeModifier {
 
     private static final String TIMER_PAUSED_STRING = "Der Timer ist pausiert";
 
@@ -21,23 +21,19 @@ public class TimerModifier extends DefaultChallengeModifier {
     private float gradientTranslation;
     private long ticksPlayed;
 
-    public TimerModifier(Challenge challenge) {
-        super(challenge);
-    }
-
     @Override
-    public void onInitialise(Logger logger) {
+    public void onInitialise(Logger logger, Challenge challenge) {
         gradientTranslation = 0;
         ticksPlayed = 0;
     }
 
     @Override
-    public void onStop(Logger logger) {
+    public void onStop(Logger logger, Challenge challenge) {
 
     }
 
     @Override
-    public void onTick(Logger logger, List<Player> players) {
+    public void onTick(Logger logger, Challenge challenge, List<Player> players) {
         if (!challenge.paused()) {
             ticksPlayed++;
         }

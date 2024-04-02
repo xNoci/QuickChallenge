@@ -46,7 +46,7 @@ public class Challenge {
         logger.info("Initialising challenge modifiers..");
         modifiers.forEach(modifier -> {
             logger.info("Initialising challenge modifier '%s'...");
-            modifier.onInitialise(logger);
+            modifier.onInitialise(logger, this);
         });
 
         logger.info("Challenge modifiers initialised. Took %s ms".formatted(System.currentTimeMillis() - start));
@@ -57,7 +57,7 @@ public class Challenge {
         logger.info("Stopping challenge modifiers..");
 
         modifiers.forEach(modifier -> {
-            modifier.onStop(logger);
+            modifier.onStop(logger, this);
             logger.info("Stopped challenge modifier '%s'".formatted(modifier.name()));
         });
 
@@ -66,7 +66,7 @@ public class Challenge {
 
     public void tickChallengeModifiers() {
         List<Player> players = challengeWorld().map(ChallengeWorld::players).orElse(List.of());
-        modifiers.forEach(modifier -> modifier.onTick(logger, players));
+        modifiers.forEach(modifier -> modifier.onTick(logger, this, players));
     }
 
 

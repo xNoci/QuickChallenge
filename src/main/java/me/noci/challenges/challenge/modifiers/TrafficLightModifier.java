@@ -3,7 +3,6 @@ package me.noci.challenges.challenge.modifiers;
 import lombok.Getter;
 import me.noci.challenges.TimeRange;
 import me.noci.challenges.challenge.Challenge;
-import me.noci.challenges.serializer.TypeSerializer;
 import me.noci.quickutilities.events.Events;
 import me.noci.quickutilities.events.subscriber.SubscribedEvent;
 import me.noci.quickutilities.utils.EnumUtils;
@@ -19,9 +18,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 import java.util.List;
 
-public class TrafficLightModifier extends DefaultChallengeModifier {
-
-    public static final TypeSerializer<TrafficLightModifier> SERIALIZER = TypeSerializer.dynamic();
+public class TrafficLightModifier implements ChallengeModifier {
 
     private final NamespacedKey key;
     private final TimeRange nextPhaseDelay;
@@ -34,7 +31,6 @@ public class TrafficLightModifier extends DefaultChallengeModifier {
     private long nextAction;
 
     public TrafficLightModifier(Challenge challenge, TimeRange nextPhaseDelay, TimeRange yellowDuration, TimeRange redDuration) {
-        super(challenge);
         this.key = NamespacedKey.fromString(challenge.handle().toString() + "traffic_light");
         this.nextPhaseDelay = nextPhaseDelay;
         this.yellowDuration = yellowDuration;
@@ -42,7 +38,7 @@ public class TrafficLightModifier extends DefaultChallengeModifier {
     }
 
     @Override
-    public void onInitialise(Logger logger) {
+    public void onInitialise(Logger logger, Challenge challenge) {
         lightStatus = LightStatus.GREEN;
         nextAction = nextPhaseDelay.randomAsTick();
         logger.debug("Traffic light is set to %s, next phase %s in %s ticks".formatted(lightStatus, EnumUtils.next(lightStatus), nextAction));
@@ -77,7 +73,7 @@ public class TrafficLightModifier extends DefaultChallengeModifier {
     }
 
     @Override
-    public void onStop(Logger logger) {
+    public void onStop(Logger logger, Challenge challenge) {
         if (statusBar != null) {
             Bukkit.removeBossBar(statusBar.getKey());
             statusBar = null;
@@ -90,7 +86,7 @@ public class TrafficLightModifier extends DefaultChallengeModifier {
     }
 
     @Override
-    public void onTick(Logger logger, List<Player> players) {
+    public void onTick(Logger logger, Challenge challenge, List<Player> players) {
         players.stream()
                 .filter(player -> !statusBar.getPlayers().contains(player))
                 .forEach(player -> statusBar.addPlayer(player));

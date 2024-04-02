@@ -9,16 +9,12 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 import java.util.List;
 
-public class StopOnDeathModifier extends me.noci.challenges.challenge.modifiers.DefaultChallengeModifier {
+public class StopOnDeathModifier implements ChallengeModifier {
 
     private SubscribedEvent<PlayerDeathEvent> playerDeathEvent;
 
-    public StopOnDeathModifier(Challenge challenge) {
-        super(challenge);
-    }
-
     @Override
-    public void onInitialise(Logger logger) {
+    public void onInitialise(Logger logger, Challenge challenge) {
         if (playerDeathEvent != null) {
             playerDeathEvent.unsubscribe();
         }
@@ -30,7 +26,7 @@ public class StopOnDeathModifier extends me.noci.challenges.challenge.modifiers.
     }
 
     @Override
-    public void onStop(Logger logger) {
+    public void onStop(Logger logger, Challenge challenge) {
         if (playerDeathEvent != null) {
             playerDeathEvent.unsubscribe();
             playerDeathEvent = null;
@@ -38,7 +34,7 @@ public class StopOnDeathModifier extends me.noci.challenges.challenge.modifiers.
     }
 
     @Override
-    public void onTick(Logger logger, List<Player> players) {
+    public void onTick(Logger logger, Challenge challenge, List<Player> players) {
 
     }
 
