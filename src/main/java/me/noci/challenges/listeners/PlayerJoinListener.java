@@ -1,8 +1,8 @@
 package me.noci.challenges.listeners;
 
+import me.noci.challenges.colors.Colors;
 import me.noci.challenges.ResourcePack;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,14 +15,15 @@ public class PlayerJoinListener implements Listener {
         Player player = event.getPlayer();
 
         Component component = Component.text()
-                .append(Component.text("» ", TextColor.color(78, 82, 79)))
-                .append(Component.text(player.getName(), TextColor.color(31, 150, 173)))
-                .append(Component.text(" joined the server", TextColor.color(255, 255, 255)))
+                .append(Component.text("» ", Colors.JOIN_INDICATOR_JOIN))
+                .append(Component.text(player.getName(), Colors.JOIN_PLAYER_NAME))
+                .append(Component.text(" joined the server", Colors.CHAT_COLOR))
                 .asComponent();
 
         event.joinMessage(component);
 
         player.setResourcePack(ResourcePack.URL, ResourcePack.HASH, !player.isOp() && ResourcePack.REQUIRED, ResourcePack.PROMPT);
     }
+
 
 }

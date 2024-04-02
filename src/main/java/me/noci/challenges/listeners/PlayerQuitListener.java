@@ -1,7 +1,6 @@
 package me.noci.challenges.listeners;
 
-import me.noci.challenges.Colors;
-import me.noci.challenges.ResourcePack;
+import me.noci.challenges.colors.Colors;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
