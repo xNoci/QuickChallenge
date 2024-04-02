@@ -97,6 +97,10 @@ public class WorldController {
     private void deleteWorld(World world) {
         LOGGER.info("Deleting world (%s)...".formatted(world.getEnvironment().name()));
         WorldGenerationLogFilter.handleSilently(() -> {
+            Optional<World> defaultWorld = Optional.ofNullable(Bukkit.getWorld("world"));
+            defaultWorld.map(w -> w.getUID().equals(world.getUID()) ? null : w);
+            world.getPlayers().forEach(player -> defaultWorld.ifPresentOrElse(w -> player.teleport(w.getSpawnLocation()), player::kick));
+
             Bukkit.unloadWorld(world, false);
 
             Path worldPath = world.getWorldFolder().toPath();
