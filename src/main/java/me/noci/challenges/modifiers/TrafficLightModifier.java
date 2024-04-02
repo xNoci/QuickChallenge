@@ -56,9 +56,9 @@ public class TrafficLightModifier extends DefaultChallengeModifier {
         }
 
         playerMoveEvent = Events.subscribe(PlayerMoveEvent.class)
-                .filter(event -> challenge.paused())
-                .filter(event -> !challenge.isInChallenge(event.getPlayer()))
-                .filter(event -> lightStatus != LightStatus.RED)
+                .filter(event -> !challenge.paused())
+                .filter(event -> challenge.isInChallenge(event.getPlayer()))
+                .filter(event -> lightStatus == LightStatus.RED)
                 .handle(event -> {
                     double fromX = event.getFrom().x();
                     double fromZ = event.getFrom().z();
