@@ -1,6 +1,7 @@
 package me.noci.challenges.worlds;
 
 import com.google.common.collect.ImmutableList;
+import me.noci.challenges.ExitStrategy;
 import me.noci.challenges.QuickChallenge;
 import me.noci.quickutilities.utils.logfilter.LogFilter;
 import me.noci.quickutilities.utils.logfilter.LogFilters;
@@ -30,14 +31,17 @@ public class WorldController {
         plugin.getLogger().info("Deleting challenge worlds...");
 
         worlds().stream()
-                .filter(ChallengeWorld::deleteOnStop)
+                .filter(world -> world.exitStrategy() == ExitStrategy.DELETE)
                 .forEach(challengeWorld -> deleteChallengeWorld(challengeWorld.handle()));
 
         plugin.getLogger().info("Challenge worlds deleted.");
     }
 
-    public ChallengeWorld generateChallengeWorld() {
-        UUID handle = UUID.randomUUID();
+    public ChallengeWorld generateChallengeWorld(UUID handle, ExitStrategy exitStrategy) {
+        if(challengeWorlds.containsKey(handle)) {
+            throw new IllegalStateException("A challenge world for handle '%s' already exists.");
+        }
+
         plugin.getLogger().info("Creating new challenge world with handle %s...".formatted(handle));
 
         long seed = handle.getMostSignificantBits();
@@ -47,7 +51,7 @@ public class WorldController {
         World nether = generateWorld(handle, seed, World.Environment.NETHER);
         World theEnd = generateWorld(handle, seed, World.Environment.THE_END);
 
-        ChallengeWorld challengeWorld = new ChallengeWorld(handle, overworld, nether, theEnd);
+        ChallengeWorld challengeWorld = new ChallengeWorld(handle, exitStrategy, overworld, nether, theEnd);
         challengeWorlds.put(handle, challengeWorld);
 
         plugin.getLogger().info("New challenge world created.");
@@ -74,12 +78,11 @@ public class WorldController {
                 .findFirst();
     }
 
-
     private World generateWorld(UUID handle, long seed, World.Environment environment) {
         plugin.getLogger().info("Generating world (%s)...".formatted(environment.name()));
         long start = System.currentTimeMillis();
         World world = WorldGenerationLogFilter.handleSilently(() -> Bukkit.createWorld(
-                new WorldCreator("world_" + environment.name().toLowerCase() + "_" + handle)
+                new WorldCreator(handle + "_world_" + environment.name().toLowerCase())
                         .environment(environment)
                         .seed(seed)
         ));
@@ -92,7 +95,6 @@ public class WorldController {
     private void deleteWorld(World world) {
         plugin.getLogger().info("Deleting world (%s)...".formatted(world.getEnvironment().name()));
         WorldGenerationLogFilter.handleSilently(() -> {
-            world.setKeepSpawnInMemory(false);
             Bukkit.unloadWorld(world, false);
 
             Path worldPath = world.getWorldFolder().toPath();

@@ -2,8 +2,10 @@ package me.noci.challenges.worlds;
 
 import com.google.common.collect.ImmutableList;
 import lombok.Getter;
+import me.noci.challenges.ExitStrategy;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
@@ -14,14 +16,15 @@ import java.util.UUID;
 public class ChallengeWorld {
 
     @Getter private final UUID handle;
-    @Getter private final boolean deleteOnStop = true;
+    @Getter private final ExitStrategy exitStrategy;
 
     private final Reference<World> overworld;
     private final Reference<World> nether;
     private final Reference<World> theEnd;
 
-    protected ChallengeWorld(UUID handle, World overworld, World nether, World theEnd) {
+    protected ChallengeWorld(UUID handle, ExitStrategy exitStrategy, World overworld, World nether, World theEnd) {
         this.handle = handle;
+        this.exitStrategy = exitStrategy;
         this.overworld = new WeakReference<>(overworld);
         this.nether = new WeakReference<>(nether);
         this.theEnd = new WeakReference<>(theEnd);
@@ -51,6 +54,16 @@ public class ChallengeWorld {
         nether().ifPresent(worlds::add);
         theEnd().ifPresent(worlds::add);
         return worlds.build();
+    }
+
+    public List<Player> players() {
+        ImmutableList.Builder<Player> players = ImmutableList.builder();
+
+        overworld().ifPresent(world -> players.addAll(world.getPlayers()));
+        nether().ifPresent(world -> players.addAll(world.getPlayers()));
+        theEnd().ifPresent(world -> players.addAll(world.getPlayers()));
+
+        return players.build();
     }
 
 }
