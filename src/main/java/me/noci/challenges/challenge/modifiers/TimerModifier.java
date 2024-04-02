@@ -1,4 +1,4 @@
-package me.noci.challenges.modifiers;
+package me.noci.challenges.challenge.modifiers;
 
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.colors.ColorUtils;

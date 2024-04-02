@@ -1,8 +1,9 @@
-package me.noci.challenges.modifiers;
+package me.noci.challenges.challenge.modifiers;
 
 import lombok.Getter;
 import me.noci.challenges.TimeRange;
 import me.noci.challenges.challenge.Challenge;
+import me.noci.challenges.serializer.TypeSerializer;
 import me.noci.quickutilities.events.Events;
 import me.noci.quickutilities.events.subscriber.SubscribedEvent;
 import me.noci.quickutilities.utils.EnumUtils;
@@ -19,6 +20,8 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import java.util.List;
 
 public class TrafficLightModifier extends DefaultChallengeModifier {
+
+    public static final TypeSerializer<TrafficLightModifier> SERIALIZER = TypeSerializer.dynamic();
 
     private final NamespacedKey key;
     private final TimeRange nextPhaseDelay;

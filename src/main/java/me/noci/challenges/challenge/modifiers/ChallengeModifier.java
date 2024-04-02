@@ -1,4 +1,4 @@
-package me.noci.challenges.modifiers;
+package me.noci.challenges.challenge.modifiers;
 
 import org.apache.logging.log4j.Logger;
 import org.bukkit.entity.Player;

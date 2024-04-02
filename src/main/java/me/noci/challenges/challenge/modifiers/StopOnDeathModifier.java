@@ -1,4 +1,4 @@
-package me.noci.challenges.modifiers;
+package me.noci.challenges.challenge.modifiers;
 
 import me.noci.challenges.challenge.Challenge;
 import me.noci.quickutilities.events.Events;
@@ -9,7 +9,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 import java.util.List;
 
-public class StopOnDeathModifier extends DefaultChallengeModifier {
+public class StopOnDeathModifier extends me.noci.challenges.challenge.modifiers.DefaultChallengeModifier {
 
     private SubscribedEvent<PlayerDeathEvent> playerDeathEvent;
 
