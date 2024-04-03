@@ -1,6 +1,6 @@
 package me.noci.challenges.challenge;
 
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import lombok.Getter;
 import lombok.Setter;
 import me.noci.challenges.ExitStrategy;
@@ -14,27 +14,31 @@ import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 public class Challenge {
 
     private final Logger logger;
 
-
     @Getter private final UUID handle;
     @Getter private final ExitStrategy exitStrategy;
-    private final Reference<ChallengeWorld> world;
-    private final List<ChallengeModifier> modifiers;
+    @Getter private final Set<ChallengeModifier> modifiers;
+    private Reference<ChallengeWorld> world;
 
     @Getter @Setter private boolean paused = true;
 
+    public Challenge(UUID handle, ExitStrategy exitStrategy, List<ChallengeModifier> challengeModifiers) {
+        this(handle, exitStrategy, null, challengeModifiers.toArray(ChallengeModifier[]::new));
+    }
+
     public Challenge(UUID handle, ExitStrategy exitStrategy, ChallengeWorld world, ChallengeModifier... modifiers) {
-        this.logger = LogManager.getLogger("[Challenge %s]".formatted(handle.toString()));
+        this.logger = LogManager.getLogger("Challenge %s".formatted(handle.toString()));
 
         this.handle = handle;
         this.exitStrategy = exitStrategy;
+        this.modifiers = ImmutableSet.copyOf(modifiers);
         this.world = new WeakReference<>(world);
-        this.modifiers = ImmutableList.copyOf(modifiers);
     }
 
     public boolean isInChallenge(Player player) {
@@ -77,7 +81,11 @@ public class Challenge {
                 .findFirst();
     }
 
-    private Optional<ChallengeWorld> challengeWorld() {
+    public void challengeWorld(ChallengeWorld world) {
+        this.world = new WeakReference<>(world);
+    }
+
+    public Optional<ChallengeWorld> challengeWorld() {
         return Optional.ofNullable(world.get());
     }
 
