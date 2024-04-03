@@ -13,6 +13,7 @@ import org.bukkit.WorldCreator;
 import org.bukkit.entity.Entity;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -93,7 +94,6 @@ public class WorldController {
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    @SneakyThrows
     private void deleteWorld(World world) {
         LOGGER.info("Deleting world (%s)...".formatted(world.getEnvironment().name()));
         WorldGenerationLogFilter.handleSilently(() -> {
@@ -109,6 +109,8 @@ public class WorldController {
                 files.sorted(Comparator.reverseOrder())
                         .map(Path::toFile)
                         .forEach(File::delete);
+            } catch (IOException e) {
+                LOGGER.error("Failed to delete world: ", e);
             }
         });
     }
