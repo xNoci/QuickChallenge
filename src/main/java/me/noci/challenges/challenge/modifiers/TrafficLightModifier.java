@@ -130,7 +130,7 @@ public class TrafficLightModifier implements ChallengeModifier {
     }
 
     @Getter
-    private enum LightStatus {
+    public enum LightStatus {
         GREEN("\uEFF1"),
         YELLOW("\uEFF2"),
         RED("\uEFF3");

@@ -16,6 +16,10 @@ public interface TypeSerializer<T> {
         return new FixedSizeTypeSerializer<>(byteSize, reader, writer);
     }
 
+    static <V extends Enum<?>> TypeSerializer<V> enumSerializer(Class<V> enumClass) {
+        return fixed(1, buffer -> enumClass.getEnumConstants()[buffer.get() & 0xFF], (buffer, value) -> buffer.put(((Integer) value.ordinal()).byteValue()));
+    }
+
     static <V> TypeSerializer<List<V>> list(TypeSerializer<V> serializer) {
         return list(serializer, Lists::newArrayList);
     }

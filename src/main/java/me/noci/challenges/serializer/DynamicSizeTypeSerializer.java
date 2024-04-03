@@ -24,7 +24,7 @@ public class DynamicSizeTypeSerializer<T> implements TypeSerializer<T> {
         int length = TypeSerializers.U_BYTE.read(buffer);
         byte[] data = new byte[length];
         buffer.get(data);
-        return reader.read(data);
+        return reader.read(ByteBuffer.wrap(data));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class DynamicSizeTypeSerializer<T> implements TypeSerializer<T> {
 
     @FunctionalInterface
     public interface Reader<T> {
-        T read(byte[] data);
+        T read(ByteBuffer data);
     }
 
     @FunctionalInterface

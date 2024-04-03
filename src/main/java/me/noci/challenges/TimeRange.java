@@ -1,5 +1,6 @@
 package me.noci.challenges;
 
+import lombok.Getter;
 import me.noci.quickutilities.utils.BukkitUnit;
 
 public class TimeRange {
@@ -12,9 +13,13 @@ public class TimeRange {
         return new TimeRange(unit, min, max);
     }
 
-    private final BukkitUnit unit;
-    private final int min;
-    private final int max;
+    public static TimeRange oneSecond() {
+        return new TimeRange(BukkitUnit.SECONDS, 1, 1);
+    }
+
+    @Getter private final BukkitUnit unit;
+    @Getter private final int min;
+    @Getter private final int max;
 
     private TimeRange(BukkitUnit unit, int min, int max) {
         this.unit = unit;
