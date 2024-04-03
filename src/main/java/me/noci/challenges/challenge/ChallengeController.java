@@ -33,7 +33,7 @@ public class ChallengeController {
 
     public ChallengeController(WorldController worldController) {
         this.worldController = worldController;
-        Scheduler.repeat(1, BukkitUnit.TICKS, () -> challenges().forEach(Challenge::tickChallengeModifiers));
+        Scheduler.repeat(1, BukkitUnit.TICKS, () -> challenges().stream().filter(Challenge::started).forEach(Challenge::tickChallengeModifiers));
     }
 
     public void startChallenge(Challenge challenge) {
@@ -46,12 +46,15 @@ public class ChallengeController {
                                 pair.getLeft().forEach(player -> player.teleport(world.getSpawnLocation()))
                         )
                 );
+
+        challenge.started(true);
+        challenge.paused(true);
     }
 
     public List<Challenge> challenges() {
         return ImmutableList.copyOf(challenges.values());
     }
-    
+
     public Challenge create(List<ChallengeModifier> modifiers, ExitStrategy exitStrategy) {
         LOGGER.info("Creating challenge...");
 

@@ -26,6 +26,7 @@ public class Challenge {
     @Getter private final Set<ChallengeModifier> modifiers;
     private Reference<ChallengeWorld> world;
 
+    @Getter @Setter private boolean started = false;
     @Getter @Setter private boolean paused = true;
 
     public Challenge(UUID handle, ExitStrategy exitStrategy, List<ChallengeModifier> challengeModifiers) {
