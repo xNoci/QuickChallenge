@@ -3,6 +3,7 @@ package me.noci.challenges.challenge.modifiers;
 import lombok.Getter;
 import me.noci.challenges.TimeRange;
 import me.noci.challenges.challenge.Challenge;
+import me.noci.challenges.serializer.TypeSerializer;
 import me.noci.quickutilities.events.Events;
 import me.noci.quickutilities.events.subscriber.SubscribedEvent;
 import me.noci.quickutilities.utils.EnumUtils;
@@ -17,37 +18,61 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+import static me.noci.challenges.serializer.TypeSerializers.*;
 
 public class TrafficLightModifier implements ChallengeModifier {
 
-    private final NamespacedKey key;
-    private final TimeRange nextPhaseDelay;
-    private final TimeRange yellowDuration;
-    private final TimeRange redDuration;
+    public static final TypeSerializer<Optional<TrafficLightModifier>> SERIALIZER = TypeSerializer.fixed(53, buffer -> {
+        boolean enabled = BOOLEAN.read(buffer);
+        UUID id = UUID.read(buffer);
+        TimeRange nextPhaseDelay = TIME_RANGE.read(buffer);
+        TimeRange yellowDuration = TIME_RANGE.read(buffer);
+        TimeRange redDuration = TIME_RANGE.read(buffer);
+        TrafficLightModifier.LightStatus lightStatus = TRAFFIC_LIGHT_STATUS.read(buffer);
+        long nextAction = LONG.read(buffer);
+        if (!enabled) return Optional.empty();
+        return Optional.of(new TrafficLightModifier(id, nextPhaseDelay, yellowDuration, redDuration, lightStatus, nextAction));
+    }, (buffer, value) -> {
+        BOOLEAN.write(buffer, value.isPresent());
+        UUID.write(buffer, value.map(TrafficLightModifier::id).orElse(new UUID(0, 0)));
+        TIME_RANGE.write(buffer, value.map(TrafficLightModifier::nextPhaseDelay).orElse(TimeRange.oneSecond()));
+        TIME_RANGE.write(buffer, value.map(TrafficLightModifier::yellowDuration).orElse(TimeRange.oneSecond()));
+        TIME_RANGE.write(buffer, value.map(TrafficLightModifier::redDuration).orElse(TimeRange.oneSecond()));
+        TRAFFIC_LIGHT_STATUS.write(buffer, value.map(TrafficLightModifier::lightStatus).orElse(TrafficLightModifier.LightStatus.GREEN));
+        LONG.write(buffer, value.map(TrafficLightModifier::nextAction).orElse(0L));
+    });
+
+    @Getter private final UUID id;
+    @Getter private final TimeRange nextPhaseDelay;
+    @Getter private final TimeRange yellowDuration;
+    @Getter private final TimeRange redDuration;
 
     private SubscribedEvent<PlayerMoveEvent> playerMoveEvent;
-    private LightStatus lightStatus;
     private KeyedBossBar statusBar;
-    private long nextAction;
+    @Getter private LightStatus lightStatus;
+    @Getter private long nextAction;
 
-    public TrafficLightModifier(Challenge challenge, TimeRange nextPhaseDelay, TimeRange yellowDuration, TimeRange redDuration) {
-        this.key = NamespacedKey.fromString(challenge.handle().toString() + "traffic_light");
+    public TrafficLightModifier(UUID id, TimeRange nextPhaseDelay, TimeRange yellowDuration, TimeRange redDuration, LightStatus lightStatus, long nextAction) {
+        this.id = id;
         this.nextPhaseDelay = nextPhaseDelay;
         this.yellowDuration = yellowDuration;
         this.redDuration = redDuration;
+        this.lightStatus = lightStatus;
+        this.nextAction = nextAction;
     }
 
     @Override
     public void onInitialise(Logger logger, Challenge challenge) {
-        lightStatus = LightStatus.GREEN;
-        nextAction = nextPhaseDelay.randomAsTick();
         logger.debug("Traffic light is set to %s, next phase %s in %s ticks".formatted(lightStatus, EnumUtils.next(lightStatus), nextAction));
 
         if (statusBar != null) {
             Bukkit.removeBossBar(statusBar.getKey());
         }
 
-        statusBar = Bukkit.createBossBar(key, lightStatus.texture(), BarColor.WHITE, BarStyle.SOLID);
+        statusBar = Bukkit.createBossBar(key(), lightStatus.texture(), BarColor.WHITE, BarStyle.SOLID);
         statusBar.setVisible(true);
 
         if (playerMoveEvent != null) {
@@ -129,6 +154,10 @@ public class TrafficLightModifier implements ChallengeModifier {
         statusBar.setTitle(status.texture());
         statusBar.setVisible(false);
         statusBar.setVisible(true);
+    }
+
+    private NamespacedKey key() {
+        return NamespacedKey.fromString(id.toString() + "traffic_light");
     }
 
     @Getter

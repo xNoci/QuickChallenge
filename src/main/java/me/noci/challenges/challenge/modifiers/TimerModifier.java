@@ -1,16 +1,32 @@
 package me.noci.challenges.challenge.modifiers;
 
+import lombok.Getter;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.colors.ColorUtils;
 import me.noci.challenges.colors.Colors;
+import me.noci.challenges.serializer.TypeSerializer;
 import me.noci.quickutilities.utils.BukkitUnit;
 import net.kyori.adventure.text.Component;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.entity.Player;
 
 import java.util.List;
+import java.util.Optional;
+
+import static me.noci.challenges.serializer.TypeSerializers.BOOLEAN;
+import static me.noci.challenges.serializer.TypeSerializers.LONG;
 
 public class TimerModifier implements ChallengeModifier {
+
+    public static final TypeSerializer<Optional<TimerModifier>> SERIALIZER = TypeSerializer.fixed(9, buffer -> {
+        boolean enabled = BOOLEAN.read(buffer);
+        long ticksPlayed = LONG.read(buffer);
+        if (!enabled) return Optional.empty();
+        return Optional.of(new TimerModifier(ticksPlayed));
+    }, (buffer, value) -> {
+        BOOLEAN.write(buffer, value.isPresent());
+        LONG.write(buffer, value.map(TimerModifier::ticksPlayed).orElse(0L));
+    });
 
     private static final String TIMER_PAUSED_STRING = "Der Timer ist pausiert";
 
@@ -19,12 +35,15 @@ public class TimerModifier implements ChallengeModifier {
     private static final float GRADIENT_ACCENT_STRENGTH = 10;
 
     private float gradientTranslation;
-    private long ticksPlayed;
+    @Getter private long ticksPlayed;
+
+    public TimerModifier(long ticksPlayed) {
+        this.gradientTranslation = 0;
+        this.ticksPlayed = ticksPlayed;
+    }
 
     @Override
     public void onInitialise(Logger logger, Challenge challenge) {
-        gradientTranslation = 0;
-        ticksPlayed = 0;
     }
 
     @Override

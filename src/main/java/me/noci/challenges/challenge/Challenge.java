@@ -69,6 +69,13 @@ public class Challenge {
         modifiers.forEach(modifier -> modifier.onTick(logger, this, players));
     }
 
+    @SuppressWarnings("unchecked")
+    public <T extends ChallengeModifier> Optional<T> getModifier(Class<T> modifier) {
+        return modifiers.stream()
+                .filter(challengeModifier -> challengeModifier.getClass().equals(modifier))
+                .map(challengeModifier -> (T) challengeModifier)
+                .findFirst();
+    }
 
     private Optional<ChallengeWorld> challengeWorld() {
         return Optional.ofNullable(world.get());
