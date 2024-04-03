@@ -87,13 +87,15 @@ public class TrafficLightModifier implements ChallengeModifier {
 
     @Override
     public void onTick(Logger logger, Challenge challenge, List<Player> players) {
-        players.stream()
-                .filter(player -> !statusBar.getPlayers().contains(player))
-                .forEach(player -> statusBar.addPlayer(player));
+        if (statusBar != null) {
+            players.stream()
+                    .filter(player -> !statusBar.getPlayers().contains(player))
+                    .forEach(player -> statusBar.addPlayer(player));
 
-        statusBar.getPlayers().stream()
-                .filter(player -> !players.contains(player))
-                .forEach(player -> statusBar.removePlayer(player));
+            statusBar.getPlayers().stream()
+                    .filter(player -> !players.contains(player))
+                    .forEach(player -> statusBar.removePlayer(player));
+        }
 
         if (nextAction <= 0) {
             lightStatus = EnumUtils.next(lightStatus);
