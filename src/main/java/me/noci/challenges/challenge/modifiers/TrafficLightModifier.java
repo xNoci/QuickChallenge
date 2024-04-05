@@ -152,8 +152,6 @@ public class TrafficLightModifier implements ChallengeModifier {
     private void changeDisplayTo(LightStatus status) {
         if (statusBar == null) return;
         statusBar.setTitle(status.texture());
-        statusBar.setVisible(false);
-        statusBar.setVisible(true);
     }
 
     private NamespacedKey key() {
