@@ -56,9 +56,9 @@ public class ChallengeController {
     }
 
     public Challenge create(List<ChallengeModifier> modifiers, ExitStrategy exitStrategy) {
-        LOGGER.info("Creating challenge...");
-
         UUID handle = UUID.randomUUID();
+        LOGGER.info("Creating challenge with handle '%s'...".formatted(handle.toString()));
+        LOGGER.info("using ExitStrategy '%s'".formatted(exitStrategy.name()));
         ChallengeWorld challengeWorld = worldController.generateChallengeWorld(handle, exitStrategy);
         Challenge challenge = new Challenge(handle, exitStrategy, challengeWorld, modifiers.toArray(ChallengeModifier[]::new));
 
