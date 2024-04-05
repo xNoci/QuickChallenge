@@ -8,6 +8,7 @@ import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.worlds.ChallengeWorld;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 import java.lang.ref.Reference;
@@ -90,4 +91,8 @@ public class Challenge {
         return Optional.ofNullable(world.get());
     }
 
+    public void join(Player player) {
+        challengeWorld().flatMap(ChallengeWorld::overworld).map(World::getSpawnLocation)
+                .ifPresent(player::teleport);
+    }
 }
