@@ -36,6 +36,15 @@ public class ChallengeWorld {
         return worlds().stream().anyMatch(world -> world.getUID().equals(entityWorldID));
     }
 
+    public Optional<World> worldByEnvironment(World.Environment environment) {
+        return switch (environment) {
+            case NORMAL -> overworld();
+            case NETHER -> nether();
+            case THE_END -> theEnd();
+            default -> Optional.empty();
+        };
+    }
+
     public Optional<World> overworld() {
         return Optional.ofNullable(overworld.get());
     }
@@ -59,9 +68,9 @@ public class ChallengeWorld {
     public List<Player> players() {
         ImmutableList.Builder<Player> players = ImmutableList.builder();
 
-        overworld().ifPresent(world -> players.addAll(world.getPlayers()));
-        nether().ifPresent(world -> players.addAll(world.getPlayers()));
-        theEnd().ifPresent(world -> players.addAll(world.getPlayers()));
+        overworld().map(World::getPlayers).ifPresent(players::addAll);
+        nether().map(World::getPlayers).ifPresent(players::addAll);
+        theEnd().map(World::getPlayers).ifPresent(players::addAll);
 
         return players.build();
     }

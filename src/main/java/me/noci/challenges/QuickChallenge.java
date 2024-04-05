@@ -36,6 +36,7 @@ public class QuickChallenge extends JavaPlugin {
         pluginManager.registerEvents(new PlayerJoinListener(), this);
         pluginManager.registerEvents(new PlayerQuitListener(), this);
         pluginManager.registerEvents(new ResourcePackStatusListener(), this);
+        pluginManager.registerEvents(new PlayerPortalListener(worldController), this);
     }
 
 }
