@@ -57,11 +57,11 @@ public class TimerModifier implements ChallengeModifier {
             ticksPlayed++;
         }
 
-        gradientTranslation += GRADIENT_SPEED;
+        gradientTranslation += GRADIENT_SPEED; //TODO Change speed to be proportional to string length
         gradientTranslation %= (float) (4 * Math.PI / GRADIENT_PERIOD);
 
         String actionBarText = challenge.paused() ? TIMER_PAUSED_STRING : playedTimeAsString();
-        Component actionBar = ColorUtils.gradientText(actionBarText, Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_PRIMARY_COLOR, (currentIndex, stringLength) -> {
+        Component actionBar = ColorUtils.gradientText(actionBarText, Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_ACCENT_COLOR, (currentIndex, stringLength) -> {
             float progress = (float) currentIndex / (GRADIENT_PERIOD * 10);
             progress += gradientTranslation;
             progress = 0.5f + (float) Math.sin(GRADIENT_PERIOD * progress) / 2;
@@ -76,7 +76,7 @@ public class TimerModifier implements ChallengeModifier {
         return "Timer";
     }
 
-    private String playedTimeAsString() {
+    public String playedTimeAsString() {
         long timePlayedSeconds = BukkitUnit.TICKS.toSeconds(ticksPlayed);
 
         long seconds = timePlayedSeconds % 60;
