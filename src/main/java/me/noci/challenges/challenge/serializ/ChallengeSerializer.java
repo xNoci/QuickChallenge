@@ -23,9 +23,9 @@ public class ChallengeSerializer {
             .layout(TypeSerializers.U_BYTE, c -> 1)
             .layout(TypeSerializers.UUID, Challenge::handle)
             .layout(TypeSerializers.EXIT_STRATEGY, Challenge::exitStrategy)
-            .layout(StopOnDeathModifier.SERIALIZER, challenge -> challenge.getModifier(StopOnDeathModifier.class))
-            .layout(TimerModifier.SERIALIZER, challenge -> challenge.getModifier(TimerModifier.class))
-            .layout(TrafficLightModifier.SERIALIZER, challenge -> challenge.getModifier(TrafficLightModifier.class))
+            .layout(StopOnDeathModifier.SERIALIZER, challenge -> challenge.modifier(StopOnDeathModifier.class))
+            .layout(TimerModifier.SERIALIZER, challenge -> challenge.modifier(TimerModifier.class))
+            .layout(TrafficLightModifier.SERIALIZER, challenge -> challenge.modifier(TrafficLightModifier.class))
             .read(buffer -> {
                 if (TypeSerializers.SHORT.read(buffer) != MAGIC_NUMBER) return null;
                 if (TypeSerializers.U_BYTE.read(buffer) != 1) return null;

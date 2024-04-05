@@ -26,7 +26,7 @@ public class Challenge {
     @Getter private final Set<ChallengeModifier> modifiers;
     private Reference<ChallengeWorld> world;
 
-    @Getter @Setter private boolean started = false;
+    @Getter @Setter private boolean started = false; //TODO Change to worldLoaded and only load worlds when they are needed
     @Getter @Setter private boolean paused = true;
 
     public Challenge(UUID handle, ExitStrategy exitStrategy, List<ChallengeModifier> challengeModifiers) {
@@ -75,7 +75,7 @@ public class Challenge {
     }
 
     @SuppressWarnings("unchecked")
-    public <T extends ChallengeModifier> Optional<T> getModifier(Class<T> modifier) {
+    public <T extends ChallengeModifier> Optional<T> modifier(Class<T> modifier) {
         return modifiers.stream()
                 .filter(challengeModifier -> challengeModifier.getClass().equals(modifier))
                 .map(challengeModifier -> (T) challengeModifier)
