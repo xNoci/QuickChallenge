@@ -5,6 +5,7 @@ import com.cryptomorin.xseries.XMaterial;
 import com.google.common.collect.Lists;
 import lombok.Getter;
 import me.noci.challenges.challenge.Challenge;
+import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.modifiers.TimerModifier;
 import me.noci.quickutilities.inventory.*;
@@ -17,6 +18,7 @@ import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -30,11 +32,11 @@ public class GuiChallengeOverview extends ChallengePagedGuiProvider {
     private static final Component TITLE = Component.text("", TextColor.color(132, 120, 157));
     private static final int[] PAGE_CONTENT_SLOTS = InventoryPattern.box(2, 5);
 
-    private final List<Challenge> challenges;
+    private final ChallengeController challengeController;
 
-    public GuiChallengeOverview(List<Challenge> challenges) {
+    public GuiChallengeOverview(ChallengeController challengeController) {
         super(TITLE, InventoryConstants.FULL_SIZE);
-        this.challenges = challenges;
+        this.challengeController = challengeController;
     }
 
     @Override
@@ -100,15 +102,43 @@ public class GuiChallengeOverview extends ChallengePagedGuiProvider {
             modifiers.forEach(modifier -> lore.add(serializer.serialize(Component.text("- ", gray).append(Component.text(modifier.name(), primary)))));
         }
 
+        lore.add("");
+        lore.add(serializer.serialize(Component.text("Beitreten (Linksklick) | Löschen (Rechtsklick)", gray)));
+
         item.setLore(lore);
 
-        return new ChallengeGuiItem(challenge, item, event -> challenge.join(event.getPlayer()));
+        return new ChallengeGuiItem(challenge, item, event -> {
+            switch (event.getClick()) {
+                case LEFT -> challenge.join(event.getPlayer());
+                case RIGHT -> openDeleteGui(challenge, event.getPlayer(), primary, gray);
+            }
+        });
     }
 
     private TextComponent booleanComponent(boolean value) {
         String text = value ? "✔" : "✘";
         TextColor color = value ? NamedTextColor.GREEN : NamedTextColor.RED;
         return Component.text(text, color);
+    }
+
+    private void openDeleteGui(Challenge challenge, Player player, TextColor primary, TextColor gray) {
+        GuiAcceptDialog.builder()
+                .dialogType(GuiAcceptDialog.DialogType.YES_NO)
+                .title(
+                        Component.text("Challenge ", primary)
+                                .append(Component.text("(%s) ", gray, TextDecoration.ITALIC))
+                                .append(Component.text("löschen?", primary))
+                )
+                .description(
+                        Component.text("Möchtest du die Challenge wirklich löschen?", gray)
+                )
+                .acceptAction(event -> {
+                    if (event.getClick() != ClickType.LEFT) return;
+                    event.getPlayer().closeInventory();
+                    challengeController.delete(challenge);
+                })
+                .closeOnDecline()
+                .provide(player);
     }
 
     private static ItemStack skullItem() {
