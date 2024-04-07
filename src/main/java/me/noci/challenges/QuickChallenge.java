@@ -3,10 +3,7 @@ package me.noci.challenges;
 import io.papermc.lib.PaperLib;
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.command.CommandTimer;
-import me.noci.challenges.listeners.PlayerJoinListener;
-import me.noci.challenges.listeners.PlayerPortalListener;
-import me.noci.challenges.listeners.PlayerQuitListener;
-import me.noci.challenges.listeners.ResourcePackStatusListener;
+import me.noci.challenges.listeners.*;
 import me.noci.challenges.worlds.WorldController;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -41,6 +38,13 @@ public class QuickChallenge extends JavaPlugin {
         pluginManager.registerEvents(new PlayerQuitListener(), this);
         pluginManager.registerEvents(new ResourcePackStatusListener(), this);
         pluginManager.registerEvents(new PlayerPortalListener(worldController), this);
+        pluginManager.registerEvents(new EnityTargetListener(challengeController), this);
+        pluginManager.registerEvents(new EntityDamageListener(challengeController), this);
+        pluginManager.registerEvents(new EntityPathfindListener(challengeController), this);
+        pluginManager.registerEvents(new FoodLevelChangeListener(challengeController), this);
+        pluginManager.registerEvents(new PlayerMoveListener(challengeController), this);
+        pluginManager.registerEvents(new BlockListener(challengeController), this);
+        pluginManager.registerEvents(new ItemDropListener(challengeController), this);
     }
 
     private void registerCommands() {
