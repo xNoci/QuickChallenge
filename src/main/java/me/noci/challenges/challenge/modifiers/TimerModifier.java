@@ -1,5 +1,6 @@
 package me.noci.challenges.challenge.modifiers;
 
+import com.google.common.collect.Lists;
 import lombok.Getter;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.colors.ColorUtils;
@@ -7,6 +8,7 @@ import me.noci.challenges.colors.Colors;
 import me.noci.challenges.serializer.TypeSerializer;
 import me.noci.quickutilities.utils.BukkitUnit;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.entity.Player;
 
@@ -60,13 +62,18 @@ public class TimerModifier implements ChallengeModifier {
         gradientTranslation += GRADIENT_SPEED; //TODO Change speed to be proportional to string length
         gradientTranslation %= (float) (4 * Math.PI / GRADIENT_PERIOD);
 
+        List<TextDecoration> textDecorations = Lists.newArrayList(TextDecoration.BOLD);
+        if (challenge.paused()) {
+            textDecorations.add(TextDecoration.ITALIC);
+        }
+
         String actionBarText = challenge.paused() ? TIMER_PAUSED_STRING : playedTimeAsString();
         Component actionBar = ColorUtils.gradientText(actionBarText, Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_ACCENT_COLOR, (currentIndex, stringLength) -> {
             float progress = (float) currentIndex / (GRADIENT_PERIOD * 10);
             progress += gradientTranslation;
             progress = 0.5f + (float) Math.sin(GRADIENT_PERIOD * progress) / 2;
             return (float) Math.pow(progress, GRADIENT_ACCENT_STRENGTH);
-        });
+        }).decorate(textDecorations.toArray(TextDecoration[]::new));
 
         players.forEach(player -> player.sendActionBar(actionBar));
     }

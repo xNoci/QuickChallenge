@@ -2,7 +2,6 @@ package me.noci.challenges.colors;
 
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
-import net.kyori.adventure.util.RGBLike;
 
 public class Colors {
 
@@ -17,6 +16,6 @@ public class Colors {
     public static final TextColor JOIN_PLAYER_NAME = TextColor.color(31, 150, 173);
 
     // ------- Modifiers -------
-    public static final TextColor TIMER_PRIMARY_COLOR = TextColor.color(197, 14, 207);
-    public static final TextColor TIMER_ACCENT_COLOR = TextColor.color(61, 38, 163);
+    public static final TextColor TIMER_PRIMARY_COLOR = TextColor.color(220, 74, 188);
+    public static final TextColor TIMER_ACCENT_COLOR = TextColor.color(97, 107, 205);
 }
