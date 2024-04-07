@@ -49,7 +49,9 @@ public class GuiChallengeOverview extends ChallengePagedGuiProvider {
         content.setPreviousPageItem(Slot.getSlot(6, 1), InventoryConstants.PREVIOUS_PAGE, InventoryConstants.GLAS_PANE.getItemStack());
         content.setPreviousPageItem(Slot.getSlot(6, 1), InventoryConstants.PREVIOUS_PAGE, InventoryConstants.GLAS_PANE.getItemStack());
 
-        GuiItem[] challengeItems = challenges.stream()
+
+        GuiItem[] challengeItems = challengeController.challenges().stream()
+                .sorted(Challenge::compareTo)
                 .map(this::toGuiItem)
                 .toArray(GuiItem[]::new);
 
@@ -76,7 +78,6 @@ public class GuiChallengeOverview extends ChallengePagedGuiProvider {
         TextComponent title = Component.text("Challenge", primary)
                 .append(Component.text(" (%s)".formatted(challenge.handle()), gray, TextDecoration.ITALIC));
 
-
         var item = new QuickItemStack(SKULL_ITEM);
         item.setDisplayName(serializer.serialize(title));
 
@@ -84,8 +85,8 @@ public class GuiChallengeOverview extends ChallengePagedGuiProvider {
         int modifierCount = modifiers.size();
 
         List<String> lore = Lists.newArrayList(" ");
-        lore.add(serializer.serialize(Component.text("Started: ", gray).append(forBoolean(challenge.started()))));
-        lore.add(serializer.serialize(Component.text("Paused: ", gray).append(forBoolean(challenge.paused()))));
+        lore.add(serializer.serialize(Component.text("Started: ", gray).append(booleanComponent(challenge.started()))));
+        lore.add(serializer.serialize(Component.text("Paused: ", gray).append(booleanComponent(challenge.paused()))));
         challenge.modifier(TimerModifier.class)
                 .map(TimerModifier::playedTimeAsString)
                 .ifPresent(time -> lore.add(serializer.serialize(Component.text("Time played: ", gray).append(Component.text(time, primary)))));
@@ -104,7 +105,7 @@ public class GuiChallengeOverview extends ChallengePagedGuiProvider {
         return new ChallengeGuiItem(challenge, item, event -> challenge.join(event.getPlayer()));
     }
 
-    private TextComponent forBoolean(boolean value) {
+    private TextComponent booleanComponent(boolean value) {
         String text = value ? "✔" : "✘";
         TextColor color = value ? NamedTextColor.GREEN : NamedTextColor.RED;
         return Component.text(text, color);

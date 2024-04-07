@@ -5,20 +5,19 @@ import lombok.Getter;
 import lombok.Setter;
 import me.noci.challenges.ExitStrategy;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
+import me.noci.challenges.challenge.modifiers.TimerModifier;
 import me.noci.challenges.worlds.ChallengeWorld;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
-public class Challenge {
+public class Challenge implements Comparable<Challenge> {
 
     private final Logger logger;
 
@@ -92,7 +91,21 @@ public class Challenge {
     }
 
     public void join(Player player) {
-        challengeWorld().flatMap(ChallengeWorld::overworld).map(World::getSpawnLocation)
+        challengeWorld()
+                .flatMap(ChallengeWorld::overworld)
+                .map(World::getSpawnLocation)
                 .ifPresent(player::teleport);
+    }
+
+    @Override
+    public int compareTo(@NotNull Challenge other) {
+
+        Comparator<Challenge> compareStarted = Comparator.comparing(Challenge::started);
+        Comparator<Challenge> comparePaused = Comparator.comparing(Challenge::paused);
+        Comparator<Challenge> playedTime = Comparator.comparing(
+                challenge -> challenge.modifier(TimerModifier.class).map(TimerModifier::ticksPlayed).orElse(0L)
+        );
+
+        return compareStarted.reversed().thenComparing(comparePaused).thenComparing(playedTime.reversed()).compare(this, other);
     }
 }
