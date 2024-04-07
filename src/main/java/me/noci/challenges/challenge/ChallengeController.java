@@ -14,6 +14,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Entity;
 import org.jetbrains.annotations.Nullable;
 
 import java.nio.ByteBuffer;
@@ -34,6 +35,13 @@ public class ChallengeController {
     public ChallengeController(WorldController worldController) {
         this.worldController = worldController;
         Scheduler.repeat(1, BukkitUnit.TICKS, () -> challenges().stream().filter(Challenge::started).forEach(Challenge::tickChallengeModifiers));
+    }
+
+    public Optional<Challenge> fromEntity(Entity entity) {
+        return challenges().stream().
+                filter(
+                        challenge -> challenge.challengeWorld().map(challengeWorld -> challengeWorld.hasEntity(entity)).orElse(false)
+                ).findFirst();
     }
 
     public void startChallenge(Challenge challenge) {
@@ -64,14 +72,6 @@ public class ChallengeController {
 
         challenges.put(handle, challenge);
         return challenge;
-    }
-
-
-    public void delete(UUID handle) {
-        Challenge challenge = challenges.get(handle);
-        if (challenge != null) {
-            delete(challenge);
-        }
     }
 
     @SneakyThrows
