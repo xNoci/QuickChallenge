@@ -2,6 +2,7 @@ package me.noci.challenges;
 
 import io.papermc.lib.PaperLib;
 import me.noci.challenges.challenge.ChallengeController;
+import me.noci.challenges.command.CommandChallenge;
 import me.noci.challenges.command.CommandTimer;
 import me.noci.challenges.listeners.*;
 import me.noci.challenges.worlds.WorldController;
@@ -54,6 +55,7 @@ public class QuickChallenge extends JavaPlugin {
     }
 
     private void registerCommands() {
+        new CommandChallenge(this, worldController, challengeController);
         new CommandTimer(this, challengeController);
     }
 
