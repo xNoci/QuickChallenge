@@ -28,8 +28,7 @@ public class CommandTimer extends QuickCommand {
         challengeController.fromEntity(player)
                 .ifPresentOrElse(
                         challenge -> {
-                            challenge.started(true);
-                            challenge.paused(false);
+                            challengeController.startChallenge(challenge);
                             player.sendMessage(Component.text("Die Challenge wurde gestartet.", NamedTextColor.GREEN));
                         },
                         () -> player.sendMessage(Component.text("Du bist in keiner Challenge die gestartet werden kann.", NamedTextColor.RED))

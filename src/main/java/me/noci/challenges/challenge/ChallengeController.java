@@ -56,7 +56,7 @@ public class ChallengeController {
                 );
 
         challenge.started(true);
-        challenge.paused(true);
+        challenge.paused(false);
     }
 
     public List<Challenge> challenges() {
