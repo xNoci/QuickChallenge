@@ -123,7 +123,7 @@ public class Challenge implements Comparable<Challenge> {
     }
 
     public boolean shouldCancelEvents() {
-        return started && paused;
+        return !started || paused;
     }
 
     @Override
