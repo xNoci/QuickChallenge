@@ -5,6 +5,7 @@ import me.noci.challenges.serializer.TypeSerializer;
 import me.noci.quickutilities.events.Events;
 import me.noci.quickutilities.events.subscriber.SubscribedEvent;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.entity.EnderDragon;
 import org.bukkit.entity.Player;
@@ -38,11 +39,10 @@ public class EnderDragonFinishModifier implements ChallengeModifier {
                 .handle(event -> {
                     challenge.paused(true);
 
-                    //TODO FORMAT WITH COLOR
                     Component message = challenge.modifier(TimerModifier.class)
                             .map(TimerModifier::playedTimeAsString)
-                            .map(timePlayed -> Component.text("Die Challenge wurde nach %s erfolgreich beendet.".formatted(timePlayed)))
-                            .orElse(Component.text("Die Challenge wurde erfolgreich beendet"));
+                            .map(timePlayed -> Component.text("Die Challenge wurde nach %s erfolgreich beendet.".formatted(timePlayed), NamedTextColor.GREEN))
+                            .orElse(Component.text("Die Challenge wurde erfolgreich beendet", NamedTextColor.GREEN));
 
                     challenge.broadcast(message);
                 });
