@@ -117,15 +117,14 @@ public class ChallengeController {
     @SneakyThrows
     private void save(Challenge challenge) {
         Path filePath = challengeFile(challenge);
-        byte[] data = ChallengeSerializer.VERSION_1.serialize(challenge);
+        byte[] data = ChallengeSerializer.serialize(challenge);
         Files.write(filePath, data);
         LOGGER.info("Saved challenge '%s' to file path '%s'.".formatted(challenge.handle(), filePath.toString()));
     }
 
     @SneakyThrows
     private @Nullable Challenge load(Path path) {
-        ByteBuffer buffer = ByteBuffer.wrap(Files.readAllBytes(path));
-        Optional<Challenge> challenge = ChallengeSerializer.VERSION_1.read(buffer);
+        Optional<Challenge> challenge = ChallengeSerializer.read(Files.readAllBytes(path));
         challenge.ifPresent(value -> {
             ChallengeWorld world = worldController.generateChallengeWorld(value.handle(), value.exitStrategy());
             value.challengeWorld(world);

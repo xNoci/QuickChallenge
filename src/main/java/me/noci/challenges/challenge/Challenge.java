@@ -7,9 +7,11 @@ import me.noci.challenges.ExitStrategy;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.modifiers.TimerModifier;
 import me.noci.challenges.worlds.ChallengeWorld;
+import net.kyori.adventure.text.Component;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.World;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -26,7 +28,8 @@ public class Challenge implements Comparable<Challenge> {
     @Getter private final Set<ChallengeModifier> modifiers;
     private Reference<ChallengeWorld> world;
 
-    @Getter @Setter private boolean started = false; //TODO Change to worldLoaded and only load worlds when they are needed
+    //TODO Change to worldLoaded and only load worlds when they are needed
+    @Getter @Setter private boolean started = false;
     @Getter @Setter private boolean paused = true;
 
     public Challenge(UUID handle, ExitStrategy exitStrategy, List<ChallengeModifier> challengeModifiers) {
@@ -42,8 +45,8 @@ public class Challenge implements Comparable<Challenge> {
         this.world = new WeakReference<>(world);
     }
 
-    public boolean isInChallenge(Player player) {
-        return challengeWorld().map(world -> world.hasEntity(player)).orElse(false);
+    public boolean isInChallenge(Entity entity) {
+        return challengeWorld().map(world -> world.hasEntity(entity)).orElse(false);
     }
 
     public void initialiseChallengeModifiers() {
@@ -97,6 +100,10 @@ public class Challenge implements Comparable<Challenge> {
                 .ifPresent(player::teleport);
     }
 
+    public boolean shouldCancelEvents() {
+        return started && paused;
+    }
+
     @Override
     public int compareTo(@NotNull Challenge other) {
 
@@ -108,4 +115,9 @@ public class Challenge implements Comparable<Challenge> {
 
         return compareStarted.reversed().thenComparing(comparePaused).thenComparing(playedTime.reversed()).compare(this, other);
     }
+
+    public void broadcast(Component message) {
+        challengeWorld().ifPresent(challengeWorld -> challengeWorld.players().forEach(player -> player.sendMessage(message)));
+    }
+
 }
