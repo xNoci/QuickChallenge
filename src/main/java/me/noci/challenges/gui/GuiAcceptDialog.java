@@ -99,7 +99,7 @@ public class GuiAcceptDialog extends ChallengeGuiProvider {
         }
 
         public Builder closeOnDecline() {
-            Require.checkState(this.onDecline == null, "Cannot set close on declone, a declone action is already set.");
+            Require.checkState(this.onDecline == null, "Cannot set close on decline, a decline action is already set.");
             onDecline = event -> event.getPlayer().closeInventory();
             return this;
         }
