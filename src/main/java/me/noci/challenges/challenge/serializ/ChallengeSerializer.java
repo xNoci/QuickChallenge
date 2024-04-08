@@ -7,15 +7,13 @@ import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.modifiers.*;
 import me.noci.challenges.serializer.ObjectSerializer;
 import me.noci.challenges.serializer.TypeSerializers;
+import me.noci.challenges.worlds.LastKnownLocation;
 import me.noci.quickutilities.utils.Require;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.nio.ByteBuffer;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.function.Consumer;
 
 public class ChallengeSerializer {
@@ -23,7 +21,7 @@ public class ChallengeSerializer {
     private static final Logger LOGGER = LogManager.getLogger("Challenge Serializer");
     private static final HashMap<Integer, ObjectSerializer<Challenge>> SERIALIZERS = Maps.newHashMap();
     private static final short MAGIC_NUMBER = (short) 0xFE21;
-    private static final int CURRENT_VERSION = 2;
+    private static final int CURRENT_VERSION = 3;
 
     static {
         register(1,
@@ -70,6 +68,33 @@ public class ChallengeSerializer {
                     enderDragonFinishModifier.ifPresent(challengeModifiers::add);
 
                     return new Challenge(uuid, exitStrategy, challengeModifiers);
+                }
+        );
+
+        register(3,
+                serializer -> serializer.layout(TypeSerializers.UUID, Challenge::handle)
+                        .layout(TypeSerializers.EXIT_STRATEGY, Challenge::exitStrategy)
+                        .layout(TypeSerializers.LAST_KNOWN_LOCATION_MAP, Challenge::lastKnownLocation)
+                        .layout(StopOnDeathModifier.SERIALIZER, challenge -> challenge.modifier(StopOnDeathModifier.class))
+                        .layout(TimerModifier.SERIALIZER, challenge -> challenge.modifier(TimerModifier.class))
+                        .layout(TrafficLightModifier.SERIALIZER, challenge -> challenge.modifier(TrafficLightModifier.class))
+                        .layout(EnderDragonFinishModifier.SERIALIZER, challenge -> challenge.modifier(EnderDragonFinishModifier.class)),
+                buffer -> {
+                    UUID uuid = TypeSerializers.UUID.read(buffer);
+                    ExitStrategy exitStrategy = TypeSerializers.EXIT_STRATEGY.read(buffer);
+                    Map<UUID, LastKnownLocation> lastKnownLocations = TypeSerializers.LAST_KNOWN_LOCATION_MAP.read(buffer);
+                    Optional<StopOnDeathModifier> stopOnDeathModifier = StopOnDeathModifier.SERIALIZER.read(buffer);
+                    Optional<TimerModifier> timerModifier = TimerModifier.SERIALIZER.read(buffer);
+                    Optional<TrafficLightModifier> trafficLightModifier = TrafficLightModifier.SERIALIZER.read(buffer);
+                    Optional<EnderDragonFinishModifier> enderDragonFinishModifier = EnderDragonFinishModifier.SERIALIZER.read(buffer);
+
+                    List<ChallengeModifier> challengeModifiers = Lists.newArrayList();
+                    stopOnDeathModifier.ifPresent(challengeModifiers::add);
+                    timerModifier.ifPresent(challengeModifiers::add);
+                    trafficLightModifier.ifPresent(challengeModifiers::add);
+                    enderDragonFinishModifier.ifPresent(challengeModifiers::add);
+
+                    return new Challenge(uuid, exitStrategy, lastKnownLocations, challengeModifiers);
                 }
         );
 

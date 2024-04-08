@@ -1,9 +1,11 @@
 package me.noci.challenges.serializer;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 import java.nio.ByteBuffer;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
 
 public interface TypeSerializer<T> {
@@ -26,6 +28,14 @@ public interface TypeSerializer<T> {
 
     static <V> TypeSerializer<List<V>> list(TypeSerializer<V> serializer, Supplier<List<V>> listSupplier) {
         return new ListTypeSerializer<>(serializer, listSupplier);
+    }
+
+    static <K, V> TypeSerializer<Map<K, V>> map(TypeSerializer<K> keySerializer, TypeSerializer<V> valueSerializer) {
+        return map(keySerializer, valueSerializer, Maps::newHashMap);
+    }
+
+    static <K, V> TypeSerializer<Map<K, V>> map(TypeSerializer<K> keySerializer, TypeSerializer<V> valueSerializer, Supplier<Map<K, V>> mapSupplier) {
+        return new MapTypeSerializer<>(keySerializer, valueSerializer, mapSupplier);
     }
 
     int byteSize(T value);

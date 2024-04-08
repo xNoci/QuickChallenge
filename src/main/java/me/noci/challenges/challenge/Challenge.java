@@ -1,12 +1,14 @@
 package me.noci.challenges.challenge;
 
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
 import lombok.Getter;
 import lombok.Setter;
 import me.noci.challenges.ExitStrategy;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.modifiers.TimerModifier;
 import me.noci.challenges.worlds.ChallengeWorld;
+import me.noci.challenges.worlds.LastKnownLocation;
 import net.kyori.adventure.text.Component;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,6 +28,7 @@ public class Challenge implements Comparable<Challenge> {
     @Getter private final UUID handle;
     @Getter private final ExitStrategy exitStrategy;
     @Getter private final Set<ChallengeModifier> modifiers;
+    @Getter private final Map<UUID, LastKnownLocation> lastKnownLocation;
     private Reference<ChallengeWorld> world;
 
     //TODO Change to worldLoaded and only load worlds when they are needed
@@ -33,14 +36,23 @@ public class Challenge implements Comparable<Challenge> {
     @Getter @Setter private boolean paused = true;
 
     public Challenge(UUID handle, ExitStrategy exitStrategy, List<ChallengeModifier> challengeModifiers) {
-        this(handle, exitStrategy, null, challengeModifiers.toArray(ChallengeModifier[]::new));
+        this(handle, exitStrategy, Maps.newHashMap(), null, challengeModifiers.toArray(ChallengeModifier[]::new));
     }
 
-    public Challenge(UUID handle, ExitStrategy exitStrategy, ChallengeWorld world, ChallengeModifier... modifiers) {
+    public Challenge(UUID handle, ExitStrategy exitStrategy, ChallengeWorld challengeWorld, ChallengeModifier... challengeModifiers) {
+        this(handle, exitStrategy, Maps.newHashMap(), challengeWorld, challengeModifiers);
+    }
+
+    public Challenge(UUID handle, ExitStrategy exitStrategy, Map<UUID, LastKnownLocation> lastKnownLocations, List<ChallengeModifier> challengeModifiers) {
+        this(handle, exitStrategy, lastKnownLocations, null, challengeModifiers.toArray(ChallengeModifier[]::new));
+    }
+
+    public Challenge(UUID handle, ExitStrategy exitStrategy, Map<UUID, LastKnownLocation> lastKnownLocations, ChallengeWorld world, ChallengeModifier... modifiers) {
         this.logger = LogManager.getLogger("Challenge %s".formatted(handle.toString()));
 
         this.handle = handle;
         this.exitStrategy = exitStrategy;
+        this.lastKnownLocation = lastKnownLocations;
         this.modifiers = ImmutableSet.copyOf(modifiers);
         this.world = new WeakReference<>(world);
     }
@@ -94,10 +106,20 @@ public class Challenge implements Comparable<Challenge> {
     }
 
     public void join(Player player) {
+        Optional<LastKnownLocation> lastLocation = Optional.ofNullable(lastKnownLocation.get(player.getUniqueId()));
+        World.Environment environment = lastLocation.map(LastKnownLocation::environment).orElse(World.Environment.NORMAL);
+
         challengeWorld()
-                .flatMap(ChallengeWorld::overworld)
-                .map(World::getSpawnLocation)
+                .flatMap(world -> world.worldByEnvironment(environment))
+                .map(world ->
+                        lastLocation.map(location -> location.getForWorld(world))
+                                .orElse(world.getSpawnLocation())
+                )
                 .ifPresent(player::teleport);
+    }
+
+    public void setLastKnownLocation(Player player) {
+        lastKnownLocation.put(player.getUniqueId(), LastKnownLocation.fromPlayer(player));
     }
 
     public boolean shouldCancelEvents() {

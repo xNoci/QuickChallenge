@@ -5,6 +5,9 @@ import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.command.CommandTimer;
 import me.noci.challenges.listeners.*;
 import me.noci.challenges.worlds.WorldController;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -27,15 +30,17 @@ public class QuickChallenge extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        Component kickComponent = Component.text("Der Server wird geschlossen.", NamedTextColor.RED);
+        Bukkit.getOnlinePlayers().forEach(player -> player.kick(kickComponent));
         this.challengeController.save();
-        worldController.deleteWorlds();
+        this.worldController.deleteWorlds();
     }
 
     private void registerListener() {
         PluginManager pluginManager = getServer().getPluginManager();
 
         pluginManager.registerEvents(new PlayerJoinListener(), this);
-        pluginManager.registerEvents(new PlayerQuitListener(), this);
+        pluginManager.registerEvents(new PlayerQuitListener(challengeController), this);
         pluginManager.registerEvents(new ResourcePackStatusListener(), this);
         pluginManager.registerEvents(new PlayerPortalListener(worldController), this);
         pluginManager.registerEvents(new EnityTargetListener(challengeController), this);
@@ -45,6 +50,7 @@ public class QuickChallenge extends JavaPlugin {
         pluginManager.registerEvents(new PlayerMoveListener(challengeController), this);
         pluginManager.registerEvents(new BlockListener(challengeController), this);
         pluginManager.registerEvents(new ItemDropListener(challengeController), this);
+        pluginManager.registerEvents(new PlayerTeleportListener(challengeController), this);
     }
 
     private void registerCommands() {
