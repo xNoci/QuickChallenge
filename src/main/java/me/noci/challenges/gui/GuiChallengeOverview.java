@@ -123,12 +123,13 @@ public class GuiChallengeOverview extends PagedQuickGUIProvider {
         GuiAcceptDialog.builder()
                 .dialogType(GuiAcceptDialog.DialogType.YES_NO)
                 .title(
-                        Component.text("Challenge ", primary)
-                                .append(Component.text("(%s) ", gray, TextDecoration.ITALIC))
-                                .append(Component.text("löschen?", primary))
+                        Component.text("Challenge löschen?", primary)
                 )
                 .description(
-                        Component.text("Möchtest du die Challenge wirklich löschen?", gray)
+                        Component.newline(),
+                        Component.text("Möchtest du die Challenge wirklich löschen?", gray),
+                        Component.newline(),
+                        Component.text("Challenge ID: ", gray).append(Component.text(challenge.handle().toString(), primary))
                 )
                 .acceptAction(event -> {
                     if (event.getClick() != ClickType.LEFT) return;
