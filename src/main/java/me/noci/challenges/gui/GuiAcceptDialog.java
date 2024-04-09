@@ -2,17 +2,13 @@ package me.noci.challenges.gui;
 
 import com.cryptomorin.xseries.XMaterial;
 import lombok.Getter;
-import me.noci.quickutilities.inventory.GuiItem;
-import me.noci.quickutilities.inventory.InventoryContent;
-import me.noci.quickutilities.inventory.Slot;
-import me.noci.quickutilities.inventory.SlotClickEvent;
+import me.noci.quickutilities.inventory.*;
 import me.noci.quickutilities.utils.QuickItemStack;
 import me.noci.quickutilities.utils.Require;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -20,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class GuiAcceptDialog extends ChallengeGuiProvider {
+public class GuiAcceptDialog extends QuickGUIProvider {
 
     private static final Consumer<SlotClickEvent> EMPTY_CLICK = event -> {
     };
@@ -105,15 +101,13 @@ public class GuiAcceptDialog extends ChallengeGuiProvider {
         }
 
         public void provide(Player player) {
-            var serializer = LegacyComponentSerializer.legacySection();
-
             var title = this.title != null ? this.title : Component.text("");
             var acceptItem = new QuickItemStack(XMaterial.GREEN_WOOL.parseMaterial(), this.dialogType.acceptTitle());
             var declineItem = new QuickItemStack(XMaterial.RED_WOOL.parseMaterial(), this.dialogType.declineTitle());
-            var descriptionItem = new QuickItemStack(XMaterial.OAK_SIGN.parseMaterial(), serializer.serialize(Component.text("Beschreibung:", TextColor.color(99, 128, 101))));
+            var descriptionItem = new QuickItemStack(XMaterial.OAK_SIGN.parseMaterial(), Component.text("Beschreibung:", TextColor.color(99, 128, 101)));
 
-            List<String> lore = this.lore != null ? this.lore.stream().map(serializer::serialize).toList() : List.of();
-            descriptionItem.setLore(lore);
+            List<Component> lore = this.lore != null ? this.lore : List.of();
+            descriptionItem.lore(lore);
 
             Consumer<SlotClickEvent> onAccept = this.onAccept != null ? this.onAccept : EMPTY_CLICK;
             Consumer<SlotClickEvent> onDecline = this.onDecline != null ? this.onDecline : EMPTY_CLICK;
@@ -129,13 +123,12 @@ public class GuiAcceptDialog extends ChallengeGuiProvider {
         YES_NO(Component.text("Ja", NamedTextColor.GREEN, TextDecoration.BOLD), Component.text("Nein", NamedTextColor.RED, TextDecoration.BOLD)),
         ACCEPT_DECLINE(Component.text("Annehmen", NamedTextColor.GREEN, TextDecoration.BOLD), Component.text("Ablehnen", NamedTextColor.RED, TextDecoration.BOLD));
 
-        private final String acceptTitle;
-        private final String declineTitle;
+        private final Component acceptTitle;
+        private final Component declineTitle;
 
         DialogType(Component acceptTitle, Component declineTitle) {
-            var serializer = LegacyComponentSerializer.legacySection();
-            this.acceptTitle = serializer.serialize(acceptTitle);
-            this.declineTitle = serializer.serialize(declineTitle);
+            this.acceptTitle = acceptTitle;
+            this.declineTitle = declineTitle;
         }
     }
 

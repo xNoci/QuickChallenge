@@ -16,7 +16,6 @@ import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
@@ -26,7 +25,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-public class GuiChallengeOverview extends ChallengePagedGuiProvider {
+public class GuiChallengeOverview extends PagedQuickGUIProvider {
 
     private static final ItemStack SKULL_ITEM = skullItem();
     private static final Component TITLE = Component.text("", TextColor.color(132, 120, 157));
@@ -73,7 +72,6 @@ public class GuiChallengeOverview extends ChallengePagedGuiProvider {
 
 
     private GuiItem toGuiItem(Challenge challenge) {
-        LegacyComponentSerializer serializer = LegacyComponentSerializer.legacySection();
         TextColor primary = TextColor.color(99, 128, 101);
         TextColor gray = TextColor.color(122, 120, 120);
 
@@ -81,31 +79,31 @@ public class GuiChallengeOverview extends ChallengePagedGuiProvider {
                 .append(Component.text(" (%s)".formatted(challenge.handle()), gray, TextDecoration.ITALIC));
 
         var item = new QuickItemStack(SKULL_ITEM);
-        item.setDisplayName(serializer.serialize(title));
+        item.displayName(title);
 
         Set<ChallengeModifier> modifiers = challenge.modifiers();
         int modifierCount = modifiers.size();
 
-        List<String> lore = Lists.newArrayList(" ");
-        lore.add(serializer.serialize(Component.text("Started: ", gray).append(booleanComponent(challenge.started()))));
-        lore.add(serializer.serialize(Component.text("Paused: ", gray).append(booleanComponent(challenge.paused()))));
+        List<Component> lore = Lists.newArrayList(Component.empty());
+        lore.add(Component.text("Started: ", gray).append(booleanComponent(challenge.started())));
+        lore.add(Component.text("Paused: ", gray).append(booleanComponent(challenge.paused())));
         challenge.modifier(TimerModifier.class)
                 .map(TimerModifier::playedTimeAsString)
-                .ifPresent(time -> lore.add(serializer.serialize(Component.text("Time played: ", gray).append(Component.text(time, primary)))));
+                .ifPresent(time -> lore.add(Component.text("Time played: ", gray).append(Component.text(time, primary))));
 
-        lore.add("");
-        lore.add(serializer.serialize(Component.text("Modifiers ", primary).append(Component.text("(%s)".formatted(modifierCount), gray)).append(Component.text(":", primary))));
+        lore.add(Component.empty());
+        lore.add(Component.text("Modifiers ", primary).append(Component.text("(%s)".formatted(modifierCount), gray)).append(Component.text(":", primary)));
 
         if (modifierCount == 0) {
-            lore.add(LegacyComponentSerializer.legacySection().serialize(Component.text("No modifiers applied", NamedTextColor.RED, TextDecoration.ITALIC)));
+            lore.add(Component.text("No modifiers applied", NamedTextColor.RED, TextDecoration.ITALIC));
         } else {
-            modifiers.forEach(modifier -> lore.add(serializer.serialize(Component.text("- ", gray).append(Component.text(modifier.name(), primary)))));
+            modifiers.forEach(modifier -> lore.add(Component.text("- ", gray).append(Component.text(modifier.name(), primary))));
         }
 
-        lore.add("");
-        lore.add(serializer.serialize(Component.text("Beitreten (Linksklick) | Löschen (Rechtsklick)", gray)));
+        lore.add(Component.empty());
+        lore.add(Component.text("Beitreten (Linksklick) | Löschen (Rechtsklick)", gray));
 
-        item.setLore(lore);
+        item.lore(lore);
 
         return new ChallengeGuiItem(challenge, item, event -> {
             switch (event.getClick()) {
