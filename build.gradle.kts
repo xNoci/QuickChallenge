@@ -16,6 +16,7 @@ repositories {
 dependencies {
     implementation(libs.paperlib)
     implementation(libs.xseries) { isTransitive = false }
+    compileOnly(libs.kyori.adventure)
 
     compileOnly(files("libs/QuickUtils.jar"))
     compileOnly(libs.paper)
