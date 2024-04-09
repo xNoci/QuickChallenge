@@ -24,53 +24,6 @@ public class ChallengeSerializer {
     private static final int CURRENT_VERSION = 3;
 
     static {
-        register(1,
-                serializer -> serializer.layout(TypeSerializers.UUID, Challenge::handle)
-                        .layout(TypeSerializers.EXIT_STRATEGY, Challenge::exitStrategy)
-                        .layout(StopOnDeathModifier.SERIALIZER, challenge -> challenge.modifier(StopOnDeathModifier.class))
-                        .layout(TimerModifier.SERIALIZER, challenge -> challenge.modifier(TimerModifier.class))
-                        .layout(TrafficLightModifier.SERIALIZER, challenge -> challenge.modifier(TrafficLightModifier.class)),
-                buffer -> {
-                    UUID uuid = TypeSerializers.UUID.read(buffer);
-                    ExitStrategy exitStrategy = TypeSerializers.EXIT_STRATEGY.read(buffer);
-                    Optional<StopOnDeathModifier> stopOnDeathModifier = StopOnDeathModifier.SERIALIZER.read(buffer);
-                    Optional<TimerModifier> timerModifier = TimerModifier.SERIALIZER.read(buffer);
-                    Optional<TrafficLightModifier> trafficLightModifier = TrafficLightModifier.SERIALIZER.read(buffer);
-
-                    List<ChallengeModifier> challengeModifiers = Lists.newArrayList();
-                    stopOnDeathModifier.ifPresent(challengeModifiers::add);
-                    timerModifier.ifPresent(challengeModifiers::add);
-                    trafficLightModifier.ifPresent(challengeModifiers::add);
-
-                    return new Challenge(uuid, exitStrategy, challengeModifiers);
-                }
-        );
-
-        register(2,
-                serializer -> serializer.layout(TypeSerializers.UUID, Challenge::handle)
-                        .layout(TypeSerializers.EXIT_STRATEGY, Challenge::exitStrategy)
-                        .layout(StopOnDeathModifier.SERIALIZER, challenge -> challenge.modifier(StopOnDeathModifier.class))
-                        .layout(TimerModifier.SERIALIZER, challenge -> challenge.modifier(TimerModifier.class))
-                        .layout(TrafficLightModifier.SERIALIZER, challenge -> challenge.modifier(TrafficLightModifier.class))
-                        .layout(EnderDragonFinishModifier.SERIALIZER, challenge -> challenge.modifier(EnderDragonFinishModifier.class)),
-                buffer -> {
-                    UUID uuid = TypeSerializers.UUID.read(buffer);
-                    ExitStrategy exitStrategy = TypeSerializers.EXIT_STRATEGY.read(buffer);
-                    Optional<StopOnDeathModifier> stopOnDeathModifier = StopOnDeathModifier.SERIALIZER.read(buffer);
-                    Optional<TimerModifier> timerModifier = TimerModifier.SERIALIZER.read(buffer);
-                    Optional<TrafficLightModifier> trafficLightModifier = TrafficLightModifier.SERIALIZER.read(buffer);
-                    Optional<EnderDragonFinishModifier> enderDragonFinishModifier = EnderDragonFinishModifier.SERIALIZER.read(buffer);
-
-                    List<ChallengeModifier> challengeModifiers = Lists.newArrayList();
-                    stopOnDeathModifier.ifPresent(challengeModifiers::add);
-                    timerModifier.ifPresent(challengeModifiers::add);
-                    trafficLightModifier.ifPresent(challengeModifiers::add);
-                    enderDragonFinishModifier.ifPresent(challengeModifiers::add);
-
-                    return new Challenge(uuid, exitStrategy, challengeModifiers);
-                }
-        );
-
         register(3,
                 serializer -> serializer.layout(TypeSerializers.UUID, Challenge::handle)
                         .layout(TypeSerializers.EXIT_STRATEGY, Challenge::exitStrategy)
