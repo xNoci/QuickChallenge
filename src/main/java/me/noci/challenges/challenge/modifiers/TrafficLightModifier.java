@@ -1,12 +1,15 @@
 package me.noci.challenges.challenge.modifiers;
 
 import lombok.Getter;
+import me.noci.challenges.ResourcePack;
 import me.noci.challenges.TimeRange;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.serializer.TypeSerializer;
 import me.noci.quickutilities.events.Events;
 import me.noci.quickutilities.events.subscriber.SubscribedEvent;
 import me.noci.quickutilities.utils.EnumUtils;
+import me.noci.quickutilities.utils.Legacy;
+import net.kyori.adventure.text.Component;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
@@ -160,14 +163,14 @@ public class TrafficLightModifier implements ChallengeModifier {
 
     @Getter
     public enum LightStatus {
-        GREEN("\uEFF1"),
-        YELLOW("\uEFF2"),
-        RED("\uEFF3");
+        GREEN(ResourcePack.TrafficLight.GREEN_LIGHT),
+        YELLOW(ResourcePack.TrafficLight.GREEN_LIGHT),
+        RED(ResourcePack.TrafficLight.GREEN_LIGHT);
 
         private final String texture;
 
-        LightStatus(String texture) {
-            this.texture = texture;
+        LightStatus(Component texture) {
+            this.texture = Legacy.serialize(texture);
         }
     }
 

@@ -1,0 +1,31 @@
+{
+  "providers":[
+    {
+      "type":"bitmap",
+      "file":"minecraft:customfont/traffic_light/green_light.png",
+      "ascent":10,
+      "height":40,
+      "chars":[
+        "\uEff1"
+      ]
+    },
+    {
+      "type":"bitmap",
+      "file":"minecraft:customfont/traffic_light/yellow_light.png",
+      "ascent":10,
+      "height":40,
+      "chars":[
+        "\uEff2"
+      ]
+    },
+    {
+      "type":"bitmap",
+      "file":"minecraft:customfont/traffic_light/red_light.png",
+      "ascent":10,
+      "height":40,
+      "chars":[
+        "\uEff3"
+      ]
+    }
+  ]
+}
