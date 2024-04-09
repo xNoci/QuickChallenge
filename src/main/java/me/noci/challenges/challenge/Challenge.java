@@ -134,8 +134,9 @@ public class Challenge implements Comparable<Challenge> {
         Comparator<Challenge> playedTime = Comparator.comparing(
                 challenge -> challenge.modifier(TimerModifier.class).map(TimerModifier::ticksPlayed).orElse(0L)
         );
+        Comparator<Challenge> modifierCount = Comparator.comparing(challenge -> challenge.modifiers().size());
 
-        return compareStarted.reversed().thenComparing(comparePaused).thenComparing(playedTime.reversed()).compare(this, other);
+        return compareStarted.reversed().thenComparing(comparePaused).thenComparing(playedTime.reversed()).thenComparing(modifierCount.reversed()).compare(this, other);
     }
 
     public void broadcast(Component message) {
