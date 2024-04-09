@@ -8,6 +8,7 @@ import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.modifiers.TimerModifier;
+import me.noci.challenges.colors.Colors;
 import me.noci.quickutilities.inventory.*;
 import me.noci.quickutilities.utils.InventoryPattern;
 import me.noci.quickutilities.utils.QuickItemStack;
@@ -28,7 +29,7 @@ import java.util.Set;
 public class GuiChallengeOverview extends PagedQuickGUIProvider {
 
     private static final ItemStack SKULL_ITEM = skullItem();
-    private static final Component TITLE = Component.text("", TextColor.color(132, 120, 157));
+    private static final Component TITLE = Component.text("Challenge Overview", Colors.GUI_TITLE);
     private static final int[] PAGE_CONTENT_SLOTS = InventoryPattern.box(2, 5);
 
     private final ChallengeController challengeController;
@@ -47,8 +48,8 @@ public class GuiChallengeOverview extends PagedQuickGUIProvider {
     @Override
     public void initPage(Player player, PageContent content) {
         content.setItemSlots(PAGE_CONTENT_SLOTS);
-        content.setPreviousPageItem(Slot.getSlot(6, 1), InventoryConstants.PREVIOUS_PAGE, InventoryConstants.GLAS_PANE.getItemStack());
-        content.setPreviousPageItem(Slot.getSlot(6, 1), InventoryConstants.PREVIOUS_PAGE, InventoryConstants.GLAS_PANE.getItemStack());
+        content.setPreviousPageItem(Slot.getSlot(5, 1), InventoryConstants.PREVIOUS_PAGE, InventoryConstants.GLAS_PANE.getItemStack());
+        content.setNextPageItem(Slot.getSlot(5, 9), InventoryConstants.NEXT_PAGE, InventoryConstants.GLAS_PANE.getItemStack());
 
 
         GuiItem[] challengeItems = challengeController.challenges().stream()
