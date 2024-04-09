@@ -6,7 +6,7 @@ import net.kyori.adventure.text.format.TextColor;
 public class Colors {
 
     // ------- GUI -------
-    public static final TextColor GUI_TITLE = TextColor.color(179, 164, 34);
+    public static final TextColor GUI_TITLE = TextColor.color(132, 120, 157);
 
 
     // ------- CHAT -------
