@@ -33,6 +33,7 @@ public class QuickChallenge extends JavaPlugin {
     public void onDisable() {
         Component kickComponent = Component.text("Der Server wird geschlossen.", NamedTextColor.RED);
         Bukkit.getOnlinePlayers().forEach(player -> player.kick(kickComponent));
+        this.challengeController.stopChallenges();
         this.challengeController.save();
         this.worldController.deleteWorlds();
     }

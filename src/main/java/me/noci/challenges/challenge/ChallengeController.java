@@ -86,6 +86,15 @@ public class ChallengeController {
         Files.deleteIfExists(challengeFile(challenge));
     }
 
+    public void stopChallenges() {
+        LOGGER.info("Stopping challenges...");
+        long start = System.currentTimeMillis();
+
+        challenges().forEach(Challenge::stopChallengeModifiers);
+
+        LOGGER.info("Challenges stopped. Took %s ms".formatted(System.currentTimeMillis() - start));
+    }
+
     public void save() {
         LOGGER.info("Saving challenges to disk...");
         long start = System.currentTimeMillis();
