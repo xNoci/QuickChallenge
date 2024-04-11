@@ -35,6 +35,19 @@ public class CommandTimer extends QuickCommand {
                 );
     }
 
+    @SubCommand(path = "stop")
+    @CommandPermission("quickchallenge.timer.stop")
+    public void stop(Player player) {
+        challengeController.fromEntity(player)
+                .ifPresentOrElse(
+                        challenge -> {
+                            challengeController.stopChallenge(challenge);
+                            player.sendMessage(Component.text("Die Challenge wurde gestoppt.", NamedTextColor.GREEN));
+                        },
+                        () -> player.sendMessage(Component.text("Du bist in keiner Challenge die gestoppt werden kann.", NamedTextColor.RED))
+                );
+    }
+
     @SubCommand(path = "pause")
     @CommandPermission("quickchallenge.timer.pause")
     public void pause(Player player) {

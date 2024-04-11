@@ -53,6 +53,13 @@ public class ChallengeController {
         challenge.paused(false);
     }
 
+    public void stopChallenge(Challenge challenge) {
+        challenge.stopChallengeModifiers();
+
+        challenge.started(false);
+        challenge.paused(true);
+    }
+
     public List<Challenge> challenges() {
         return ImmutableList.copyOf(challenges.values());
     }
