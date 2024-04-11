@@ -80,6 +80,11 @@ public class Challenge implements Comparable<Challenge> {
         long start = System.currentTimeMillis();
         logger.info("Stopping challenge modifiers..");
 
+        challengeWorld().map(ChallengeWorld::players)
+                .stream()
+                .flatMap(List::stream)
+                .forEach(this::setLastKnownLocation);
+
         modifiers.forEach(modifier -> {
             modifier.onStop(logger, this);
             logger.info("Stopped challenge modifier '%s'".formatted(modifier.name()));
