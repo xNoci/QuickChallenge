@@ -62,7 +62,7 @@ public class TrafficLightModifier implements ChallengeModifier {
 
     @Override
     public void onInitialise(Logger logger, Challenge challenge) {
-        logger.debug("Traffic light is set to %s, next phase %s in %s ticks".formatted(lightStatus, EnumUtils.next(lightStatus), nextAction));
+        logger.info("Traffic light is set to %s, next phase %s in %s ticks".formatted(lightStatus, EnumUtils.next(lightStatus), nextAction));
 
         if (playerMoveEvent != null) {
             playerMoveEvent.unsubscribe();
@@ -123,7 +123,7 @@ public class TrafficLightModifier implements ChallengeModifier {
                 players.forEach(player -> player.playSound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 5, 2));
             }
 
-            logger.debug("Switch traffic light to %s, next phase %s in %s ticks".formatted(lightStatus, EnumUtils.next(lightStatus), nextAction));
+            logger.info("Switch traffic light to %s, next phase %s in %s ticks".formatted(lightStatus, EnumUtils.next(lightStatus), nextAction));
         }
 
         if (!challenge.paused()) {

@@ -65,7 +65,7 @@ public class Challenge implements Comparable<Challenge> {
         long start = System.currentTimeMillis();
         logger.info("Initialising challenge modifiers..");
         modifiers.forEach(modifier -> {
-            logger.info("Initialising challenge modifier '%s'...");
+            logger.info("Initialising challenge modifier '%s'...".formatted(modifier.name()));
             modifier.onInitialise(logger, this);
         });
 
