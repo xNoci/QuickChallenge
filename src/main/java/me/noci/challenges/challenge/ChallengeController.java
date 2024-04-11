@@ -10,7 +10,6 @@ import me.noci.challenges.worlds.ChallengeWorld;
 import me.noci.challenges.worlds.WorldController;
 import me.noci.quickutilities.utils.BukkitUnit;
 import me.noci.quickutilities.utils.Scheduler;
-import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.Bukkit;
@@ -47,12 +46,8 @@ public class ChallengeController {
         challenge.initialiseChallengeModifiers();
 
         challenge.challengeWorld()
-                .map(world -> Pair.of(world.players(), world.overworld()))
-                .ifPresent(pair ->
-                        pair.getRight().ifPresent(world ->
-                                pair.getLeft().forEach(player -> player.teleport(world.getSpawnLocation()))
-                        )
-                );
+                .map(ChallengeWorld::players)
+                .ifPresent(players -> players.forEach(challenge::join));
 
         challenge.started(true);
         challenge.paused(false);

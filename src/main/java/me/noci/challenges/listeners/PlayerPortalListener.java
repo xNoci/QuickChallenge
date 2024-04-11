@@ -16,7 +16,6 @@ public class PlayerPortalListener implements Listener {
     }
 
     @EventHandler
-    @SuppressWarnings("OptionalGetWithoutIsPresent")
     public void handlePlayerPortal(PlayerPortalEvent event) {
         Location to = event.getTo();
 
@@ -29,7 +28,6 @@ public class PlayerPortalListener implements Listener {
     }
 
     @EventHandler
-    @SuppressWarnings("OptionalGetWithoutIsPresent")
     public void handleEntityPortal(EntityPortalEvent event) {
         Location to = event.getTo();
         if (to == null) return;
