@@ -53,6 +53,7 @@ public class QuickChallenge extends JavaPlugin {
         pluginManager.registerEvents(new BlockListener(challengeController), this);
         pluginManager.registerEvents(new ItemDropListener(challengeController), this);
         pluginManager.registerEvents(new PlayerTeleportListener(challengeController), this);
+        pluginManager.registerEvents(new PlayerRespawnListener(challengeController), this);
     }
 
     private void registerCommands() {

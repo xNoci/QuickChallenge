@@ -7,11 +7,13 @@ import lombok.Setter;
 import me.noci.challenges.ExitStrategy;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.modifiers.TimerModifier;
+import me.noci.challenges.worlds.ChallengeLocation;
 import me.noci.challenges.worlds.ChallengeWorld;
-import me.noci.challenges.worlds.LastKnownLocation;
+import me.noci.challenges.worlds.RespawnLocation;
 import net.kyori.adventure.text.Component;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -28,7 +30,8 @@ public class Challenge implements Comparable<Challenge> {
     @Getter private final UUID handle;
     @Getter private final ExitStrategy exitStrategy;
     @Getter private final Set<ChallengeModifier> modifiers;
-    @Getter private final Map<UUID, LastKnownLocation> lastKnownLocation;
+    @Getter private final Map<UUID, ChallengeLocation> lastKnownLocation;
+    @Getter private final Map<UUID, RespawnLocation> respawnLocations;
     private Reference<ChallengeWorld> world;
 
     //TODO Change to worldLoaded and only load worlds when they are needed
@@ -36,23 +39,24 @@ public class Challenge implements Comparable<Challenge> {
     @Getter @Setter private boolean paused = true;
 
     public Challenge(UUID handle, ExitStrategy exitStrategy, List<ChallengeModifier> challengeModifiers) {
-        this(handle, exitStrategy, Maps.newHashMap(), null, challengeModifiers.toArray(ChallengeModifier[]::new));
+        this(handle, exitStrategy, Maps.newHashMap(), Maps.newHashMap(), null, challengeModifiers.toArray(ChallengeModifier[]::new));
     }
 
     public Challenge(UUID handle, ExitStrategy exitStrategy, ChallengeWorld challengeWorld, ChallengeModifier... challengeModifiers) {
-        this(handle, exitStrategy, Maps.newHashMap(), challengeWorld, challengeModifiers);
+        this(handle, exitStrategy, Maps.newHashMap(), Maps.newHashMap(), challengeWorld, challengeModifiers);
     }
 
-    public Challenge(UUID handle, ExitStrategy exitStrategy, Map<UUID, LastKnownLocation> lastKnownLocations, List<ChallengeModifier> challengeModifiers) {
-        this(handle, exitStrategy, lastKnownLocations, null, challengeModifiers.toArray(ChallengeModifier[]::new));
+    public Challenge(UUID handle, ExitStrategy exitStrategy, Map<UUID, ChallengeLocation> lastKnownLocations, Map<UUID, RespawnLocation> respawnLocations, List<ChallengeModifier> challengeModifiers) {
+        this(handle, exitStrategy, lastKnownLocations, respawnLocations, null, challengeModifiers.toArray(ChallengeModifier[]::new));
     }
 
-    public Challenge(UUID handle, ExitStrategy exitStrategy, Map<UUID, LastKnownLocation> lastKnownLocations, ChallengeWorld world, ChallengeModifier... modifiers) {
+    public Challenge(UUID handle, ExitStrategy exitStrategy, Map<UUID, ChallengeLocation> lastKnownLocations, Map<UUID, RespawnLocation> respawnLocations, ChallengeWorld world, ChallengeModifier... modifiers) {
         this.logger = LogManager.getLogger("Challenge %s".formatted(handle.toString()));
 
         this.handle = handle;
         this.exitStrategy = exitStrategy;
         this.lastKnownLocation = lastKnownLocations;
+        this.respawnLocations = respawnLocations;
         this.modifiers = ImmutableSet.copyOf(modifiers);
         this.world = new WeakReference<>(world);
     }
@@ -106,8 +110,8 @@ public class Challenge implements Comparable<Challenge> {
     }
 
     public void join(Player player) {
-        Optional<LastKnownLocation> lastLocation = Optional.ofNullable(lastKnownLocation.get(player.getUniqueId()));
-        World.Environment environment = lastLocation.map(LastKnownLocation::environment).orElse(World.Environment.NORMAL);
+        Optional<ChallengeLocation> lastLocation = Optional.ofNullable(lastKnownLocation.get(player.getUniqueId()));
+        World.Environment environment = lastLocation.map(ChallengeLocation::environment).orElse(World.Environment.NORMAL);
 
         challengeWorld()
                 .flatMap(world -> world.worldByEnvironment(environment))
@@ -119,11 +123,19 @@ public class Challenge implements Comparable<Challenge> {
     }
 
     public void setLastKnownLocation(Player player) {
-        lastKnownLocation.put(player.getUniqueId(), LastKnownLocation.fromPlayer(player));
+        lastKnownLocation.put(player.getUniqueId(), ChallengeLocation.fromPlayer(player));
     }
 
     public boolean shouldCancelEvents() {
         return !started || paused;
+    }
+
+    public void respawnLocation(Player player, Location location, RespawnLocation.Type type) {
+        respawnLocations.put(player.getUniqueId(), RespawnLocation.fromLocation(location, type));
+    }
+
+    public Optional<RespawnLocation> respawnLocation(Player player) {
+        return Optional.ofNullable(respawnLocations.get(player.getUniqueId()));
     }
 
     @Override

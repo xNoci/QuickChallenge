@@ -3,7 +3,8 @@ package me.noci.challenges.serializer;
 import me.noci.challenges.ExitStrategy;
 import me.noci.challenges.TimeRange;
 import me.noci.challenges.challenge.modifiers.TrafficLightModifier;
-import me.noci.challenges.worlds.LastKnownLocation;
+import me.noci.challenges.worlds.ChallengeLocation;
+import me.noci.challenges.worlds.RespawnLocation;
 import me.noci.quickutilities.utils.BukkitUnit;
 import org.bukkit.World;
 
@@ -33,13 +34,14 @@ public class TypeSerializers {
     public static final TypeSerializer<BukkitUnit> BUKKIT_UNIT = TypeSerializer.enumSerializer(BukkitUnit.class);
     public static final TypeSerializer<ExitStrategy> EXIT_STRATEGY = TypeSerializer.enumSerializer(ExitStrategy.class);
     public static final TypeSerializer<TrafficLightModifier.LightStatus> TRAFFIC_LIGHT_STATUS = TypeSerializer.enumSerializer(TrafficLightModifier.LightStatus.class);
+    public static final TypeSerializer<RespawnLocation.Type> RESPAWN_TYPE = TypeSerializer.enumSerializer(RespawnLocation.Type.class);
     public static final TypeSerializer<TimeRange> TIME_RANGE = TypeSerializer.fixed(9, data -> TimeRange.of(BUKKIT_UNIT.read(data), INTEGER.read(data), INTEGER.read(data)), (buffer, value) -> {
         BUKKIT_UNIT.write(buffer, value.unit());
         INTEGER.write(buffer, value.min());
         INTEGER.write(buffer, value.max());
     });
     public static final TypeSerializer<World.Environment> ENVIRONMENT = TypeSerializer.enumSerializer(World.Environment.class);
-    public static final TypeSerializer<LastKnownLocation> LAST_KNOWN_LOCATION = TypeSerializer.fixed(33, buffer -> new LastKnownLocation(DOUBLE.read(buffer), DOUBLE.read(buffer), DOUBLE.read(buffer), FLOAT.read(buffer), FLOAT.read(buffer), ENVIRONMENT.read(buffer)), (buffer, value) -> {
+    public static final TypeSerializer<ChallengeLocation> CHALLENGE_LOCATION = TypeSerializer.fixed(33, buffer -> new ChallengeLocation(DOUBLE.read(buffer), DOUBLE.read(buffer), DOUBLE.read(buffer), FLOAT.read(buffer), FLOAT.read(buffer), ENVIRONMENT.read(buffer)), (buffer, value) -> {
         DOUBLE.write(buffer, value.x());
         DOUBLE.write(buffer, value.y());
         DOUBLE.write(buffer, value.z());
@@ -47,7 +49,12 @@ public class TypeSerializers {
         FLOAT.write(buffer, value.yaw());
         ENVIRONMENT.write(buffer, value.environment());
     });
-    public static final TypeSerializer<Map<UUID, LastKnownLocation>> LAST_KNOWN_LOCATION_MAP = TypeSerializer.map(UUID, LAST_KNOWN_LOCATION);
+    public static final TypeSerializer<RespawnLocation> RESPAWN_LOCATION = TypeSerializer.fixed(34, buffer -> new RespawnLocation(CHALLENGE_LOCATION.read(buffer), RESPAWN_TYPE.read(buffer)), (buffer, value) -> {
+        CHALLENGE_LOCATION.write(buffer, value.challengeLocation());
+        RESPAWN_TYPE.write(buffer, value.type());
+    });
+    public static final TypeSerializer<Map<UUID, ChallengeLocation>> CHALLENGE_LOCATION_MAP = TypeSerializer.map(UUID, CHALLENGE_LOCATION);
+    public static final TypeSerializer<Map<UUID, RespawnLocation>> RESPAWN_LOCATION_MAP = TypeSerializer.map(UUID, RESPAWN_LOCATION);
 
 
 }
