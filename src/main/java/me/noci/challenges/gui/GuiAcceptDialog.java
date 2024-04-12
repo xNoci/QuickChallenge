@@ -10,6 +10,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.ClickType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -112,8 +113,15 @@ public class GuiAcceptDialog extends QuickGUIProvider {
             Consumer<SlotClickEvent> onAccept = this.onAccept != null ? this.onAccept : EMPTY_CLICK;
             Consumer<SlotClickEvent> onDecline = this.onDecline != null ? this.onDecline : EMPTY_CLICK;
 
-            var gui = new GuiAcceptDialog(title, acceptItem.asGuiItem(onAccept::accept), declineItem.asGuiItem(onDecline::accept), descriptionItem.asGuiItem());
+            var gui = new GuiAcceptDialog(title, acceptItem.asGuiItem(onlyLeftClick(onAccept)), declineItem.asGuiItem(onlyLeftClick(onDecline)), descriptionItem.asGuiItem());
             gui.provide(player);
+        }
+
+        private ClickHandler onlyLeftClick(Consumer<SlotClickEvent> clickEvent) {
+            return event -> {
+                if (event.getClick() != ClickType.LEFT) return;
+                clickEvent.accept(event);
+            };
         }
 
     }

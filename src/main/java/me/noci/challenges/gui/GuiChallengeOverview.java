@@ -133,7 +133,6 @@ public class GuiChallengeOverview extends PagedQuickGUIProvider {
                         Component.text("Challenge ID: ", gray).append(Component.text(challenge.handle().toString(), primary))
                 )
                 .acceptAction(event -> {
-                    if (event.getClick() != ClickType.LEFT) return;
                     event.getPlayer().closeInventory();
                     challengeController.delete(challenge);
                 })
