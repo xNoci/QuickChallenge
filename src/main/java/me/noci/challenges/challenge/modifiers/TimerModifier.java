@@ -39,6 +39,10 @@ public class TimerModifier implements ChallengeModifier {
     private float gradientTranslation;
     @Getter private long ticksPlayed;
 
+    public TimerModifier() {
+        this(0);
+    }
+
     public TimerModifier(long ticksPlayed) {
         this.gradientTranslation = 0;
         this.ticksPlayed = ticksPlayed;

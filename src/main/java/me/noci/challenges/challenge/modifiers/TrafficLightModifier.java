@@ -51,6 +51,10 @@ public class TrafficLightModifier implements ChallengeModifier {
     @Getter private LightStatus lightStatus;
     @Getter private long nextAction;
 
+    public TrafficLightModifier(TimeRange nextPhaseDelay, TimeRange yellowDuration, TimeRange redDuration, LightStatus lightStatus) {
+        this(nextPhaseDelay, yellowDuration, redDuration, lightStatus, nextPhaseDelay.randomAsTick());
+    }
+
     public TrafficLightModifier(TimeRange nextPhaseDelay, TimeRange yellowDuration, TimeRange redDuration, LightStatus lightStatus, long nextAction) {
         this.nextPhaseDelay = nextPhaseDelay;
         this.yellowDuration = yellowDuration;
@@ -62,7 +66,7 @@ public class TrafficLightModifier implements ChallengeModifier {
 
     @Override
     public void onInitialise(Logger logger, Challenge challenge) {
-        logger.info("Traffic light is set to %s, next phase %s in %s ticks".formatted(lightStatus, EnumUtils.next(lightStatus), nextAction));
+        logger.info("Traffic Light is set to %s, next action in %s ticks; Next Phase: %s; Yellow Duration: %s, Red Duration: %s".formatted(lightStatus, nextAction, nextPhaseDelay, yellowDuration, redDuration));
 
         if (playerMoveEvent != null) {
             playerMoveEvent.unsubscribe();

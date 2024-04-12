@@ -3,11 +3,8 @@ package me.noci.challenges;
 import lombok.Getter;
 import me.noci.quickutilities.utils.BukkitUnit;
 
+@Getter
 public class TimeRange {
-
-    public static TimeRange seconds(int min, int max) {
-        return new TimeRange(BukkitUnit.SECONDS, min, max);
-    }
 
     public static TimeRange of(BukkitUnit unit, int min, int max) {
         return new TimeRange(unit, min, max);
@@ -17,9 +14,9 @@ public class TimeRange {
         return new TimeRange(BukkitUnit.SECONDS, 1, 1);
     }
 
-    @Getter private final BukkitUnit unit;
-    @Getter private final int min;
-    @Getter private final int max;
+    private final BukkitUnit unit;
+    private final int min;
+    private final int max;
 
     private TimeRange(BukkitUnit unit, int min, int max) {
         this.unit = unit;
@@ -28,8 +25,18 @@ public class TimeRange {
     }
 
     public long randomAsTick() {
-        int value = RandomHolder.random().nextInt(min, max + 1);
-        return unit.toTicks(value);
+        long minTicks = unit.toTicks(min);
+        long maxTicks = unit.toTicks(max);
+
+        return RandomHolder.random().nextLong(minTicks, maxTicks + 1);
     }
 
+    @Override
+    public String toString() {
+        return "TimeRange{" +
+                "unit=" + unit +
+                ", min=" + min +
+                ", max=" + max +
+                '}';
+    }
 }
