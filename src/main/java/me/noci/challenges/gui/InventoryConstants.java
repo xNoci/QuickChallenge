@@ -22,6 +22,15 @@ public class InventoryConstants {
     public static GuiItem openPreviousGui(GuiProvider gui) {
         return PREVIOUS_GUI.asGuiItem(event -> gui.provide(event.getPlayer()));
     }
+
+    public static ItemStack worldSkull() {
+        ItemStack item = XMaterial.PLAYER_HEAD.parseItem();
+        Objects.requireNonNull(item, "Item cannot be null");
+        ItemMeta itemMeta = SkullUtils.applySkin(item.getItemMeta(), "f151cffdaf303673531a7651b36637cad912ba485643158e548d59b2ead5011");
+        item.setItemMeta(itemMeta);
+        return item;
+    }
+
     public static ItemStack woodPauseSkull() {
         ItemStack item = XMaterial.PLAYER_HEAD.parseItem();
         Objects.requireNonNull(item, "Item cannot be null");

@@ -1,7 +1,5 @@
 package me.noci.challenges.gui;
 
-import com.cryptomorin.xseries.SkullUtils;
-import com.cryptomorin.xseries.XMaterial;
 import com.google.common.collect.Lists;
 import lombok.Getter;
 import me.noci.challenges.challenge.Challenge;
@@ -18,17 +16,13 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 public class GuiChallengeOverview extends PagedQuickGUIProvider {
 
-    private static final ItemStack SKULL_ITEM = skullItem();
     private static final Component TITLE = Component.text("Challenge Overview", Colors.GUI_TITLE);
     private static final int[] PAGE_CONTENT_SLOTS = InventoryPattern.box(2, 5);
 
@@ -79,7 +73,7 @@ public class GuiChallengeOverview extends PagedQuickGUIProvider {
         TextComponent title = Component.text("Challenge", primary)
                 .append(Component.text(" (%s)".formatted(challenge.handle()), gray, TextDecoration.ITALIC));
 
-        var item = new QuickItemStack(SKULL_ITEM);
+        var item = new QuickItemStack(InventoryConstants.worldSkull());
         item.displayName(title);
 
         Set<ChallengeModifier> modifiers = challenge.modifiers();
@@ -140,13 +134,6 @@ public class GuiChallengeOverview extends PagedQuickGUIProvider {
                 .provide(player);
     }
 
-    private static ItemStack skullItem() {
-        ItemStack item = XMaterial.PLAYER_HEAD.parseItem();
-        Objects.requireNonNull(item, "Item cannot be null");
-        ItemMeta itemMeta = SkullUtils.applySkin(item.getItemMeta(), "f151cffdaf303673531a7651b36637cad912ba485643158e548d59b2ead5011");
-        item.setItemMeta(itemMeta);
-        return item;
-    }
 
     @Getter
     private static class ChallengeGuiItem extends GuiItem {
