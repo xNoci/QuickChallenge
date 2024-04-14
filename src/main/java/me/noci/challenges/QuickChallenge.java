@@ -58,7 +58,7 @@ public class QuickChallenge extends JavaPlugin {
     }
 
     private void registerCommands() {
-        new CommandChallenge(this, worldController, challengeController);
+        new CommandChallenge(this, challengeController);
         new CommandTimer(this, challengeController);
     }
 
