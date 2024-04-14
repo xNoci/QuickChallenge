@@ -31,6 +31,8 @@ public class PlayerJoinListener implements Listener {
         Optional.ofNullable(Bukkit.getWorld("world"))
                 .map(World::getSpawnLocation)
                 .ifPresent(player::teleport);
+
+        player.getInventory().clear();
     }
 
 

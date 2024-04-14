@@ -17,7 +17,10 @@ public class PlayerTeleportListener implements Listener {
     @EventHandler
     public void handlePlayerTeleport(PlayerTeleportEvent event) {
         Player player = event.getPlayer();
-        challengeController.fromEntity(player).ifPresent(challenge -> challenge.setLastKnownLocation(player));
+        challengeController.fromEntity(player).ifPresent(challenge -> {
+            challenge.setLastKnownLocation(player);
+            challenge.saveInventory(player);
+        });
     }
 
 }

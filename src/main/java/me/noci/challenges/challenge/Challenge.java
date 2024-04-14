@@ -1,6 +1,7 @@
 package me.noci.challenges.challenge;
 
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +21,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.ref.Reference;
@@ -38,6 +40,8 @@ public class Challenge implements Comparable<Challenge> {
     @Getter private final Map<UUID, ChallengeLocation> lastKnownLocation;
     @Getter private final Map<UUID, RespawnLocation> respawnLocations;
     @Getter private final Map<UUID, List<ItemStack>> playerEnderChest;
+    @Getter private final Map<UUID, List<ItemStack>> playerArmor;
+    @Getter private final Map<UUID, List<ItemStack>> playerInventory;
 
     private Reference<ChallengeWorld> world;
 
@@ -46,16 +50,19 @@ public class Challenge implements Comparable<Challenge> {
     @Getter @Setter private boolean paused = true;
 
     public Challenge(UUID handle, ExitStrategy exitStrategy, ChallengeWorld challengeWorld, ChallengeModifier... challengeModifiers) {
-        this(handle, exitStrategy, Maps.newHashMap(), Maps.newHashMap(), Maps.newHashMap(), challengeWorld, challengeModifiers);
-    }
-
-    public Challenge(UUID handle, ExitStrategy exitStrategy, Map<UUID, ChallengeLocation> lastKnownLocations, Map<UUID, RespawnLocation> respawnLocations,
-                     Map<UUID, List<ItemStack>> playerEnderChest, List<ChallengeModifier> challengeModifiers) {
-        this(handle, exitStrategy, lastKnownLocations, respawnLocations, playerEnderChest, null, challengeModifiers.toArray(ChallengeModifier[]::new));
+        this(handle, exitStrategy, Maps.newHashMap(), Maps.newHashMap(), Maps.newHashMap(), Maps.newHashMap(), Maps.newHashMap(), challengeWorld, challengeModifiers);
     }
 
     public Challenge(UUID handle, ExitStrategy exitStrategy, Map<UUID, ChallengeLocation> lastKnownLocations,
                      Map<UUID, RespawnLocation> respawnLocations, Map<UUID, List<ItemStack>> playerEnderChest,
+                     Map<UUID, List<ItemStack>> playerArmor, Map<UUID, List<ItemStack>> playerInventory,
+                     List<ChallengeModifier> challengeModifiers) {
+        this(handle, exitStrategy, lastKnownLocations, respawnLocations, playerEnderChest, playerArmor, playerInventory, null, challengeModifiers.toArray(ChallengeModifier[]::new));
+    }
+
+    public Challenge(UUID handle, ExitStrategy exitStrategy, Map<UUID, ChallengeLocation> lastKnownLocations,
+                     Map<UUID, RespawnLocation> respawnLocations, Map<UUID, List<ItemStack>> playerEnderChest,
+                     Map<UUID, List<ItemStack>> playerArmor, Map<UUID, List<ItemStack>> playerInventory,
                      ChallengeWorld world, ChallengeModifier... modifiers) {
         this.logger = LogManager.getLogger("Challenge %s".formatted(handle.toString()));
 
@@ -64,6 +71,8 @@ public class Challenge implements Comparable<Challenge> {
         this.lastKnownLocation = lastKnownLocations;
         this.respawnLocations = respawnLocations;
         this.playerEnderChest = playerEnderChest;
+        this.playerArmor = playerArmor;
+        this.playerInventory = playerInventory;
         this.modifiers = ImmutableSet.copyOf(modifiers);
         this.world = new WeakReference<>(world);
     }
@@ -90,7 +99,10 @@ public class Challenge implements Comparable<Challenge> {
         challengeWorld().map(ChallengeWorld::players)
                 .stream()
                 .flatMap(List::stream)
-                .forEach(this::setLastKnownLocation);
+                .forEach(player -> {
+                    setLastKnownLocation(player);
+                    saveInventory(player);
+                });
 
         modifiers.forEach(modifier -> {
             modifier.onStop(logger, this);
@@ -131,7 +143,10 @@ public class Challenge implements Comparable<Challenge> {
                         lastLocation.map(location -> location.getForWorld(world))
                                 .orElse(world.getSpawnLocation())
                 )
-                .ifPresent(player::teleport);
+                .ifPresent(location -> {
+                    player.teleport(location);
+                    applyInventory(player);
+                });
     }
 
     public void setLastKnownLocation(Player player) {
@@ -163,6 +178,29 @@ public class Challenge implements Comparable<Challenge> {
                 IntStream.range(0, InventoryType.ENDER_CHEST.getDefaultSize())
                         .mapToObj(operand -> ItemStack.empty()).collect(Collectors.toCollection(ArrayList::new))
         );
+    }
+
+    public void saveInventory(Player player) {
+        UUID uuid = player.getUniqueId();
+        PlayerInventory inventory = player.getInventory();
+        playerArmor.put(uuid, Lists.newArrayList(inventory.getArmorContents()));
+        playerInventory.put(uuid, Lists.newArrayList(inventory.getContents()));
+    }
+
+    private void applyInventory(Player player) {
+        player.getInventory().clear();
+
+        var armor = playerArmor.get(player.getUniqueId());
+        if (armor != null) {
+            player.getInventory().setArmorContents(armor.toArray(ItemStack[]::new));
+        }
+
+        var inventory = playerInventory.get(player.getUniqueId());
+        if (inventory != null) {
+            player.getInventory().setContents(inventory.toArray(ItemStack[]::new));
+        }
+
+        player.updateInventory();
     }
 
     @Override

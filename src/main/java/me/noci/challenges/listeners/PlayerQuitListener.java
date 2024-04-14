@@ -27,7 +27,10 @@ public class PlayerQuitListener implements Listener {
                 .asComponent();
 
         event.quitMessage(component);
-        challengeController.fromEntity(player).ifPresent(challenge -> challenge.setLastKnownLocation(player));
+        challengeController.fromEntity(player).ifPresent(challenge -> {
+            challenge.setLastKnownLocation(player);
+            challenge.saveInventory(player);
+        });
     }
 
 }
