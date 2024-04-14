@@ -49,8 +49,8 @@ public class TypeSerializers {
         DOUBLE.write(buffer, value.x());
         DOUBLE.write(buffer, value.y());
         DOUBLE.write(buffer, value.z());
-        FLOAT.write(buffer, value.pitch());
         FLOAT.write(buffer, value.yaw());
+        FLOAT.write(buffer, value.pitch());
         ENVIRONMENT.write(buffer, value.environment());
     });
     public static final TypeSerializer<RespawnLocation> RESPAWN_LOCATION = TypeSerializer.fixed(34, buffer -> new RespawnLocation(CHALLENGE_LOCATION.read(buffer), RESPAWN_TYPE.read(buffer)), (buffer, value) -> {

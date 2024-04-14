@@ -7,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
 public class PlayerTeleportListener implements Listener {
-    
+
     private final ChallengeController challengeController;
 
     public PlayerTeleportListener(ChallengeController challengeController) {
