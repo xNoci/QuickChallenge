@@ -8,10 +8,12 @@ import me.noci.challenges.worlds.ChallengeLocation;
 import me.noci.challenges.worlds.RespawnLocation;
 import me.noci.quickutilities.utils.BukkitUnit;
 import org.bukkit.World;
+import org.bukkit.inventory.ItemStack;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -21,6 +23,7 @@ public class TypeSerializers {
 
     public static final TypeSerializer<Byte> BYTE = TypeSerializer.fixed(1, ByteBuffer::get, ByteBuffer::put);
     public static final TypeSerializer<Integer> U_BYTE = TypeSerializer.fixed(1, buffer -> buffer.get() & 0xFF, (buffer, value) -> buffer.put(value.byteValue()));
+    public static final TypeSerializer<Integer> U_SHORT = TypeSerializer.fixed(2, buffer -> buffer.getShort() & 0xFFFF, (buffer, value) -> buffer.putShort(value.shortValue()));
     public static final TypeSerializer<Short> SHORT = TypeSerializer.fixed(2, ByteBuffer::getShort, ByteBuffer::putShort);
     public static final TypeSerializer<Integer> INTEGER = TypeSerializer.fixed(4, ByteBuffer::getInt, ByteBuffer::putInt);
     public static final TypeSerializer<Long> LONG = TypeSerializer.fixed(8, ByteBuffer::getLong, ByteBuffer::putLong);
@@ -56,6 +59,13 @@ public class TypeSerializers {
     });
     public static final TypeSerializer<Map<UUID, ChallengeLocation>> CHALLENGE_LOCATION_MAP = TypeSerializer.map(UUID, CHALLENGE_LOCATION);
     public static final TypeSerializer<Map<UUID, RespawnLocation>> RESPAWN_LOCATION_MAP = TypeSerializer.map(UUID, RESPAWN_LOCATION);
+    public static final TypeSerializer<ItemStack> ITEM_STACK = TypeSerializer.dynamic(
+            value -> ItemStackSerialization.toBytes(value).length,
+            data -> ItemStackSerialization.fromBytes(data.array()),
+            (buffer, value) -> buffer.put(ItemStackSerialization.toBytes(value))
+    );
+    public static final TypeSerializer<List<ItemStack>> ITEM_STACK_LIST = TypeSerializer.list(ITEM_STACK);
+    public static final TypeSerializer<Map<UUID, List<ItemStack>>> ITEM_STACK_LIST_MAP = TypeSerializer.map(UUID, ITEM_STACK_LIST);
 
 
 }

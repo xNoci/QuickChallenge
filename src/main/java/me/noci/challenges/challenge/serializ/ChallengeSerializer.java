@@ -4,7 +4,11 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import me.noci.challenges.ExitStrategy;
 import me.noci.challenges.challenge.Challenge;
-import me.noci.challenges.challenge.modifiers.*;
+import me.noci.challenges.challenge.modifiers.ChallengeModifier;
+import me.noci.challenges.challenge.modifiers.EnderDragonFinishModifier;
+import me.noci.challenges.challenge.modifiers.StopOnDeathModifier;
+import me.noci.challenges.challenge.modifiers.TimerModifier;
+import me.noci.challenges.challenge.modifiers.trafficlight.TrafficLightModifier;
 import me.noci.challenges.serializer.ObjectSerializer;
 import me.noci.challenges.serializer.TypeSerializers;
 import me.noci.challenges.worlds.ChallengeLocation;
@@ -12,25 +16,26 @@ import me.noci.challenges.worlds.RespawnLocation;
 import me.noci.quickutilities.utils.Require;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.bukkit.inventory.ItemStack;
 
 import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 public class ChallengeSerializer {
 
     private static final Logger LOGGER = LogManager.getLogger("Challenge Serializer");
     private static final HashMap<Integer, ObjectSerializer<Challenge>> SERIALIZERS = Maps.newHashMap();
     private static final short MAGIC_NUMBER = (short) 0xFE21;
-    private static final int CURRENT_VERSION = 5;
+    private static final int CURRENT_VERSION = 6;
 
     static {
-        register(5,
+        register(6,
                 serializer -> serializer.layout(TypeSerializers.UUID, Challenge::handle)
                         .layout(TypeSerializers.EXIT_STRATEGY, Challenge::exitStrategy)
                         .layout(TypeSerializers.CHALLENGE_LOCATION_MAP, Challenge::lastKnownLocation)
                         .layout(TypeSerializers.RESPAWN_LOCATION_MAP, Challenge::respawnLocations)
+                        .layout(TypeSerializers.ITEM_STACK_LIST_MAP, Challenge::playerEnderChest)
                         .layout(StopOnDeathModifier.SERIALIZER, challenge -> challenge.modifier(StopOnDeathModifier.class))
                         .layout(TimerModifier.SERIALIZER, challenge -> challenge.modifier(TimerModifier.class))
                         .layout(TrafficLightModifier.SERIALIZER, challenge -> challenge.modifier(TrafficLightModifier.class))
@@ -40,6 +45,7 @@ public class ChallengeSerializer {
                     ExitStrategy exitStrategy = TypeSerializers.EXIT_STRATEGY.read(buffer);
                     Map<UUID, ChallengeLocation> lastKnownLocations = TypeSerializers.CHALLENGE_LOCATION_MAP.read(buffer);
                     Map<UUID, RespawnLocation> respawnLocations = TypeSerializers.RESPAWN_LOCATION_MAP.read(buffer);
+                    Map<UUID, List<ItemStack>> playerEnderChest = TypeSerializers.ITEM_STACK_LIST_MAP.read(buffer);
                     Optional<StopOnDeathModifier> stopOnDeathModifier = StopOnDeathModifier.SERIALIZER.read(buffer);
                     Optional<TimerModifier> timerModifier = TimerModifier.SERIALIZER.read(buffer);
                     Optional<TrafficLightModifier> trafficLightModifier = TrafficLightModifier.SERIALIZER.read(buffer);
@@ -51,7 +57,7 @@ public class ChallengeSerializer {
                     trafficLightModifier.ifPresent(challengeModifiers::add);
                     enderDragonFinishModifier.ifPresent(challengeModifiers::add);
 
-                    return new Challenge(uuid, exitStrategy, lastKnownLocations, respawnLocations, challengeModifiers);
+                    return new Challenge(uuid, exitStrategy, lastKnownLocations, respawnLocations, playerEnderChest, challengeModifiers);
                 }
         );
 

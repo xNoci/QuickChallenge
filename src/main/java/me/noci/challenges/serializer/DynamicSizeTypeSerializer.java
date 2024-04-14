@@ -16,12 +16,12 @@ public class DynamicSizeTypeSerializer<T> implements TypeSerializer<T> {
 
     @Override
     public int byteSize(T value) {
-        return this.size.byteSize(value) + 1;
+        return this.size.byteSize(value) + TypeSerializers.U_SHORT.byteSize(null);
     }
 
     @Override
     public T read(ByteBuffer buffer) {
-        int length = TypeSerializers.U_BYTE.read(buffer);
+        int length = TypeSerializers.U_SHORT.read(buffer);
         byte[] data = new byte[length];
         buffer.get(data);
         return reader.read(ByteBuffer.wrap(data));
@@ -29,7 +29,7 @@ public class DynamicSizeTypeSerializer<T> implements TypeSerializer<T> {
 
     @Override
     public void write(ByteBuffer buffer, T value) {
-        TypeSerializers.U_BYTE.write(buffer, this.size.byteSize(value));
+        TypeSerializers.U_SHORT.write(buffer, this.size.byteSize(value));
         writer.write(buffer, value);
     }
 

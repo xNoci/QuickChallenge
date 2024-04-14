@@ -10,6 +10,7 @@ import me.noci.challenges.challenge.modifiers.TimerModifier;
 import me.noci.challenges.worlds.ChallengeLocation;
 import me.noci.challenges.worlds.ChallengeWorld;
 import me.noci.challenges.worlds.RespawnLocation;
+import me.noci.quickutilities.utils.Require;
 import net.kyori.adventure.text.Component;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,11 +18,15 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Challenge implements Comparable<Challenge> {
 
@@ -32,31 +37,33 @@ public class Challenge implements Comparable<Challenge> {
     @Getter private final Set<ChallengeModifier> modifiers;
     @Getter private final Map<UUID, ChallengeLocation> lastKnownLocation;
     @Getter private final Map<UUID, RespawnLocation> respawnLocations;
+    @Getter private final Map<UUID, List<ItemStack>> playerEnderChest;
+
     private Reference<ChallengeWorld> world;
 
     //TODO Change to worldLoaded and only load worlds when they are needed
     @Getter @Setter private boolean started = false;
     @Getter @Setter private boolean paused = true;
 
-    public Challenge(UUID handle, ExitStrategy exitStrategy, List<ChallengeModifier> challengeModifiers) {
-        this(handle, exitStrategy, Maps.newHashMap(), Maps.newHashMap(), null, challengeModifiers.toArray(ChallengeModifier[]::new));
-    }
-
     public Challenge(UUID handle, ExitStrategy exitStrategy, ChallengeWorld challengeWorld, ChallengeModifier... challengeModifiers) {
-        this(handle, exitStrategy, Maps.newHashMap(), Maps.newHashMap(), challengeWorld, challengeModifiers);
+        this(handle, exitStrategy, Maps.newHashMap(), Maps.newHashMap(), Maps.newHashMap(), challengeWorld, challengeModifiers);
     }
 
-    public Challenge(UUID handle, ExitStrategy exitStrategy, Map<UUID, ChallengeLocation> lastKnownLocations, Map<UUID, RespawnLocation> respawnLocations, List<ChallengeModifier> challengeModifiers) {
-        this(handle, exitStrategy, lastKnownLocations, respawnLocations, null, challengeModifiers.toArray(ChallengeModifier[]::new));
+    public Challenge(UUID handle, ExitStrategy exitStrategy, Map<UUID, ChallengeLocation> lastKnownLocations, Map<UUID, RespawnLocation> respawnLocations,
+                     Map<UUID, List<ItemStack>> playerEnderChest, List<ChallengeModifier> challengeModifiers) {
+        this(handle, exitStrategy, lastKnownLocations, respawnLocations, playerEnderChest, null, challengeModifiers.toArray(ChallengeModifier[]::new));
     }
 
-    public Challenge(UUID handle, ExitStrategy exitStrategy, Map<UUID, ChallengeLocation> lastKnownLocations, Map<UUID, RespawnLocation> respawnLocations, ChallengeWorld world, ChallengeModifier... modifiers) {
+    public Challenge(UUID handle, ExitStrategy exitStrategy, Map<UUID, ChallengeLocation> lastKnownLocations,
+                     Map<UUID, RespawnLocation> respawnLocations, Map<UUID, List<ItemStack>> playerEnderChest,
+                     ChallengeWorld world, ChallengeModifier... modifiers) {
         this.logger = LogManager.getLogger("Challenge %s".formatted(handle.toString()));
 
         this.handle = handle;
         this.exitStrategy = exitStrategy;
         this.lastKnownLocation = lastKnownLocations;
         this.respawnLocations = respawnLocations;
+        this.playerEnderChest = playerEnderChest;
         this.modifiers = ImmutableSet.copyOf(modifiers);
         this.world = new WeakReference<>(world);
     }
@@ -143,9 +150,23 @@ public class Challenge implements Comparable<Challenge> {
         return Optional.ofNullable(respawnLocations.get(player.getUniqueId()));
     }
 
+    public void saveEnderChest(Player player, List<ItemStack> content) {
+        Require.nonNull(player);
+        Require.nonNull(content);
+        playerEnderChest.put(player.getUniqueId(), content);
+    }
+
+    public List<ItemStack> enderChest(Player player) {
+        Require.nonNull(player);
+        return playerEnderChest.getOrDefault(
+                player.getUniqueId(),
+                IntStream.range(0, InventoryType.ENDER_CHEST.getDefaultSize())
+                        .mapToObj(operand -> ItemStack.empty()).collect(Collectors.toCollection(ArrayList::new))
+        );
+    }
+
     @Override
     public int compareTo(@NotNull Challenge other) {
-
         Comparator<Challenge> compareStarted = Comparator.comparing(Challenge::started);
         Comparator<Challenge> comparePaused = Comparator.comparing(Challenge::paused);
         Comparator<Challenge> playedTime = Comparator.comparing(
