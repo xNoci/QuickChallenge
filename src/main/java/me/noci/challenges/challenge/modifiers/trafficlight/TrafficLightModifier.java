@@ -1,16 +1,14 @@
-package me.noci.challenges.challenge.modifiers;
+package me.noci.challenges.challenge.modifiers.trafficlight;
 
 import com.google.common.collect.Lists;
 import lombok.Getter;
-import me.noci.challenges.ResourcePack;
-import me.noci.challenges.TimeRange;
 import me.noci.challenges.challenge.Challenge;
+import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.serializer.TypeSerializer;
 import me.noci.quickutilities.events.Events;
 import me.noci.quickutilities.events.subscriber.SubscribedEvent;
 import me.noci.quickutilities.utils.EnumUtils;
 import net.kyori.adventure.bossbar.BossBar;
-import net.kyori.adventure.text.Component;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -29,7 +27,7 @@ public class TrafficLightModifier implements ChallengeModifier {
         TimeRange nextPhaseDelay = TIME_RANGE.read(buffer);
         TimeRange yellowDuration = TIME_RANGE.read(buffer);
         TimeRange redDuration = TIME_RANGE.read(buffer);
-        TrafficLightModifier.LightStatus lightStatus = TRAFFIC_LIGHT_STATUS.read(buffer);
+        LightStatus lightStatus = TRAFFIC_LIGHT_STATUS.read(buffer);
         long nextAction = LONG.read(buffer);
         if (!enabled) return Optional.empty();
         return Optional.of(new TrafficLightModifier(nextPhaseDelay, yellowDuration, redDuration, lightStatus, nextAction));
@@ -38,7 +36,7 @@ public class TrafficLightModifier implements ChallengeModifier {
         TIME_RANGE.write(buffer, value.map(TrafficLightModifier::nextPhaseDelay).orElse(TimeRange.oneSecond()));
         TIME_RANGE.write(buffer, value.map(TrafficLightModifier::yellowDuration).orElse(TimeRange.oneSecond()));
         TIME_RANGE.write(buffer, value.map(TrafficLightModifier::redDuration).orElse(TimeRange.oneSecond()));
-        TRAFFIC_LIGHT_STATUS.write(buffer, value.map(TrafficLightModifier::lightStatus).orElse(TrafficLightModifier.LightStatus.GREEN));
+        TRAFFIC_LIGHT_STATUS.write(buffer, value.map(TrafficLightModifier::lightStatus).orElse(LightStatus.GREEN));
         LONG.write(buffer, value.map(TrafficLightModifier::nextAction).orElse(0L));
     });
 
@@ -138,19 +136,6 @@ public class TrafficLightModifier implements ChallengeModifier {
     @Override
     public String name() {
         return "Traffic Light";
-    }
-
-    @Getter
-    public enum LightStatus {
-        GREEN(ResourcePack.TrafficLight.GREEN_LIGHT),
-        YELLOW(ResourcePack.TrafficLight.YELLOW_LIGHT),
-        RED(ResourcePack.TrafficLight.RED_LIGHT);
-
-        private final Component texture;
-
-        LightStatus(Component texture) {
-            this.texture = texture;
-        }
     }
 
 }

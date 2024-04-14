@@ -1,6 +1,7 @@
-package me.noci.challenges;
+package me.noci.challenges.challenge.modifiers.trafficlight;
 
 import lombok.Getter;
+import me.noci.challenges.RandomHolder;
 import me.noci.quickutilities.utils.BukkitUnit;
 
 @Getter

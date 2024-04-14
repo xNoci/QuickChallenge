@@ -4,6 +4,8 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import lombok.Getter;
 import me.noci.challenges.challenge.modifiers.*;
+import me.noci.challenges.challenge.modifiers.TimerModifier;
+import me.noci.challenges.challenge.modifiers.trafficlight.TrafficLightModifier;
 import me.noci.challenges.gui.GuiAcceptDialog;
 import me.noci.challenges.gui.InventoryConstants;
 import me.noci.challenges.gui.modifier.GuiTrafficLightModifier;

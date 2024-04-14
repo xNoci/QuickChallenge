@@ -1,7 +1,8 @@
 package me.noci.challenges.gui.modifier;
 
-import me.noci.challenges.TimeRange;
-import me.noci.challenges.challenge.modifiers.TrafficLightModifier;
+import me.noci.challenges.challenge.modifiers.trafficlight.LightStatus;
+import me.noci.challenges.challenge.modifiers.trafficlight.TimeRange;
+import me.noci.challenges.challenge.modifiers.trafficlight.TrafficLightModifier;
 import me.noci.challenges.colors.Colors;
 import me.noci.challenges.gui.InventoryConstants;
 import me.noci.quickutilities.inventory.GuiItem;
@@ -55,7 +56,7 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
             var yellowDuration = TimeRange.of(yellowDurationUnit, yellowDurationMin, yellowDurationMax);
             var redDuration = TimeRange.of(redDurationUnit, redDurationMin, redDurationMax);
 
-            onModifierCreate.accept(() -> new TrafficLightModifier(nextPhase, yellowDuration, redDuration, TrafficLightModifier.LightStatus.GREEN));
+            onModifierCreate.accept(() -> new TrafficLightModifier(nextPhase, yellowDuration, redDuration, LightStatus.GREEN));
         }));
     }
 

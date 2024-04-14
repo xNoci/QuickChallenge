@@ -1,8 +1,9 @@
 package me.noci.challenges.serializer;
 
 import me.noci.challenges.ExitStrategy;
-import me.noci.challenges.TimeRange;
-import me.noci.challenges.challenge.modifiers.TrafficLightModifier;
+import me.noci.challenges.challenge.modifiers.trafficlight.LightStatus;
+import me.noci.challenges.challenge.modifiers.trafficlight.TimeRange;
+import me.noci.challenges.challenge.modifiers.trafficlight.TrafficLightModifier;
 import me.noci.challenges.worlds.ChallengeLocation;
 import me.noci.challenges.worlds.RespawnLocation;
 import me.noci.quickutilities.utils.BukkitUnit;
@@ -33,7 +34,7 @@ public class TypeSerializers {
     public static final TypeSerializer<String> STRING = TypeSerializer.dynamic(s -> s.getBytes(CHARSET).length, data -> new String(data.array(), CHARSET), (buffer, s) -> buffer.put(s.getBytes(CHARSET)));
     public static final TypeSerializer<BukkitUnit> BUKKIT_UNIT = TypeSerializer.enumSerializer(BukkitUnit.class);
     public static final TypeSerializer<ExitStrategy> EXIT_STRATEGY = TypeSerializer.enumSerializer(ExitStrategy.class);
-    public static final TypeSerializer<TrafficLightModifier.LightStatus> TRAFFIC_LIGHT_STATUS = TypeSerializer.enumSerializer(TrafficLightModifier.LightStatus.class);
+    public static final TypeSerializer<LightStatus> TRAFFIC_LIGHT_STATUS = TypeSerializer.enumSerializer(LightStatus.class);
     public static final TypeSerializer<RespawnLocation.Type> RESPAWN_TYPE = TypeSerializer.enumSerializer(RespawnLocation.Type.class);
     public static final TypeSerializer<TimeRange> TIME_RANGE = TypeSerializer.fixed(9, data -> TimeRange.of(BUKKIT_UNIT.read(data), INTEGER.read(data), INTEGER.read(data)), (buffer, value) -> {
         BUKKIT_UNIT.write(buffer, value.unit());
