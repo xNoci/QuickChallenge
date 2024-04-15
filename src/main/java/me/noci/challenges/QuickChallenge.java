@@ -19,7 +19,11 @@ public class QuickChallenge extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        PaperLib.suggestPaper(this);
+        if(!PaperLib.isPaper()) {
+            Bukkit.getPluginManager().disablePlugin(this);
+            getLogger().info("This plugin only works with PaperMC.");
+            return;
+        }
 
         this.worldController = new WorldController();
         this.challengeController = new ChallengeController(worldController);
