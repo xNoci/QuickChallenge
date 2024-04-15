@@ -32,8 +32,14 @@ public class ChallengeWorld {
 
     public boolean hasEntity(Entity entity) {
         if (entity == null) return false;
-        UUID entityWorldID = entity.getWorld().getUID();
-        return worlds().stream().anyMatch(world -> world.getUID().equals(entityWorldID));
+
+        World entityWorld = entity.getWorld();
+        World.Environment worldEnvironment = entityWorld.getEnvironment();
+        UUID entityWorldID = entityWorld.getUID();
+
+        return worldByEnvironment(worldEnvironment)
+                .map(world -> world.getUID().equals(entityWorldID))
+                .orElse(false);
     }
 
     public Optional<World> worldByEnvironment(World.Environment environment) {
