@@ -47,7 +47,7 @@ public class QuickChallenge extends JavaPlugin {
         pluginManager.registerEvents(new PlayerPortalListener(worldController), this);
         pluginManager.registerEvents(new EnityTargetListener(challengeController), this);
         pluginManager.registerEvents(new EntityDamageListener(challengeController), this);
-        pluginManager.registerEvents(new EntityPathfindListener(challengeController), this);
+        pluginManager.registerEvents(new EntityMoveListener(challengeController), this);
         pluginManager.registerEvents(new FoodLevelChangeListener(challengeController), this);
         pluginManager.registerEvents(new PlayerMoveListener(challengeController), this);
         pluginManager.registerEvents(new BlockListener(challengeController), this);
