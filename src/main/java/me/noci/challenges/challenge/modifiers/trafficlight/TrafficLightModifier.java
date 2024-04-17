@@ -85,8 +85,12 @@ public class TrafficLightModifier implements ChallengeModifier {
                 .filter(Predicate.not(players::contains))
                 .forEach(bossBar::removeViewer);
 
-        if (lightStatus == LightStatus.RED && !challenge.paused()) {
-            players.stream().filter(this::checkMovement).forEach(player -> player.setHealth(0));
+        if (lightStatus == LightStatus.RED) {
+            if (!challenge.paused()) {
+                players.stream().filter(this::checkMovement).forEach(player -> player.setHealth(0));
+            } else {
+                lastLocations.clear();
+            }
         }
 
         if (nextAction <= 0) {
