@@ -1,21 +1,22 @@
 package me.noci.challenges.challenge.modifiers.trafficlight;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import lombok.Getter;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.serializer.TypeSerializer;
-import me.noci.quickutilities.events.Events;
-import me.noci.quickutilities.events.subscriber.SubscribedEvent;
 import me.noci.quickutilities.utils.EnumUtils;
 import net.kyori.adventure.bossbar.BossBar;
 import org.apache.logging.log4j.Logger;
+import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerMoveEvent;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Predicate;
 
 import static me.noci.challenges.serializer.TypeSerializers.*;
@@ -40,12 +41,11 @@ public class TrafficLightModifier implements ChallengeModifier {
         LONG.write(buffer, value.map(TrafficLightModifier::nextAction).orElse(0L));
     });
 
+    private final HashMap<UUID, LastLocation> lastLocations = Maps.newHashMap();
     @Getter private final TimeRange nextPhaseDelay;
     @Getter private final TimeRange yellowDuration;
     @Getter private final TimeRange redDuration;
-
     private final BossBar bossBar;
-    private SubscribedEvent<PlayerMoveEvent> playerMoveEvent;
     @Getter private LightStatus lightStatus;
     @Getter private long nextAction;
 
@@ -65,27 +65,7 @@ public class TrafficLightModifier implements ChallengeModifier {
     @Override
     public void onInitialise(Logger logger, Challenge challenge) {
         logger.info("Traffic Light is set to %s, next action in %s ticks; Next Phase: %s; Yellow Duration: %s, Red Duration: %s".formatted(lightStatus, nextAction, nextPhaseDelay, yellowDuration, redDuration));
-
-        if (playerMoveEvent != null) {
-            playerMoveEvent.unsubscribe();
-        }
-
-        playerMoveEvent = Events.subscribe(PlayerMoveEvent.class)
-                .filter(event -> !challenge.paused())
-                .filter(event -> challenge.isInChallenge(event.getPlayer()))
-                .filter(event -> lightStatus == LightStatus.RED)
-                .handle(event -> {
-                    double fromX = event.getFrom().x();
-                    double fromZ = event.getFrom().z();
-
-                    double toX = event.getTo().x();
-                    double toZ = event.getTo().z();
-
-                    boolean moved = fromX != toX || fromZ != toZ;
-                    if (moved) {
-                        event.getPlayer().setHealth(0);
-                    }
-                });
+        lastLocations.clear();
     }
 
     @Override
@@ -93,11 +73,7 @@ public class TrafficLightModifier implements ChallengeModifier {
         Lists.newArrayList(bossBar.viewers()).stream()
                 .map(viewer -> (Player) viewer)
                 .forEach(bossBar::removeViewer);
-
-        if (playerMoveEvent != null) {
-            playerMoveEvent.unsubscribe();
-            playerMoveEvent = null;
-        }
+        lastLocations.clear();
     }
 
     @Override
@@ -109,22 +85,25 @@ public class TrafficLightModifier implements ChallengeModifier {
                 .filter(Predicate.not(players::contains))
                 .forEach(bossBar::removeViewer);
 
+        if (lightStatus == LightStatus.RED && !challenge.paused()) {
+            players.stream().filter(this::checkMovement).forEach(player -> player.setHealth(0));
+        }
 
         if (nextAction <= 0) {
-            lightStatus = EnumUtils.next(lightStatus);
-
-            bossBar.name(lightStatus.texture());
-
             nextAction = switch (lightStatus) {
                 case GREEN -> nextPhaseDelay.randomAsTick();
                 case YELLOW -> yellowDuration.randomAsTick();
                 case RED -> redDuration.randomAsTick();
             };
 
-            if (lightStatus != LightStatus.GREEN) {
-                players.forEach(player -> player.playSound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 5, 2));
+            lightStatus = EnumUtils.next(lightStatus);
+            bossBar.name(lightStatus.texture());
+
+            if (lightStatus == LightStatus.RED) {
+                players.forEach(this::checkMovement);
             }
 
+            players.forEach(player -> player.playSound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 5, 2));
             logger.info("Switch traffic light to %s, next phase %s in %s ticks".formatted(lightStatus, EnumUtils.next(lightStatus), nextAction));
         }
 
@@ -136,6 +115,27 @@ public class TrafficLightModifier implements ChallengeModifier {
     @Override
     public String name() {
         return "Traffic Light";
+    }
+
+    private boolean checkMovement(Player player) {
+        UUID uuid = player.getUniqueId();
+        LastLocation lastLocation = lastLocations.get(uuid);
+        LastLocation currentLocation = LastLocation.fromPlayer(player);
+        lastLocations.put(uuid, new LastLocation(currentLocation.x(), currentLocation.z()));
+        return currentLocation.moved(lastLocation);
+    }
+
+    private record LastLocation(double x, double z) {
+        public static LastLocation fromPlayer(Player player) {
+            Location location = player.getLocation();
+            return new LastLocation(location.x(), location.z());
+        }
+
+        public boolean moved(LastLocation other) {
+            if (other == null) return false;
+            return x != other.x || z != other.z;
+        }
+
     }
 
 }
