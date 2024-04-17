@@ -25,17 +25,17 @@ import java.util.function.Supplier;
 public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModifier> {
 
 
-    private BukkitUnit nextPhaseUnit = BukkitUnit.MINUTES;
-    private int nextPhaseMin = 3;
-    private int nextPhaseMax = 5;
+    private BukkitUnit nextPhaseUnit = BukkitUnit.SECONDS;
+    private int nextPhaseMin = 90;
+    private int nextPhaseMax = 300;
 
-    private BukkitUnit yellowDurationUnit = BukkitUnit.SECONDS;
-    private int yellowDurationMin = 1;
-    private int yellowDurationMax = 3;
+    private BukkitUnit yellowDurationUnit = BukkitUnit.TICKS;
+    private int yellowDurationMin = 30;
+    private int yellowDurationMax = 100;
 
     private BukkitUnit redDurationUnit = BukkitUnit.SECONDS;
-    private int redDurationMin = 3;
-    private int redDurationMax = 20;
+    private int redDurationMin = 5;
+    private int redDurationMax = 30;
 
     public GuiTrafficLightModifier(GuiProvider parentGui, Consumer<Supplier<TrafficLightModifier>> createdModifier) {
         super(parentGui, createdModifier, Component.text("Timer Modifier", Colors.GUI_TITLE), InventoryConstants.FULL_SIZE);
