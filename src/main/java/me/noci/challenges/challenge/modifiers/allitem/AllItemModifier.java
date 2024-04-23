@@ -235,4 +235,10 @@ public class AllItemModifier implements ChallengeModifier {
         challenge.broadcast(messageNewItem);
     }
 
+    public void reset() {
+        this.collectedItems.clear();
+        this.allItemsCollected = false;
+        currentItem = EnumUtils.random(AllItem.class);
+        bossBar.name(itemDisplay());
+    }
 }
