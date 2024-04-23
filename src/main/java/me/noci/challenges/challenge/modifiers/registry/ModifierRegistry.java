@@ -16,7 +16,6 @@ import me.noci.quickutilities.utils.QuickItemStack;
 import me.noci.quickutilities.utils.Require;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
@@ -57,16 +56,13 @@ public class ModifierRegistry {
     }
 
     private static <T extends ChallengeModifier> void openAcceptDialog(Class<T> type, QuickItemStack displayItem, Supplier<T> modifier, Player player, ModifierProvider provider) {
-        TextColor primary = TextColor.color(99, 128, 101);
-        TextColor gray = TextColor.color(122, 120, 120);
-
         GuiAcceptDialog.builder()
-                .title(Component.text("Modifier hinzufügen?", primary))
+                .title(Component.text("Modifier hinzufügen?", Colors.PRIMARY))
                 .description(
                         Component.newline(),
-                        Component.text("Möchtest du den Modifier wirklich hinzufügen?", gray),
+                        Component.text("Möchtest du den Modifier wirklich hinzufügen?", Colors.GRAY),
                         Component.newline(),
-                        Component.text("Modifier Name: ", gray).append(Component.text(displayItem.getRawDisplayName(), primary))
+                        Component.text("Modifier Name: ", Colors.GRAY).append(Component.text(displayItem.getRawDisplayName(), Colors.PRIMARY))
                 )
                 .acceptAction(event -> {
                     provider.onModifierAdd(ModifierCreator.of(type, displayItem, modifier));

@@ -89,24 +89,21 @@ public class GuiChallengeCreate extends PagedQuickGUIProvider implements Modifie
     }
 
     private GuiItem fromModifierCreator(ModifierCreator modifierCreator) {
-        TextColor primary = TextColor.color(99, 128, 101);
-        TextColor gray = TextColor.color(122, 120, 120);
-
         QuickItemStack itemStack = new QuickItemStack(modifierCreator.displayItem())
                 .lore(
                         Component.empty(),
-                        Component.text("Linksklick zum Entfernen", gray)
+                        Component.text("Linksklick zum Entfernen", Colors.GRAY)
                 );
 
         var acceptDialog = GuiAcceptDialog.builder()
                 .title(
-                        Component.text("Modifier entfernen?", primary)
+                        Component.text("Modifier entfernen?", Colors.PRIMARY)
                 )
                 .description(
                         Component.newline(),
-                        Component.text("Möchtest du den Modifier wirklich entfernen?", gray),
+                        Component.text("Möchtest du den Modifier wirklich entfernen?", Colors.GRAY),
                         Component.newline(),
-                        Component.text("Modifier Name: ", gray).append(Component.text(itemStack.getRawDisplayName(), primary))
+                        Component.text("Modifier Name: ", Colors.GRAY).append(Component.text(itemStack.getRawDisplayName(), Colors.PRIMARY))
                 )
                 .acceptAction(event -> {
                     this.modifiersToAdd.remove(modifierCreator);

@@ -67,11 +67,8 @@ public class GuiChallengeOverview extends PagedQuickGUIProvider {
 
 
     private GuiItem toGuiItem(Challenge challenge) {
-        TextColor primary = TextColor.color(99, 128, 101);
-        TextColor gray = TextColor.color(122, 120, 120);
-
-        TextComponent title = Component.text("Challenge", primary)
-                .append(Component.text(" (%s)".formatted(challenge.handle()), gray, TextDecoration.ITALIC));
+        TextComponent title = Component.text("Challenge", Colors.PRIMARY)
+                .append(Component.text(" (%s)".formatted(challenge.handle()), Colors.GRAY, TextDecoration.ITALIC));
 
         var item = new QuickItemStack(InventoryConstants.worldSkull());
         item.displayName(title);
@@ -80,30 +77,30 @@ public class GuiChallengeOverview extends PagedQuickGUIProvider {
         int modifierCount = modifiers.size();
 
         List<Component> lore = Lists.newArrayList(Component.empty());
-        lore.add(Component.text("Started: ", gray).append(booleanComponent(challenge.started())));
-        lore.add(Component.text("Paused: ", gray).append(booleanComponent(challenge.paused())));
+        lore.add(Component.text("Started: ", Colors.GRAY).append(booleanComponent(challenge.started())));
+        lore.add(Component.text("Paused: ", Colors.GRAY).append(booleanComponent(challenge.paused())));
         challenge.modifier(TimerModifier.class)
                 .map(TimerModifier::playedTimeAsString)
-                .ifPresent(time -> lore.add(Component.text("Time played: ", gray).append(Component.text(time, primary))));
+                .ifPresent(time -> lore.add(Component.text("Time played: ", Colors.GRAY).append(Component.text(time, Colors.PRIMARY))));
 
         lore.add(Component.empty());
-        lore.add(Component.text("Modifiers ", primary).append(Component.text("(%s)".formatted(modifierCount), gray)).append(Component.text(":", primary)));
+        lore.add(Component.text("Modifiers ", Colors.PRIMARY).append(Component.text("(%s)".formatted(modifierCount), Colors.GRAY)).append(Component.text(":", Colors.PRIMARY)));
 
         if (modifierCount == 0) {
             lore.add(Component.text("No modifiers applied", NamedTextColor.RED, TextDecoration.ITALIC));
         } else {
-            modifiers.forEach(modifier -> lore.add(Component.text("- ", gray).append(Component.text(modifier.name(), primary))));
+            modifiers.forEach(modifier -> lore.add(Component.text("- ", Colors.GRAY).append(Component.text(modifier.name(), Colors.PRIMARY))));
         }
 
         lore.add(Component.empty());
-        lore.add(Component.text("Beitreten (Linksklick) | Löschen (Rechtsklick)", gray));
+        lore.add(Component.text("Beitreten (Linksklick) | Löschen (Rechtsklick)", Colors.GRAY));
 
         item.lore(lore);
 
         return new ChallengeGuiItem(challenge, item, event -> {
             switch (event.getClick()) {
                 case LEFT -> challenge.join(event.getPlayer());
-                case RIGHT -> openDeleteGui(challenge, event.getPlayer(), primary, gray);
+                case RIGHT -> openDeleteGui(challenge, event.getPlayer());
             }
         });
     }
@@ -114,17 +111,17 @@ public class GuiChallengeOverview extends PagedQuickGUIProvider {
         return Component.text(text, color);
     }
 
-    private void openDeleteGui(Challenge challenge, Player player, TextColor primary, TextColor gray) {
+    private void openDeleteGui(Challenge challenge, Player player) {
         GuiAcceptDialog.builder()
                 .dialogType(GuiAcceptDialog.DialogType.YES_NO)
                 .title(
-                        Component.text("Challenge löschen?", primary)
+                        Component.text("Challenge löschen?", Colors.PRIMARY)
                 )
                 .description(
                         Component.newline(),
-                        Component.text("Möchtest du die Challenge wirklich löschen?", gray),
+                        Component.text("Möchtest du die Challenge wirklich löschen?", Colors.GRAY),
                         Component.newline(),
-                        Component.text("Challenge ID: ", gray).append(Component.text(challenge.handle().toString(), primary))
+                        Component.text("Challenge ID: ", Colors.GRAY).append(Component.text(challenge.handle().toString(), Colors.PRIMARY))
                 )
                 .acceptAction(event -> {
                     event.getPlayer().closeInventory();

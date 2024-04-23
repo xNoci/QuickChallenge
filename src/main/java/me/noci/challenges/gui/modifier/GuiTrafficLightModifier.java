@@ -14,7 +14,6 @@ import me.noci.quickutilities.utils.EnumUtils;
 import me.noci.quickutilities.utils.QuickItemStack;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -70,19 +69,16 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
 
     private void setSettingColumn(InventoryContent content, String name, int column, SettingValues<BukkitUnit> unit, SettingValues<Integer> min, SettingValues<Integer> max) {
 
-        TextColor primary = TextColor.color(99, 128, 101);
-        TextColor gray = TextColor.color(122, 120, 120);
-
         GuiItem minItem = new QuickItemStack(Material.CHERRY_BUTTON)
-                .displayName(Component.text("Min value for ", gray).append(Component.text(name, primary)))
+                .displayName(Component.text("Min value for ", Colors.GRAY).append(Component.text(name, Colors.PRIMARY)))
                 .lore(
                         Component.empty(),
-                        Component.text("Current: ", gray).append(Component.text(min.get(), primary)),
+                        Component.text("Current: ", Colors.GRAY).append(Component.text(min.get(), Colors.PRIMARY)),
                         Component.empty(),
-                        Component.text("Left click: -1", gray),
-                        Component.text("Shift-Left click: -10", gray),
-                        Component.text("Right click: +1", gray),
-                        Component.text("Shift-Right click: -10", gray)
+                        Component.text("Left click: -1", Colors.GRAY),
+                        Component.text("Shift-Left click: -10", Colors.GRAY),
+                        Component.text("Right click: +1", Colors.GRAY),
+                        Component.text("Shift-Right click: -10", Colors.GRAY)
                 )
                 .asGuiItem(event -> {
                     int current = min.get();
@@ -101,13 +97,13 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
                 });
 
         GuiItem unitItem = new QuickItemStack(Material.GLOW_ITEM_FRAME)
-                .displayName(Component.text("Time Unit value for ", gray).append(Component.text(name, primary)))
+                .displayName(Component.text("Time Unit value for ", Colors.GRAY).append(Component.text(name, Colors.PRIMARY)))
                 .lore(
                         Component.empty(),
-                        Component.text("Current: ", gray).append(Component.text(unit.get().name(), primary)),
+                        Component.text("Current: ", Colors.GRAY).append(Component.text(unit.get().name(), Colors.PRIMARY)),
                         Component.empty(),
-                        Component.text("Left click: Previous (%s)".formatted(EnumUtils.previous(unit.get())), gray),
-                        Component.text("Right click: Next (%s)".formatted(EnumUtils.next(unit.get())), gray)
+                        Component.text("Left click: Previous (%s)".formatted(EnumUtils.previous(unit.get())), Colors.GRAY),
+                        Component.text("Right click: Next (%s)".formatted(EnumUtils.next(unit.get())), Colors.GRAY)
                 )
                 .asGuiItem(event -> {
                     BukkitUnit current = unit.get();
@@ -124,15 +120,15 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
                 });
 
         GuiItem maxItem = new QuickItemStack(Material.CHERRY_BUTTON)
-                .displayName(Component.text("Max value for ", gray).append(Component.text(name, primary)))
+                .displayName(Component.text("Max value for ", Colors.GRAY).append(Component.text(name, Colors.PRIMARY)))
                 .lore(
                         Component.empty(),
-                        Component.text("Current: ", gray).append(Component.text(max.get(), primary)),
+                        Component.text("Current: ", Colors.GRAY).append(Component.text(max.get(), Colors.PRIMARY)),
                         Component.empty(),
-                        Component.text("Left click: -1", gray),
-                        Component.text("Shift-Left click: -10", gray),
-                        Component.text("Right click: +1", gray),
-                        Component.text("Shift-Right click: -10", gray)
+                        Component.text("Left click: -1", Colors.GRAY),
+                        Component.text("Shift-Left click: -10", Colors.GRAY),
+                        Component.text("Right click: +1", Colors.GRAY),
+                        Component.text("Shift-Right click: -10", Colors.GRAY)
                 )
                 .asGuiItem(event -> {
                     int current = max.get();
