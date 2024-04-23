@@ -174,20 +174,17 @@ public class AllItemModifier implements ChallengeModifier {
     }
 
     private Component itemDisplay() {
-        //TODO Replace with image that display current amount ot of max amount
-        Component display = Component.text("%s von %s".formatted(collectedItems.size(), AllItem.values().length));
+        Component display = Component.empty();
 
         if (allItemsCollected) {
-            return display.append(Component.text("Alle Items eingesammelt!", NamedTextColor.WHITE, TextDecoration.BOLD, TextDecoration.ITALIC));
+            display = display.append(Component.text("Alle Items eingesammelt!", NamedTextColor.WHITE, TextDecoration.BOLD, TextDecoration.ITALIC));
+        } else {
+            display = display.append(currentItem.icon())
+                    .append(Component.space())
+                    .append(Component.text(currentItem.itemName(), NamedTextColor.WHITE, TextDecoration.BOLD, TextDecoration.ITALIC));
         }
 
-        return display
-                .append(Component.space())
-                .append(Component.space())
-                .append(currentItem.icon())
-                .append(Component.space())
-                .append(Component.space())
-                .append(Component.text(currentItem.itemName(), NamedTextColor.WHITE, TextDecoration.BOLD, TextDecoration.ITALIC));
+        return display.append(Component.space()).append(Component.text("(%s/%s)".formatted(collectedItems.size(), AllItem.values().length)));
     }
 
     private void checkAllPlayerInventories(Challenge challenge) {
