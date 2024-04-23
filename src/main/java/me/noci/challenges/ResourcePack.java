@@ -1,5 +1,6 @@
 package me.noci.challenges;
 
+import me.noci.challenges.challenge.modifiers.allitem.AllItem;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.key.KeyPattern;
 import net.kyori.adventure.text.Component;
@@ -23,7 +24,22 @@ public final class ResourcePack {
         public static final Component YELLOW_LIGHT = value('\uEff2', FONT_NAME);
         public static final Component RED_LIGHT = value('\uEff3', FONT_NAME);
     }
+
+    public static class AllItems {
+        private static final String FONT_NAME = "all_items";
+
+        public static final Component SPACE_16 = value('\uF001', FONT_NAME);
+
+        public static Component itemIcon(AllItem item) {
+            int value = 0xE001;
+            value += item.ordinal();
+            return value((char) value, FONT_NAME);
+        }
+
+    }
+
     private static Component value(char fontChar, @KeyPattern String font) {
         return Component.text(fontChar).font(Key.key(font));
     }
+
 }

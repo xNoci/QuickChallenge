@@ -19,7 +19,11 @@ public interface TypeSerializer<T> {
     }
 
     static <V extends Enum<?>> TypeSerializer<V> enumSerializer(Class<V> enumClass) {
-        return fixed(1, buffer -> enumClass.getEnumConstants()[buffer.get() & 0xFF], (buffer, value) -> buffer.put(((Integer) value.ordinal()).byteValue()));
+        return enumSerializer(enumClass, TypeSerializers.U_BYTE);
+    }
+
+    static <V extends Enum<?>> TypeSerializer<V> enumSerializer(Class<V> enumClass, TypeSerializer<Integer> serializer) {
+        return fixed(serializer.byteSize(null), buffer -> enumClass.getEnumConstants()[serializer.read(buffer)], (buffer, value) -> serializer.write(buffer, value.ordinal()));
     }
 
     static <V> TypeSerializer<List<V>> list(TypeSerializer<V> serializer) {

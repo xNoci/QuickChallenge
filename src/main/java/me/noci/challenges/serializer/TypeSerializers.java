@@ -1,9 +1,10 @@
 package me.noci.challenges.serializer;
 
 import me.noci.challenges.ExitStrategy;
+import me.noci.challenges.challenge.modifiers.allitem.AllItem;
+import me.noci.challenges.challenge.modifiers.allitem.CollectedItem;
 import me.noci.challenges.challenge.modifiers.trafficlight.LightStatus;
 import me.noci.challenges.challenge.modifiers.trafficlight.TimeRange;
-import me.noci.challenges.challenge.modifiers.trafficlight.TrafficLightModifier;
 import me.noci.challenges.worlds.ChallengeLocation;
 import me.noci.challenges.worlds.RespawnLocation;
 import me.noci.quickutilities.utils.BukkitUnit;
@@ -66,6 +67,15 @@ public class TypeSerializers {
     );
     public static final TypeSerializer<List<ItemStack>> ITEM_STACK_LIST = TypeSerializer.list(ITEM_STACK);
     public static final TypeSerializer<Map<UUID, List<ItemStack>>> ITEM_STACK_LIST_MAP = TypeSerializer.map(UUID, ITEM_STACK_LIST);
+    public static final TypeSerializer<AllItem> ALL_ITEM = TypeSerializer.enumSerializer(AllItem.class, U_SHORT);
+    public static final TypeSerializer<CollectedItem> COLLECTED_ITEM = TypeSerializer.fixed(10,
+            data -> new CollectedItem(ALL_ITEM.read(data), LONG.read(data)),
+            (buffer, value) -> {
+                ALL_ITEM.write(buffer, value.item());
+                LONG.write(buffer, value.timestamp());
+            }
+    );
+    public static final TypeSerializer<List<CollectedItem>> COLLECTED_ITEM_LIST = TypeSerializer.list(COLLECTED_ITEM);
 
 
 }

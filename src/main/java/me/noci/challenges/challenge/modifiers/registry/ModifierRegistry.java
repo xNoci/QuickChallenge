@@ -3,9 +3,13 @@ package me.noci.challenges.challenge.modifiers.registry;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import lombok.Getter;
-import me.noci.challenges.challenge.modifiers.*;
+import me.noci.challenges.challenge.modifiers.ChallengeModifier;
+import me.noci.challenges.challenge.modifiers.EnderDragonFinishModifier;
+import me.noci.challenges.challenge.modifiers.StopOnDeathModifier;
 import me.noci.challenges.challenge.modifiers.TimerModifier;
+import me.noci.challenges.challenge.modifiers.allitem.AllItemModifier;
 import me.noci.challenges.challenge.modifiers.trafficlight.TrafficLightModifier;
+import me.noci.challenges.colors.Colors;
 import me.noci.challenges.gui.GuiAcceptDialog;
 import me.noci.challenges.gui.InventoryConstants;
 import me.noci.challenges.gui.modifier.GuiTrafficLightModifier;
@@ -32,11 +36,13 @@ public class ModifierRegistry {
         var stopOnDeathDisplay = new QuickItemStack(InventoryConstants.woodPauseSkull()).displayName(Component.text("Stop on Death", NamedTextColor.RED));
         var enderDragonFinishDisplay = new QuickItemStack(Material.DRAGON_HEAD, Component.text("Ender Dragon Finish", NamedTextColor.GOLD));
         var timerDisplay = new QuickItemStack(Material.CLOCK, Component.text("Timer", NamedTextColor.DARK_AQUA));
+        var allItemDisplay = new QuickItemStack(Material.CHEST, Component.text("All Item", NamedTextColor.DARK_PURPLE));
         var trafficLightDisplay = new QuickItemStack(Material.GREEN_WOOL, Component.text("Traffic Light", NamedTextColor.GREEN));
 
         registerBasic(StopOnDeathModifier.class, stopOnDeathDisplay, StopOnDeathModifier::new);
         registerBasic(EnderDragonFinishModifier.class, enderDragonFinishDisplay, EnderDragonFinishModifier::new);
         registerBasic(TimerModifier.class, timerDisplay, TimerModifier::new);
+        registerBasic(AllItemModifier.class, allItemDisplay, AllItemModifier::new);
         register(TrafficLightModifier.class, trafficLightDisplay, GuiTrafficLightModifier::new);
     }
 

@@ -113,8 +113,7 @@ public class Challenge implements Comparable<Challenge> {
     }
 
     public void tickChallengeModifiers() {
-        List<Player> players = challengeWorld().map(ChallengeWorld::players).orElse(List.of());
-        modifiers.forEach(modifier -> modifier.onTick(logger, this, players));
+        modifiers.forEach(modifier -> modifier.onTick(logger, this, players()));
     }
 
     @SuppressWarnings("unchecked")
@@ -217,6 +216,10 @@ public class Challenge implements Comparable<Challenge> {
 
     public void broadcast(Component message) {
         challengeWorld().ifPresent(challengeWorld -> challengeWorld.players().forEach(player -> player.sendMessage(message)));
+    }
+
+    public List<Player> players() {
+        return challengeWorld().map(ChallengeWorld::players).orElse(List.of());
     }
 
 }

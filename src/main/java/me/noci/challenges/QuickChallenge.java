@@ -2,6 +2,7 @@ package me.noci.challenges;
 
 import io.papermc.lib.PaperLib;
 import me.noci.challenges.challenge.ChallengeController;
+import me.noci.challenges.command.CommandAllItems;
 import me.noci.challenges.command.CommandChallenge;
 import me.noci.challenges.command.CommandTimer;
 import me.noci.challenges.listeners.*;
@@ -19,7 +20,7 @@ public class QuickChallenge extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        if(!PaperLib.isPaper()) {
+        if (!PaperLib.isPaper()) {
             Bukkit.getPluginManager().disablePlugin(this);
             getLogger().info("This plugin only works with PaperMC.");
             return;
@@ -64,6 +65,7 @@ public class QuickChallenge extends JavaPlugin {
     private void registerCommands() {
         new CommandChallenge(this, challengeController);
         new CommandTimer(this, challengeController);
+        new CommandAllItems(this, challengeController);
     }
 
 }
