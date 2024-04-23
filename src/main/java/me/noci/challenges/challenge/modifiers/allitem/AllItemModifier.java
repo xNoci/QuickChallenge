@@ -140,6 +140,7 @@ public class AllItemModifier implements ChallengeModifier {
     }
 
     private void tryPickupItem(Challenge challenge, Player collector, AllItem item) {
+        if (allItemsCollected) return;
         if (item != currentItem) return;
         collectedItems.add(CollectedItem.now(item));
         notifyItemsCollected(challenge, collector, item, false);
@@ -147,6 +148,7 @@ public class AllItemModifier implements ChallengeModifier {
     }
 
     public void skip(Challenge challenge, Player player) {
+        if (allItemsCollected) return;
         collectedItems.add(CollectedItem.now(currentItem));
         notifyItemsCollected(challenge, player, currentItem, true);
         nextItem(challenge);
