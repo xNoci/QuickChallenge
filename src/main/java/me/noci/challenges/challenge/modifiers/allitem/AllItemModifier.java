@@ -38,7 +38,10 @@ import static me.noci.challenges.serializer.TypeSerializers.*;
 
 public class AllItemModifier implements ChallengeModifier {
 
-    public static final TypeSerializer<Optional<AllItemModifier>> SERIALIZER = TypeSerializer.fixed(9, buffer -> {
+    public static final TypeSerializer<Optional<AllItemModifier>> SERIALIZER = TypeSerializer.dynamic(value -> BOOLEAN.byteSize(null) +
+            COLLECTED_ITEM_LIST.byteSize(value.map(AllItemModifier::collectedItems).orElse(List.of())) +
+            ALL_ITEM.byteSize(null) +
+            BOOLEAN.byteSize(null), buffer -> {
         boolean enabled = BOOLEAN.read(buffer);
         List<CollectedItem> collectedItems = COLLECTED_ITEM_LIST.read(buffer);
         AllItem currentItem = ALL_ITEM.read(buffer);
