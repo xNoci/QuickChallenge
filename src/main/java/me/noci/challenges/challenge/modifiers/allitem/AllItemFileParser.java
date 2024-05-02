@@ -19,6 +19,8 @@ public class AllItemFileParser {
 
     private static final Logger logger = Logger.getLogger("AllItemsFormatter");
 
+    //All-Items spreadsheet https://docs.google.com/spreadsheets/d/1KOeIRDNQ3wyDcof5HucwPX1ITayj7Go6SdOafVQRyvk/edit?usp=sharing
+
     public static void main(String[] args) {
         AllItemFileParser parser = new AllItemFileParser();
         List<ItemData> itemData = parser.readFile("/all_items.csv");
@@ -93,9 +95,7 @@ public class AllItemFileParser {
                     .append("(\"")
                     .append(data.displayName())
                     .append("\", Material.")
-                    .append(data.bukkitMaterialName())
-                    .append(", ")
-                    .append(data.customImage());
+                    .append(data.bukkitMaterialName());
 
             if (data.potionType() != null) {
                 builder.append(", CustomMatcher.potion(PotionType.");
@@ -150,22 +150,6 @@ public class AllItemFileParser {
 
     private record ItemData(String enumName, String bukkitMaterialName, String displayName, String fileName,
                             @Nullable String potionType, @Nullable String translationKey) {
-
-        @Override
-        public String toString() {
-            return "ItemData{" +
-                    "enumName='" + enumName + '\'' +
-                    ", bukkitMaterialName='" + bukkitMaterialName + '\'' +
-                    ", displayName='" + displayName + '\'' +
-                    ", fileName='" + fileName + '\'' +
-                    ", potionType='" + potionType + '\'' +
-                    ", translationKey='" + translationKey + '\'' +
-                    '}';
-        }
-
-        public boolean customImage() {
-            return fileName.startsWith("customfont");
-        }
     }
 
     private static String stringOrNull(String string) {
