@@ -55,6 +55,7 @@ public class AllItemModifier implements ChallengeModifier {
         BOOLEAN.write(buffer, value.map(AllItemModifier::allItemsCollected).orElse(false));
     });
 
+    private final BossBar spacerBar;
     private final BossBar bossBar;
     @Getter private final List<CollectedItem> collectedItems;
     @Getter @NotNull private AllItem currentItem;
@@ -70,6 +71,7 @@ public class AllItemModifier implements ChallengeModifier {
         this.currentItem = currentItem;
         this.collectedItems = collectedItems;
         this.allItemsCollected = allItemsCollected;
+        this.spacerBar = BossBar.bossBar(Component.empty(), 0, BossBar.Color.WHITE, BossBar.Overlay.PROGRESS);
         this.bossBar = BossBar.bossBar(itemDisplay(), 0, BossBar.Color.WHITE, BossBar.Overlay.PROGRESS);
     }
 
@@ -109,9 +111,7 @@ public class AllItemModifier implements ChallengeModifier {
 
     @Override
     public void onStop(Logger logger, Challenge challenge) {
-        Lists.newArrayList(bossBar.viewers()).stream()
-                .map(viewer -> (Player) viewer)
-                .forEach(bossBar::removeViewer);
+        removeBossBarViewers(player -> true);
 
         if (slotChangeEvent != null) {
             slotChangeEvent.unsubscribe();
@@ -126,12 +126,8 @@ public class AllItemModifier implements ChallengeModifier {
 
     @Override
     public void onTick(Logger logger, Challenge challenge, List<Player> players) {
-        players.forEach(bossBar::addViewer);
-
-        Lists.newArrayList(bossBar.viewers()).stream()
-                .map(viewer -> (Player) viewer)
-                .filter(Predicate.not(players::contains))
-                .forEach(bossBar::removeViewer);
+        addBossBarViewers(players);
+        removeBossBarViewers(Predicate.not(players::contains));
     }
 
     @Override
@@ -243,4 +239,25 @@ public class AllItemModifier implements ChallengeModifier {
         currentItem = EnumUtils.random(AllItem.class);
         bossBar.name(itemDisplay());
     }
+
+    private void addBossBarViewers(List<Player> viewers) {
+        viewers.forEach(viewer -> {
+            spacerBar.addViewer(viewer);
+            bossBar.addViewer(viewer);
+        });
+    }
+
+    private void removeBossBarViewers(Predicate<Player> filter) {
+        Lists.newArrayList(spacerBar.viewers()).stream()
+                .map(viewer -> (Player) viewer)
+                .filter(filter)
+                .forEach(spacerBar::removeViewer);
+
+        Lists.newArrayList(bossBar.viewers()).stream()
+                .map(viewer -> (Player) viewer)
+                .filter(filter)
+                .forEach(bossBar::removeViewer);
+
+    }
+
 }
