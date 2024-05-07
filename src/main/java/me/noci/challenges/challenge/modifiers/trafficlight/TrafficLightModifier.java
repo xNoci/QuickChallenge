@@ -94,13 +94,14 @@ public class TrafficLightModifier implements ChallengeModifier {
         }
 
         if (nextAction <= 0) {
+            lightStatus = EnumUtils.next(lightStatus);
+
             nextAction = switch (lightStatus) {
                 case GREEN -> nextPhaseDelay.randomAsTick();
                 case YELLOW -> yellowDuration.randomAsTick();
                 case RED -> redDuration.randomAsTick();
             };
 
-            lightStatus = EnumUtils.next(lightStatus);
             bossBar.name(lightStatus.texture());
 
             if (lightStatus == LightStatus.RED) {
