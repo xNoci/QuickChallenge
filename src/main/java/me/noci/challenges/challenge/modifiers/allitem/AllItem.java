@@ -260,7 +260,7 @@ public enum AllItem {
     CLAY("Ton", Material.CLAY),
     CLAY_BALL("Tonklumpen", Material.CLAY_BALL),
     CLOCK("Uhr", Material.CLOCK),
-    COAL("Kohleblock", Material.COAL),
+    COAL("Kohle", Material.COAL),
     COAL_BLOCK("Kohleblock", Material.COAL_BLOCK),
     COAL_ORE("Steinkohle", Material.COAL_ORE),
     COAL_ORE_DEEPSLATE("Tiefenschiefer-Steinkohle", Material.DEEPSLATE_COAL_ORE),
