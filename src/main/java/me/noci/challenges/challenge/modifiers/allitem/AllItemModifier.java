@@ -80,8 +80,8 @@ public class AllItemModifier implements ChallengeModifier {
         }
 
         slotChangeEvent = Events.subscribe(PlayerInventorySlotChangeEvent.class)
-                .filter(event -> currentItem.matches(event.getNewItemStack()))
                 .filter(event -> !challenge.paused())
+                .filter(event -> currentItem.matches(event.getNewItemStack()))
                 .filter(event -> challenge.isInChallenge(event.getPlayer()))
                 .handle(event -> tryPickupItem(challenge, event.getPlayer(), currentItem));
 
@@ -89,8 +89,8 @@ public class AllItemModifier implements ChallengeModifier {
             inventoryClickEvent.unsubscribe();
         }
 
-        //TODO This one should be tested, but should work fine
         inventoryClickEvent = Events.subscribe(InventoryClickEvent.class)
+                .strict(false)
                 .filter(Predicate.not(InventoryInteractEvent::isCancelled))
                 .filter(event -> event.getClickedInventory() != null)
                 .filter(event -> Require.nonNull(event.getClickedInventory()).getType() != InventoryType.CREATIVE)
@@ -100,8 +100,8 @@ public class AllItemModifier implements ChallengeModifier {
                     default -> false;
                 })
                 .filter(event -> event.getWhoClicked() instanceof Player)
-                .filter(event -> currentItem.matches(Require.nonNull(event.getCurrentItem())))
                 .filter(event -> !challenge.paused())
+                .filter(event -> currentItem.matches(Require.nonNull(event.getCurrentItem())))
                 .filter(event -> challenge.isInChallenge(event.getWhoClicked()))
                 .handle(event -> tryPickupItem(challenge, (Player) event.getWhoClicked(), currentItem));
 

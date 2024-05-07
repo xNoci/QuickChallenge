@@ -71,7 +71,7 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
 
         GuiItem minItem = new QuickItemStack(Material.CHERRY_BUTTON)
                 .displayName(Component.text("Min value for ", Colors.GRAY).append(Component.text(name, Colors.PRIMARY)))
-                .lore(
+                .itemLore(
                         Component.empty(),
                         Component.text("Current: ", Colors.GRAY).append(Component.text(min.get(), Colors.PRIMARY)),
                         Component.empty(),
@@ -98,7 +98,7 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
 
         GuiItem unitItem = new QuickItemStack(Material.GLOW_ITEM_FRAME)
                 .displayName(Component.text("Time Unit value for ", Colors.GRAY).append(Component.text(name, Colors.PRIMARY)))
-                .lore(
+                .itemLore(
                         Component.empty(),
                         Component.text("Current: ", Colors.GRAY).append(Component.text(unit.get().name(), Colors.PRIMARY)),
                         Component.empty(),
@@ -121,7 +121,7 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
 
         GuiItem maxItem = new QuickItemStack(Material.CHERRY_BUTTON)
                 .displayName(Component.text("Max value for ", Colors.GRAY).append(Component.text(name, Colors.PRIMARY)))
-                .lore(
+                .itemLore(
                         Component.empty(),
                         Component.text("Current: ", Colors.GRAY).append(Component.text(max.get(), Colors.PRIMARY)),
                         Component.empty(),

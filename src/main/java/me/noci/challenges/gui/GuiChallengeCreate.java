@@ -90,7 +90,7 @@ public class GuiChallengeCreate extends PagedQuickGUIProvider implements Modifie
 
     private GuiItem fromModifierCreator(ModifierCreator modifierCreator) {
         QuickItemStack itemStack = new QuickItemStack(modifierCreator.displayItem())
-                .lore(
+                .itemLore(
                         Component.empty(),
                         Component.text("Linksklick zum Entfernen", Colors.GRAY)
                 );

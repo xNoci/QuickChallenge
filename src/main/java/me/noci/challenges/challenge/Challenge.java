@@ -42,6 +42,8 @@ public class Challenge implements Comparable<Challenge> {
     @Getter private final Map<UUID, List<ItemStack>> playerEnderChest;
     @Getter private final Map<UUID, List<ItemStack>> playerArmor;
     @Getter private final Map<UUID, List<ItemStack>> playerInventory;
+    //TODO Sync hearts and food
+    //TODO Sync effects
 
     private Reference<ChallengeWorld> world;
 
