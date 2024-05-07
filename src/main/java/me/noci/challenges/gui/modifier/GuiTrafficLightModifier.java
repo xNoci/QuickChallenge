@@ -24,9 +24,9 @@ import java.util.function.Supplier;
 public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModifier> {
 
 
-    private BukkitUnit nextPhaseUnit = BukkitUnit.SECONDS;
-    private int nextPhaseMin = 90;
-    private int nextPhaseMax = 300;
+    private BukkitUnit greenDurationUnit = BukkitUnit.SECONDS;
+    private int greenDurationMin = 90;
+    private int greenDurationMax = 300;
 
     private BukkitUnit yellowDurationUnit = BukkitUnit.TICKS;
     private int yellowDurationMin = 30;
@@ -51,18 +51,18 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
 
         content.setItem(Slot.getSlot(6, 6), new QuickItemStack(Material.GREEN_WOOL, Component.text("Hinzufügen", NamedTextColor.GREEN)).asGuiItem(event -> {
             if (event.getClick() != ClickType.LEFT) return;
-            var nextPhase = TimeRange.of(nextPhaseUnit, nextPhaseMin, nextPhaseMax);
+            var greenDuration = TimeRange.of(greenDurationUnit, greenDurationMin, greenDurationMax);
             var yellowDuration = TimeRange.of(yellowDurationUnit, yellowDurationMin, yellowDurationMax);
             var redDuration = TimeRange.of(redDurationUnit, redDurationMin, redDurationMax);
 
-            onModifierCreate.accept(() -> new TrafficLightModifier(nextPhase, yellowDuration, redDuration, LightStatus.GREEN));
+            onModifierCreate.accept(() -> new TrafficLightModifier(greenDuration, yellowDuration, redDuration, LightStatus.GREEN));
         }));
     }
 
     @Override
     public void update(Player player, InventoryContent content) {
 
-        setSettingColumn(content, "Next Phase", 3, SettingValues.of(() -> nextPhaseUnit, unit -> nextPhaseUnit = unit), SettingValues.of(() -> nextPhaseMin, min -> nextPhaseMin = min), SettingValues.of(() -> nextPhaseMax, max -> nextPhaseMax = max));
+        setSettingColumn(content, "Green Duration", 3, SettingValues.of(() -> greenDurationUnit, unit -> greenDurationUnit = unit), SettingValues.of(() -> greenDurationMin, min -> greenDurationMin = min), SettingValues.of(() -> greenDurationMax, max -> greenDurationMax = max));
         setSettingColumn(content, "Yellow Duration", 5, SettingValues.of(() -> yellowDurationUnit, unit -> yellowDurationUnit = unit), SettingValues.of(() -> yellowDurationMin, min -> yellowDurationMin = min), SettingValues.of(() -> yellowDurationMax, max -> yellowDurationMax = max));
         setSettingColumn(content, "Red Duration", 7, SettingValues.of(() -> redDurationUnit, unit -> redDurationUnit = unit), SettingValues.of(() -> redDurationMin, min -> redDurationMin = min), SettingValues.of(() -> redDurationMax, max -> redDurationMax = max));
     }

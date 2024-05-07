@@ -25,16 +25,16 @@ public class TrafficLightModifier implements ChallengeModifier {
 
     public static final TypeSerializer<Optional<TrafficLightModifier>> SERIALIZER = TypeSerializer.fixed(37, buffer -> {
         boolean enabled = BOOLEAN.read(buffer);
-        TimeRange nextPhaseDelay = TIME_RANGE.read(buffer);
+        TimeRange greenDuration = TIME_RANGE.read(buffer);
         TimeRange yellowDuration = TIME_RANGE.read(buffer);
         TimeRange redDuration = TIME_RANGE.read(buffer);
         LightStatus lightStatus = TRAFFIC_LIGHT_STATUS.read(buffer);
         long nextAction = LONG.read(buffer);
         if (!enabled) return Optional.empty();
-        return Optional.of(new TrafficLightModifier(nextPhaseDelay, yellowDuration, redDuration, lightStatus, nextAction));
+        return Optional.of(new TrafficLightModifier(greenDuration, yellowDuration, redDuration, lightStatus, nextAction));
     }, (buffer, value) -> {
         BOOLEAN.write(buffer, value.isPresent());
-        TIME_RANGE.write(buffer, value.map(TrafficLightModifier::nextPhaseDelay).orElse(TimeRange.oneSecond()));
+        TIME_RANGE.write(buffer, value.map(TrafficLightModifier::greenDuration).orElse(TimeRange.oneSecond()));
         TIME_RANGE.write(buffer, value.map(TrafficLightModifier::yellowDuration).orElse(TimeRange.oneSecond()));
         TIME_RANGE.write(buffer, value.map(TrafficLightModifier::redDuration).orElse(TimeRange.oneSecond()));
         TRAFFIC_LIGHT_STATUS.write(buffer, value.map(TrafficLightModifier::lightStatus).orElse(LightStatus.GREEN));
@@ -42,19 +42,19 @@ public class TrafficLightModifier implements ChallengeModifier {
     });
 
     private final HashMap<UUID, LastLocation> lastLocations = Maps.newHashMap();
-    @Getter private final TimeRange nextPhaseDelay;
+    @Getter private final TimeRange greenDuration;
     @Getter private final TimeRange yellowDuration;
     @Getter private final TimeRange redDuration;
     private final BossBar bossBar;
     @Getter private LightStatus lightStatus;
     @Getter private long nextAction;
 
-    public TrafficLightModifier(TimeRange nextPhaseDelay, TimeRange yellowDuration, TimeRange redDuration, LightStatus lightStatus) {
-        this(nextPhaseDelay, yellowDuration, redDuration, lightStatus, nextPhaseDelay.randomAsTick());
+    public TrafficLightModifier(TimeRange greenDuration, TimeRange yellowDuration, TimeRange redDuration, LightStatus lightStatus) {
+        this(greenDuration, yellowDuration, redDuration, lightStatus, greenDuration.randomAsTick());
     }
 
-    public TrafficLightModifier(TimeRange nextPhaseDelay, TimeRange yellowDuration, TimeRange redDuration, LightStatus lightStatus, long nextAction) {
-        this.nextPhaseDelay = nextPhaseDelay;
+    public TrafficLightModifier(TimeRange greenDuration, TimeRange yellowDuration, TimeRange redDuration, LightStatus lightStatus, long nextAction) {
+        this.greenDuration = greenDuration;
         this.yellowDuration = yellowDuration;
         this.redDuration = redDuration;
         this.lightStatus = lightStatus;
@@ -64,7 +64,7 @@ public class TrafficLightModifier implements ChallengeModifier {
 
     @Override
     public void onInitialise(Logger logger, Challenge challenge) {
-        logger.info("Traffic Light is set to %s, next action in %s ticks; Next Phase: %s; Yellow Duration: %s, Red Duration: %s".formatted(lightStatus, nextAction, nextPhaseDelay, yellowDuration, redDuration));
+        logger.info("Traffic Light is set to %s, next action in %s ticks; Green Duration: %s; Yellow Duration: %s, Red Duration: %s".formatted(lightStatus, nextAction, greenDuration, yellowDuration, redDuration));
         lastLocations.clear();
     }
 
@@ -97,7 +97,7 @@ public class TrafficLightModifier implements ChallengeModifier {
             lightStatus = EnumUtils.next(lightStatus);
 
             nextAction = switch (lightStatus) {
-                case GREEN -> nextPhaseDelay.randomAsTick();
+                case GREEN -> greenDuration.randomAsTick();
                 case YELLOW -> yellowDuration.randomAsTick();
                 case RED -> redDuration.randomAsTick();
             };
@@ -109,7 +109,7 @@ public class TrafficLightModifier implements ChallengeModifier {
             }
 
             players.forEach(player -> player.playSound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 5, 2));
-            logger.info("Switch traffic light to %s, next phase %s in %s ticks".formatted(lightStatus, EnumUtils.next(lightStatus), nextAction));
+            logger.info("Switched traffic light to %s, next phase %s in %s ticks".formatted(lightStatus, EnumUtils.next(lightStatus), nextAction));
         }
 
         if (!challenge.paused()) {

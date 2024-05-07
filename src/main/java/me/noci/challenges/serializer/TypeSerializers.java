@@ -42,8 +42,8 @@ public class TypeSerializers {
     public static final TypeSerializer<RespawnLocation.Type> RESPAWN_TYPE = TypeSerializer.enumSerializer(RespawnLocation.Type.class);
     public static final TypeSerializer<TimeRange> TIME_RANGE = TypeSerializer.fixed(9, data -> TimeRange.of(BUKKIT_UNIT.read(data), INTEGER.read(data), INTEGER.read(data)), (buffer, value) -> {
         BUKKIT_UNIT.write(buffer, value.unit());
-        INTEGER.write(buffer, value.min());
-        INTEGER.write(buffer, value.max());
+        INTEGER.write(buffer, value.minDelay());
+        INTEGER.write(buffer, value.maxDelay());
     });
     public static final TypeSerializer<World.Environment> ENVIRONMENT = TypeSerializer.enumSerializer(World.Environment.class);
     public static final TypeSerializer<ChallengeLocation> CHALLENGE_LOCATION = TypeSerializer.fixed(33, buffer -> new ChallengeLocation(DOUBLE.read(buffer), DOUBLE.read(buffer), DOUBLE.read(buffer), FLOAT.read(buffer), FLOAT.read(buffer), ENVIRONMENT.read(buffer)), (buffer, value) -> {
