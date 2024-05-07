@@ -211,7 +211,7 @@ public class AllItemModifier implements ChallengeModifier {
         if (!skipped) {
             messageItemCollected = Component
                     .text("Der Spieler ", Colors.GRAY)
-                    .append(collector.name().color(Colors.PRIMARY))
+                    .append(collector.name().color(NamedTextColor.AQUA))
                     .append(Component.text(" hat das Item ", Colors.GRAY))
                     .append(ColorUtils.gradientText(item.itemName(), Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_ACCENT_COLOR))
                     .append(Component.text(" aufgesammelt.", Colors.GRAY))
@@ -221,7 +221,7 @@ public class AllItemModifier implements ChallengeModifier {
                     .text("Das Item ", Colors.GRAY)
                     .append(ColorUtils.gradientText(item.itemName(), Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_ACCENT_COLOR))
                     .append(Component.text(" wurde von ", Colors.GRAY))
-                    .append(collector.name().color(Colors.PRIMARY))
+                    .append(collector.name().color(NamedTextColor.AQUA))
                     .append(Component.text(" übersprungen.", Colors.GRAY));
         }
 

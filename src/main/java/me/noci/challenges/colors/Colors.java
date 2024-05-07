@@ -6,7 +6,7 @@ import net.kyori.adventure.text.format.TextColor;
 public class Colors {
 
     public static final TextColor PRIMARY = TextColor.color(99, 128, 101);
-    public static final TextColor GRAY = TextColor.color(122, 120, 120);
+    public static final TextColor GRAY = NamedTextColor.GRAY;
 
     // ------- GUI -------
     public static final TextColor GUI_TITLE = TextColor.color(132, 120, 157);
