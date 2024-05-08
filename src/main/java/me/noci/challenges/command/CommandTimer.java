@@ -28,6 +28,10 @@ public class CommandTimer extends QuickCommand {
         challengeController.challenge()
                 .ifPresentOrElse(
                         challenge -> {
+                            if(challenge.started()) {
+                                sender.sendMessage(Component.text("Die Challenge ist bereits gestartet.", NamedTextColor.RED));
+                                return;
+                            }
                             challengeController.startChallenge();
                             sender.sendMessage(Component.text("Die Challenge wurde gestartet.", NamedTextColor.GREEN));
                         },
@@ -41,6 +45,10 @@ public class CommandTimer extends QuickCommand {
         challengeController.challenge()
                 .ifPresentOrElse(
                         challenge -> {
+                            if(!challenge.started()) {
+                                sender.sendMessage(Component.text("Die Challenge ist noch nicht gestartet.", NamedTextColor.RED));
+                                return;
+                            }
                             challengeController.stopChallenge();
                             sender.sendMessage(Component.text("Die Challenge wurde gestoppt.", NamedTextColor.GREEN));
                         },
@@ -54,6 +62,10 @@ public class CommandTimer extends QuickCommand {
         challengeController.challenge()
                 .ifPresentOrElse(
                         challenge -> {
+                            if(!challenge.started() | !challenge.paused()) {
+                                sender.sendMessage(Component.text("Die Challenge ist noch nicht gestartet.", NamedTextColor.RED));
+                                return;
+                            }
                             challenge.paused(true);
                             sender.sendMessage(Component.text("Die Challenge wurde pausiert.", NamedTextColor.GREEN));
                         },
@@ -67,6 +79,10 @@ public class CommandTimer extends QuickCommand {
         challengeController.challenge()
                 .ifPresentOrElse(
                         challenge -> {
+                            if(!challenge.started() || !challenge.paused()) {
+                                sender.sendMessage(Component.text("Die Challenge ist nicht pausiert.", NamedTextColor.RED));
+                                return;
+                            }
                             challenge.paused(false);
                             sender.sendMessage(Component.text("Die Challenge wurde fortgesetzt.", NamedTextColor.GREEN));
                         },
