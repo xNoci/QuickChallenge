@@ -29,6 +29,8 @@ public class QuickChallenge extends JavaPlugin {
 
         instance = this;
 
+        saveDefaultConfig();
+
         this.challengeController = new ChallengeController();
         this.challengeController.tryLoadChallenge();
 
@@ -57,6 +59,7 @@ public class QuickChallenge extends JavaPlugin {
         pluginManager.registerEvents(new PlayerMoveListener(challengeController), this);
         pluginManager.registerEvents(new BlockListener(challengeController), this);
         pluginManager.registerEvents(new ItemDropListener(challengeController), this);
+        pluginManager.registerEvents(new ServerListPingListener(getConfig()), this);
     }
 
     private void registerCommands() {
