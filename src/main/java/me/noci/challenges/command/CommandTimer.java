@@ -25,11 +25,11 @@ public class CommandTimer extends QuickCommand {
     @SubCommand(path = "start")
     @CommandPermission("quickchallenge.timer.start")
     public void start(Player player) {
-        challengeController.fromEntity(player)
+        challengeController.challenge()
                 .ifPresentOrElse(
                         challenge -> {
-                            challengeController.startChallenge(challenge);
                             player.sendMessage(Component.text("Die Challenge wurde gestartet.", NamedTextColor.GREEN));
+                            challengeController.startChallenge();
                         },
                         () -> player.sendMessage(Component.text("Du bist in keiner Challenge die gestartet werden kann.", NamedTextColor.RED))
                 );
@@ -38,11 +38,11 @@ public class CommandTimer extends QuickCommand {
     @SubCommand(path = "stop")
     @CommandPermission("quickchallenge.timer.stop")
     public void stop(Player player) {
-        challengeController.fromEntity(player)
+        challengeController.challenge()
                 .ifPresentOrElse(
                         challenge -> {
-                            challengeController.stopChallenge(challenge);
                             player.sendMessage(Component.text("Die Challenge wurde gestoppt.", NamedTextColor.GREEN));
+                            challengeController.stopChallenge();
                         },
                         () -> player.sendMessage(Component.text("Du bist in keiner Challenge die gestoppt werden kann.", NamedTextColor.RED))
                 );
@@ -51,7 +51,7 @@ public class CommandTimer extends QuickCommand {
     @SubCommand(path = "pause")
     @CommandPermission("quickchallenge.timer.pause")
     public void pause(Player player) {
-        challengeController.fromEntity(player)
+        challengeController.challenge()
                 .ifPresentOrElse(
                         challenge -> {
                             challenge.paused(true);
@@ -64,7 +64,7 @@ public class CommandTimer extends QuickCommand {
     @SubCommand(path = "resume")
     @CommandPermission("quickchallenge.timer.resume")
     public void resume(Player player) {
-        challengeController.fromEntity(player)
+        challengeController.challenge()
                 .ifPresentOrElse(
                         challenge -> {
                             challenge.paused(false);

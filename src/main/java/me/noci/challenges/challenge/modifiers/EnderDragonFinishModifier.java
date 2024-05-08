@@ -34,7 +34,6 @@ public class EnderDragonFinishModifier implements ChallengeModifier {
 
         enderDragonChangePhaseEvent = Events.subscribe(EnderDragonChangePhaseEvent.class)
                 .filter(event -> !challenge.paused())
-                .filter(event -> challenge.isInChallenge(event.getEntity()))
                 .filter(event -> event.getNewPhase() == EnderDragon.Phase.DYING)
                 .handle(event -> {
                     challenge.paused(true);

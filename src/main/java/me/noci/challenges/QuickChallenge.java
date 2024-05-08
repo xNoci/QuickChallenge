@@ -1,12 +1,12 @@
 package me.noci.challenges;
 
 import io.papermc.lib.PaperLib;
+import lombok.Getter;
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.command.CommandAllItems;
 import me.noci.challenges.command.CommandChallenge;
 import me.noci.challenges.command.CommandTimer;
 import me.noci.challenges.listeners.*;
-import me.noci.challenges.worlds.WorldController;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
@@ -15,7 +15,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class QuickChallenge extends JavaPlugin {
 
-    private WorldController worldController;
+    @Getter private static QuickChallenge instance;
+
     private ChallengeController challengeController;
 
     @Override
@@ -26,9 +27,10 @@ public class QuickChallenge extends JavaPlugin {
             return;
         }
 
-        this.worldController = new WorldController();
-        this.challengeController = new ChallengeController(worldController);
-        this.challengeController.loadChallenges();
+        instance = this;
+
+        this.challengeController = new ChallengeController();
+        this.challengeController.tryLoadChallenge();
 
         registerListener();
         registerCommands();
@@ -40,16 +42,14 @@ public class QuickChallenge extends JavaPlugin {
         this.challengeController.stopChallenges();
         this.challengeController.save();
         Bukkit.getOnlinePlayers().forEach(player -> player.kick(kickComponent));
-        this.worldController.deleteWorlds();
     }
 
     private void registerListener() {
         PluginManager pluginManager = getServer().getPluginManager();
 
         pluginManager.registerEvents(new PlayerJoinListener(), this);
-        pluginManager.registerEvents(new PlayerQuitListener(challengeController), this);
+        pluginManager.registerEvents(new PlayerQuitListener(), this);
         pluginManager.registerEvents(new ResourcePackStatusListener(), this);
-        pluginManager.registerEvents(new PlayerPortalListener(worldController), this);
         pluginManager.registerEvents(new EnityTargetListener(challengeController), this);
         pluginManager.registerEvents(new EntityDamageListener(challengeController), this);
         pluginManager.registerEvents(new EntityMoveListener(challengeController), this);
@@ -57,9 +57,6 @@ public class QuickChallenge extends JavaPlugin {
         pluginManager.registerEvents(new PlayerMoveListener(challengeController), this);
         pluginManager.registerEvents(new BlockListener(challengeController), this);
         pluginManager.registerEvents(new ItemDropListener(challengeController), this);
-        pluginManager.registerEvents(new PlayerTeleportListener(challengeController), this);
-        pluginManager.registerEvents(new PlayerRespawnListener(challengeController), this);
-        pluginManager.registerEvents(new EnderChestListener(challengeController), this);
     }
 
     private void registerCommands() {

@@ -28,10 +28,9 @@ public class CommandAllItems extends QuickCommand {
     @SubCommand(path = "skip")
     @CommandPermission("quickchallenge.allitems.skip")
     public void skip(Player player) {
-
-        Challenge challenge = challengeController.fromEntity(player).orElse(null);
+        Challenge challenge = challengeController.challenge().orElse(null);
         if (challenge == null) {
-            player.sendMessage(Component.text("Du bist aktuell in keiner Challenge.", NamedTextColor.RED));
+            player.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED));
             return;
         }
 
@@ -45,10 +44,9 @@ public class CommandAllItems extends QuickCommand {
     @SubCommand(path = "skip")
     @CommandPermission("quickchallenge.allitems.skip")
     public void skip(Player player, int amount) {
-
-        Challenge challenge = challengeController.fromEntity(player).orElse(null);
+        Challenge challenge = challengeController.challenge().orElse(null);
         if (challenge == null) {
-            player.sendMessage(Component.text("Du bist aktuell in keiner Challenge.", NamedTextColor.RED));
+            player.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED));
             return;
         }
 
@@ -62,16 +60,15 @@ public class CommandAllItems extends QuickCommand {
     @SubCommand(path = "reset")
     @CommandPermission("quickchallenge.allitems.reset")
     public void reset(Player player) {
-
-        Challenge challenge = challengeController.fromEntity(player).orElse(null);
+        Challenge challenge = challengeController.challenge().orElse(null);
         if (challenge == null) {
-            player.sendMessage(Component.text("Du bist aktuell in keiner Challenge.", NamedTextColor.RED));
+            player.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED));
             return;
         }
 
         challenge.modifier(AllItemModifier.class)
                 .ifPresentOrElse(
-                        allItemModifier -> allItemModifier.reset(),
+                        AllItemModifier::reset,
                         () -> player.sendMessage(Component.text("Deine aktuelle Challenge besitzt kein AllItems Modifier.", NamedTextColor.RED))
                 );
     }

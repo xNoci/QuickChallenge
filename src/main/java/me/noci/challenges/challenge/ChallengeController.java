@@ -1,152 +1,128 @@
 package me.noci.challenges.challenge;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
 import lombok.SneakyThrows;
-import me.noci.challenges.ExitStrategy;
+import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.serializ.ChallengeSerializer;
-import me.noci.challenges.worlds.ChallengeWorld;
-import me.noci.challenges.worlds.WorldController;
 import me.noci.quickutilities.utils.BukkitUnit;
 import me.noci.quickutilities.utils.Scheduler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Entity;
+import org.checkerframework.checker.units.qual.C;
 import org.jetbrains.annotations.Nullable;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 public class ChallengeController {
 
     private static final Logger LOGGER = LogManager.getLogger("Challenge Controller");
-    private static final Path CHALLENGE_FOLDER = Bukkit.getPluginsFolder().toPath().resolve("challenges");
-    private static final String CHALLENGE_FILE_EXTENSION = ".qcc";
+    private static final Path CHALLENGE_FILE = QuickChallenge.instance().getDataFolder().toPath().resolve("challenge.qcc");
 
-    private final HashMap<UUID, Challenge> challenges = Maps.newHashMap();
-    private final WorldController worldController;
+    @Nullable private Challenge challenge;
 
-    public ChallengeController(WorldController worldController) {
-        this.worldController = worldController;
-        Scheduler.repeat(1, BukkitUnit.TICKS, () -> challenges().stream().filter(Challenge::started).forEach(Challenge::tickChallengeModifiers));
+    public ChallengeController() {
+        Scheduler.repeat(1, BukkitUnit.TICKS, () -> challenge().filter(Challenge::started).ifPresent(Challenge::tickChallengeModifiers));
     }
 
-    public Optional<Challenge> fromEntity(Entity entity) {
-        return challenges().stream().
-                filter(
-                        challenge -> challenge.challengeWorld().map(challengeWorld -> challengeWorld.hasEntity(entity)).orElse(false)
-                ).findFirst();
+    public Optional<Challenge> challenge() {
+        return Optional.ofNullable(challenge);
     }
 
-    public void startChallenge(Challenge challenge) {
+    public boolean shouldCancelEvents() {
+        return challenge == null || !challenge.started() || challenge.paused();
+    }
+
+    public boolean isStarted() {
+        return challenge().map(Challenge::started).orElse(false);
+    }
+
+    public void startChallenge() {
+        if (challenge == null || challenge.started()) {
+            return;
+        }
+
         challenge.initialiseChallengeModifiers();
-
-        challenge.challengeWorld()
-                .map(ChallengeWorld::players)
-                .ifPresent(players -> players.forEach(challenge::join));
 
         challenge.started(true);
         challenge.paused(false);
     }
 
-    public void stopChallenge(Challenge challenge) {
+    public void stopChallenge() {
+        if (challenge == null || !challenge.started()) {
+            return;
+        }
         challenge.stopChallengeModifiers();
 
         challenge.started(false);
         challenge.paused(true);
     }
 
-    public List<Challenge> challenges() {
-        return ImmutableList.copyOf(challenges.values());
-    }
+    public void create(List<ChallengeModifier> modifiers) {
+        if (challenge != null) {
+            LOGGER.info("Could not create challenge. A challenge already exists.");
+            return;
+        }
+        this.challenge = new Challenge(modifiers.toArray(ChallengeModifier[]::new));
+        LOGGER.info("Challenge created.");
 
-    public Challenge create(List<ChallengeModifier> modifiers, ExitStrategy exitStrategy) {
-        UUID handle = UUID.randomUUID();
-        LOGGER.info("Creating challenge with handle '%s'...".formatted(handle.toString()));
-        LOGGER.info("using ExitStrategy '%s'".formatted(exitStrategy.name()));
-        ChallengeWorld challengeWorld = worldController.generateChallengeWorld(handle, exitStrategy);
-        Challenge challenge = new Challenge(handle, exitStrategy, challengeWorld, modifiers.toArray(ChallengeModifier[]::new));
-
-        challenges.put(handle, challenge);
-        return challenge;
     }
 
     @SneakyThrows
-    public void delete(Challenge challenge) {
-        Objects.requireNonNull(challenge, "Challenge cannot be null");
-
-        UUID handle = challenge.handle();
+    public boolean delete() {
+        if (challenge == null) {
+            return false;
+        }
         challenge.stopChallengeModifiers();
+        Files.deleteIfExists(CHALLENGE_FILE);
+        challenge = null;
 
-        worldController.deleteChallengeWorld(handle);
-        challenges.remove(handle);
-        Files.deleteIfExists(challengeFile(challenge));
+        return true;
     }
 
     public void stopChallenges() {
         LOGGER.info("Stopping challenges...");
         long start = System.currentTimeMillis();
-
-        challenges().forEach(Challenge::stopChallengeModifiers);
-
+        challenge().ifPresent(Challenge::stopChallengeModifiers);
         LOGGER.info("Challenges stopped. Took %s ms".formatted(System.currentTimeMillis() - start));
     }
 
+    @SneakyThrows
     public void save() {
+        if (challenge == null) return;
         LOGGER.info("Saving challenges to disk...");
         long start = System.currentTimeMillis();
 
-        challenges().stream()
-                .filter(challenge -> challenge.exitStrategy() == ExitStrategy.SAVE_TO_FILE)
-                .forEach(this::save);
+        byte[] data = ChallengeSerializer.serialize(challenge);
+        Files.createDirectories(CHALLENGE_FILE.getParent());
+        Files.write(CHALLENGE_FILE, data);
 
-        LOGGER.info("Challenges saved to disk. Took %s ms".formatted(System.currentTimeMillis() - start));
+        LOGGER.info("Challenge saved to disk. Took %s ms".formatted(System.currentTimeMillis() - start));
     }
 
 
     @SneakyThrows
-    public void loadChallenges() {
-        LOGGER.info("Loading challenges from file...");
-        long start = System.currentTimeMillis();
-
-        Files.createDirectories(CHALLENGE_FOLDER);
-        try (Stream<Path> challenges = Files.list(CHALLENGE_FOLDER)) {
-            challenges.filter(Files::isRegularFile)
-                    .map(this::load)
-                    .filter(Objects::nonNull)
-                    .forEach(challenge -> this.challenges.put(challenge.handle(), challenge));
+    public void tryLoadChallenge() {
+        if (!Files.exists(CHALLENGE_FILE)) {
+            LOGGER.info("Cannot load challenge. Challenge wasn't created yet.");
+            return;
         }
 
-        LOGGER.info("Challenges loaded from file. Took %s ms".formatted(System.currentTimeMillis() - start));
+        LOGGER.info("Loading challenge from file...");
+        long start = System.currentTimeMillis();
+
+        Optional<Challenge> challenge = ChallengeSerializer.read(Files.readAllBytes(CHALLENGE_FILE));
+        if (challenge.isEmpty()) {
+            LOGGER.info("Failed to load challenge from file.");
+            return;
+        }
+
+        this.challenge = challenge.get();
+        LOGGER.info("Challenge successfully loaded from file. Took %s ms".formatted(System.currentTimeMillis() - start));
     }
 
-    @SneakyThrows
-    private void save(Challenge challenge) {
-        Path filePath = challengeFile(challenge);
-        byte[] data = ChallengeSerializer.serialize(challenge);
-        Files.write(filePath, data);
-        LOGGER.info("Saved challenge '%s' to file path '%s'.".formatted(challenge.handle(), filePath.toString()));
-    }
-
-    @SneakyThrows
-    private @Nullable Challenge load(Path path) {
-        Optional<Challenge> challenge = ChallengeSerializer.read(Files.readAllBytes(path));
-        challenge.ifPresent(value -> {
-            ChallengeWorld world = worldController.generateChallengeWorld(value.handle(), value.exitStrategy());
-            value.challengeWorld(world);
-        });
-
-        challenge.ifPresent(value -> LOGGER.info("Loaded challenge '%s' from file.".formatted(value.handle())));
-
-        return challenge.orElse(null);
-    }
-
-    private Path challengeFile(Challenge challenge) {
-        return CHALLENGE_FOLDER.resolve(challenge.handle().toString() + CHALLENGE_FILE_EXTENSION);
-    }
 
 }

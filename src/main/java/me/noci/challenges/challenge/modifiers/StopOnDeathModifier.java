@@ -31,7 +31,6 @@ public class StopOnDeathModifier implements ChallengeModifier {
 
         playerDeathEvent = Events.subscribe(PlayerDeathEvent.class)
                 .filter(event -> !challenge.paused())
-                .filter(event -> challenge.isInChallenge(event.getPlayer()))
                 .handle(event -> challenge.paused(true));
     }
 

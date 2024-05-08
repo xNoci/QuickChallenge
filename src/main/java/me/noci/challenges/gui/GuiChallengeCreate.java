@@ -3,7 +3,6 @@ package me.noci.challenges.gui;
 import com.cryptomorin.xseries.XMaterial;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import me.noci.challenges.ExitStrategy;
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.modifiers.registry.ModifierCreator;
@@ -49,7 +48,7 @@ public class GuiChallengeCreate extends PagedQuickGUIProvider implements Modifie
                     event.getPlayer().closeInventory();
 
                     List<ChallengeModifier> modifiers = modifiersToAdd.stream().map(ModifierCreator::create).toList();
-                    challengeController.create(modifiers, ExitStrategy.SAVE_TO_FILE);
+                    challengeController.create(modifiers);
                 });
 
         GuiItem cancel = new QuickItemStack(XMaterial.BARRIER.parseMaterial(), Component.text("Abbrechen", NamedTextColor.RED))

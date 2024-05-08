@@ -84,7 +84,6 @@ public class AllItemModifier implements ChallengeModifier {
         slotChangeEvent = Events.subscribe(PlayerInventorySlotChangeEvent.class)
                 .filter(event -> !challenge.paused())
                 .filter(event -> currentItem.matches(event.getNewItemStack()))
-                .filter(event -> challenge.isInChallenge(event.getPlayer()))
                 .handle(event -> tryPickupItem(challenge, event.getPlayer(), currentItem));
 
         if (inventoryClickEvent != null) {
@@ -104,7 +103,6 @@ public class AllItemModifier implements ChallengeModifier {
                 .filter(event -> event.getWhoClicked() instanceof Player)
                 .filter(event -> !challenge.paused())
                 .filter(event -> currentItem.matches(Require.nonNull(event.getCurrentItem())))
-                .filter(event -> challenge.isInChallenge(event.getWhoClicked()))
                 .handle(event -> tryPickupItem(challenge, (Player) event.getWhoClicked(), currentItem));
 
     }
@@ -257,7 +255,6 @@ public class AllItemModifier implements ChallengeModifier {
                 .map(viewer -> (Player) viewer)
                 .filter(filter)
                 .forEach(bossBar::removeViewer);
-
     }
 
 }

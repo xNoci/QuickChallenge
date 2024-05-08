@@ -1,6 +1,5 @@
 package me.noci.challenges.listeners;
 
-import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.ChallengeController;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,11 +15,7 @@ public class FoodLevelChangeListener implements Listener {
 
     @EventHandler
     public void handleFoodLevelChange(FoodLevelChangeEvent event) {
-        challengeController.fromEntity(event.getEntity())
-                .filter(Challenge::shouldCancelEvents)
-                .ifPresent(
-                        challenge -> event.setCancelled(true)
-                );
+        event.setCancelled(challengeController.shouldCancelEvents());
     }
 
 }

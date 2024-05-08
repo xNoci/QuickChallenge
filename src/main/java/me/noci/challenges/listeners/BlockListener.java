@@ -1,6 +1,5 @@
 package me.noci.challenges.listeners;
 
-import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.ChallengeController;
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
@@ -19,23 +18,13 @@ public class BlockListener implements Listener {
     @EventHandler
     public void handleBlockPlace(BlockPlaceEvent event) {
         if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
-
-        challengeController.fromEntity(event.getPlayer())
-                .filter(Challenge::shouldCancelEvents)
-                .ifPresent(
-                        challenge -> event.setCancelled(true)
-                );
+        event.setCancelled(challengeController.shouldCancelEvents());
     }
 
     @EventHandler
     public void handleBlockBreak(BlockBreakEvent event) {
         if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
-
-        challengeController.fromEntity(event.getPlayer())
-                .filter(Challenge::shouldCancelEvents)
-                .ifPresent(
-                        challenge -> event.setCancelled(true)
-                );
+        event.setCancelled(challengeController.shouldCancelEvents());
     }
 
 }

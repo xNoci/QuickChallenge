@@ -1,6 +1,5 @@
 package me.noci.challenges.listeners;
 
-import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.ChallengeController;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -27,11 +26,7 @@ public class PlayerMoveListener implements Listener {
             return;
         }
 
-        challengeController.fromEntity(event.getPlayer())
-                .filter(Challenge::shouldCancelEvents)
-                .ifPresent(
-                        challenge -> event.setCancelled(true)
-                );
+        event.setCancelled(challengeController.shouldCancelEvents());
     }
 
 }

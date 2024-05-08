@@ -1,6 +1,5 @@
 package me.noci.challenges.listeners;
 
-import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.ChallengeController;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,29 +17,17 @@ public class EntityDamageListener implements Listener {
 
     @EventHandler
     public void handleEntityDamage(EntityDamageEvent event) {
-        challengeController.fromEntity(event.getEntity())
-                .filter(Challenge::shouldCancelEvents)
-                .ifPresent(
-                        challenge -> event.setCancelled(true)
-                );
+        event.setCancelled(challengeController.shouldCancelEvents());
     }
 
     @EventHandler
     public void handleEntityDamageByEntity(EntityDamageByEntityEvent event) {
-        challengeController.fromEntity(event.getEntity())
-                .filter(Challenge::shouldCancelEvents)
-                .ifPresent(
-                        challenge -> event.setCancelled(true)
-                );
+        event.setCancelled(challengeController.shouldCancelEvents());
     }
 
     @EventHandler
     public void handleEntityDamageByBlock(EntityDamageByBlockEvent event) {
-        challengeController.fromEntity(event.getEntity())
-                .filter(Challenge::shouldCancelEvents)
-                .ifPresent(
-                        challenge -> event.setCancelled(true)
-                );
+        event.setCancelled(challengeController.shouldCancelEvents());
     }
 
 }
