@@ -21,6 +21,7 @@ import net.kyori.adventure.text.format.TextDecoration;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
@@ -133,7 +134,7 @@ public class AllItemModifier implements ChallengeModifier {
         return "All Items";
     }
 
-    private void tryPickupItem(Challenge challenge, Player collector, AllItem item) {
+    private void tryPickupItem(Challenge challenge, CommandSender collector, AllItem item) {
         if (allItemsCollected) return;
         if (item != currentItem) return;
         collectedItems.add(CollectedItem.now(item));
@@ -141,7 +142,7 @@ public class AllItemModifier implements ChallengeModifier {
         nextItem(challenge);
     }
 
-    public void skip(Challenge challenge, Player player) {
+    public void skip(Challenge challenge, CommandSender player) {
         if (allItemsCollected) return;
         collectedItems.add(CollectedItem.now(currentItem));
         notifyItemsCollected(challenge, player, currentItem, true);
@@ -198,7 +199,7 @@ public class AllItemModifier implements ChallengeModifier {
         }
     }
 
-    private static void notifyItemsCollected(Challenge challenge, Player collector, AllItem item, boolean skipped) {
+    private static void notifyItemsCollected(Challenge challenge, CommandSender collector, AllItem item, boolean skipped) {
         challenge.players().forEach(player -> player.playSound(player, Sound.BLOCK_NOTE_BLOCK_PLING, SoundCategory.MASTER, 1, 1));
 
         Component messageItemCollected;

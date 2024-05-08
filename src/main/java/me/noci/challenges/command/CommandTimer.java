@@ -24,53 +24,53 @@ public class CommandTimer extends QuickCommand {
 
     @SubCommand(path = "start")
     @CommandPermission("quickchallenge.timer.start")
-    public void start(Player player) {
+    public void start(CommandSender sender) {
         challengeController.challenge()
                 .ifPresentOrElse(
                         challenge -> {
-                            player.sendMessage(Component.text("Die Challenge wurde gestartet.", NamedTextColor.GREEN));
                             challengeController.startChallenge();
+                            sender.sendMessage(Component.text("Die Challenge wurde gestartet.", NamedTextColor.GREEN));
                         },
-                        () -> player.sendMessage(Component.text("Du bist in keiner Challenge die gestartet werden kann.", NamedTextColor.RED))
+                        () -> sender.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED))
                 );
     }
 
     @SubCommand(path = "stop")
     @CommandPermission("quickchallenge.timer.stop")
-    public void stop(Player player) {
+    public void stop(CommandSender sender) {
         challengeController.challenge()
                 .ifPresentOrElse(
                         challenge -> {
-                            player.sendMessage(Component.text("Die Challenge wurde gestoppt.", NamedTextColor.GREEN));
                             challengeController.stopChallenge();
+                            sender.sendMessage(Component.text("Die Challenge wurde gestoppt.", NamedTextColor.GREEN));
                         },
-                        () -> player.sendMessage(Component.text("Du bist in keiner Challenge die gestoppt werden kann.", NamedTextColor.RED))
+                        () -> sender.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED))
                 );
     }
 
     @SubCommand(path = "pause")
     @CommandPermission("quickchallenge.timer.pause")
-    public void pause(Player player) {
+    public void pause(CommandSender sender) {
         challengeController.challenge()
                 .ifPresentOrElse(
                         challenge -> {
                             challenge.paused(true);
-                            player.sendMessage(Component.text("Die Challenge wurde pausiert.", NamedTextColor.GREEN));
+                            sender.sendMessage(Component.text("Die Challenge wurde pausiert.", NamedTextColor.GREEN));
                         },
-                        () -> player.sendMessage(Component.text("Du bist in keiner Challenge die pausiert werden kann.", NamedTextColor.RED))
+                        () -> sender.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED))
                 );
     }
 
     @SubCommand(path = "resume")
     @CommandPermission("quickchallenge.timer.resume")
-    public void resume(Player player) {
+    public void resume(CommandSender sender) {
         challengeController.challenge()
                 .ifPresentOrElse(
                         challenge -> {
                             challenge.paused(false);
-                            player.sendMessage(Component.text("Die Challenge wurde fortgesetzt.", NamedTextColor.GREEN));
+                            sender.sendMessage(Component.text("Die Challenge wurde fortgesetzt.", NamedTextColor.GREEN));
                         },
-                        () -> player.sendMessage(Component.text("Du bist in keiner Challenge die fortgesetzt werden kann.", NamedTextColor.RED))
+                        () -> sender.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED))
                 );
     }
 

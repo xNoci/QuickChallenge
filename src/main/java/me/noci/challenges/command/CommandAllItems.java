@@ -27,49 +27,49 @@ public class CommandAllItems extends QuickCommand {
 
     @SubCommand(path = "skip")
     @CommandPermission("quickchallenge.allitems.skip")
-    public void skip(Player player) {
+    public void skip(CommandSender sender) {
         Challenge challenge = challengeController.challenge().orElse(null);
         if (challenge == null) {
-            player.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED));
+            sender.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED));
             return;
         }
 
         challenge.modifier(AllItemModifier.class)
                 .ifPresentOrElse(
-                        allItemModifier -> allItemModifier.skip(challenge, player),
-                        () -> player.sendMessage(Component.text("Deine aktuelle Challenge besitzt kein AllItems Modifier.", NamedTextColor.RED))
+                        allItemModifier -> allItemModifier.skip(challenge, sender),
+                        () -> sender.sendMessage(Component.text("Deine aktuelle Challenge besitzt kein AllItems Modifier.", NamedTextColor.RED))
                 );
     }
 
     @SubCommand(path = "skip")
     @CommandPermission("quickchallenge.allitems.skip")
-    public void skip(Player player, int amount) {
+    public void skip(CommandSender sender, int amount) {
         Challenge challenge = challengeController.challenge().orElse(null);
         if (challenge == null) {
-            player.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED));
+            sender.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED));
             return;
         }
 
         challenge.modifier(AllItemModifier.class)
                 .ifPresentOrElse(
-                        allItemModifier -> IntStream.range(0, amount).forEach(i -> allItemModifier.skip(challenge, player)),
-                        () -> player.sendMessage(Component.text("Deine aktuelle Challenge besitzt kein AllItems Modifier.", NamedTextColor.RED))
+                        allItemModifier -> IntStream.range(0, amount).forEach(i -> allItemModifier.skip(challenge, sender)),
+                        () -> sender.sendMessage(Component.text("Deine aktuelle Challenge besitzt kein AllItems Modifier.", NamedTextColor.RED))
                 );
     }
 
     @SubCommand(path = "reset")
     @CommandPermission("quickchallenge.allitems.reset")
-    public void reset(Player player) {
+    public void reset(CommandSender sender) {
         Challenge challenge = challengeController.challenge().orElse(null);
         if (challenge == null) {
-            player.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED));
+            sender.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED));
             return;
         }
 
         challenge.modifier(AllItemModifier.class)
                 .ifPresentOrElse(
                         AllItemModifier::reset,
-                        () -> player.sendMessage(Component.text("Deine aktuelle Challenge besitzt kein AllItems Modifier.", NamedTextColor.RED))
+                        () -> sender.sendMessage(Component.text("Deine aktuelle Challenge besitzt kein AllItems Modifier.", NamedTextColor.RED))
                 );
     }
 
