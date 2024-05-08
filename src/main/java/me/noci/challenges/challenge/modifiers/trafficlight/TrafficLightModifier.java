@@ -64,7 +64,7 @@ public class TrafficLightModifier implements ChallengeModifier {
 
     @Override
     public void onInitialise(Logger logger, Challenge challenge) {
-        logger.info("Traffic Light is set to %s, next action in %s ticks; Green Duration: %s; Yellow Duration: %s, Red Duration: %s".formatted(lightStatus, nextAction, greenDuration, yellowDuration, redDuration));
+        logger.info("Traffic Light is set to {}, next action in {} ticks; Green Duration: {}; Yellow Duration: {}, Red Duration: {}", lightStatus, nextAction, greenDuration, yellowDuration, redDuration);
         lastLocations.clear();
     }
 
@@ -109,7 +109,7 @@ public class TrafficLightModifier implements ChallengeModifier {
             }
 
             players.forEach(player -> player.playSound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 5, 2));
-            logger.info("Switched traffic light to %s, next phase %s in %s ticks".formatted(lightStatus, EnumUtils.next(lightStatus), nextAction));
+            logger.info("Switched traffic light to {}, next phase {} in {} ticks", lightStatus, EnumUtils.next(lightStatus), nextAction);
         }
 
         if (!challenge.paused()) {

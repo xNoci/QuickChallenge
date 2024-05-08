@@ -38,11 +38,11 @@ public class Challenge implements Comparable<Challenge> {
         long start = System.currentTimeMillis();
         LOGGER.info("Initialising challenge modifiers..");
         modifiers.forEach(modifier -> {
-            LOGGER.info("Initialising challenge modifier '%s'...".formatted(modifier.name()));
+            LOGGER.info("Initialising challenge modifier '{}'...", modifier.name());
             modifier.onInitialise(LOGGER, this);
         });
 
-        LOGGER.info("Challenge modifiers initialised. Took %s ms".formatted(System.currentTimeMillis() - start));
+        LOGGER.info("Challenge modifiers initialised. Took {} ms", System.currentTimeMillis() - start);
     }
 
     public void stopChallengeModifiers() {
@@ -51,10 +51,10 @@ public class Challenge implements Comparable<Challenge> {
 
         modifiers.forEach(modifier -> {
             modifier.onStop(LOGGER, this);
-            LOGGER.info("Stopped challenge modifier '%s'".formatted(modifier.name()));
+            LOGGER.info("Stopped challenge modifier '{}'", modifier.name());
         });
 
-        LOGGER.info("Challenge modifiers stopped. Took %s ms".formatted(System.currentTimeMillis() - start));
+        LOGGER.info("Challenge modifiers stopped. Took {} ms", System.currentTimeMillis() - start);
     }
 
     public void tickChallengeModifiers() {

@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ChallengeController {
 
@@ -85,7 +86,7 @@ public class ChallengeController {
         LOGGER.info("Stopping challenges...");
         long start = System.currentTimeMillis();
         challenge().ifPresent(Challenge::stopChallengeModifiers);
-        LOGGER.info("Challenges stopped. Took %s ms".formatted(System.currentTimeMillis() - start));
+        LOGGER.info("Challenges stopped. Took {} ms", System.currentTimeMillis() - start);
     }
 
     @SneakyThrows
@@ -98,7 +99,7 @@ public class ChallengeController {
         Files.createDirectories(CHALLENGE_FILE.getParent());
         Files.write(CHALLENGE_FILE, data);
 
-        LOGGER.info("Challenge saved to disk. Took %s ms".formatted(System.currentTimeMillis() - start));
+        LOGGER.info("Challenge saved to disk. Took {} ms", System.currentTimeMillis() - start);
     }
 
 
@@ -119,7 +120,9 @@ public class ChallengeController {
         }
 
         this.challenge = challenge.get();
-        LOGGER.info("Challenge successfully loaded from file. Took %s ms".formatted(System.currentTimeMillis() - start));
+        var modifiers = this.challenge.modifiers();
+        LOGGER.info("Challenge successfully loaded from file. Took {} ms", System.currentTimeMillis() - start);
+        LOGGER.info("- With {} modifier(s): {}", modifiers.size(), modifiers.stream().map(ChallengeModifier::name).collect(Collectors.joining(", ")));
     }
 
 
