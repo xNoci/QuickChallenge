@@ -10,16 +10,15 @@ import java.util.function.Function;
 
 public class ObjectSerializer<T> {
 
-    public static <V> ObjectSerializer.Builder<V> of(Class<V> type) {
-        return new Builder<>();
-    }
-
     private final List<ByteWriter<T, ?>> serializers;
     private final ByteReader<T> reader;
-
     private ObjectSerializer(List<ByteWriter<T, ?>> serializers, ByteReader<T> reader) {
         this.serializers = serializers;
         this.reader = reader;
+    }
+
+    public static <V> ObjectSerializer.Builder<V> of(Class<V> type) {
+        return new Builder<>();
     }
 
     public byte[] serialize(T value) {
@@ -35,6 +34,12 @@ public class ObjectSerializer<T> {
 
     private int capacity(T value) {
         return serializers.stream().mapToInt(writer -> writer.byteSize(value)).sum();
+    }
+
+    @FunctionalInterface
+    public interface ByteReader<T> {
+        @Nullable
+        T read(ByteBuffer buffer);
     }
 
     public static class Builder<T> {
@@ -69,11 +74,6 @@ public class ObjectSerializer<T> {
         public int byteSize(T value) {
             return serializer().byteSize(mapper.apply(value));
         }
-    }
-
-    @FunctionalInterface
-    public interface ByteReader<T> {
-        @Nullable T read(ByteBuffer buffer);
     }
 
 }

@@ -17,6 +17,10 @@ public final class ResourcePack {
             .append(Component.text(" Used for some challenges", TextColor.color(52, 158, 79)))
             .asComponent();
 
+    private static Component value(char fontChar, @KeyPattern String font) {
+        return Component.text(fontChar).font(Key.key(font));
+    }
+
     public static class TrafficLight {
         private static final String FONT_NAME = "traffic_light";
 
@@ -36,10 +40,6 @@ public final class ResourcePack {
             return value((char) value, FONT_NAME);
         }
 
-    }
-
-    private static Component value(char fontChar, @KeyPattern String font) {
-        return Component.text(fontChar).font(Key.key(font));
     }
 
 }

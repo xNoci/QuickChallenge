@@ -76,6 +76,39 @@ public class AllItemModifier implements ChallengeModifier {
         this.bossBar = BossBar.bossBar(itemDisplay(), 0, BossBar.Color.WHITE, BossBar.Overlay.PROGRESS);
     }
 
+    private static void notifyItemsCollected(Challenge challenge, CommandSender collector, AllItem item, boolean skipped) {
+        challenge.players().forEach(player -> player.playSound(player, Sound.BLOCK_NOTE_BLOCK_PLING, SoundCategory.MASTER, 1, 1));
+
+        Component messageItemCollected;
+        if (!skipped) {
+            messageItemCollected = Component
+                    .text("Der Spieler ", Colors.GRAY)
+                    .append(collector.name().color(NamedTextColor.AQUA))
+                    .append(Component.text(" hat das Item ", Colors.GRAY))
+                    .append(ColorUtils.gradientText(item.itemName(), Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_ACCENT_COLOR))
+                    .append(Component.text(" aufgesammelt.", Colors.GRAY))
+                    .asComponent();
+        } else {
+            messageItemCollected = Component
+                    .text("Das Item ", Colors.GRAY)
+                    .append(ColorUtils.gradientText(item.itemName(), Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_ACCENT_COLOR))
+                    .append(Component.text(" wurde von ", Colors.GRAY))
+                    .append(collector.name().color(NamedTextColor.AQUA))
+                    .append(Component.text(" übersprungen.", Colors.GRAY));
+        }
+
+        challenge.broadcast(messageItemCollected);
+    }
+
+    private static void broadcastNextItem(Challenge challenge, AllItem item) {
+        Component messageNewItem = Component
+                .text("Das nächste Item ist: ", Colors.GRAY)
+                .append(ColorUtils.gradientText(item.itemName(), Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_ACCENT_COLOR))
+                .asComponent();
+
+        challenge.broadcast(messageNewItem);
+    }
+
     @Override
     public void onInitialise(Logger logger, Challenge challenge) {
         if (slotChangeEvent != null) {
@@ -197,39 +230,6 @@ public class AllItemModifier implements ChallengeModifier {
                 }
             }
         }
-    }
-
-    private static void notifyItemsCollected(Challenge challenge, CommandSender collector, AllItem item, boolean skipped) {
-        challenge.players().forEach(player -> player.playSound(player, Sound.BLOCK_NOTE_BLOCK_PLING, SoundCategory.MASTER, 1, 1));
-
-        Component messageItemCollected;
-        if (!skipped) {
-            messageItemCollected = Component
-                    .text("Der Spieler ", Colors.GRAY)
-                    .append(collector.name().color(NamedTextColor.AQUA))
-                    .append(Component.text(" hat das Item ", Colors.GRAY))
-                    .append(ColorUtils.gradientText(item.itemName(), Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_ACCENT_COLOR))
-                    .append(Component.text(" aufgesammelt.", Colors.GRAY))
-                    .asComponent();
-        } else {
-            messageItemCollected = Component
-                    .text("Das Item ", Colors.GRAY)
-                    .append(ColorUtils.gradientText(item.itemName(), Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_ACCENT_COLOR))
-                    .append(Component.text(" wurde von ", Colors.GRAY))
-                    .append(collector.name().color(NamedTextColor.AQUA))
-                    .append(Component.text(" übersprungen.", Colors.GRAY));
-        }
-
-        challenge.broadcast(messageItemCollected);
-    }
-
-    private static void broadcastNextItem(Challenge challenge, AllItem item) {
-        Component messageNewItem = Component
-                .text("Das nächste Item ist: ", Colors.GRAY)
-                .append(ColorUtils.gradientText(item.itemName(), Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_ACCENT_COLOR))
-                .asComponent();
-
-        challenge.broadcast(messageNewItem);
     }
 
     public void reset() {

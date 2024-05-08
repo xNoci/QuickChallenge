@@ -26,15 +26,15 @@ public class GuiAcceptDialog extends QuickGUIProvider {
     private final GuiItem declineItem;
     private final GuiItem descriptionItem;
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
     private GuiAcceptDialog(Component title, GuiItem acceptItem, GuiItem declineItem, GuiItem descriptionItem) {
         super(title, 9 * 3);
         this.acceptItem = acceptItem;
         this.declineItem = declineItem;
         this.descriptionItem = descriptionItem;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     @Override
@@ -44,6 +44,20 @@ public class GuiAcceptDialog extends QuickGUIProvider {
         inventoryContent.setItem(Slot.getSlot(2, 3), acceptItem);
         inventoryContent.setItem(Slot.getSlot(2, 5), descriptionItem);
         inventoryContent.setItem(Slot.getSlot(2, 7), declineItem);
+    }
+
+    @Getter
+    public enum DialogType {
+        YES_NO(Component.text("Ja", NamedTextColor.GREEN, TextDecoration.BOLD), Component.text("Nein", NamedTextColor.RED, TextDecoration.BOLD)),
+        ACCEPT_DECLINE(Component.text("Annehmen", NamedTextColor.GREEN, TextDecoration.BOLD), Component.text("Ablehnen", NamedTextColor.RED, TextDecoration.BOLD));
+
+        private final Component acceptTitle;
+        private final Component declineTitle;
+
+        DialogType(Component acceptTitle, Component declineTitle) {
+            this.acceptTitle = acceptTitle;
+            this.declineTitle = declineTitle;
+        }
     }
 
     public static class Builder {
@@ -124,20 +138,6 @@ public class GuiAcceptDialog extends QuickGUIProvider {
             };
         }
 
-    }
-
-    @Getter
-    public enum DialogType {
-        YES_NO(Component.text("Ja", NamedTextColor.GREEN, TextDecoration.BOLD), Component.text("Nein", NamedTextColor.RED, TextDecoration.BOLD)),
-        ACCEPT_DECLINE(Component.text("Annehmen", NamedTextColor.GREEN, TextDecoration.BOLD), Component.text("Ablehnen", NamedTextColor.RED, TextDecoration.BOLD));
-
-        private final Component acceptTitle;
-        private final Component declineTitle;
-
-        DialogType(Component acceptTitle, Component declineTitle) {
-            this.acceptTitle = acceptTitle;
-            this.declineTitle = declineTitle;
-        }
     }
 
 

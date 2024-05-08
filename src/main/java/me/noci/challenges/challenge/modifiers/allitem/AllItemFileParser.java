@@ -32,6 +32,11 @@ public class AllItemFileParser {
         parser.writeToFile("allItem_gen/all_items.json", fontFile);
     }
 
+    private static String stringOrNull(String string) {
+        if (string == null || string.isBlank()) return null;
+        return string;
+    }
+
     @SneakyThrows
     private void writeToFile(String fileName, String data) {
         Path path = Path.of(fileName);
@@ -150,11 +155,6 @@ public class AllItemFileParser {
 
     private record ItemData(String enumName, String bukkitMaterialName, String displayName, String fileName,
                             @Nullable String potionType, @Nullable String translationKey) {
-    }
-
-    private static String stringOrNull(String string) {
-        if (string == null || string.isBlank()) return null;
-        return string;
     }
 
 }

@@ -28,7 +28,7 @@ public class CommandTimer extends QuickCommand {
         challengeController.challenge()
                 .ifPresentOrElse(
                         challenge -> {
-                            if(challenge.started()) {
+                            if (challenge.started()) {
                                 sender.sendMessage(Component.text("Die Challenge ist bereits gestartet.", NamedTextColor.RED));
                                 return;
                             }
@@ -45,7 +45,7 @@ public class CommandTimer extends QuickCommand {
         challengeController.challenge()
                 .ifPresentOrElse(
                         challenge -> {
-                            if(!challenge.started()) {
+                            if (!challenge.started()) {
                                 sender.sendMessage(Component.text("Die Challenge ist noch nicht gestartet.", NamedTextColor.RED));
                                 return;
                             }
@@ -62,7 +62,7 @@ public class CommandTimer extends QuickCommand {
         challengeController.challenge()
                 .ifPresentOrElse(
                         challenge -> {
-                            if(!challenge.started() | !challenge.paused()) {
+                            if (!challenge.started() | !challenge.paused()) {
                                 sender.sendMessage(Component.text("Die Challenge ist noch nicht gestartet.", NamedTextColor.RED));
                                 return;
                             }
@@ -79,7 +79,7 @@ public class CommandTimer extends QuickCommand {
         challengeController.challenge()
                 .ifPresentOrElse(
                         challenge -> {
-                            if(!challenge.started() || !challenge.paused()) {
+                            if (!challenge.started() || !challenge.paused()) {
                                 sender.sendMessage(Component.text("Die Challenge ist nicht pausiert.", NamedTextColor.RED));
                                 return;
                             }

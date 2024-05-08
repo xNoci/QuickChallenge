@@ -82,6 +82,13 @@ public class ModifierRegistry {
         return ImmutableList.copyOf(MODIFIERS);
     }
 
+    @FunctionalInterface
+    private interface ModifierCreateGuiSupplier<T extends ChallengeModifier> {
+
+        ModifierCreateGui<T> get(GuiProvider parentGui, Consumer<Supplier<T>> onModifierCreate);
+
+    }
+
     public static class RegisteredModifier<T extends ChallengeModifier> {
 
         @Getter private final Class<T> type;
@@ -100,13 +107,6 @@ public class ModifierRegistry {
 
             onModifierAdd.accept(creatorAddProvider, player);
         }
-    }
-
-    @FunctionalInterface
-    private interface ModifierCreateGuiSupplier<T extends ChallengeModifier> {
-
-        ModifierCreateGui<T> get(GuiProvider parentGui, Consumer<Supplier<T>> onModifierCreate);
-
     }
 
 
