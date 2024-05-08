@@ -38,19 +38,12 @@ public class ChallengeSerializer {
                         .layout(AllItemModifier.SERIALIZER, challenge -> challenge.modifier(AllItemModifier.class)),
 
                 buffer -> {
-                    Optional<StopOnDeathModifier> stopOnDeathModifier = StopOnDeathModifier.SERIALIZER.read(buffer);
-                    Optional<TimerModifier> timerModifier = TimerModifier.SERIALIZER.read(buffer);
-                    Optional<TrafficLightModifier> trafficLightModifier = TrafficLightModifier.SERIALIZER.read(buffer);
-                    Optional<EnderDragonFinishModifier> enderDragonFinishModifier = EnderDragonFinishModifier.SERIALIZER.read(buffer);
-                    Optional<AllItemModifier> allItems = AllItemModifier.SERIALIZER.read(buffer);
-
                     List<ChallengeModifier> challengeModifiers = Lists.newArrayList();
-                    stopOnDeathModifier.ifPresent(challengeModifiers::add);
-                    timerModifier.ifPresent(challengeModifiers::add);
-                    trafficLightModifier.ifPresent(challengeModifiers::add);
-                    enderDragonFinishModifier.ifPresent(challengeModifiers::add);
-                    allItems.ifPresent(challengeModifiers::add);
-
+                    StopOnDeathModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    TimerModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    TrafficLightModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    EnderDragonFinishModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    AllItemModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
 
                     return new Challenge(challengeModifiers);
                 }
