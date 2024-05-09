@@ -38,10 +38,9 @@ public class EnderDragonFinishModifier implements ChallengeModifier {
                 .handle(event -> {
                     challenge.paused(true);
 
-                    Component message = challenge.modifier(TimerModifier.class)
-                            .map(TimerModifier::playedTimeAsString)
+                    Component message = challenge.modifier(TimerModifier.class, TimerModifier::playedTimeAsString)
                             .map(timePlayed -> Component.text("Die Challenge wurde nach %s erfolgreich beendet.".formatted(timePlayed), NamedTextColor.GREEN))
-                            .orElse(Component.text("Die Challenge wurde erfolgreich beendet", NamedTextColor.GREEN));
+                            .orElse(Component.text("Die Challenge wurde erfolgreich beendet.", NamedTextColor.GREEN));
 
                     challenge.broadcast(message);
                 });

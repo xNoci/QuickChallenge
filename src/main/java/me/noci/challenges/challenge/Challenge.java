@@ -17,6 +17,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
 
 public class Challenge implements Comparable<Challenge> {
 
@@ -69,13 +70,19 @@ public class Challenge implements Comparable<Challenge> {
                 .findFirst();
     }
 
+    public <T extends ChallengeModifier, E> Optional<E> modifier(Class<T> modifier, Function<T, E> mapper) {
+        return modifier(modifier).map(mapper);
+    }
+
+    public <T extends ChallengeModifier, E> E modifier(Class<T> modifier, Function<T, E> mapper, E defaultValue) {
+        return modifier(modifier).map(mapper).orElse(defaultValue);
+    }
+
     @Override
     public int compareTo(@NotNull Challenge other) {
         Comparator<Challenge> compareStarted = Comparator.comparing(Challenge::started);
         Comparator<Challenge> comparePaused = Comparator.comparing(Challenge::paused);
-        Comparator<Challenge> playedTime = Comparator.comparing(
-                challenge -> challenge.modifier(TimerModifier.class).map(TimerModifier::ticksPlayed).orElse(0L)
-        );
+        Comparator<Challenge> playedTime = Comparator.comparing(challenge -> challenge.modifier(TimerModifier.class, TimerModifier::ticksPlayed, 0L));
         Comparator<Challenge> modifierCount = Comparator.comparing(challenge -> challenge.modifiers().size());
 
         return compareStarted.reversed().thenComparing(comparePaused).thenComparing(playedTime.reversed()).thenComparing(modifierCount.reversed()).compare(this, other);

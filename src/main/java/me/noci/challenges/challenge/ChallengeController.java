@@ -53,10 +53,6 @@ public class ChallengeController {
         return challenge == null || !challenge.started() || challenge.paused();
     }
 
-    public boolean isStarted() {
-        return challenge().map(Challenge::started).orElse(false);
-    }
-
     public void startChallenge() {
         if (challenge == null || challenge.started()) {
             return;
