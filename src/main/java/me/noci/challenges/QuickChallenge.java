@@ -17,6 +17,7 @@ public class QuickChallenge extends JavaPlugin {
 
     @Getter private static QuickChallenge instance;
 
+    private Config config;
     private ChallengeController challengeController;
 
     @Override
@@ -29,7 +30,7 @@ public class QuickChallenge extends JavaPlugin {
 
         instance = this;
 
-        saveDefaultConfig();
+        this.config = new Config(this, "config.yml", false, true);
 
         this.challengeController = new ChallengeController();
         this.challengeController.tryLoadChallenge();
@@ -59,7 +60,7 @@ public class QuickChallenge extends JavaPlugin {
         pluginManager.registerEvents(new PlayerMoveListener(challengeController), this);
         pluginManager.registerEvents(new BlockListener(challengeController), this);
         pluginManager.registerEvents(new ItemDropListener(challengeController), this);
-        pluginManager.registerEvents(new ServerListPingListener(getConfig()), this);
+        pluginManager.registerEvents(new ServerListPingListener(config), this);
     }
 
     private void registerCommands() {
