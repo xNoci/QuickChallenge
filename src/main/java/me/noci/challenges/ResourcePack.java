@@ -9,7 +9,7 @@ import net.kyori.adventure.text.format.TextColor;
 public final class ResourcePack {
 
     public static final String URL = "https://github.com/xNoci/QuickChallenge/raw/main/ResourcePack.zip";
-    public static final String HASH = "9B9BFA28148E866949661572F2FC0C4EACA22685";
+    public static final String HASH = "E0AFB08EFC0A033E24310CB7F0BE901009778CCA";
     public static final boolean REQUIRED = true;
     public static final Component PROMPT = Component.text()
             .append(Component.text("QuickChallenge Resource Pack", TextColor.color(195, 49, 214)))
