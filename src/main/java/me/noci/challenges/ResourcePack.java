@@ -1,5 +1,6 @@
 package me.noci.challenges;
 
+import com.google.common.io.BaseEncoding;
 import me.noci.challenges.challenge.modifiers.allitem.AllItem;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.key.KeyPattern;
@@ -8,6 +9,8 @@ import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
 import org.bukkit.entity.Player;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Locale;
 import java.util.UUID;
 
 public final class ResourcePack {
@@ -47,7 +50,8 @@ public final class ResourcePack {
     public record TexturePack(byte[] hash, String url, UUID uuid, boolean required) {
 
         public static TexturePack of(String hash, String url, boolean required) {
-            return new TexturePack(hash.getBytes(), url, UUID.nameUUIDFromBytes(url.getBytes()), required);
+            byte[] hashArray = BaseEncoding.base16().lowerCase().decode(hash.toLowerCase(Locale.ROOT));
+            return new TexturePack(hashArray, url, UUID.nameUUIDFromBytes(url.getBytes(StandardCharsets.UTF_8)), required);
         }
 
         public void apply(Player player) {
