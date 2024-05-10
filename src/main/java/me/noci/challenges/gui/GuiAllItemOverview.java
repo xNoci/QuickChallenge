@@ -27,7 +27,7 @@ public class GuiAllItemOverview extends PagedQuickGUIProvider {
     private final AllItemModifier modifier;
 
     public GuiAllItemOverview(AllItemModifier modifier) {
-        super(Component.text("Item übersicht", Colors.GUI_TITLE), InventoryConstants.FULL_SIZE);
+        super(Component.text("Item übersicht (%s von %s)".formatted(modifier.collectedItems().size(), AllItem.values().length), Colors.GUI_TITLE), InventoryConstants.FULL_SIZE);
         this.modifier = modifier;
     }
 
@@ -74,7 +74,7 @@ public class GuiAllItemOverview extends PagedQuickGUIProvider {
         if (!collectedItem.skipped()) {
             collectedBy = Component.text("Aufgesammelt von ", Colors.GRAY);
         } else {
-            collectedBy = Component.text("Übersprungen von", Colors.GRAY, TextDecoration.ITALIC);
+            collectedBy = Component.text("Übersprungen von ", Colors.GRAY, TextDecoration.ITALIC);
         }
 
         collectedBy = collectedBy.append(Component.text(collectedItem.collectedBy(), Colors.PRIMARY));
