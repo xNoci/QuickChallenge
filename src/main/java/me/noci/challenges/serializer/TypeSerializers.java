@@ -42,6 +42,7 @@ public class TypeSerializers {
             }
     );
     public static final TypeSerializer<List<CollectedItem>> COLLECTED_ITEM_LIST = TypeSerializer.list(COLLECTED_ITEM);
+    public static final TypeSerializer<List<CollectedItem>> COLLECTED_ITEM_LIST_V2 = TypeSerializer.list(COLLECTED_ITEM, TypeSerializers.INTEGER);
 
 
 }

@@ -31,7 +31,15 @@ public interface TypeSerializer<T> {
     }
 
     static <V> TypeSerializer<List<V>> list(TypeSerializer<V> serializer, Supplier<List<V>> listSupplier) {
-        return new ListTypeSerializer<>(serializer, listSupplier);
+        return new ListTypeSerializer<>(serializer, listSupplier, TypeSerializers.U_BYTE);
+    }
+
+    static <V> TypeSerializer<List<V>> list(TypeSerializer<V> serializer, TypeSerializer<Integer> countSerializer) {
+        return new ListTypeSerializer<>(serializer, Lists::newArrayList, countSerializer);
+    }
+
+    static <V> TypeSerializer<List<V>> list(TypeSerializer<V> serializer, Supplier<List<V>> listSupplier, TypeSerializer<Integer> countSerializer) {
+        return new ListTypeSerializer<>(serializer, listSupplier, countSerializer);
     }
 
     static <K, V> TypeSerializer<Map<K, V>> map(TypeSerializer<K> keySerializer, TypeSerializer<V> valueSerializer) {
