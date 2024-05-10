@@ -7,6 +7,7 @@ import lombok.Getter;
 import me.noci.challenges.RandomHolder;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
+import me.noci.challenges.challenge.modifiers.TimerModifier;
 import me.noci.challenges.colors.ColorUtils;
 import me.noci.challenges.colors.Colors;
 import me.noci.challenges.serializer.TypeSerializer;
@@ -156,15 +157,15 @@ public class AllItemModifier implements ChallengeModifier {
     private void tryPickupItem(Challenge challenge, CommandSender collector, AllItem item) {
         if (allItemsCollected) return;
         if (item != currentItem) return;
-        collectedItems.add(CollectedItem.now(item));
+        collectedItems.add(CollectedItem.now(item, collector.getName(), challenge.modifier(TimerModifier.class, TimerModifier::ticksPlayed, -1L), false));
         notifyItemsCollected(challenge, collector, item, false);
         nextItem(challenge);
     }
 
-    public void skip(Challenge challenge, CommandSender player) {
+    public void skip(Challenge challenge, CommandSender collector) {
         if (allItemsCollected) return;
-        collectedItems.add(CollectedItem.now(currentItem));
-        notifyItemsCollected(challenge, player, currentItem, true);
+        collectedItems.add(CollectedItem.now(currentItem, collector.getName(), challenge.modifier(TimerModifier.class, TimerModifier::ticksPlayed, -1L), true));
+        notifyItemsCollected(challenge, collector, currentItem, true);
         nextItem(challenge);
     }
 
@@ -256,6 +257,23 @@ public class AllItemModifier implements ChallengeModifier {
         }, (buffer, value) -> {
             BOOLEAN.write(buffer, value.isPresent());
             COLLECTED_ITEM_LIST_V2.write(buffer, value.map(AllItemModifier::collectedItems).orElse(List.of()));
+            ALL_ITEM.write(buffer, value.map(AllItemModifier::currentItem).orElse(AllItem.ACACIA_BOAT));
+            BOOLEAN.write(buffer, value.map(AllItemModifier::allItemsCollected).orElse(false));
+        });
+
+        public static final TypeSerializer<Optional<AllItemModifier>> V_3 = TypeSerializer.dynamic(value -> BOOLEAN.byteSize(null) +
+                COLLECTED_ITEM_LIST_V3.byteSize(value.map(AllItemModifier::collectedItems).orElse(List.of())) +
+                ALL_ITEM.byteSize(null) +
+                BOOLEAN.byteSize(null), buffer -> {
+            boolean enabled = BOOLEAN.read(buffer);
+            List<CollectedItem> collectedItems = COLLECTED_ITEM_LIST_V3.read(buffer);
+            AllItem currentItem = ALL_ITEM.read(buffer);
+            boolean allItemsCollected = BOOLEAN.read(buffer);
+            if (!enabled) return Optional.empty();
+            return Optional.of(new AllItemModifier(currentItem, collectedItems, allItemsCollected));
+        }, (buffer, value) -> {
+            BOOLEAN.write(buffer, value.isPresent());
+            COLLECTED_ITEM_LIST_V3.write(buffer, value.map(AllItemModifier::collectedItems).orElse(List.of()));
             ALL_ITEM.write(buffer, value.map(AllItemModifier::currentItem).orElse(AllItem.ACACIA_BOAT));
             BOOLEAN.write(buffer, value.map(AllItemModifier::allItemsCollected).orElse(false));
         });

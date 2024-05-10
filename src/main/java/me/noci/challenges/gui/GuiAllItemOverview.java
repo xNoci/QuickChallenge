@@ -1,5 +1,6 @@
 package me.noci.challenges.gui;
 
+import com.google.common.collect.Lists;
 import me.noci.challenges.challenge.modifiers.allitem.AllItem;
 import me.noci.challenges.challenge.modifiers.allitem.AllItemModifier;
 import me.noci.challenges.challenge.modifiers.allitem.CollectedItem;
@@ -11,10 +12,12 @@ import me.noci.quickutilities.utils.QuickItemStack;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class GuiAllItemOverview extends PagedQuickGUIProvider {
 
@@ -49,15 +52,38 @@ public class GuiAllItemOverview extends PagedQuickGUIProvider {
 
         Date collectionDate = new Date(collectedItem.timestamp());
 
-        item.itemLore(
-                Component.empty(),
-                Component.text("Eingesammelt am ", Colors.GRAY)
-                        .append(Component.text(DATE_FORMAT.format(collectionDate), Colors.PRIMARY))
-                        .append(Component.text(" um ", Colors.GRAY))
-                        .append(Component.text(TIME_FORMAT.format(collectionDate), Colors.PRIMARY))
-                        .append(Component.text(" Uhr", Colors.GRAY))
-        );
 
+        List<Component> lore = Lists.newArrayList();
+        lore.add(Component.empty());
+        lore.add(Component.text("Eingesammelt am ", Colors.GRAY)
+                .append(Component.text(DATE_FORMAT.format(collectionDate), Colors.PRIMARY))
+                .append(Component.text(" um ", Colors.GRAY))
+                .append(Component.text(TIME_FORMAT.format(collectionDate), Colors.PRIMARY))
+                .append(Component.text(" Uhr", Colors.GRAY)));
+
+        Component collectedBy = getCollectedBy(collectedItem);
+        lore.add(collectedBy);
+
+        item.itemLore(lore);
         return item.asGuiItem();
+    }
+
+    private static @NotNull Component getCollectedBy(CollectedItem collectedItem) {
+        Component collectedBy;
+
+        if (!collectedItem.skipped()) {
+            collectedBy = Component.text("Aufgesammelt von ", Colors.GRAY);
+        } else {
+            collectedBy = Component.text("Übersprungen von", Colors.GRAY, TextDecoration.ITALIC);
+        }
+
+        collectedBy = collectedBy.append(Component.text(collectedItem.collectedBy(), Colors.PRIMARY));
+
+        if (collectedItem.collectedAfterTicks() >= 0) {
+            collectedBy = collectedBy.append(Component.text(" nach ", Colors.GRAY))
+                    .append(Component.text(collectedItem.collectedAfter(), Colors.PRIMARY));
+        }
+
+        return collectedBy;
     }
 }

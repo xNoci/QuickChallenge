@@ -34,15 +34,31 @@ public class TypeSerializers {
         INTEGER.write(buffer, value.maxDelay());
     });
     public static final TypeSerializer<AllItem> ALL_ITEM = TypeSerializer.enumSerializer(AllItem.class, U_SHORT);
-    public static final TypeSerializer<CollectedItem> COLLECTED_ITEM = TypeSerializer.fixed(10,
-            data -> new CollectedItem(ALL_ITEM.read(data), LONG.read(data)),
+    public static final TypeSerializer<CollectedItem> COLLECTED_ITEM_V1 = TypeSerializer.fixed(10,
+            data -> new CollectedItem(ALL_ITEM.read(data), LONG.read(data), "Unbekannt", -1, false),
             (buffer, value) -> {
                 ALL_ITEM.write(buffer, value.item());
                 LONG.write(buffer, value.timestamp());
             }
     );
-    public static final TypeSerializer<List<CollectedItem>> COLLECTED_ITEM_LIST = TypeSerializer.list(COLLECTED_ITEM);
-    public static final TypeSerializer<List<CollectedItem>> COLLECTED_ITEM_LIST_V2 = TypeSerializer.list(COLLECTED_ITEM, TypeSerializers.INTEGER);
+    public static final TypeSerializer<CollectedItem> COLLECTED_ITEM_V2 = TypeSerializer.dynamic(
+            value -> ALL_ITEM.byteSize(value.item())
+                    + LONG.byteSize(value.timestamp())
+                    + STRING.byteSize(value.collectedBy())
+                    + LONG.byteSize(value.collectedAfterTicks())
+                    + BOOLEAN.byteSize(value.skipped()),
+            data -> new CollectedItem(ALL_ITEM.read(data), LONG.read(data), STRING.read(data), LONG.read(data), BOOLEAN.read(data)),
+            (buffer, value) -> {
+                ALL_ITEM.write(buffer, value.item());
+                LONG.write(buffer, value.timestamp());
+                STRING.write(buffer, value.collectedBy());
+                LONG.write(buffer, value.collectedAfterTicks());
+                BOOLEAN.write(buffer, value.skipped());
+            }
+    );
+    public static final TypeSerializer<List<CollectedItem>> COLLECTED_ITEM_LIST = TypeSerializer.list(COLLECTED_ITEM_V1);
+    public static final TypeSerializer<List<CollectedItem>> COLLECTED_ITEM_LIST_V2 = TypeSerializer.list(COLLECTED_ITEM_V1, TypeSerializers.INTEGER);
+    public static final TypeSerializer<List<CollectedItem>> COLLECTED_ITEM_LIST_V3 = TypeSerializer.list(COLLECTED_ITEM_V2, TypeSerializers.INTEGER);
 
 
 }

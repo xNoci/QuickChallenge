@@ -26,7 +26,7 @@ public class ChallengeSerializer {
     private static final Logger LOGGER = LogManager.getLogger("Challenge Serializer");
     private static final HashMap<Integer, ObjectSerializer<Challenge>> SERIALIZERS = Maps.newHashMap();
     private static final short MAGIC_NUMBER = (short) 0xFE21;
-    private static final int CURRENT_VERSION = 2;
+    private static final int CURRENT_VERSION = 3;
 
     static {
         register(1,
@@ -63,6 +63,26 @@ public class ChallengeSerializer {
                     TrafficLightModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
                     EnderDragonFinishModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
                     AllItemModifier.Serializers.V_2.read(buffer).ifPresent(challengeModifiers::add);
+
+                    return new Challenge(challengeModifiers);
+                }
+        );
+
+        register(3,
+                serializer -> serializer
+                        .layout(StopOnDeathModifier.SERIALIZER, challenge -> challenge.modifier(StopOnDeathModifier.class))
+                        .layout(TimerModifier.SERIALIZER, challenge -> challenge.modifier(TimerModifier.class))
+                        .layout(TrafficLightModifier.SERIALIZER, challenge -> challenge.modifier(TrafficLightModifier.class))
+                        .layout(EnderDragonFinishModifier.SERIALIZER, challenge -> challenge.modifier(EnderDragonFinishModifier.class))
+                        .layout(AllItemModifier.Serializers.V_3, challenge -> challenge.modifier(AllItemModifier.class)),
+
+                buffer -> {
+                    List<ChallengeModifier> challengeModifiers = Lists.newArrayList();
+                    StopOnDeathModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    TimerModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    TrafficLightModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    EnderDragonFinishModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    AllItemModifier.Serializers.V_3.read(buffer).ifPresent(challengeModifiers::add);
 
                     return new Challenge(challengeModifiers);
                 }
