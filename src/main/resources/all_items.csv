@@ -530,7 +530,7 @@ FLETCHING_TABLE,FLETCHING_TABLE,Bognertisch,customfont/all_items/fletching_table
 FLINT,FLINT,Feuerstein,item/flint.png,,
 FLINT_AND_STEEL,FLINT_AND_STEEL,Feuerzeug,item/flint_and_steel.png,,
 FLOWER_POT,FLOWER_POT,Blumentopf,item/flower_pot.png,,
-FLOWERING_AZALEA,FLOWERING_AZALEA,Blühende Azalee,customfont/all_items/flowering_azalea.png.png,,
+FLOWERING_AZALEA,FLOWERING_AZALEA,Blühende Azalee,customfont/all_items/flowering_azalea.png,,
 FLOWERING_AZALEA_LEAVES,FLOWERING_AZALEA_LEAVES,Blühendes Azaleenlaub,customfont/all_items/flowering_azalea_leaves.png,,
 FROGLIGHT_OCHRE,OCHRE_FROGLIGHT,Ockernes Froschlicht,customfont/all_items/ochre_froglight.png,,
 FROGLIGHT_PEARLESCENT,PEARLESCENT_FROGLIGHT,Perlmutternes Froschlicht,customfont/all_items/pearlescent_froglight.png,,

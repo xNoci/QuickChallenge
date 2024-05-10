@@ -21,7 +21,7 @@ public final class ResourcePack {
             .append(Component.text(" Used for some challenges", TextColor.color(52, 158, 79)))
             .asComponent();
 
-    public static final TexturePack DEFAULT = TexturePack.of("E0AFB08EFC0A033E24310CB7F0BE901009778CCA", "https://github.com/xNoci/QuickChallenge/raw/main/ResourcePacks/DefaultResourcePack.zip", true);
+    public static final TexturePack DEFAULT = TexturePack.of("F98DBDD7C3917DDFE9D2407C27D7B8F99BF9386F", "https://github.com/xNoci/QuickChallenge/raw/main/ResourcePacks/DefaultResourcePack.zip", true);
     public static final TexturePack HIGH_RES_OVERLAY = TexturePack.of("EF31A3D1693C29742ADF57E8FFB80B9DD9152632", "https://github.com/xNoci/QuickChallenge/raw/main/ResourcePacks/AllItems_Overlay(High-Resolution).zip", true);
 
     private static Component value(char fontChar, @KeyPattern String font) {
