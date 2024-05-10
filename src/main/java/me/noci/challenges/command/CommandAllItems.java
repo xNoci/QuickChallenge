@@ -3,7 +3,9 @@ package me.noci.challenges.command;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.challenge.modifiers.allitem.AllItemModifier;
+import me.noci.challenges.gui.GuiAllItemOverview;
 import me.noci.quickutilities.quickcommand.QuickCommand;
+import me.noci.quickutilities.quickcommand.annotation.Command;
 import me.noci.quickutilities.quickcommand.annotation.CommandPermission;
 import me.noci.quickutilities.quickcommand.annotation.FallbackCommand;
 import me.noci.quickutilities.quickcommand.annotation.SubCommand;
@@ -23,6 +25,22 @@ public class CommandAllItems extends QuickCommand {
         super(plugin, "allitems");
         autoRegister();
         this.challengeController = challengeController;
+    }
+
+    @Command
+    public void overview(Player player) {
+        Challenge challenge = challengeController.challenge().orElse(null);
+        if (challenge == null) {
+            player.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED));
+            return;
+        }
+
+        challenge.modifier(AllItemModifier.class)
+                .ifPresentOrElse(
+                        allItemModifier -> new GuiAllItemOverview(allItemModifier).provide(player),
+                        () -> player.sendMessage(Component.text("Deine aktuelle Challenge besitzt kein AllItems Modifier.", NamedTextColor.RED))
+                );
+
     }
 
     @SubCommand(path = "skip")

@@ -1202,7 +1202,7 @@ public enum AllItem {
 
     @Getter private final String itemName;
     @Nullable private final CustomMatcher customMatcher;
-    private final Material material;
+    @Getter private final Material material;
 
     AllItem(String name, Material material) {
         this(name, material, null);

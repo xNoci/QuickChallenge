@@ -14,21 +14,13 @@ import java.util.Objects;
 public class InventoryConstants {
 
     public static final int FULL_SIZE = 54;
-    public static final QuickItemStack PREVIOUS_PAGE = new QuickItemStack(XMaterial.ARROW.parseMaterial(), "§8§l◀ §r§7Vorherige Seite" /*TODO USE COMPONENT*/).addItemFlags();
-    public static final QuickItemStack NEXT_PAGE = new QuickItemStack(XMaterial.ARROW.parseMaterial(), "§r§7Nächste Seite §8§l▶" /*TODO USE COMPONENT*/).addItemFlags();
+    public static final QuickItemStack PREVIOUS_PAGE = new QuickItemStack(XMaterial.GREEN_STAINED_GLASS_PANE.parseMaterial(), "§8§l◀ §r§7Vorherige Seite" /*TODO USE COMPONENT*/).addItemFlags();
+    public static final QuickItemStack NEXT_PAGE = new QuickItemStack(XMaterial.GREEN_STAINED_GLASS_PANE.parseMaterial(), "§r§7Nächste Seite §8§l▶" /*TODO USE COMPONENT*/).addItemFlags();
     public static final QuickItemStack PREVIOUS_GUI = new QuickItemStack(XMaterial.FEATHER.parseMaterial(), "Zurück"/*TODO USE COMPONENT*/).addItemFlags();
     public static GuiItem GLAS_PANE = new QuickItemStack(Material.BLACK_STAINED_GLASS_PANE).asGuiItem();
 
     public static GuiItem openPreviousGui(GuiProvider gui) {
         return PREVIOUS_GUI.asGuiItem(event -> gui.provide(event.getPlayer()));
-    }
-
-    public static ItemStack worldSkull() {
-        ItemStack item = XMaterial.PLAYER_HEAD.parseItem();
-        Objects.requireNonNull(item, "Item cannot be null");
-        ItemMeta itemMeta = SkullUtils.applySkin(item.getItemMeta(), "f151cffdaf303673531a7651b36637cad912ba485643158e548d59b2ead5011");
-        item.setItemMeta(itemMeta);
-        return item;
     }
 
     public static ItemStack woodPauseSkull() {
