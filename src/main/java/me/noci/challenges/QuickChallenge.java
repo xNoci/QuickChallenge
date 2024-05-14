@@ -61,6 +61,7 @@ public class QuickChallenge extends JavaPlugin {
         pluginManager.registerEvents(new BlockListener(challengeController), this);
         pluginManager.registerEvents(new ItemDropListener(challengeController), this);
         pluginManager.registerEvents(new ServerListPingListener(config), this);
+        pluginManager.registerEvents(new ServerTickListener(challengeController), this);
     }
 
     private void registerCommands() {

@@ -58,7 +58,7 @@ public class Challenge implements Comparable<Challenge> {
         LOGGER.info("Challenge modifiers stopped. Took {} ms", System.currentTimeMillis() - start);
     }
 
-    public void tickChallengeModifiers() {
+    public void tickModifiers() {
         modifiers.forEach(modifier -> modifier.onTick(LOGGER, this, players()));
     }
 

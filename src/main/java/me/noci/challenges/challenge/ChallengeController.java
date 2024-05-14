@@ -4,13 +4,8 @@ import lombok.SneakyThrows;
 import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.serializ.ChallengeSerializer;
-import me.noci.quickutilities.utils.BukkitUnit;
-import me.noci.quickutilities.utils.Scheduler;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.bukkit.Bukkit;
 import org.jetbrains.annotations.Nullable;
 
 import java.nio.file.Files;
@@ -24,25 +19,9 @@ public class ChallengeController {
     private static final Logger LOGGER = LogManager.getLogger("Challenge Controller");
     private static final Path CHALLENGE_FILE = QuickChallenge.instance().getDataFolder().toPath().resolve("challenge.qcc");
 
-    private static final Component NO_CHALLENGE_CREATED = Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED);
-    private static final Component CHALLENGE_NOT_STARTED = Component.text("Challenge wurde noch nicht gestartet.", NamedTextColor.RED);
-
     @Nullable private Challenge challenge;
 
     public ChallengeController() {
-        Scheduler.repeat(1, BukkitUnit.TICKS, () -> {
-            if (challenge == null) {
-                Bukkit.getOnlinePlayers().forEach(player -> player.sendActionBar(NO_CHALLENGE_CREATED));
-                return;
-            }
-
-            if(!challenge.started()) {
-                Bukkit.getOnlinePlayers().forEach(player -> player.sendActionBar(CHALLENGE_NOT_STARTED));
-                return;
-            }
-
-            challenge.tickChallengeModifiers();
-        });
     }
 
     public Optional<Challenge> challenge() {
