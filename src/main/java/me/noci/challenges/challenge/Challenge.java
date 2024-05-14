@@ -59,7 +59,8 @@ public class Challenge implements Comparable<Challenge> {
     }
 
     public void tickModifiers() {
-        modifiers.forEach(modifier -> modifier.onTick(LOGGER, this, players()));
+        List<Player> players = players();
+        modifiers.forEach(modifier -> modifier.onTick(LOGGER, this, players));
     }
 
     @SuppressWarnings("unchecked")
