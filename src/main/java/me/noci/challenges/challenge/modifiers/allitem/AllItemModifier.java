@@ -196,7 +196,8 @@ public class AllItemModifier implements ChallengeModifier {
         if (allItemsCollected) {
             display = display.append(Component.text("Alle Items eingesammelt!", NamedTextColor.WHITE, TextDecoration.BOLD, TextDecoration.ITALIC));
         } else {
-            display = display.append(Component.newline()).append(currentItem.icon())
+            display = display.append(Component.newline())
+                    .append(currentItem.icon())
                     .append(Component.space())
                     .append(Component.text(currentItem.itemName(), NamedTextColor.WHITE, TextDecoration.BOLD, TextDecoration.ITALIC));
         }

@@ -6,7 +6,6 @@ import net.kyori.adventure.key.Key;
 import net.kyori.adventure.key.KeyPattern;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
-import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Range;
@@ -71,6 +70,10 @@ public final class ResourcePack {
 
         public void apply(Player player) {
             player.addResourcePack(uuid, url, hash, GsonComponentSerializer.gson().serialize(ResourcePack.PROMPT), !player.isOp() && required);
+        }
+
+        public boolean isSame(UUID uuid) {
+            return this.uuid.equals(uuid);
         }
 
     }
