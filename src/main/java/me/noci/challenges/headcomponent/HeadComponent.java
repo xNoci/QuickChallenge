@@ -8,7 +8,6 @@ import java.util.UUID;
 
 public class HeadComponent {
 
-
     public static HeadComponent create(UUID uuid) {
         return new HeadComponent(uuid);
     }

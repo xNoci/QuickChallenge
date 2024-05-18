@@ -28,7 +28,7 @@ public class ResourcePackStatusListener implements Listener {
                 .append(Component.text("» ", Colors.JOIN_INDICATOR_JOIN))
                 .append(HeadComponent.create(player.getUniqueId()).build())
                 .append(Component.space())
-                .append(Component.text(player.getName(), Colors.JOIN_PLAYER_NAME))
+                .append(Component.text(player.getName(), Colors.PLAYER_NAME))
                 .append(Component.text(" joined the server", Colors.CHAT_COLOR))
                 .asComponent();
 

@@ -16,7 +16,7 @@ public class Colors {
     public static final TextColor CHAT_COLOR = NamedTextColor.GRAY;
     public static final TextColor JOIN_INDICATOR_JOIN = TextColor.color(82, 158, 66);
     public static final TextColor JOIN_INDICATOR_QUIT = TextColor.color(158, 82, 66);
-    public static final TextColor JOIN_PLAYER_NAME = TextColor.color(31, 150, 173);
+    public static final TextColor PLAYER_NAME = TextColor.color(31, 150, 173);
 
     // ------- Modifiers -------
     public static final TextColor TIMER_PRIMARY_COLOR = TextColor.color(220, 74, 188);
