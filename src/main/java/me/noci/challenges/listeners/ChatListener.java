@@ -13,12 +13,10 @@ public class ChatListener implements Listener {
 
     @EventHandler
     public void handleChatDecorate(AsyncChatEvent event) {
-        event.renderer(ChatRenderer.viewerUnaware((source, sourceDisplayName, message) -> Component.empty()
-                .append(HeadComponent.create(source.getUniqueId()).build())
-                .append(Component.space())
-                .append(sourceDisplayName.color(Colors.PLAYER_NAME))
-                .append(Component.text(": ", NamedTextColor.GRAY))
-                .append(message.color(NamedTextColor.GRAY))
+        event.renderer(ChatRenderer.viewerUnaware((source, sourceDisplayName, message) ->
+                HeadComponent.withName(source.getUniqueId(), sourceDisplayName.color(Colors.PLAYER_NAME))
+                        .append(Component.text(": ", NamedTextColor.GRAY))
+                        .append(message.color(NamedTextColor.GRAY))
         ));
     }
 }

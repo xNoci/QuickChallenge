@@ -24,9 +24,7 @@ public class PlayerQuitListener implements Listener {
 
         Component component = Component.text()
                 .append(Component.text("« ", Colors.JOIN_INDICATOR_QUIT))
-                .append(HeadComponent.create(player.getUniqueId()).build())
-                .append(Component.space())
-                .append(Component.text(player.getName(), Colors.PLAYER_NAME))
+                .append(HeadComponent.withName(player.getUniqueId(), player.name().color(Colors.PLAYER_NAME)))
                 .append(Component.text(" left the server", Colors.CHAT_COLOR))
                 .asComponent();
 

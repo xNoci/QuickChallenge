@@ -10,6 +10,7 @@ import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.modifiers.TimerModifier;
 import me.noci.challenges.colors.ColorUtils;
 import me.noci.challenges.colors.Colors;
+import me.noci.challenges.headcomponent.HeadComponent;
 import me.noci.challenges.serializer.TypeSerializer;
 import me.noci.quickutilities.events.Events;
 import me.noci.quickutilities.events.subscriber.SubscribedEvent;
@@ -61,11 +62,17 @@ public class AllItemModifier implements ChallengeModifier {
     private static void notifyItemsCollected(Challenge challenge, CommandSender collector, AllItem item, boolean skipped) {
         challenge.players().forEach(player -> player.playSound(player, Sound.BLOCK_NOTE_BLOCK_PLING, SoundCategory.MASTER, 1, 1));
 
+        Component sender = collector.name().color(Colors.PLAYER_NAME);
+
+        if (collector instanceof Player player) {
+            sender = HeadComponent.withName(player.getUniqueId(), sender);
+        }
+
         Component messageItemCollected;
         if (!skipped) {
             messageItemCollected = Component
                     .text("Der Spieler ", Colors.GRAY)
-                    .append(collector.name().color(NamedTextColor.AQUA))
+                    .append(sender)
                     .append(Component.text(" hat das Item ", Colors.GRAY))
                     .append(ColorUtils.gradientText(item.itemName(), Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_ACCENT_COLOR))
                     .append(Component.text(" aufgesammelt.", Colors.GRAY))
@@ -75,7 +82,7 @@ public class AllItemModifier implements ChallengeModifier {
                     .text("Das Item ", Colors.GRAY)
                     .append(ColorUtils.gradientText(item.itemName(), Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_ACCENT_COLOR))
                     .append(Component.text(" wurde von ", Colors.GRAY))
-                    .append(collector.name().color(NamedTextColor.AQUA))
+                    .append(sender)
                     .append(Component.text(" übersprungen.", Colors.GRAY));
         }
 
