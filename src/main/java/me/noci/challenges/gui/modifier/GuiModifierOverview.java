@@ -44,7 +44,6 @@ public class GuiModifierOverview extends PagedQuickGUIProvider {
                 .map(modifier -> modifier.displayItem().asGuiItem(event -> {
                     if (event.getClick() != ClickType.LEFT) return;
                     modifier.onModifierAdd(creatorAddProvider, event.getPlayer());
-
                 }))
                 .toArray(GuiItem[]::new);
 
