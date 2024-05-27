@@ -36,7 +36,7 @@ public class GuiModifierOverview extends PagedQuickGUIProvider {
     public void initPage(Player player, PageContent content) {
         content.setItemSlots(PAGE_SLOTS);
         content.setPreviousPageItem(Slot.getSlot(3, 1), InventoryConstants.PREVIOUS_PAGE, InventoryConstants.GLAS_PANE.getItemStack());
-        content.setPreviousPageItem(Slot.getSlot(3, 1), InventoryConstants.NEXT_PAGE, InventoryConstants.GLAS_PANE.getItemStack());
+        content.setNextPageItem(Slot.getSlot(3, 1), InventoryConstants.NEXT_PAGE, InventoryConstants.GLAS_PANE.getItemStack());
 
         GuiItem[] items = ModifierRegistry.modifiers()
                 .stream()
