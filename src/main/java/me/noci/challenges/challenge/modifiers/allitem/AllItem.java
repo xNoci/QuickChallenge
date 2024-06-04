@@ -1201,8 +1201,8 @@ public enum AllItem {
     WOOL_YELLOW("Gelbe Wolle", Material.YELLOW_WOOL);
 
     @Getter private final String itemName;
-    @Nullable private final CustomMatcher customMatcher;
     @Getter private final Material material;
+    @Nullable private final CustomMatcher customMatcher;
 
     AllItem(String name, Material material) {
         this(name, material, null);
