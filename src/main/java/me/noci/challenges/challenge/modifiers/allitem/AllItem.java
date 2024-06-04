@@ -1214,7 +1214,7 @@ public enum AllItem {
         this.customMatcher = customMatcher;
     }
 
-    public boolean matches(ItemStack itemStack) {
+    public boolean matches(@Nullable ItemStack itemStack) {
         if (itemStack == null) return false;
         boolean customMatch = this.customMatcher == null || this.customMatcher.matches(itemStack);
         return itemStack.getType() == material && customMatch;

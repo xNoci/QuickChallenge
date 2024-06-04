@@ -28,14 +28,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 import static me.noci.challenges.serializer.TypeSerializers.*;
 
@@ -215,15 +214,12 @@ public class AllItemModifier implements ChallengeModifier {
     private void checkAllPlayerInventories(Challenge challenge) {
         for (Player player : challenge.players()) {
             var inventory = player.getInventory();
-            List<ItemStack> items = Lists.newArrayList(inventory.getContents());
-            items.addAll(Arrays.asList(inventory.getArmorContents()));
 
-            for (ItemStack itemStack : items) {
-                if (currentItem.matches(itemStack)) {
-                    tryPickupItem(challenge, player, currentItem);
-                    return;
-                }
-            }
+            Stream.of(inventory.getContents(), inventory.getArmorContents())
+                    .flatMap(Stream::of)
+                    .filter(itemStack -> currentItem.matches(itemStack))
+                    .findAny()
+                    .ifPresent(itemStack -> tryPickupItem(challenge, player, currentItem));
         }
     }
 
