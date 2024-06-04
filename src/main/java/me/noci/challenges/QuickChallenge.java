@@ -68,7 +68,7 @@ public class QuickChallenge extends JavaPlugin {
     private void registerCommands() {
         new CommandChallenge(this, challengeController);
         new CommandTimer(this, challengeController);
-        new CommandAllItems(this, challengeController);
+        new CommandAllItems(this, challengeController, config);
     }
 
 }

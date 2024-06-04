@@ -1,2 +1,3 @@
 settings:
     motd: "                  <color:#cba3ff>Minecraft Challenges</color>\n                      <color:#3dfffc><color:#98a667>Version <b><version></b></color></color>"
+    debug: false

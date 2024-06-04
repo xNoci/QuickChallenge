@@ -1,5 +1,6 @@
 package me.noci.challenges.command;
 
+import me.noci.challenges.Config;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.challenge.modifiers.allitem.AllItemModifier;
@@ -20,11 +21,13 @@ import java.util.stream.IntStream;
 public class CommandAllItems extends QuickCommand {
 
     private final ChallengeController challengeController;
+    private final Config config;
 
-    public CommandAllItems(JavaPlugin plugin, ChallengeController challengeController) {
+    public CommandAllItems(JavaPlugin plugin, ChallengeController challengeController, Config config) {
         super(plugin, "allitems");
         autoRegister();
         this.challengeController = challengeController;
+        this.config = config;
     }
 
     @Command
@@ -46,6 +49,11 @@ public class CommandAllItems extends QuickCommand {
     @SubCommand(path = "skip")
     @CommandPermission("quickchallenge.allitems.skip")
     public void skip(CommandSender sender) {
+        if(!config.configuration().getBoolean("settings.debug", false)) {
+            sender.sendMessage(Component.text("Dieser Command ist nur im Debug-Mode verfügbar.", NamedTextColor.RED));
+            return;
+        }
+
         Challenge challenge = challengeController.challenge().orElse(null);
         if (challenge == null) {
             sender.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED));
@@ -62,6 +70,11 @@ public class CommandAllItems extends QuickCommand {
     @SubCommand(path = "skip")
     @CommandPermission("quickchallenge.allitems.skip")
     public void skip(CommandSender sender, int amount) {
+        if(!config.configuration().getBoolean("settings.debug", false)) {
+            sender.sendMessage(Component.text("Dieser Command ist nur im Debug-Mode verfügbar.", NamedTextColor.RED));
+            return;
+        }
+
         Challenge challenge = challengeController.challenge().orElse(null);
         if (challenge == null) {
             sender.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED));
@@ -78,6 +91,11 @@ public class CommandAllItems extends QuickCommand {
     @SubCommand(path = "reset")
     @CommandPermission("quickchallenge.allitems.reset")
     public void reset(CommandSender sender) {
+        if(!config.configuration().getBoolean("settings.debug", false)) {
+            sender.sendMessage(Component.text("Dieser Command ist nur im Debug-Mode verfügbar.", NamedTextColor.RED));
+            return;
+        }
+
         Challenge challenge = challengeController.challenge().orElse(null);
         if (challenge == null) {
             sender.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED));
