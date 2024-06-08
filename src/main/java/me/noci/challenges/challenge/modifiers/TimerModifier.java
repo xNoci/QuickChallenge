@@ -63,7 +63,7 @@ public class TimerModifier implements ChallengeModifier {
             ticksPlayed++;
         }
 
-        gradientTranslation += GRADIENT_SPEED; //TODO Change speed to be proportional to string length
+        gradientTranslation += GRADIENT_SPEED;
         gradientTranslation %= (float) (4 * Math.PI / GRADIENT_PERIOD);
 
         List<TextDecoration> textDecorations = Lists.newArrayList(TextDecoration.BOLD);
