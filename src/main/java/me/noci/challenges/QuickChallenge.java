@@ -63,6 +63,7 @@ public class QuickChallenge extends JavaPlugin {
         pluginManager.registerEvents(new ServerListPingListener(config), this);
         pluginManager.registerEvents(new ServerTickListener(challengeController), this);
         pluginManager.registerEvents(new ChatListener(), this);
+        pluginManager.registerEvents(new AnvilRenameListener(config), this);
     }
 
     private void registerCommands() {
