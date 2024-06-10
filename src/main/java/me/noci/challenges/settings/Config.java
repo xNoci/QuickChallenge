@@ -7,7 +7,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 public interface Config {
 
     static Config create(JavaPlugin plugin, String fileName, boolean replace, boolean autoUpdate) {
-        return new DefaultConfig(plugin, fileName, replace, autoUpdate);
+        var config = new DefaultConfig(plugin, fileName, replace);
+
+        config.load();
+
+        if (autoUpdate) {
+            config.listenForChanges();
+        }
+
+        return config;
     }
 
     <T> T get(Option<T> option);

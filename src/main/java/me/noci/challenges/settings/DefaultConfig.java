@@ -13,7 +13,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.nio.file.*;
@@ -28,7 +27,7 @@ public class DefaultConfig implements Config {
     @Getter private YamlConfiguration configuration;
     private final HashMap<String, Component> componentCache = Maps.newHashMap();
 
-    public DefaultConfig(JavaPlugin plugin, String fileName, boolean replace, boolean autoUpdate) {
+    protected DefaultConfig(JavaPlugin plugin, String fileName, boolean replace) {
         Require.nonNull(plugin, "JavaPlugin cannot be null");
         Require.checkArgument(!StringUtils.isBlank(fileName), "File name cannot be null or empty");
 
@@ -36,12 +35,6 @@ public class DefaultConfig implements Config {
         this.plugin = plugin;
 
         config = createDefault(fileName, replace);
-
-        reload();
-
-        if (autoUpdate) {
-            listenForChanges();
-        }
     }
 
     @SuppressWarnings("unchecked")
@@ -56,21 +49,17 @@ public class DefaultConfig implements Config {
             case Boolean b -> configuration.getBoolean(path, b);
             case Float f -> configuration.getDouble(path, (double) f);
             case Double d -> configuration.getDouble(path, d);
-            case Component c -> cachedComponent(path, MiniMessage.miniMessage(), c);
+            case Component c -> get((Option<Component>) option, MiniMessage.miniMessage());
             default -> configuration.get(option.path(), option.defaultValue());
         };
     }
 
     @Override
     public Component get(Option<Component> option, ComponentDecoder<? super String, Component> decoder) {
-        return cachedComponent(option.path(), decoder, option.defaultValue());
+        return componentCache.computeIfAbsent(option.path(), key -> configuration.getComponent(key, decoder, option.defaultValue()));
     }
 
-    public Component cachedComponent(@NotNull String path, ComponentDecoder<? super String, Component> decoder, Component fallback) {
-        return componentCache.computeIfAbsent(path, key -> configuration.getComponent(key, decoder, fallback));
-    }
-
-    public void reload() {
+    protected void load() {
         this.configuration = YamlConfiguration.loadConfiguration(config.toFile());
         componentCache.clear();
     }
@@ -93,7 +82,7 @@ public class DefaultConfig implements Config {
         }
     }
 
-    private void listenForChanges() {
+    protected void listenForChanges() {
         Scheduler.executeAsync(() -> {
             try (WatchService service = FileSystems.getDefault().newWatchService()) {
                 Path parentDirectory = config.getParent();
@@ -112,7 +101,7 @@ public class DefaultConfig implements Config {
                     for (WatchEvent<?> event : key.pollEvents()) {
                         Path updatedFile = (Path) event.context();
                         if (!config.endsWith(updatedFile)) continue;
-                        reload();
+                        load();
                     }
 
                     key.reset();
