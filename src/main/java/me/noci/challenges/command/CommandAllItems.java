@@ -1,10 +1,11 @@
 package me.noci.challenges.command;
 
-import me.noci.challenges.Config;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.challenge.modifiers.allitem.AllItemModifier;
 import me.noci.challenges.gui.GuiAllItemOverview;
+import me.noci.challenges.settings.Config;
+import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.quickcommand.QuickCommand;
 import me.noci.quickutilities.quickcommand.annotation.Command;
 import me.noci.quickutilities.quickcommand.annotation.CommandPermission;
@@ -49,7 +50,7 @@ public class CommandAllItems extends QuickCommand {
     @SubCommand(path = "skip")
     @CommandPermission("quickchallenge.allitems.skip")
     public void skip(CommandSender sender) {
-        if(!config.configuration().getBoolean("settings.debug", false)) {
+        if(!config.get(Option.DEBUG)) {
             sender.sendMessage(Component.text("Dieser Command ist nur im Debug-Mode verfügbar.", NamedTextColor.RED));
             return;
         }
@@ -70,7 +71,7 @@ public class CommandAllItems extends QuickCommand {
     @SubCommand(path = "skip")
     @CommandPermission("quickchallenge.allitems.skip")
     public void skip(CommandSender sender, int amount) {
-        if(!config.configuration().getBoolean("settings.debug", false)) {
+        if(!config.get(Option.DEBUG)) {
             sender.sendMessage(Component.text("Dieser Command ist nur im Debug-Mode verfügbar.", NamedTextColor.RED));
             return;
         }
@@ -91,7 +92,7 @@ public class CommandAllItems extends QuickCommand {
     @SubCommand(path = "reset")
     @CommandPermission("quickchallenge.allitems.reset")
     public void reset(CommandSender sender) {
-        if(!config.configuration().getBoolean("settings.debug", false)) {
+        if(!config.get(Option.DEBUG)) {
             sender.sendMessage(Component.text("Dieser Command ist nur im Debug-Mode verfügbar.", NamedTextColor.RED));
             return;
         }

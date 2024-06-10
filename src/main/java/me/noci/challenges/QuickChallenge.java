@@ -7,6 +7,7 @@ import me.noci.challenges.command.CommandAllItems;
 import me.noci.challenges.command.CommandChallenge;
 import me.noci.challenges.command.CommandTimer;
 import me.noci.challenges.listeners.*;
+import me.noci.challenges.settings.Config;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
@@ -30,7 +31,7 @@ public class QuickChallenge extends JavaPlugin {
 
         instance = this;
 
-        this.config = new Config(this, "config.yml", false, true);
+        this.config = Config.create(this, "config.yml", false, true);
 
         this.challengeController = new ChallengeController();
         this.challengeController.tryLoadChallenge();

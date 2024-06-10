@@ -1,4 +1,4 @@
-package me.noci.challenges;
+package me.noci.challenges.settings;
 
 import com.google.common.collect.Maps;
 import lombok.Getter;
@@ -6,6 +6,7 @@ import lombok.SneakyThrows;
 import me.noci.quickutilities.utils.Require;
 import me.noci.quickutilities.utils.Scheduler;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.serializer.ComponentDecoder;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -18,7 +19,7 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.util.HashMap;
 
-public class Config {
+public class DefaultConfig implements Config {
 
     private final Logger logger;
     private final JavaPlugin plugin;
@@ -27,7 +28,7 @@ public class Config {
     @Getter private YamlConfiguration configuration;
     private final HashMap<String, Component> componentCache = Maps.newHashMap();
 
-    public Config(JavaPlugin plugin, String fileName, boolean replace, boolean autoUpdate) {
+    public DefaultConfig(JavaPlugin plugin, String fileName, boolean replace, boolean autoUpdate) {
         Require.nonNull(plugin, "JavaPlugin cannot be null");
         Require.checkArgument(!StringUtils.isBlank(fileName), "File name cannot be null or empty");
 
@@ -41,6 +42,28 @@ public class Config {
         if (autoUpdate) {
             listenForChanges();
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> T get(Option<T> option) {
+        String path = option.path();
+        T def = option.defaultValue();
+
+        return (T) switch (def) {
+            case Integer i -> configuration.getInt(path, i);
+            case String s -> configuration.getString(path, s);
+            case Boolean b -> configuration.getBoolean(path, b);
+            case Float f -> configuration.getDouble(path, (double) f);
+            case Double d -> configuration.getDouble(path, d);
+            case Component c -> cachedComponent(path, MiniMessage.miniMessage(), c);
+            default -> configuration.get(option.path(), option.defaultValue());
+        };
+    }
+
+    @Override
+    public Component get(Option<Component> option, ComponentDecoder<? super String, Component> decoder) {
+        return cachedComponent(option.path(), decoder, option.defaultValue());
     }
 
     public Component cachedComponent(@NotNull String path, ComponentDecoder<? super String, Component> decoder, Component fallback) {
