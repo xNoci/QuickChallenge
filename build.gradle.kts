@@ -34,13 +34,13 @@ tasks {
         archiveFileName.set("${project.property("plugin.name")}-${project.version}.jar")
 
         if (project.hasProperty("pluginFolder")) {
-            val pluginFolder = project.property("pluginFolder") as String?;
+            val pluginFolder = project.property("pluginFolder") as String?
             if (!pluginFolder.isNullOrBlank()) {
                 destinationDirectory.set(file(pluginFolder))
             }
         }
 
-        fun reloc(pkg: String) = relocate(pkg, "${project.group}.dependency.$pkg");
+        fun reloc(pkg: String) = relocate(pkg, "${project.group}.dependency.$pkg")
         reloc("com.cryptomorin.xseries")
         reloc("io.papermc.lib")
 
