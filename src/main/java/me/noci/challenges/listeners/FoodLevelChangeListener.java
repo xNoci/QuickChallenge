@@ -13,7 +13,6 @@ public class FoodLevelChangeListener implements Listener {
         this.challengeController = challengeController;
     }
 
-    //TODO Fix stop allowing eating when paused
     @EventHandler
     public void handleFoodLevelChange(FoodLevelChangeEvent event) {
         event.setCancelled(challengeController.shouldCancelEvents());
