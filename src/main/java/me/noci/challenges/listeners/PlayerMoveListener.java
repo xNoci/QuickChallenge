@@ -20,7 +20,7 @@ public class PlayerMoveListener implements Listener {
         Location from = event.getFrom();
         Location to = event.getTo();
 
-        if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
+        if (event.getPlayer().getGameMode().isInvulnerable()) return;
 
         if (from.getX() == to.getX() && from.getZ() == to.getZ()) {
             return;
