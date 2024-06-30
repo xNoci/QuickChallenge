@@ -13,6 +13,7 @@ import me.noci.challenges.colors.ColorUtils;
 import me.noci.challenges.colors.Colors;
 import me.noci.challenges.headcomponent.HeadComponent;
 import me.noci.challenges.serializer.TypeSerializer;
+import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.events.Events;
 import me.noci.quickutilities.events.subscriber.SubscribedEvent;
@@ -20,8 +21,11 @@ import me.noci.quickutilities.utils.EnumUtils;
 import me.noci.quickutilities.utils.Require;
 import net.kyori.adventure.bossbar.BossBar;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.text.format.TextDecoration;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.resolver.Formatter;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
+import net.kyori.adventure.text.minimessage.tag.standard.StandardTags;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
@@ -32,7 +36,6 @@ import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.jetbrains.annotations.NotNull;
 
-import java.text.DecimalFormat;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
@@ -42,8 +45,6 @@ import java.util.stream.Stream;
 import static me.noci.challenges.serializer.TypeSerializers.*;
 
 public class AllItemModifier implements ChallengeModifier {
-
-    private static final DecimalFormat PERCENTAGE = new DecimalFormat("#.##");
 
     private final BossBar bossBar;
     @Getter private final List<CollectedItem> collectedItems;
@@ -202,32 +203,30 @@ public class AllItemModifier implements ChallengeModifier {
     }
 
     private Component itemDisplay() {
-        Component display = Component.empty();
-
-        if (allItemsCollected) {
-            display = display.append(Component.text("Alle Items eingesammelt!", NamedTextColor.WHITE, TextDecoration.BOLD, TextDecoration.ITALIC));
-        } else {
-            display = display.append(Component.newline())
-                    .append(currentItem.icon())
-                    .append(Component.space())
-                    .append(Component.text(currentItem.itemName(), NamedTextColor.WHITE, TextDecoration.BOLD, TextDecoration.ITALIC));
-        }
-
+        Config config = QuickChallenge.instance().config();
         int collectedItemCount = collectedItems.size();
         int itemsToCollectCount = AllItem.values().length;
 
-        String percentage = PERCENTAGE.format(((float) collectedItemCount / itemsToCollectCount) * 100);
-        display = display
-                .append(Component.space())
-                .append(Component.text("(%s/%s".formatted(collectedItemCount, itemsToCollectCount)));
+        TagResolver[] resolvers = new TagResolver[]{
+                Placeholder.component("item_icon", currentItem.icon()),
+                Placeholder.unparsed("item_name", currentItem.itemName()),
+                Formatter.number("items_collected", collectedItemCount),
+                Formatter.number("total_items", itemsToCollectCount),
+                Formatter.number("progress", (float) collectedItemCount / itemsToCollectCount * 100)
+        };
 
-        if (QuickChallenge.instance().config().get(Option.ALL_ITEMS_PERCENTAGE)) {
-            display = display.append(Component.text(" - %s%%".formatted(percentage)));
+        MiniMessage decoder = MiniMessage.builder()
+                .tags(StandardTags.defaults())
+                .editTags(builder -> builder.resolvers(resolvers))
+                .build();
+
+        //TODO Cache the components until they are marked as dirty by either or next item
+
+        if (allItemsCollected) {
+            return config.get(Option.ALL_ITEMS_BOSS_BAR_COMPLETE, decoder);
         }
 
-        display = display.append(Component.text(")"));
-
-        return display;
+        return config.get(Option.ALL_ITEMS_BOSS_BAR_NEXT_ITEM, decoder);
     }
 
     private void checkAllPlayerInventories(Challenge challenge) {
