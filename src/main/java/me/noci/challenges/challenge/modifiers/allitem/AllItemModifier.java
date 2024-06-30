@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import io.papermc.paper.event.player.PlayerInventorySlotChangeEvent;
 import lombok.Getter;
+import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.RandomHolder;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
@@ -12,6 +13,7 @@ import me.noci.challenges.colors.ColorUtils;
 import me.noci.challenges.colors.Colors;
 import me.noci.challenges.headcomponent.HeadComponent;
 import me.noci.challenges.serializer.TypeSerializer;
+import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.events.Events;
 import me.noci.quickutilities.events.subscriber.SubscribedEvent;
 import me.noci.quickutilities.utils.EnumUtils;
@@ -30,6 +32,7 @@ import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.jetbrains.annotations.NotNull;
 
+import java.text.DecimalFormat;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
@@ -39,6 +42,8 @@ import java.util.stream.Stream;
 import static me.noci.challenges.serializer.TypeSerializers.*;
 
 public class AllItemModifier implements ChallengeModifier {
+
+    private static final DecimalFormat PERCENTAGE = new DecimalFormat("#.##");
 
     private final BossBar bossBar;
     @Getter private final List<CollectedItem> collectedItems;
@@ -153,6 +158,8 @@ public class AllItemModifier implements ChallengeModifier {
                 .map(viewer -> (Player) viewer)
                 .filter(Predicate.not(players::contains))
                 .forEach(bossBar::removeViewer);
+
+        bossBar.name(itemDisplay());
     }
 
     @Override
@@ -184,8 +191,6 @@ public class AllItemModifier implements ChallengeModifier {
             broadcastNextItem(challenge, currentItem);
             checkAllPlayerInventories(challenge);
         }
-
-        bossBar.name(itemDisplay());
     }
 
     private List<AllItem> remainingItems() {
@@ -208,7 +213,21 @@ public class AllItemModifier implements ChallengeModifier {
                     .append(Component.text(currentItem.itemName(), NamedTextColor.WHITE, TextDecoration.BOLD, TextDecoration.ITALIC));
         }
 
-        return display.append(Component.space()).append(Component.text("(%s/%s)".formatted(collectedItems.size(), AllItem.values().length)));
+        int collectedItemCount = collectedItems.size();
+        int itemsToCollectCount = AllItem.values().length;
+
+        String percentage = PERCENTAGE.format(((float) collectedItemCount / itemsToCollectCount) * 100);
+        display = display
+                .append(Component.space())
+                .append(Component.text("(%s/%s".formatted(collectedItemCount, itemsToCollectCount)));
+
+        if (QuickChallenge.instance().config().get(Option.ALL_ITEMS_PERCENTAGE)) {
+            display = display.append(Component.text(" - %s%%".formatted(percentage)));
+        }
+
+        display = display.append(Component.text(")"));
+
+        return display;
     }
 
     private void checkAllPlayerInventories(Challenge challenge) {
@@ -227,7 +246,6 @@ public class AllItemModifier implements ChallengeModifier {
         this.collectedItems.clear();
         this.allItemsCollected = false;
         currentItem = EnumUtils.random(AllItem.class);
-        bossBar.name(itemDisplay());
     }
 
     public static class Serializers {

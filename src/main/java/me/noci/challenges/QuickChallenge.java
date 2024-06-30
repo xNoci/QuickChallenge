@@ -18,7 +18,7 @@ public class QuickChallenge extends JavaPlugin {
 
     @Getter private static QuickChallenge instance;
 
-    private Config config;
+    @Getter private Config config;
     private ChallengeController challengeController;
 
     @Override

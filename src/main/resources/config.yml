@@ -4,3 +4,5 @@ settings:
     anvil:
         coloredNames: true
         freeRename: false
+all_items:
+    show_percentage: true
