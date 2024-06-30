@@ -11,8 +11,10 @@ import me.noci.challenges.settings.Config;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.PluginManager;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.function.Consumer;
 
 public class QuickChallenge extends JavaPlugin {
 
@@ -36,7 +38,7 @@ public class QuickChallenge extends JavaPlugin {
         this.challengeController = new ChallengeController();
         this.challengeController.tryLoadChallenge();
 
-        registerListener();
+        registerListeners();
         registerCommands();
     }
 
@@ -48,24 +50,24 @@ public class QuickChallenge extends JavaPlugin {
         Bukkit.getOnlinePlayers().forEach(player -> player.kick(kickComponent));
     }
 
-    private void registerListener() {
-        PluginManager pluginManager = getServer().getPluginManager();
+    private void registerListeners() {
+        Consumer<Listener> register = listener -> getServer().getPluginManager().registerEvents(listener, this);
 
-        pluginManager.registerEvents(new PlayerJoinListener(), this);
-        pluginManager.registerEvents(new PlayerQuitListener(challengeController), this);
-        pluginManager.registerEvents(new ResourcePackStatusListener(), this);
-        pluginManager.registerEvents(new EnityTargetListener(challengeController), this);
-        pluginManager.registerEvents(new EntityDamageListener(challengeController), this);
-        pluginManager.registerEvents(new EntityMoveListener(challengeController), this);
-        pluginManager.registerEvents(new FoodLevelChangeListener(challengeController), this);
-        pluginManager.registerEvents(new PlayerMoveListener(challengeController), this);
-        pluginManager.registerEvents(new BlockListener(challengeController), this);
-        pluginManager.registerEvents(new ItemDropListener(challengeController), this);
-        pluginManager.registerEvents(new ServerListPingListener(config), this);
-        pluginManager.registerEvents(new ServerTickListener(challengeController), this);
-        pluginManager.registerEvents(new ChatListener(), this);
-        pluginManager.registerEvents(new AnvilRenameListener(config), this);
-        pluginManager.registerEvents(new PlayerInteractListener(challengeController), this);
+        register.accept(new PlayerJoinListener());
+        register.accept(new PlayerQuitListener(challengeController));
+        register.accept(new ResourcePackStatusListener());
+        register.accept(new EnityTargetListener(challengeController));
+        register.accept(new EntityDamageListener(challengeController));
+        register.accept(new EntityMoveListener(challengeController));
+        register.accept(new FoodLevelChangeListener(challengeController));
+        register.accept(new PlayerMoveListener(challengeController));
+        register.accept(new BlockListener(challengeController));
+        register.accept(new ItemDropListener(challengeController));
+        register.accept(new ServerListPingListener(config));
+        register.accept(new ServerTickListener(challengeController));
+        register.accept(new ChatListener());
+        register.accept(new AnvilRenameListener(config));
+        register.accept(new PlayerInteractListener(challengeController));
     }
 
     private void registerCommands() {
