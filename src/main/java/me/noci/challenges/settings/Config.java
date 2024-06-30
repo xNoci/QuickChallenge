@@ -20,6 +20,8 @@ public interface Config {
 
     <T> T get(Option<T> option);
 
+    Component getCached(Option<Component> option, ComponentDecoder<? super String, Component> decoder);
+
     Component get(Option<Component> option, ComponentDecoder<? super String, Component> decoder);
 
 }

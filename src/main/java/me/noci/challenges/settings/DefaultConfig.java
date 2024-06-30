@@ -55,8 +55,13 @@ public class DefaultConfig implements Config {
     }
 
     @Override
-    public Component get(Option<Component> option, ComponentDecoder<? super String, Component> decoder) {
+    public Component getCached(Option<Component> option, ComponentDecoder<? super String, Component> decoder) {
         return componentCache.computeIfAbsent(option.path(), key -> configuration.getComponent(key, decoder, option.defaultValue()));
+    }
+
+    @Override
+    public Component get(Option<Component> option, ComponentDecoder<? super String, Component> decoder) {
+        return configuration.getComponent(option.path(), decoder, option.defaultValue());
     }
 
     protected void load() {

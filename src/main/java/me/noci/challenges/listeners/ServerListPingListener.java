@@ -14,7 +14,7 @@ public class ServerListPingListener implements Listener {
 
     private static final MiniMessage MINI_MESSAGE = MiniMessage.builder()
             .tags(StandardTags.defaults())
-            .editTags(builder -> builder.resolver(Placeholder.parsed("version", Bukkit.getMinecraftVersion())))
+            .editTags(builder -> builder.resolver(Placeholder.unparsed("version", Bukkit.getMinecraftVersion())))
             .build();
 
     private final Config config;
@@ -25,7 +25,7 @@ public class ServerListPingListener implements Listener {
 
     @EventHandler
     public void handleServerListPing(PaperServerListPingEvent event) {
-        event.motd(config.get(Option.MOTD, MINI_MESSAGE));
+        event.motd(config.getCached(Option.MOTD, MINI_MESSAGE));
     }
 
 }
