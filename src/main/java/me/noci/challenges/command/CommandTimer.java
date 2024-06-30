@@ -97,8 +97,8 @@ public class CommandTimer extends QuickCommand {
             return;
         }
 
-        if (sender.hasPermission("quickchallenge.timer.start") || sender.hasPermission("quickchallenge.timer.resume") || sender.hasPermission("quickchallenge.timer.pause")) {
-            sender.sendMessage(Component.text("Benutze: /timer [start/pause/resume]", NamedTextColor.RED));
+        if (sender.hasPermission("quickchallenge.timer.start") || sender.hasPermission("quickchallenge.timer.stop")|| sender.hasPermission("quickchallenge.timer.resume") || sender.hasPermission("quickchallenge.timer.pause")) {
+            sender.sendMessage(Component.text("Benutze: /timer [start/stop/pause/resume]", NamedTextColor.RED));
             return;
         }
 
