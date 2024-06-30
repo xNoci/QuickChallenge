@@ -1,16 +1,19 @@
 settings:
     debug: false
+    # Available tags:
+    #   <version>   - Minecraft Version
+    #   <day>       - Amount of in game days in the first world
     motd: "                  <color:#cba3ff>Minecraft Challenges</color>\n                      <color:#3dfffc><color:#98a667>Version <b><version></b></color></color>"
     anvil:
         coloredNames: true
         freeRename: false
 all_items:
-    #Available tags:
-    #   <item_icon> - Shows the icon image
-    #   <item_name> - Name of the icon
-    #   <items_collected> - Current number of collected items
-    #   <total_items> - Total amount of items to collect
-    #   <progress> - Current collection progress
+    # Available tags:
+    #   <item_icon>         - Shows the icon image
+    #   <item_name>         - Name of the icon
+    #   <items_collected>   - Current number of collected items
+    #   <total_items>       - Total amount of items to collect
+    #   <progress>          - Current collection progress
     boss_bar:
         next_item: "<newline><item_icon> <bold><italic><item_name> <reset>(<items_collected>/<total_items> - <progress:'#.##'>%)"
         complete: "<bold><italic>Alle Items eingesammelt! <reset>(<items_collected>/<total_items> - <progress:'#.##'>%)"
