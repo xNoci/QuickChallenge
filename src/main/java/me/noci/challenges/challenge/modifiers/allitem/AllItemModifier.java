@@ -226,7 +226,7 @@ public class AllItemModifier implements ChallengeModifier {
                 .editTags(builder -> builder.resolvers(resolvers))
                 .build();
 
-        Option<Component> option = allItemsCollected ? Option. ALL_ITEMS_BOSS_BAR_COMPLETE : Option.ALL_ITEMS_BOSS_BAR_NEXT_ITEM;
+        Option<Component> option = allItemsCollected ? Option.ALL_ITEMS_BOSS_BAR_COMPLETE : Option.ALL_ITEMS_BOSS_BAR_NEXT_ITEM;
         currentDisplay = config.get(option, decoder);
         return currentDisplay;
     }
