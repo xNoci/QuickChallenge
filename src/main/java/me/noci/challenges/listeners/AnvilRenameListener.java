@@ -23,7 +23,7 @@ public class AnvilRenameListener implements Listener {
         AnvilInventory inventory = event.getInventory();
 
         if (event.getResult() == null) return;
-        if (inventory.getRenameText() == null) return;
+        if (inventory.getRenameText() == null || inventory.getRenameText().isBlank()) return;
 
 
         boolean freeRename = config.get(Option.ANVIL_FREE_RENAME);
