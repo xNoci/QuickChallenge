@@ -53,6 +53,8 @@ public class AllItemModifier implements ChallengeModifier {
     private SubscribedEvent<PlayerInventorySlotChangeEvent> slotChangeEvent;
     private SubscribedEvent<InventoryClickEvent> inventoryClickEvent;
 
+    private Component currentDisplay;
+
     public AllItemModifier() {
         this(EnumUtils.random(AllItem.class), Lists.newArrayList(), false);
     }
@@ -192,6 +194,7 @@ public class AllItemModifier implements ChallengeModifier {
             broadcastNextItem(challenge, currentItem);
             checkAllPlayerInventories(challenge);
         }
+        currentDisplay = null;
     }
 
     private List<AllItem> remainingItems() {
@@ -203,6 +206,9 @@ public class AllItemModifier implements ChallengeModifier {
     }
 
     private Component itemDisplay() {
+        //TODO If config was reloaded also rebuild display
+        if(currentDisplay != null) return currentDisplay;
+
         Config config = QuickChallenge.instance().config();
         int collectedItemCount = collectedItems.size();
         int itemsToCollectCount = AllItem.values().length;
@@ -220,13 +226,9 @@ public class AllItemModifier implements ChallengeModifier {
                 .editTags(builder -> builder.resolvers(resolvers))
                 .build();
 
-        //TODO Cache the components until they are marked as dirty by either or next item
-
-        if (allItemsCollected) {
-            return config.get(Option.ALL_ITEMS_BOSS_BAR_COMPLETE, decoder);
-        }
-
-        return config.get(Option.ALL_ITEMS_BOSS_BAR_NEXT_ITEM, decoder);
+        Option<Component> option = allItemsCollected ? Option. ALL_ITEMS_BOSS_BAR_COMPLETE : Option.ALL_ITEMS_BOSS_BAR_NEXT_ITEM;
+        currentDisplay = config.get(option, decoder);
+        return currentDisplay;
     }
 
     private void checkAllPlayerInventories(Challenge challenge) {
@@ -245,6 +247,7 @@ public class AllItemModifier implements ChallengeModifier {
         this.collectedItems.clear();
         this.allItemsCollected = false;
         currentItem = EnumUtils.random(AllItem.class);
+        currentDisplay = null;
     }
 
     public static class Serializers {
