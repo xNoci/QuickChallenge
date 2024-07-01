@@ -54,6 +54,7 @@ public class AllItemModifier implements ChallengeModifier {
     private SubscribedEvent<InventoryClickEvent> inventoryClickEvent;
 
     private Component currentDisplay;
+    private Runnable reloadListener;
 
     public AllItemModifier() {
         this(EnumUtils.random(AllItem.class), Lists.newArrayList(), false);
@@ -135,6 +136,13 @@ public class AllItemModifier implements ChallengeModifier {
                 .filter(event -> currentItem.matches(Require.nonNull(event.getCurrentItem())))
                 .handle(event -> tryPickupItem(challenge, event.getWhoClicked(), currentItem));
 
+        Config config = QuickChallenge.instance().config();
+        if(reloadListener != null) {
+            config.removeListener(reloadListener);
+        }
+
+        reloadListener = () -> currentDisplay = null;
+        config.registerListener(reloadListener);
     }
 
     @Override
@@ -152,6 +160,13 @@ public class AllItemModifier implements ChallengeModifier {
             inventoryClickEvent.unsubscribe();
             inventoryClickEvent = null;
         }
+
+        if(reloadListener != null) {
+            QuickChallenge.instance().config().removeListener(reloadListener);
+            reloadListener = null;
+        }
+
+        currentDisplay = null;
     }
 
     @Override

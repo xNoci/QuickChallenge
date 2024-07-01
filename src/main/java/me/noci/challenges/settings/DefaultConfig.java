@@ -1,5 +1,6 @@
 package me.noci.challenges.settings;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.Getter;
 import lombok.SneakyThrows;
@@ -17,15 +18,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.HashMap;
+import java.util.List;
 
 public class DefaultConfig implements Config {
 
+    private final List<Runnable> reloadListeners = Lists.newArrayList();
     private final Logger logger;
     private final JavaPlugin plugin;
     private final Path config;
 
     @Getter private YamlConfiguration configuration;
-    private final HashMap<String, Component> componentCache = Maps.newHashMap();
 
     protected DefaultConfig(JavaPlugin plugin, String fileName, boolean replace) {
         Require.nonNull(plugin, "JavaPlugin cannot be null");
@@ -55,18 +57,25 @@ public class DefaultConfig implements Config {
     }
 
     @Override
-    public Component getCached(Option<Component> option, ComponentDecoder<? super String, Component> decoder) {
-        return componentCache.computeIfAbsent(option.path(), key -> configuration.getComponent(key, decoder, option.defaultValue()));
-    }
-
-    @Override
     public Component get(Option<Component> option, ComponentDecoder<? super String, Component> decoder) {
         return configuration.getComponent(option.path(), decoder, option.defaultValue());
     }
 
+    @Override
+    public void registerListener(Runnable listener) {
+        Require.checkState(!reloadListeners.contains(listener), "Listener is already registered");
+        reloadListeners.add(listener);
+    }
+
+    @Override
+    public void removeListener(Runnable listener) {
+        Require.checkState(reloadListeners.contains(listener), "This listener is not registered");
+        reloadListeners.remove(listener);
+    }
+
     protected void load() {
         this.configuration = YamlConfiguration.loadConfiguration(config.toFile());
-        componentCache.clear();
+        reloadListeners.forEach(Runnable::run);
     }
 
     @SneakyThrows
