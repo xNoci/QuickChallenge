@@ -54,7 +54,7 @@ public class AllItemModifier implements ChallengeModifier {
     private SubscribedEvent<InventoryClickEvent> inventoryClickEvent;
 
     private Component currentDisplay;
-    private Runnable reloadListener;
+    private Runnable configReloadListener;
 
     public AllItemModifier() {
         this(EnumUtils.random(AllItem.class), Lists.newArrayList(), false);
@@ -137,12 +137,12 @@ public class AllItemModifier implements ChallengeModifier {
                 .handle(event -> tryPickupItem(challenge, event.getWhoClicked(), currentItem));
 
         Config config = QuickChallenge.instance().config();
-        if(reloadListener != null) {
-            config.removeListener(reloadListener);
+        if(configReloadListener != null) {
+            config.removeListener(configReloadListener);
         }
 
-        reloadListener = () -> currentDisplay = null;
-        config.registerListener(reloadListener);
+        configReloadListener = () -> currentDisplay = null;
+        config.registerListener(configReloadListener);
     }
 
     @Override
@@ -161,9 +161,9 @@ public class AllItemModifier implements ChallengeModifier {
             inventoryClickEvent = null;
         }
 
-        if(reloadListener != null) {
-            QuickChallenge.instance().config().removeListener(reloadListener);
-            reloadListener = null;
+        if(configReloadListener != null) {
+            QuickChallenge.instance().config().removeListener(configReloadListener);
+            configReloadListener = null;
         }
 
         currentDisplay = null;
@@ -195,7 +195,8 @@ public class AllItemModifier implements ChallengeModifier {
 
     public void skip(Challenge challenge, CommandSender collector) {
         if (allItemsCollected) return;
-        collectedItems.add(CollectedItem.now(currentItem, collector.getName(), challenge.modifier(TimerModifier.class, TimerModifier::ticksPlayed, -1L), true));
+        long ticksPlayed = challenge.modifier(TimerModifier.class, TimerModifier::ticksPlayed, -1L);
+        collectedItems.add(CollectedItem.now(currentItem, collector.getName(), ticksPlayed, true));
         notifyItemsCollected(challenge, collector, currentItem, true);
         nextItem(challenge);
     }
@@ -221,7 +222,6 @@ public class AllItemModifier implements ChallengeModifier {
     }
 
     private Component itemDisplay() {
-        //TODO If config was reloaded also rebuild display
         if(currentDisplay != null) return currentDisplay;
 
         Config config = QuickChallenge.instance().config();
