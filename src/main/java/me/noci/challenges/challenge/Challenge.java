@@ -5,21 +5,18 @@ import com.google.common.collect.ImmutableSet;
 import lombok.Getter;
 import lombok.Setter;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
-import me.noci.challenges.challenge.modifiers.TimerModifier;
 import net.kyori.adventure.text.Component;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 
-public class Challenge implements Comparable<Challenge> {
+public class Challenge {
 
     private static final Logger LOGGER = LogManager.getLogger("Challenge");
 
@@ -77,16 +74,6 @@ public class Challenge implements Comparable<Challenge> {
 
     public <T extends ChallengeModifier, E> E modifier(Class<T> modifier, Function<T, E> mapper, E defaultValue) {
         return modifier(modifier).map(mapper).orElse(defaultValue);
-    }
-
-    @Override
-    public int compareTo(@NotNull Challenge other) {
-        Comparator<Challenge> compareStarted = Comparator.comparing(Challenge::started);
-        Comparator<Challenge> comparePaused = Comparator.comparing(Challenge::paused);
-        Comparator<Challenge> playedTime = Comparator.comparing(challenge -> challenge.modifier(TimerModifier.class, TimerModifier::ticksPlayed, 0L));
-        Comparator<Challenge> modifierCount = Comparator.comparing(challenge -> challenge.modifiers().size());
-
-        return compareStarted.reversed().thenComparing(comparePaused).thenComparing(playedTime.reversed()).thenComparing(modifierCount.reversed()).compare(this, other);
     }
 
     public void broadcast(Component message) {
