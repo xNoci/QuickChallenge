@@ -1,14 +1,13 @@
 package me.noci.challenges.settings;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import me.noci.quickutilities.utils.Require;
 import me.noci.quickutilities.utils.Scheduler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.serializer.ComponentDecoder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,7 +16,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
 import java.nio.file.*;
-import java.util.HashMap;
 import java.util.List;
 
 public class DefaultConfig implements Config {
@@ -51,14 +49,15 @@ public class DefaultConfig implements Config {
             case Boolean b -> configuration.getBoolean(path, b);
             case Float f -> configuration.getDouble(path, (double) f);
             case Double d -> configuration.getDouble(path, d);
-            case Component c -> get((Option<Component>) option, MiniMessage.miniMessage());
+            case Component c -> get((Option<Component>) option, TagResolver.empty());
             default -> configuration.get(option.path(), option.defaultValue());
         };
     }
 
     @Override
-    public Component get(Option<Component> option, ComponentDecoder<? super String, Component> decoder) {
-        return configuration.getComponent(option.path(), decoder, option.defaultValue());
+    public Component get(Option<Component> option, TagResolver resolver) {
+        String string = configuration.getString(option.path());
+        return string == null ? option.defaultValue() : MiniMessage.miniMessage().deserialize(string, resolver);
     }
 
     @Override

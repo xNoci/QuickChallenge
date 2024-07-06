@@ -1,7 +1,7 @@
 package me.noci.challenges.settings;
 
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.serializer.ComponentDecoder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public interface Config {
@@ -20,7 +20,7 @@ public interface Config {
 
     <T> T get(Option<T> option);
 
-    Component get(Option<Component> option, ComponentDecoder<? super String, Component> decoder);
+    Component get(Option<Component> option, TagResolver resolver);
 
     void registerListener(Runnable listener);
 

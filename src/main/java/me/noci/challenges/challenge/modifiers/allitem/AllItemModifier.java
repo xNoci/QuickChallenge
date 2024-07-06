@@ -228,21 +228,18 @@ public class AllItemModifier implements ChallengeModifier {
         int collectedItemCount = collectedItems.size();
         int itemsToCollectCount = AllItem.values().length;
 
-        TagResolver[] resolvers = new TagResolver[]{
-                Placeholder.component("item_icon", currentItem.icon()),
-                Placeholder.unparsed("item_name", currentItem.itemName()),
-                Formatter.number("items_collected", collectedItemCount),
-                Formatter.number("total_items", itemsToCollectCount),
-                Formatter.number("progress", (float) collectedItemCount / itemsToCollectCount * 100)
-        };
-
-        MiniMessage decoder = MiniMessage.builder()
-                .tags(StandardTags.defaults())
-                .editTags(builder -> builder.resolvers(resolvers))
+        TagResolver resolver = TagResolver.builder()
+                .resolvers(
+                        Placeholder.component("item_icon", currentItem.icon()),
+                        Placeholder.unparsed("item_name", currentItem.itemName()),
+                        Formatter.number("items_collected", collectedItemCount),
+                        Formatter.number("total_items", itemsToCollectCount),
+                        Formatter.number("progress", (float) collectedItemCount / itemsToCollectCount * 100)
+                )
                 .build();
 
         Option<Component> option = allItemsCollected ? Option.ALL_ITEMS_BOSS_BAR_COMPLETE : Option.ALL_ITEMS_BOSS_BAR_NEXT_ITEM;
-        currentDisplay = config.get(option, decoder);
+        currentDisplay = config.get(option, resolver);
         return currentDisplay;
     }
 
