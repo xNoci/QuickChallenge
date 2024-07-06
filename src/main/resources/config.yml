@@ -1,14 +1,19 @@
 settings:
     debug: false
-    # Available tags:
+    # Extra tags:
     #   <version>   - Minecraft Version
     #   <day>       - Amount of in game days in the first world
     motd: "                  <color:#cba3ff>Minecraft Challenges</color>\n                      <color:#3dfffc><color:#98a667>Version <b><version></b></color></color>"
     anvil:
         coloredNames: true
         freeRename: false
+    # Extra tags:
+    #   <player_head>   - Head of the sender
+    #   <player>        - Name of the sender
+    #   <message>       - Message which the sender send
+    chat_layout: "<player_head> <color:#1f96ad><player><gray>: <message>"
 all_items:
-    # Available tags:
+    # Extra tags:
     #   <item_icon>         - Shows the icon image
     #   <item_name>         - Name of the icon
     #   <items_collected>   - Current number of collected items

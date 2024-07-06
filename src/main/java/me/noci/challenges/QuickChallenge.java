@@ -65,7 +65,7 @@ public class QuickChallenge extends JavaPlugin {
         register.accept(new ItemDropListener(challengeController));
         register.accept(new ServerListPingListener(config));
         register.accept(new ServerTickListener(challengeController));
-        register.accept(new ChatListener());
+        register.accept(new ChatListener(config));
         register.accept(new AnvilRenameListener(config));
         register.accept(new PlayerInteractListener(challengeController));
     }
