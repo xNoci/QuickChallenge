@@ -5,7 +5,6 @@ import com.google.common.collect.Maps;
 import lombok.Getter;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
-import me.noci.challenges.serializer.TypeSerializer;
 import me.noci.quickutilities.utils.EnumUtils;
 import net.kyori.adventure.bossbar.BossBar;
 import org.apache.logging.log4j.Logger;
@@ -15,31 +14,10 @@ import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Predicate;
 
-import static me.noci.challenges.serializer.TypeSerializers.*;
-
 public class TrafficLightModifier implements ChallengeModifier {
-
-    public static final TypeSerializer<Optional<TrafficLightModifier>> SERIALIZER = TypeSerializer.fixed(37, buffer -> {
-        boolean enabled = BOOLEAN.read(buffer);
-        TimeRange greenDuration = TIME_RANGE.read(buffer);
-        TimeRange yellowDuration = TIME_RANGE.read(buffer);
-        TimeRange redDuration = TIME_RANGE.read(buffer);
-        LightStatus lightStatus = TRAFFIC_LIGHT_STATUS.read(buffer);
-        long nextAction = LONG.read(buffer);
-        if (!enabled) return Optional.empty();
-        return Optional.of(new TrafficLightModifier(greenDuration, yellowDuration, redDuration, lightStatus, nextAction));
-    }, (buffer, value) -> {
-        BOOLEAN.write(buffer, value.isPresent());
-        TIME_RANGE.write(buffer, value.map(TrafficLightModifier::greenDuration).orElse(TimeRange.oneSecond()));
-        TIME_RANGE.write(buffer, value.map(TrafficLightModifier::yellowDuration).orElse(TimeRange.oneSecond()));
-        TIME_RANGE.write(buffer, value.map(TrafficLightModifier::redDuration).orElse(TimeRange.oneSecond()));
-        TRAFFIC_LIGHT_STATUS.write(buffer, value.map(TrafficLightModifier::lightStatus).orElse(LightStatus.GREEN));
-        LONG.write(buffer, value.map(TrafficLightModifier::nextAction).orElse(0L));
-    });
 
     private final HashMap<UUID, LastLocation> lastLocations = Maps.newHashMap();
     @Getter private final TimeRange greenDuration;

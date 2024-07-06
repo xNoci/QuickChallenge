@@ -31,18 +31,18 @@ public class ChallengeSerializer {
     static {
         register(1,
                 serializer -> serializer
-                        .layout(StopOnDeathModifier.SERIALIZER, challenge -> challenge.modifier(StopOnDeathModifier.class))
-                        .layout(TimerModifier.SERIALIZER, challenge -> challenge.modifier(TimerModifier.class))
-                        .layout(TrafficLightModifier.SERIALIZER, challenge -> challenge.modifier(TrafficLightModifier.class))
-                        .layout(EnderDragonFinishModifier.SERIALIZER, challenge -> challenge.modifier(EnderDragonFinishModifier.class))
-                        .layout(AllItemModifier.Serializers.V_1, challenge -> challenge.modifier(AllItemModifier.class)),
+                        .layout(StopOnDeathSerializer.SERIALIZER, challenge -> challenge.modifier(StopOnDeathModifier.class))
+                        .layout(TimerSerializer.SERIALIZER, challenge -> challenge.modifier(TimerModifier.class))
+                        .layout(TrafficLightSerializer.SERIALIZER, challenge -> challenge.modifier(TrafficLightModifier.class))
+                        .layout(EnderDragonFinishSerializer.SERIALIZER, challenge -> challenge.modifier(EnderDragonFinishModifier.class))
+                        .layout(AllItemSerializer.V_1, challenge -> challenge.modifier(AllItemModifier.class)),
                 buffer -> {
                     List<ChallengeModifier> challengeModifiers = Lists.newArrayList();
-                    StopOnDeathModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
-                    TimerModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
-                    TrafficLightModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
-                    EnderDragonFinishModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
-                    AllItemModifier.Serializers.V_1.read(buffer).ifPresent(challengeModifiers::add);
+                    StopOnDeathSerializer.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    TimerSerializer.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    TrafficLightSerializer.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    EnderDragonFinishSerializer.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    AllItemSerializer.V_1.read(buffer).ifPresent(challengeModifiers::add);
 
                     return new Challenge(challengeModifiers);
                 }
@@ -50,19 +50,19 @@ public class ChallengeSerializer {
 
         register(2,
                 serializer -> serializer
-                        .layout(StopOnDeathModifier.SERIALIZER, challenge -> challenge.modifier(StopOnDeathModifier.class))
-                        .layout(TimerModifier.SERIALIZER, challenge -> challenge.modifier(TimerModifier.class))
-                        .layout(TrafficLightModifier.SERIALIZER, challenge -> challenge.modifier(TrafficLightModifier.class))
-                        .layout(EnderDragonFinishModifier.SERIALIZER, challenge -> challenge.modifier(EnderDragonFinishModifier.class))
-                        .layout(AllItemModifier.Serializers.V_2, challenge -> challenge.modifier(AllItemModifier.class)),
+                        .layout(StopOnDeathSerializer.SERIALIZER, challenge -> challenge.modifier(StopOnDeathModifier.class))
+                        .layout(TimerSerializer.SERIALIZER, challenge -> challenge.modifier(TimerModifier.class))
+                        .layout(TrafficLightSerializer.SERIALIZER, challenge -> challenge.modifier(TrafficLightModifier.class))
+                        .layout(EnderDragonFinishSerializer.SERIALIZER, challenge -> challenge.modifier(EnderDragonFinishModifier.class))
+                        .layout(AllItemSerializer.V_2, challenge -> challenge.modifier(AllItemModifier.class)),
 
                 buffer -> {
                     List<ChallengeModifier> challengeModifiers = Lists.newArrayList();
-                    StopOnDeathModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
-                    TimerModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
-                    TrafficLightModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
-                    EnderDragonFinishModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
-                    AllItemModifier.Serializers.V_2.read(buffer).ifPresent(challengeModifiers::add);
+                    StopOnDeathSerializer.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    TimerSerializer.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    TrafficLightSerializer.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    EnderDragonFinishSerializer.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    AllItemSerializer.V_2.read(buffer).ifPresent(challengeModifiers::add);
 
                     return new Challenge(challengeModifiers);
                 }
@@ -70,19 +70,19 @@ public class ChallengeSerializer {
 
         register(3,
                 serializer -> serializer
-                        .layout(StopOnDeathModifier.SERIALIZER, challenge -> challenge.modifier(StopOnDeathModifier.class))
-                        .layout(TimerModifier.SERIALIZER, challenge -> challenge.modifier(TimerModifier.class))
-                        .layout(TrafficLightModifier.SERIALIZER, challenge -> challenge.modifier(TrafficLightModifier.class))
-                        .layout(EnderDragonFinishModifier.SERIALIZER, challenge -> challenge.modifier(EnderDragonFinishModifier.class))
-                        .layout(AllItemModifier.Serializers.V_3, challenge -> challenge.modifier(AllItemModifier.class)),
+                        .layout(StopOnDeathSerializer.SERIALIZER, challenge -> challenge.modifier(StopOnDeathModifier.class))
+                        .layout(TimerSerializer.SERIALIZER, challenge -> challenge.modifier(TimerModifier.class))
+                        .layout(TrafficLightSerializer.SERIALIZER, challenge -> challenge.modifier(TrafficLightModifier.class))
+                        .layout(EnderDragonFinishSerializer.SERIALIZER, challenge -> challenge.modifier(EnderDragonFinishModifier.class))
+                        .layout(AllItemSerializer.V_3, challenge -> challenge.modifier(AllItemModifier.class)),
 
                 buffer -> {
                     List<ChallengeModifier> challengeModifiers = Lists.newArrayList();
-                    StopOnDeathModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
-                    TimerModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
-                    TrafficLightModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
-                    EnderDragonFinishModifier.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
-                    AllItemModifier.Serializers.V_3.read(buffer).ifPresent(challengeModifiers::add);
+                    StopOnDeathSerializer.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    TimerSerializer.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    TrafficLightSerializer.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    EnderDragonFinishSerializer.SERIALIZER.read(buffer).ifPresent(challengeModifiers::add);
+                    AllItemSerializer.V_3.read(buffer).ifPresent(challengeModifiers::add);
 
                     return new Challenge(challengeModifiers);
                 }

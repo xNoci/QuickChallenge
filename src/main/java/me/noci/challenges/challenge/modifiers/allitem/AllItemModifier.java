@@ -12,7 +12,6 @@ import me.noci.challenges.challenge.modifiers.TimerModifier;
 import me.noci.challenges.colors.ColorUtils;
 import me.noci.challenges.colors.Colors;
 import me.noci.challenges.headcomponent.HeadComponent;
-import me.noci.challenges.serializer.TypeSerializer;
 import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.events.Events;
@@ -21,11 +20,9 @@ import me.noci.quickutilities.utils.EnumUtils;
 import me.noci.quickutilities.utils.Require;
 import net.kyori.adventure.bossbar.BossBar;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Formatter;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
-import net.kyori.adventure.text.minimessage.tag.standard.StandardTags;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
@@ -38,11 +35,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.EnumSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
-
-import static me.noci.challenges.serializer.TypeSerializers.*;
 
 public class AllItemModifier implements ChallengeModifier {
 
@@ -137,7 +131,7 @@ public class AllItemModifier implements ChallengeModifier {
                 .handle(event -> tryPickupItem(challenge, event.getWhoClicked(), currentItem));
 
         Config config = QuickChallenge.instance().config();
-        if(configReloadListener != null) {
+        if (configReloadListener != null) {
             config.removeListener(configReloadListener);
         }
 
@@ -161,7 +155,7 @@ public class AllItemModifier implements ChallengeModifier {
             inventoryClickEvent = null;
         }
 
-        if(configReloadListener != null) {
+        if (configReloadListener != null) {
             QuickChallenge.instance().config().removeListener(configReloadListener);
             configReloadListener = null;
         }
@@ -222,7 +216,7 @@ public class AllItemModifier implements ChallengeModifier {
     }
 
     private Component itemDisplay() {
-        if(currentDisplay != null) return currentDisplay;
+        if (currentDisplay != null) return currentDisplay;
 
         Config config = QuickChallenge.instance().config();
         int collectedItemCount = collectedItems.size();
@@ -260,59 +254,6 @@ public class AllItemModifier implements ChallengeModifier {
         this.allItemsCollected = false;
         currentItem = EnumUtils.random(AllItem.class);
         currentDisplay = null;
-    }
-
-    public static class Serializers {
-        public static final TypeSerializer<Optional<AllItemModifier>> V_1 = TypeSerializer.dynamic(value -> BOOLEAN.byteSize(null) +
-                COLLECTED_ITEM_LIST.byteSize(value.map(AllItemModifier::collectedItems).orElse(List.of())) +
-                ALL_ITEM.byteSize(null) +
-                BOOLEAN.byteSize(null), buffer -> {
-            boolean enabled = BOOLEAN.read(buffer);
-            List<CollectedItem> collectedItems = COLLECTED_ITEM_LIST.read(buffer);
-            AllItem currentItem = ALL_ITEM.read(buffer);
-            boolean allItemsCollected = BOOLEAN.read(buffer);
-            if (!enabled) return Optional.empty();
-            return Optional.of(new AllItemModifier(currentItem, collectedItems, allItemsCollected));
-        }, (buffer, value) -> {
-            BOOLEAN.write(buffer, value.isPresent());
-            COLLECTED_ITEM_LIST.write(buffer, value.map(AllItemModifier::collectedItems).orElse(List.of()));
-            ALL_ITEM.write(buffer, value.map(AllItemModifier::currentItem).orElse(AllItem.ACACIA_BOAT));
-            BOOLEAN.write(buffer, value.map(AllItemModifier::allItemsCollected).orElse(false));
-        });
-
-        public static final TypeSerializer<Optional<AllItemModifier>> V_2 = TypeSerializer.dynamic(value -> BOOLEAN.byteSize(null) +
-                COLLECTED_ITEM_LIST_V2.byteSize(value.map(AllItemModifier::collectedItems).orElse(List.of())) +
-                ALL_ITEM.byteSize(null) +
-                BOOLEAN.byteSize(null), buffer -> {
-            boolean enabled = BOOLEAN.read(buffer);
-            List<CollectedItem> collectedItems = COLLECTED_ITEM_LIST_V2.read(buffer);
-            AllItem currentItem = ALL_ITEM.read(buffer);
-            boolean allItemsCollected = BOOLEAN.read(buffer);
-            if (!enabled) return Optional.empty();
-            return Optional.of(new AllItemModifier(currentItem, collectedItems, allItemsCollected));
-        }, (buffer, value) -> {
-            BOOLEAN.write(buffer, value.isPresent());
-            COLLECTED_ITEM_LIST_V2.write(buffer, value.map(AllItemModifier::collectedItems).orElse(List.of()));
-            ALL_ITEM.write(buffer, value.map(AllItemModifier::currentItem).orElse(AllItem.ACACIA_BOAT));
-            BOOLEAN.write(buffer, value.map(AllItemModifier::allItemsCollected).orElse(false));
-        });
-
-        public static final TypeSerializer<Optional<AllItemModifier>> V_3 = TypeSerializer.dynamic(value -> BOOLEAN.byteSize(null) +
-                COLLECTED_ITEM_LIST_V3.byteSize(value.map(AllItemModifier::collectedItems).orElse(List.of())) +
-                ALL_ITEM.byteSize(null) +
-                BOOLEAN.byteSize(null), buffer -> {
-            boolean enabled = BOOLEAN.read(buffer);
-            List<CollectedItem> collectedItems = COLLECTED_ITEM_LIST_V3.read(buffer);
-            AllItem currentItem = ALL_ITEM.read(buffer);
-            boolean allItemsCollected = BOOLEAN.read(buffer);
-            if (!enabled) return Optional.empty();
-            return Optional.of(new AllItemModifier(currentItem, collectedItems, allItemsCollected));
-        }, (buffer, value) -> {
-            BOOLEAN.write(buffer, value.isPresent());
-            COLLECTED_ITEM_LIST_V3.write(buffer, value.map(AllItemModifier::collectedItems).orElse(List.of()));
-            ALL_ITEM.write(buffer, value.map(AllItemModifier::currentItem).orElse(AllItem.ACACIA_BOAT));
-            BOOLEAN.write(buffer, value.map(AllItemModifier::allItemsCollected).orElse(false));
-        });
     }
 
 }
