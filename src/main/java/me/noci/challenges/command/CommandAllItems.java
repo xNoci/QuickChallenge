@@ -50,7 +50,7 @@ public class CommandAllItems extends QuickCommand {
     @SubCommand(path = "skip")
     @CommandPermission("quickchallenge.allitems.skip")
     public void skip(CommandSender sender) {
-        if(!config.get(Option.DEBUG)) {
+        if(!config.get(Option.Settings.DEBUG)) {
             sender.sendMessage(Component.text("Dieser Command ist nur im Debug-Mode verfügbar.", NamedTextColor.RED));
             return;
         }
@@ -71,7 +71,7 @@ public class CommandAllItems extends QuickCommand {
     @SubCommand(path = "skip")
     @CommandPermission("quickchallenge.allitems.skip")
     public void skip(CommandSender sender, int amount) {
-        if(!config.get(Option.DEBUG)) {
+        if(!config.get(Option.Settings.DEBUG)) {
             sender.sendMessage(Component.text("Dieser Command ist nur im Debug-Mode verfügbar.", NamedTextColor.RED));
             return;
         }
@@ -92,7 +92,7 @@ public class CommandAllItems extends QuickCommand {
     @SubCommand(path = "reset")
     @CommandPermission("quickchallenge.allitems.reset")
     public void reset(CommandSender sender) {
-        if(!config.get(Option.DEBUG)) {
+        if(!config.get(Option.Settings.DEBUG)) {
             sender.sendMessage(Component.text("Dieser Command ist nur im Debug-Mode verfügbar.", NamedTextColor.RED));
             return;
         }

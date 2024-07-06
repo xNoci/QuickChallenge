@@ -5,13 +5,23 @@ import net.kyori.adventure.text.format.NamedTextColor;
 
 public interface Option<T> {
 
-    Option<Boolean> DEBUG = create("settings.debug", false);
-    Option<Component> MOTD = component("settings.motd");
-    Option<Boolean> ANVIL_COLORED_NAMES = create("settings.anvil.coloredNames", true);
-    Option<Boolean> ANVIL_FREE_RENAME = create("settings.anvil.freeRename", false);
-    Option<Component> ALL_ITEMS_BOSS_BAR_NEXT_ITEM = component("all_items.boss_bar.next_item");
-    Option<Component> ALL_ITEMS_BOSS_BAR_COMPLETE = component("all_items.boss_bar.complete");
-    Option<Component> CHAT_LAYOUT = component("settings.chat_layout");
+    interface Settings {
+        Option<Boolean> DEBUG = create("settings.debug", false);
+        Option<Component> MOTD = component("settings.motd");
+        Option<Component> CHAT_LAYOUT = component("settings.chat_layout");
+
+        interface Anvil {
+            Option<Boolean> COLORED_NAME = create("settings.anvil.coloredNames", true);
+            Option<Boolean> FREE_RENAME = create("settings.anvil.freeRename", false);
+        }
+    }
+
+    interface AllItems {
+        interface BossBar {
+            Option<Component> NEXT_ITEM = component("all_items.boss_bar.next_item");
+            Option<Component> COMPLETE = component("all_items.boss_bar.complete");
+        }
+    }
 
     private static Option<Component> component(String path) {
         return create(path, Component.text("Failed to load '" + path + "' from config", NamedTextColor.RED));

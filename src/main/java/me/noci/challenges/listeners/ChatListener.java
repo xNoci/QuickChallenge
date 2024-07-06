@@ -28,7 +28,7 @@ public class ChatListener implements Listener {
                                     Placeholder.component("message", message)
                             )
                             .build();
-                    return config.get(Option.CHAT_LAYOUT, resolver);
+                    return config.get(Option.Settings.CHAT_LAYOUT, resolver);
                 }
         ));
     }

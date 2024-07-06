@@ -27,7 +27,7 @@ public class ServerListPingListener implements Listener {
                 )
                 .build();
 
-        event.motd(config.get(Option.MOTD, resolver));
+        event.motd(config.get(Option.Settings.MOTD, resolver));
     }
 
 }

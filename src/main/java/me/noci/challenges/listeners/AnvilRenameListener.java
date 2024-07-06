@@ -26,12 +26,12 @@ public class AnvilRenameListener implements Listener {
         if (inventory.getRenameText() == null || inventory.getRenameText().isBlank()) return;
 
 
-        boolean freeRename = config.get(Option.ANVIL_FREE_RENAME);
+        boolean freeRename = config.get(Option.Settings.Anvil.FREE_RENAME);
         if (inventory.getSecondItem() == null && freeRename) {
             inventory.setRepairCost(0);
         }
 
-        boolean coloredNames = config.get(Option.ANVIL_COLORED_NAMES);
+        boolean coloredNames = config.get(Option.Settings.Anvil.COLORED_NAME);
         if (coloredNames) {
             ItemStack itemStack = event.getResult();
             ItemMeta itemMeta = itemStack.getItemMeta();

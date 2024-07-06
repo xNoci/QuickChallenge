@@ -232,7 +232,7 @@ public class AllItemModifier implements ChallengeModifier {
                 )
                 .build();
 
-        Option<Component> option = allItemsCollected ? Option.ALL_ITEMS_BOSS_BAR_COMPLETE : Option.ALL_ITEMS_BOSS_BAR_NEXT_ITEM;
+        Option<Component> option = allItemsCollected ? Option.AllItems.BossBar.COMPLETE : Option.AllItems.BossBar.NEXT_ITEM;
         currentDisplay = config.get(option, resolver);
         return currentDisplay;
     }
