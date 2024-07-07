@@ -21,6 +21,13 @@ public interface Option<T> {
             Option<Component> NEXT_ITEM = component("all_items.boss_bar.next_item");
             Option<Component> COMPLETE = component("all_items.boss_bar.complete");
         }
+
+        interface Chat {
+            Option<Component> NEXT_ITEM = component("all_items.chat.next_item");
+            Option<Component> ITEM_COLLECTED = component("all_items.chat.item_collected");
+            Option<Component> ITEM_SKIPPED = component("all_items.chat.item_skipped");
+            Option<Component> ITEM_SKIPPED_CONSOLE = component("all_items.chat.item_skipped_console");
+        }
     }
 
     private static Option<Component> component(String path) {

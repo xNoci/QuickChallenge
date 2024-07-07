@@ -14,11 +14,28 @@ settings:
     chat_layout: "<player_head> <color:#1f96ad><player><gray>: <message>"
 all_items:
     # Extra tags:
-    #   <item_icon>         - Shows the icon image
-    #   <item_name>         - Name of the icon
+    #   <item_icon>         - Shows the current item image
+    #   <item_name>         - Name of current item
     #   <items_collected>   - Current number of collected items
     #   <total_items>       - Total amount of items to collect
     #   <progress>          - Current collection progress
     boss_bar:
         next_item: "<newline><item_icon> <bold><italic><item_name> <reset>(<items_collected>/<total_items> - <progress:'#.##'>%)"
         complete: "<bold><italic>Alle Items eingesammelt! <reset>(<items_collected>/<total_items> - <progress:'#.##'>%)"
+    chat:
+        # Extra tags:
+        #   <item_name> - Name of the next item
+        next_item: "<gray>Das nächste Item ist: <gradient:#dc4abc:#616bcd><item_name>"
+        # Extra tags:
+        #   <player_head>   - Head of the collector
+        #   <player>        - Name of the collector
+        #   <item_name>     - Name of the collected item
+        item_collected: "<gray>Der Spieler <player_head> <color:#1f96ad><player></color> hat das Item <gradient:#dc4abc:#616bcd><item_name></gradient> aufgesammelt."
+        # Extra tags:
+        #   <player_head>   - Head of the collector
+        #   <player>        - Name of the collector
+        #   <item_name>     - Name of the collected item
+        item_skipped: "<gray>Das Item <gradient:#dc4abc:#616bcd><item_name></gradient> wurde von <player_head> <color:#1f96ad><player></color> übersprungen."
+        # Extra tags:
+        #   <item_name>     - Name of the collected item
+        item_skipped_console: "<gray>Das Item <gradient:#dc4abc:#616bcd><item_name></gradient> wurde vom <color:#1f96ad>Server</color> übersprungen."

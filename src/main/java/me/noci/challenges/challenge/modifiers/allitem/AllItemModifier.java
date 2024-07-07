@@ -9,8 +9,6 @@ import me.noci.challenges.RandomHolder;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.modifiers.TimerModifier;
-import me.noci.challenges.colors.ColorUtils;
-import me.noci.challenges.colors.Colors;
 import me.noci.challenges.headcomponent.HeadComponent;
 import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
@@ -64,40 +62,33 @@ public class AllItemModifier implements ChallengeModifier {
     private static void notifyItemsCollected(Challenge challenge, CommandSender collector, AllItem item, boolean skipped) {
         challenge.players().forEach(player -> player.playSound(player, Sound.BLOCK_NOTE_BLOCK_PLING, SoundCategory.MASTER, 1, 1));
 
-        Component sender = collector.name().color(Colors.PLAYER_NAME);
-
+        boolean isPlayer = false;
+        Component headComponent = Component.empty();
         if (collector instanceof Player player) {
-            sender = HeadComponent.withName(player.getUniqueId(), sender);
+            headComponent = HeadComponent.create(player.getUniqueId()).build();
+            isPlayer = true;
         }
 
-        Component messageItemCollected;
-        if (!skipped) {
-            messageItemCollected = Component
-                    .text("Der Spieler ", Colors.GRAY)
-                    .append(sender)
-                    .append(Component.text(" hat das Item ", Colors.GRAY))
-                    .append(ColorUtils.gradientText(item.itemName(), Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_ACCENT_COLOR))
-                    .append(Component.text(" aufgesammelt.", Colors.GRAY))
-                    .asComponent();
-        } else {
-            messageItemCollected = Component
-                    .text("Das Item ", Colors.GRAY)
-                    .append(ColorUtils.gradientText(item.itemName(), Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_ACCENT_COLOR))
-                    .append(Component.text(" wurde von ", Colors.GRAY))
-                    .append(sender)
-                    .append(Component.text(" übersprungen.", Colors.GRAY));
+        TagResolver resolver = TagResolver.builder()
+                .resolvers(
+                        Placeholder.component("player_head", headComponent),
+                        Placeholder.component("player", collector.name()),
+                        Placeholder.unparsed("item_name", item.itemName())
+                )
+                .build();
+
+        Config config = QuickChallenge.instance().config();
+        Option<Component> option = skipped ? Option.AllItems.Chat.ITEM_SKIPPED : Option.AllItems.Chat.ITEM_COLLECTED;
+        if (skipped && !isPlayer) {
+            option = Option.AllItems.Chat.ITEM_SKIPPED_CONSOLE;
         }
 
-        challenge.broadcast(messageItemCollected);
+        challenge.broadcast(config.get(option, resolver));
     }
 
     private static void broadcastNextItem(Challenge challenge, AllItem item) {
-        Component messageNewItem = Component
-                .text("Das nächste Item ist: ", Colors.GRAY)
-                .append(ColorUtils.gradientText(item.itemName(), Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_ACCENT_COLOR))
-                .asComponent();
-
-        challenge.broadcast(messageNewItem);
+        Config config = QuickChallenge.instance().config();
+        challenge.broadcast(config.get(Option.AllItems.Chat.NEXT_ITEM, Placeholder.unparsed("item_name", item.itemName())));
     }
 
     @Override
@@ -128,7 +119,7 @@ public class AllItemModifier implements ChallengeModifier {
                 .filter(event -> event.getWhoClicked() instanceof Player)
                 .filter(event -> !challenge.paused())
                 .filter(event -> currentItem.matches(Require.nonNull(event.getCurrentItem())))
-                .handle(event -> tryPickupItem(challenge, event.getWhoClicked(), currentItem));
+                .handle(event -> tryPickupItem(challenge, (Player) event.getWhoClicked(), currentItem));
 
         Config config = QuickChallenge.instance().config();
         if (configReloadListener != null) {
@@ -179,11 +170,11 @@ public class AllItemModifier implements ChallengeModifier {
         return "All Items";
     }
 
-    private void tryPickupItem(Challenge challenge, CommandSender collector, AllItem item) {
+    private void tryPickupItem(Challenge challenge, Player player, AllItem item) {
         if (allItemsCollected) return;
         if (item != currentItem) return;
-        collectedItems.add(CollectedItem.now(item, collector.getName(), challenge.modifier(TimerModifier.class, TimerModifier::ticksPlayed, -1L), false));
-        notifyItemsCollected(challenge, collector, item, false);
+        collectedItems.add(CollectedItem.now(item, player.getName(), challenge.modifier(TimerModifier.class, TimerModifier::ticksPlayed, -1L), false));
+        notifyItemsCollected(challenge, player, item, false);
         nextItem(challenge);
     }
 
