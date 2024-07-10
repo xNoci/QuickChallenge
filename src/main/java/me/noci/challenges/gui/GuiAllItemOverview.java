@@ -48,7 +48,7 @@ public class GuiAllItemOverview extends PagedQuickGUIProvider {
 
     private static GuiItem toGuiItem(CollectedItem collectedItem) {
         AllItem allItem = collectedItem.item();
-        var item = new QuickItemStack(allItem.material(), ColorUtils.gradientText(allItem.itemName(), Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_ACCENT_COLOR).decorate(TextDecoration.BOLD));
+        var item = new QuickItemStack(allItem.material(), ColorUtils.gradientText(allItem.itemName(), Colors.TIMER_PRIMARY_COLOR, Colors.TIMER_ACCENT_COLOR).decorate(TextDecoration.BOLD)).addItemFlags();
 
         Date collectionDate = new Date(collectedItem.timestamp());
 
