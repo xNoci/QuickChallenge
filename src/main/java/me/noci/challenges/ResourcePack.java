@@ -2,6 +2,8 @@ package me.noci.challenges;
 
 import com.google.common.io.BaseEncoding;
 import me.noci.challenges.challenge.modifiers.allitem.AllItem;
+import me.noci.challenges.settings.Config;
+import me.noci.challenges.settings.Option;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.key.KeyPattern;
 import net.kyori.adventure.text.Component;
@@ -15,12 +17,6 @@ import java.util.Locale;
 import java.util.UUID;
 
 public final class ResourcePack {
-
-    private static final Component PROMPT = Component.text()
-            .append(Component.text("QuickChallenge Resource Pack", TextColor.color(195, 49, 214)))
-            .append(Component.text(" - ", TextColor.color(64, 56, 64)))
-            .append(Component.text(" Used for some challenges", TextColor.color(52, 158, 79)))
-            .asComponent();
 
     public static final TexturePack DEFAULT = TexturePack.of("F556A1E28370B937E7E1C6955336670E1BBAA7C6", "https://github.com/xNoci/QuickChallenge/raw/main/ResourcePacks/DefaultResourcePack.zip", true);
     public static final TexturePack HIGH_RES_OVERLAY = TexturePack.of("EF31A3D1693C29742ADF57E8FFB80B9DD9152632", "https://github.com/xNoci/QuickChallenge/raw/main/ResourcePacks/AllItems_Overlay(High-Resolution).zip", true);
@@ -69,7 +65,8 @@ public final class ResourcePack {
         }
 
         public void apply(Player player) {
-            player.addResourcePack(uuid, url, hash, GsonComponentSerializer.gson().serialize(ResourcePack.PROMPT), !player.isOp() && required);
+            Config config = QuickChallenge.instance().config();
+            player.addResourcePack(uuid, url, hash, GsonComponentSerializer.gson().serialize(config.get(Option.ResourcePack.PROMPT)), !player.isOp() && required);
         }
 
         public boolean isSame(UUID uuid) {

@@ -1,10 +1,12 @@
 package me.noci.challenges.gui.modifier;
 
+import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.challenge.modifiers.trafficlight.LightStatus;
 import me.noci.challenges.challenge.modifiers.trafficlight.TimeRange;
 import me.noci.challenges.challenge.modifiers.trafficlight.TrafficLightModifier;
-import me.noci.challenges.colors.Colors;
 import me.noci.challenges.gui.InventoryConstants;
+import me.noci.challenges.settings.Config;
+import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.inventory.GuiItem;
 import me.noci.quickutilities.inventory.GuiProvider;
 import me.noci.quickutilities.inventory.InventoryContent;
@@ -13,7 +15,8 @@ import me.noci.quickutilities.utils.BukkitUnit;
 import me.noci.quickutilities.utils.EnumUtils;
 import me.noci.quickutilities.utils.QuickItemStack;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.minimessage.tag.resolver.Formatter;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -37,19 +40,19 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
     private int redDurationMax = 30;
 
     public GuiTrafficLightModifier(GuiProvider parentGui, Consumer<Supplier<TrafficLightModifier>> createdModifier) {
-        super(parentGui, createdModifier, Component.text("Timer Modifier", Colors.GUI_TITLE), InventoryConstants.FULL_SIZE);
+        super(parentGui, createdModifier, Option.Gui.TrafficLightModifier.TITLE.get(), InventoryConstants.FULL_SIZE);
     }
 
     @Override
     public void init(Player player, InventoryContent content) {
         content.fill(InventoryConstants.GLAS_PANE);
 
-        content.setItem(Slot.getSlot(6, 4), new QuickItemStack(Material.RED_WOOL, Component.text("Abbrechen", NamedTextColor.RED)).asGuiItem(event -> {
+        content.setItem(Slot.getSlot(6, 4), new QuickItemStack(Material.RED_WOOL, Option.Gui.TrafficLightModifier.CANCEL.get()).asGuiItem(event -> {
             if (event.getClick() != ClickType.LEFT) return;
             parentGui.provide(event.getPlayer());
         }));
 
-        content.setItem(Slot.getSlot(6, 6), new QuickItemStack(Material.GREEN_WOOL, Component.text("Hinzufügen", NamedTextColor.GREEN)).asGuiItem(event -> {
+        content.setItem(Slot.getSlot(6, 6), new QuickItemStack(Material.GREEN_WOOL, Option.Gui.TrafficLightModifier.ADD_MODIFIER.get()).asGuiItem(event -> {
             if (event.getClick() != ClickType.LEFT) return;
             var greenDuration = TimeRange.of(greenDurationUnit, greenDurationMin, greenDurationMax);
             var yellowDuration = TimeRange.of(yellowDurationUnit, yellowDurationMin, yellowDurationMax);
@@ -61,24 +64,50 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
 
     @Override
     public void update(Player player, InventoryContent content) {
-
-        setSettingColumn(content, "Green Duration", 3, SettingValues.of(() -> greenDurationUnit, unit -> greenDurationUnit = unit), SettingValues.of(() -> greenDurationMin, min -> greenDurationMin = min), SettingValues.of(() -> greenDurationMax, max -> greenDurationMax = max));
-        setSettingColumn(content, "Yellow Duration", 5, SettingValues.of(() -> yellowDurationUnit, unit -> yellowDurationUnit = unit), SettingValues.of(() -> yellowDurationMin, min -> yellowDurationMin = min), SettingValues.of(() -> yellowDurationMax, max -> yellowDurationMax = max));
-        setSettingColumn(content, "Red Duration", 7, SettingValues.of(() -> redDurationUnit, unit -> redDurationUnit = unit), SettingValues.of(() -> redDurationMin, min -> redDurationMin = min), SettingValues.of(() -> redDurationMax, max -> redDurationMax = max));
+        settingColumn(
+                content,
+                Option.Gui.TrafficLightModifier.GREEN_PHASE.get(),
+                3,
+                SettingValues.of(() -> greenDurationUnit, unit -> greenDurationUnit = unit),
+                SettingValues.of(() -> greenDurationMin, min -> greenDurationMin = min),
+                SettingValues.of(() -> greenDurationMax, max -> greenDurationMax = max)
+        );
+        settingColumn(
+                content,
+                Option.Gui.TrafficLightModifier.YELLOW_PHASE.get(),
+                5,
+                SettingValues.of(() -> yellowDurationUnit, unit -> yellowDurationUnit = unit),
+                SettingValues.of(() -> yellowDurationMin, min -> yellowDurationMin = min),
+                SettingValues.of(() -> yellowDurationMax, max -> yellowDurationMax = max)
+        );
+        settingColumn(
+                content,
+                Option.Gui.TrafficLightModifier.RED_PHASE.get(),
+                7,
+                SettingValues.of(() -> redDurationUnit, unit -> redDurationUnit = unit),
+                SettingValues.of(() -> redDurationMin, min -> redDurationMin = min),
+                SettingValues.of(() -> redDurationMax, max -> redDurationMax = max)
+        );
     }
 
-    private void setSettingColumn(InventoryContent content, String name, int column, SettingValues<BukkitUnit> unit, SettingValues<Integer> min, SettingValues<Integer> max) {
+    private void settingColumn(InventoryContent content, Component phase, int column, SettingValues<BukkitUnit> unit, SettingValues<Integer> min, SettingValues<Integer> max) {
+        Config config = QuickChallenge.instance().config();
+
+        Component lowDecrease = Option.Gui.TrafficLightModifier.LOW_DECREASE.get();
+        Component highDecrease = Option.Gui.TrafficLightModifier.HIGH_DECREASE.get();
+        Component lowIncrease = Option.Gui.TrafficLightModifier.LOW_INCREASE.get();
+        Component highIncrease = Option.Gui.TrafficLightModifier.HIGH_INCREASE.get();
 
         GuiItem minItem = new QuickItemStack(Material.CHERRY_BUTTON)
-                .displayName(Component.text("Min value for ", Colors.GRAY).append(Component.text(name, Colors.PRIMARY)))
+                .displayName(config.get(Option.Gui.TrafficLightModifier.MIN_PHASE_VALUE, Placeholder.component("phase", phase)))
                 .itemLore(
                         Component.empty(),
-                        Component.text("Current: ", Colors.GRAY).append(Component.text(min.get(), Colors.PRIMARY)),
+                        config.get(Option.Gui.TrafficLightModifier.CURRENT_VALUE, Formatter.number("value", min.get())),
                         Component.empty(),
-                        Component.text("Left click: -1", Colors.GRAY),
-                        Component.text("Shift-Left click: -10", Colors.GRAY),
-                        Component.text("Right click: +1", Colors.GRAY),
-                        Component.text("Shift-Right click: -10", Colors.GRAY)
+                        lowDecrease,
+                        highDecrease,
+                        lowIncrease,
+                        highIncrease
                 )
                 .asGuiItem(event -> {
                     int current = min.get();
@@ -97,13 +126,13 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
                 });
 
         GuiItem unitItem = new QuickItemStack(Material.GLOW_ITEM_FRAME)
-                .displayName(Component.text("Time Unit value for ", Colors.GRAY).append(Component.text(name, Colors.PRIMARY)))
+                .displayName(config.get(Option.Gui.TrafficLightModifier.PHASE_TIME_UNIT, Placeholder.component("phase", phase)))
                 .itemLore(
                         Component.empty(),
-                        Component.text("Current: ", Colors.GRAY).append(Component.text(unit.get().name(), Colors.PRIMARY)),
+                        config.get(Option.Gui.TrafficLightModifier.CURRENT_VALUE, Placeholder.unparsed("value", unit.get().name())),
                         Component.empty(),
-                        Component.text("Left click: Previous (%s)".formatted(EnumUtils.previous(unit.get())), Colors.GRAY),
-                        Component.text("Right click: Next (%s)".formatted(EnumUtils.next(unit.get())), Colors.GRAY)
+                        config.get(Option.Gui.TrafficLightModifier.PREVIOUS_UNIT, Placeholder.unparsed("unit", EnumUtils.previous(unit.get()).name())),
+                        config.get(Option.Gui.TrafficLightModifier.NEXT_UNIT, Placeholder.unparsed("unit", EnumUtils.next(unit.get()).name()))
                 )
                 .asGuiItem(event -> {
                     BukkitUnit current = unit.get();
@@ -120,15 +149,15 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
                 });
 
         GuiItem maxItem = new QuickItemStack(Material.CHERRY_BUTTON)
-                .displayName(Component.text("Max value for ", Colors.GRAY).append(Component.text(name, Colors.PRIMARY)))
+                .displayName(config.get(Option.Gui.TrafficLightModifier.MAX_PHASE_VALUE, Placeholder.component("phase", phase)))
                 .itemLore(
                         Component.empty(),
-                        Component.text("Current: ", Colors.GRAY).append(Component.text(max.get(), Colors.PRIMARY)),
+                        config.get(Option.Gui.TrafficLightModifier.CURRENT_VALUE, Formatter.number("value", max.get())),
                         Component.empty(),
-                        Component.text("Left click: -1", Colors.GRAY),
-                        Component.text("Shift-Left click: -10", Colors.GRAY),
-                        Component.text("Right click: +1", Colors.GRAY),
-                        Component.text("Shift-Right click: -10", Colors.GRAY)
+                        lowDecrease,
+                        highDecrease,
+                        lowIncrease,
+                        highIncrease
                 )
                 .asGuiItem(event -> {
                     int current = max.get();

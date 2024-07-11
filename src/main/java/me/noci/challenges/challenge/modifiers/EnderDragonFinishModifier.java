@@ -1,16 +1,20 @@
 package me.noci.challenges.challenge.modifiers;
 
+import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.challenge.Challenge;
+import me.noci.challenges.settings.Config;
+import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.events.Events;
 import me.noci.quickutilities.events.subscriber.SubscribedEvent;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.entity.EnderDragon;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EnderDragonChangePhaseEvent;
 
 import java.util.List;
+import java.util.Optional;
 
 public class EnderDragonFinishModifier implements ChallengeModifier {
 
@@ -28,11 +32,11 @@ public class EnderDragonFinishModifier implements ChallengeModifier {
                 .handle(event -> {
                     challenge.paused(true);
 
-                    Component message = challenge.modifier(TimerModifier.class, TimerModifier::playedTimeAsString)
-                            .map(timePlayed -> Component.text("Die Challenge wurde nach %s erfolgreich beendet.".formatted(timePlayed), NamedTextColor.GREEN))
-                            .orElse(Component.text("Die Challenge wurde erfolgreich beendet.", NamedTextColor.GREEN));
+                    Config config = QuickChallenge.instance().config();
+                    Optional<String> playedTime = challenge.modifier(TimerModifier.class, TimerModifier::playedTimeAsString);
+                    Option<Component> option = playedTime.isPresent() ? Option.EnderDragonFinish.WITH_TIME : Option.EnderDragonFinish.WITHOUT_TIME;
 
-                    challenge.broadcast(message);
+                    challenge.broadcast(config.get(option, Placeholder.unparsed("time", playedTime.orElse(""))));
                 });
 
     }

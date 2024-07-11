@@ -1,20 +1,21 @@
 package me.noci.challenges.gui;
 
-import com.cryptomorin.xseries.XMaterial;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.modifiers.registry.ModifierCreator;
-import me.noci.challenges.colors.Colors;
 import me.noci.challenges.gui.modifier.GuiModifierOverview;
 import me.noci.challenges.gui.modifier.ModifierProvider;
+import me.noci.challenges.settings.Config;
+import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.inventory.*;
 import me.noci.quickutilities.utils.InventoryPattern;
 import me.noci.quickutilities.utils.QuickItemStack;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.text.format.TextColor;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 
@@ -28,13 +29,13 @@ public class GuiChallengeCreate extends PagedQuickGUIProvider implements Modifie
     private final List<ModifierCreator> modifiersToAdd = Lists.newArrayList();
 
     public GuiChallengeCreate(ChallengeController challengeController) {
-        super(Component.text("Challenge Create", Colors.GUI_TITLE), InventoryConstants.FULL_SIZE);
+        super(Option.Gui.ChallengeCreate.TITLE.get(), InventoryConstants.FULL_SIZE);
         this.challengeController = challengeController;
     }
 
     @Override
     public void init(Player player, InventoryContent content) {
-        GuiItem addModifier = new QuickItemStack(XMaterial.ENDER_EYE.parseMaterial(), Component.text("Modifier hinzufügen", NamedTextColor.GREEN))
+        GuiItem addModifier = new QuickItemStack(Material.ENDER_EYE, Option.Gui.ChallengeCreate.ADD_MODIFIER.get())
                 .asGuiItem(event -> {
                     if (event.getClick() != ClickType.LEFT) return;
 
@@ -42,7 +43,7 @@ public class GuiChallengeCreate extends PagedQuickGUIProvider implements Modifie
                     new GuiModifierOverview(this, modifiersToIgnore).provide(event.getPlayer());
                 });
 
-        GuiItem create = new QuickItemStack(XMaterial.ANVIL.parseMaterial(), Component.text("Erstellen", TextColor.color(10, 205, 157)))
+        GuiItem create = new QuickItemStack(Material.ANVIL, Option.Gui.ChallengeCreate.CREATE_MODIFIER.get())
                 .asGuiItem(event -> {
                     if (event.getClick() != ClickType.LEFT) return;
                     event.getPlayer().closeInventory();
@@ -51,7 +52,7 @@ public class GuiChallengeCreate extends PagedQuickGUIProvider implements Modifie
                     challengeController.create(modifiers);
                 });
 
-        GuiItem cancel = new QuickItemStack(XMaterial.BARRIER.parseMaterial(), Component.text("Abbrechen", NamedTextColor.RED))
+        GuiItem cancel = new QuickItemStack(Material.BARRIER, Option.Gui.ChallengeCreate.CANCEL.get())
                 .asGuiItem(event -> {
                     if (event.getClick() != ClickType.LEFT) return;
                     event.getPlayer().closeInventory();
@@ -67,8 +68,8 @@ public class GuiChallengeCreate extends PagedQuickGUIProvider implements Modifie
     @Override
     public void initPage(Player player, PageContent content) {
         content.setItemSlots(MODIFIER_SLOTS);
-        content.setPreviousPageItem(Slot.getSlot(3, 1), InventoryConstants.PREVIOUS_PAGE, InventoryConstants.GLAS_PANE.getItemStack());
-        content.setNextPageItem(Slot.getSlot(3, 9), InventoryConstants.NEXT_PAGE, InventoryConstants.GLAS_PANE.getItemStack());
+        content.setPreviousPageItem(Slot.getSlot(3, 1), InventoryConstants.previousPageItem(), InventoryConstants.GLAS_PANE.getItemStack());
+        content.setNextPageItem(Slot.getSlot(3, 9), InventoryConstants.nextPageItem(), InventoryConstants.GLAS_PANE.getItemStack());
     }
 
     @Override
@@ -76,7 +77,7 @@ public class GuiChallengeCreate extends PagedQuickGUIProvider implements Modifie
         if (content.getTotalItemCount() == modifiersToAdd.size()) return;
 
         GuiItem[] items = modifiersToAdd.stream()
-                .map(this::fromModifierCreator)
+                .map(this::appliedModifier)
                 .toArray(GuiItem[]::new);
 
         content.setPageContent(items);
@@ -87,22 +88,21 @@ public class GuiChallengeCreate extends PagedQuickGUIProvider implements Modifie
         this.modifiersToAdd.add(challengeModifier);
     }
 
-    private GuiItem fromModifierCreator(ModifierCreator modifierCreator) {
+    private GuiItem appliedModifier(ModifierCreator modifierCreator) {
+        Config config = QuickChallenge.instance().config();
         QuickItemStack itemStack = new QuickItemStack(modifierCreator.displayItem())
                 .itemLore(
                         Component.empty(),
-                        Component.text("Linksklick zum Entfernen", Colors.GRAY)
+                        config.get(Option.Gui.ChallengeCreate.MODIFIER_REMOVE_HINT)
                 );
 
         var acceptDialog = GuiAcceptDialog.builder()
-                .title(
-                        Component.text("Modifier entfernen?", Colors.PRIMARY)
-                )
+                .title(config.get(Option.Gui.ChallengeCreate.RemoveDialog.TITLE))
                 .description(
-                        Component.newline(),
-                        Component.text("Möchtest du den Modifier wirklich entfernen?", Colors.GRAY),
-                        Component.newline(),
-                        Component.text("Modifier Name: ", Colors.GRAY).append(Component.text(itemStack.getRawDisplayName(), Colors.PRIMARY))
+                        Component.empty(),
+                        config.get(Option.Gui.ChallengeCreate.RemoveDialog.DESCRIPTION),
+                        Component.empty(),
+                        config.get(Option.Gui.ChallengeCreate.RemoveDialog.MODIFIER_NAME, Placeholder.unparsed("modifier_name", itemStack.getRawDisplayName()))
                 )
                 .acceptAction(event -> {
                     this.modifiersToAdd.remove(modifierCreator);

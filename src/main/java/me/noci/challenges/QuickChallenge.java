@@ -8,8 +8,8 @@ import me.noci.challenges.command.CommandChallenge;
 import me.noci.challenges.command.CommandTimer;
 import me.noci.challenges.listeners.*;
 import me.noci.challenges.settings.Config;
+import me.noci.challenges.settings.Option;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -44,7 +44,7 @@ public class QuickChallenge extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        Component kickComponent = Component.text("Der Server wird geschlossen.", NamedTextColor.RED);
+        Component kickComponent = config.get(Option.Settings.SERVER_CLOSED);
         this.challengeController.stopChallenges();
         this.challengeController.save();
         Bukkit.getOnlinePlayers().forEach(player -> player.kick(kickComponent));
@@ -54,8 +54,8 @@ public class QuickChallenge extends JavaPlugin {
         Consumer<Listener> register = listener -> getServer().getPluginManager().registerEvents(listener, this);
 
         register.accept(new PlayerJoinListener());
-        register.accept(new PlayerQuitListener(challengeController));
-        register.accept(new ResourcePackStatusListener());
+        register.accept(new PlayerQuitListener(challengeController, config));
+        register.accept(new ResourcePackStatusListener(config));
         register.accept(new EnityTargetListener(challengeController));
         register.accept(new EntityDamageListener(challengeController));
         register.accept(new EntityMoveListener(challengeController));
@@ -64,15 +64,15 @@ public class QuickChallenge extends JavaPlugin {
         register.accept(new BlockListener(challengeController));
         register.accept(new ItemDropListener(challengeController));
         register.accept(new ServerListPingListener(config));
-        register.accept(new ServerTickListener(challengeController));
+        register.accept(new ServerTickListener(challengeController, config));
         register.accept(new ChatListener(config));
         register.accept(new AnvilRenameListener(config));
         register.accept(new PlayerInteractListener(challengeController));
     }
 
     private void registerCommands() {
-        new CommandChallenge(this, challengeController);
-        new CommandTimer(this, challengeController);
+        new CommandChallenge(this, challengeController, config);
+        new CommandTimer(this, challengeController, config);
         new CommandAllItems(this, challengeController, config);
     }
 

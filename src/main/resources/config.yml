@@ -12,6 +12,18 @@ settings:
     #   <player>        - Name of the sender
     #   <message>       - Message which the sender send
     chat_layout: "<player_head> <color:#1f96ad><player><gray>: <message>"
+    # Extra tags:
+    #   <player_head>   - Head of the player that joins the server
+    #   <player_name>        - Name of the player that joins the server
+    player_join: "<color:#529e42>»</color> <player_head> <color:#1f96ad><player_name></color> <gray> joined the server"
+    # Extra tags:
+    #   <player_head>   - Head of the player that quits the server
+    #   <player_name>        - Name of the player that quits the server
+    player_quit: "<color:#9e5242>«</color> <player_head> <color:#1f96ad><player_name></color> <gray> left the server"
+    action_bar:
+        no_challenge_created: "<red>Es wurde noch keine Challenge erstellt."
+        challenge_not_started: "<red>Challenge wurde noch nicht gestartet."
+    server_closed: "<red>Der Server wird geschlossen."
 all_items:
     # Extra tags:
     #   <item_icon>         - Shows the current item image
@@ -39,3 +51,115 @@ all_items:
         # Extra tags:
         #   <item_name>     - Name of the collected item
         item_skipped_console: "<gray>Das Item <gradient:#dc4abc:#616bcd><item_name></gradient> wurde vom <color:#1f96ad>Server</color> übersprungen."
+resource_pack:
+    warning: "<red>Du spielst gerade ohne das Server-Ressourcenpaket. Stell sicher, dass du es aktivierst, wenn du eine Challenge spielst."
+    prompt: "<color:#c331d6>QuickChallenge-Ressourcenpaket <color:#403840>- <color:#349e4f>Wird für die Challenges benutzt."
+ender_dragon_finish:
+    # Extra tags:
+    #   <time> - Time played until the ender dragon got killed
+    with_timer: "<green>Die Challenge wurde nach <time> erfolgreich beendet."
+    without_timer: "<green>Die Challenge wurde erfolgreich beendet."
+command:
+    debug_command: "<red>Dieser Command ist nur im Debug-Mode verfügbar."
+    only_for_players: "<red>Dieser Command ist nur für Spieler."
+    no_permission: "<red>Du hast keine Rechte diesen Befehl zu benutzen."
+    all_items:
+        not_enabled: "<red>Deine aktuelle Challenge besitzt kein AllItems Modifier."
+        help: "<red>Benutze: /allitems [skip/reset]"
+    timer:
+        already_started: "<red>Die Challenge ist bereits gestartet."
+        not_running: "<red>Die Challenge ist noch nicht gestartet."
+        not_paused: "<red>Die Challenge ist nicht pausiert."
+        successfully_started: "<green>Die Challenge wurde gestartet."
+        successfully_stopped: "<green>Die Challenge wurde gestoppt."
+        successfully_paused: "<green>Die Challenge wurde pausiert."
+        successfully_resumed: "<green>Die Challenge wurde fortgesetzt."
+        help: "<red>Benutze: /timer [start/stop/pause/resume]"
+    challenge:
+        not_created: "<red>Es wurde noch keine Challenge erstellt."
+        successfully_deleted: "<green>Challenge wurde gelöscht."
+        failed_deletion: "<red>Challenge konnte nicht gelöscht werden."
+gui:
+    next_page_item: "<gray>Nächste Seite <dark_gray><bold>▶"
+    previous_page_item: "<dark_gray><bold>◀</bold> <gray>Vorherige Seite"
+    back_item: "<gray>Zurück"
+    modifier_overview_title: "<color:#84789d>Modifier Hinzufügen"
+    dialog:
+        yes_item: "<green><bold>Ja"
+        no_item: "<red><bold>Nein"
+        accept_item: "<green><bold>Annehmen"
+        decline_item: "<green><bold>Ablehnen"
+        description_item: "<color:#638065>Beschreibung: "
+    challenge_create:
+        title: "<color:#84789d>Challenge Create"
+        add_modifier: "<green>Modifier hinzufügen"
+        create_modifier: "<color#0acd9d>Erstellen"
+        cancel: "<red>Abbrechen"
+        modifier_remove_hint: "<gray>Linksklick zum Entfernen"
+        remove_dialog:
+            title: "<color#638065>Modifier entfernen?"
+            description: "<gray>Möchtest du den Modifier wirklich entfernen?"
+            # Extra tags:
+            #   <modifier_name> - Name of the modifier to remove
+            modifier_name: "<gray>Modifier Name: <modifier_name>"
+    all_items:
+        # Extra tags:
+        #   <items_collected>   - Current number of collected items
+        #   <total_items>       - Total amount of items to collect
+        title: "<color:#84789d>Item Übersicht (<items_collected> von <total_items>)"
+        # Extra tags:
+        #   <item_name> - Name of the item to display
+        item_name: "<gradient:#dc4abc:#616bcd><bold><item_name>"
+        # Extra tags:
+        #   <collection_time>   - Date and time at which the item was collected
+        collected_at: "<gray>Eingesammelt am <color:#638065><collection_time:'dd.MM.yyyy'></color> um <color:#638065><collection_time:'HH:mm:ss'></color>"
+        # Extra tags:
+        #   <collector> - Name of the player who collected the item
+        collected_by: "<gray>Aufgesammelt von <color:#638065><collector>"
+        # Extra tags:
+        #   <collector> - Name of the player who skipped the item (or "CONSOLE" when skipped by server)
+        skipped_by: "<gray><italic>Übersprungen</italic> von <color:#638065><collector>"
+        # Extra tags:
+        #   <time>  - After which the item was collected
+        timestamp_suffix: " <gray>nach <color:#638065><time>"
+    traffic_light_modifier:
+        title: "<color:#84789d>Timer Modifier"
+        cancel: "<red>Abbrechen"
+        add_modifier: "<green>Hinzufügen"
+        green_phase: "<color:#638065>Grün-Phase"
+        yellow_phase: "<color:#638065>Gelb-Phase"
+        red_phase: "<color:#638065>Rot-Phase"
+        # Extra tags:
+        #   <phase> - Name of the phase which value will be changed
+        min_phase_value: "<gray>Mindestzeit für <phase>"
+        # Extra tags:
+        #   <phase> - Name of the phase which value will be changed
+        max_phase_value: "<gray>Maximalzeit für <phase>"
+        # Extra tags:
+        #   <phase> - Name of the phase which value will be changed
+        phase_time_unit: "<gray>Zeiteinheit für <phase>"
+        # Extra tags:
+        #   <value> - Current value of the phase duration
+        current_value: "<gray>Aktueller Wert: <color:#638065><value>"
+        low_decrease: "<gray>Linksklick: -1"
+        high_decrease: "<gray>Shift-Linksklick: -10"
+        low_increase: "<gray>Rechtsklick: +1"
+        high_increase: "<gray>Shift-Rechtsklick: +10"
+        # Extra tags:
+        #   <unit> - Time Unit which the phase currently uses
+        previous_unit: "<gray>Linksklick: Vorherige Einheit (<unit>)"
+        # Extra tags:
+        #   <unit> - Time Unit which the phase currently uses
+        next_unit: "<gray>Rechtsklick: Nächste Einheit (<unit>)"
+    modifier_accept_dialog:
+        title: "<color:#638065>Modifier hinzufügen?"
+        description: "<gray>Möchtest du den Modifier wirklich hinzufügen?"
+        # Extra tags:
+        #   <modifier_name> - Name of the modifier to add
+        modifier_name: "<gray>Modifier Name: <color:#638065><modifier_name>"
+modifiers:
+    stop_on_death: "<red>Stop on Death"
+    ender_dragon_finish: "<gold>Ender Dragon Finish"
+    timer: "<dark_aqua>Timer"
+    all_item: "<dark_purple>All Item"
+    traffic_light: "<green>Traffic Light"

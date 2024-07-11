@@ -1,14 +1,12 @@
 package me.noci.challenges.gui;
 
-import com.cryptomorin.xseries.XMaterial;
 import lombok.Getter;
+import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.inventory.*;
 import me.noci.quickutilities.utils.QuickItemStack;
 import me.noci.quickutilities.utils.Require;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.text.format.TextColor;
-import net.kyori.adventure.text.format.TextDecoration;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.jetbrains.annotations.NotNull;
@@ -16,6 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class GuiAcceptDialog extends QuickGUIProvider {
 
@@ -48,16 +47,25 @@ public class GuiAcceptDialog extends QuickGUIProvider {
 
     @Getter
     public enum DialogType {
-        YES_NO(Component.text("Ja", NamedTextColor.GREEN, TextDecoration.BOLD), Component.text("Nein", NamedTextColor.RED, TextDecoration.BOLD)),
-        ACCEPT_DECLINE(Component.text("Annehmen", NamedTextColor.GREEN, TextDecoration.BOLD), Component.text("Ablehnen", NamedTextColor.RED, TextDecoration.BOLD));
+        YES_NO(() -> Option.Gui.Dialog.YES_ITEM, () -> Option.Gui.Dialog.NO_ITEM),
+        ACCEPT_DECLINE(() -> Option.Gui.Dialog.ACCEPT_ITEM, () -> Option.Gui.Dialog.DECLINE_ITEM);
 
-        private final Component acceptTitle;
-        private final Component declineTitle;
+        private final Supplier<Option<Component>> acceptSupplier;
+        private final Supplier<Option<Component>> declineSupplier;
 
-        DialogType(Component acceptTitle, Component declineTitle) {
-            this.acceptTitle = acceptTitle;
-            this.declineTitle = declineTitle;
+        DialogType(Supplier<Option<Component>> acceptSupplier, Supplier<Option<Component>> declineSupplier) {
+            this.acceptSupplier = acceptSupplier;
+            this.declineSupplier = declineSupplier;
         }
+
+        public Component acceptName() {
+            return acceptSupplier.get().get();
+        }
+
+        public Component declineName() {
+            return declineSupplier.get().get();
+        }
+
     }
 
     public static class Builder {
@@ -117,9 +125,9 @@ public class GuiAcceptDialog extends QuickGUIProvider {
 
         public void provide(Player player) {
             var title = this.title != null ? this.title : Component.text("");
-            var acceptItem = new QuickItemStack(XMaterial.GREEN_WOOL.parseMaterial(), this.dialogType.acceptTitle());
-            var declineItem = new QuickItemStack(XMaterial.RED_WOOL.parseMaterial(), this.dialogType.declineTitle());
-            var descriptionItem = new QuickItemStack(XMaterial.OAK_SIGN.parseMaterial(), Component.text("Beschreibung:", TextColor.color(99, 128, 101)));
+            var acceptItem = new QuickItemStack(Material.GREEN_WOOL, this.dialogType.acceptName());
+            var declineItem = new QuickItemStack(Material.RED_WOOL, this.dialogType.declineName());
+            var descriptionItem = new QuickItemStack(Material.OAK_SIGN, Option.Gui.Dialog.DESCRIPTION_ITEM.get());
 
             List<Component> lore = this.lore != null ? this.lore : List.of();
             descriptionItem.lore(lore);

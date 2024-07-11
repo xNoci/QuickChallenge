@@ -35,14 +35,14 @@ public class CommandAllItems extends QuickCommand {
     public void overview(Player player) {
         Challenge challenge = challengeController.challenge().orElse(null);
         if (challenge == null) {
-            player.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED));
+            player.sendMessage(config.get(Option.Command.Challenge.NOT_CREATED));
             return;
         }
 
         challenge.modifier(AllItemModifier.class)
                 .ifPresentOrElse(
                         allItemModifier -> new GuiAllItemOverview(allItemModifier).provide(player),
-                        () -> player.sendMessage(Component.text("Deine aktuelle Challenge besitzt kein AllItems Modifier.", NamedTextColor.RED))
+                        () -> player.sendMessage(config.get(Option.Command.AllItems.NOT_ENABLED))
                 );
 
     }
@@ -50,63 +50,63 @@ public class CommandAllItems extends QuickCommand {
     @SubCommand(path = "skip")
     @CommandPermission("quickchallenge.allitems.skip")
     public void skip(CommandSender sender) {
-        if(!config.get(Option.Settings.DEBUG)) {
-            sender.sendMessage(Component.text("Dieser Command ist nur im Debug-Mode verfügbar.", NamedTextColor.RED));
+        if (!config.get(Option.Settings.DEBUG)) {
+            sender.sendMessage(config.get(Option.Command.DEBUG_COMMAND));
             return;
         }
 
         Challenge challenge = challengeController.challenge().orElse(null);
         if (challenge == null) {
-            sender.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED));
+            sender.sendMessage(Component.text("", NamedTextColor.RED));
             return;
         }
 
         challenge.modifier(AllItemModifier.class)
                 .ifPresentOrElse(
                         allItemModifier -> allItemModifier.skip(challenge, sender),
-                        () -> sender.sendMessage(Component.text("Deine aktuelle Challenge besitzt kein AllItems Modifier.", NamedTextColor.RED))
+                        () -> sender.sendMessage(config.get(Option.Command.AllItems.NOT_ENABLED))
                 );
     }
 
     @SubCommand(path = "skip")
     @CommandPermission("quickchallenge.allitems.skip")
     public void skip(CommandSender sender, int amount) {
-        if(!config.get(Option.Settings.DEBUG)) {
-            sender.sendMessage(Component.text("Dieser Command ist nur im Debug-Mode verfügbar.", NamedTextColor.RED));
+        if (!config.get(Option.Settings.DEBUG)) {
+            sender.sendMessage(config.get(Option.Command.DEBUG_COMMAND));
             return;
         }
 
         Challenge challenge = challengeController.challenge().orElse(null);
         if (challenge == null) {
-            sender.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED));
+            sender.sendMessage(config.get(Option.Command.Challenge.NOT_CREATED));
             return;
         }
 
         challenge.modifier(AllItemModifier.class)
                 .ifPresentOrElse(
                         allItemModifier -> IntStream.range(0, amount).forEach(i -> allItemModifier.skip(challenge, sender)),
-                        () -> sender.sendMessage(Component.text("Deine aktuelle Challenge besitzt kein AllItems Modifier.", NamedTextColor.RED))
+                        () -> sender.sendMessage(config.get(Option.Command.AllItems.NOT_ENABLED))
                 );
     }
 
     @SubCommand(path = "reset")
     @CommandPermission("quickchallenge.allitems.reset")
     public void reset(CommandSender sender) {
-        if(!config.get(Option.Settings.DEBUG)) {
-            sender.sendMessage(Component.text("Dieser Command ist nur im Debug-Mode verfügbar.", NamedTextColor.RED));
+        if (!config.get(Option.Settings.DEBUG)) {
+            sender.sendMessage(config.get(Option.Command.DEBUG_COMMAND));
             return;
         }
 
         Challenge challenge = challengeController.challenge().orElse(null);
         if (challenge == null) {
-            sender.sendMessage(Component.text("Es wurde noch keine Challenge erstellt.", NamedTextColor.RED));
+            sender.sendMessage(config.get(Option.Command.Challenge.NOT_CREATED));
             return;
         }
 
         challenge.modifier(AllItemModifier.class)
                 .ifPresentOrElse(
                         AllItemModifier::reset,
-                        () -> sender.sendMessage(Component.text("Deine aktuelle Challenge besitzt kein AllItems Modifier.", NamedTextColor.RED))
+                        () -> sender.sendMessage(config.get(Option.Command.AllItems.NOT_ENABLED))
                 );
     }
 
@@ -114,16 +114,16 @@ public class CommandAllItems extends QuickCommand {
     @FallbackCommand
     public void fallback(CommandSender sender) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Component.text("Only players can execute this command."));
+            sender.sendMessage(config.get(Option.Command.ONLY_FOR_PLAYERS));
             return;
         }
 
         if (sender.hasPermission("quickchallenge.allitems.skip") || sender.hasPermission("quickchallenge.allitems.skip")) {
-            sender.sendMessage(Component.text("Benutze: /allitems [skip/reset]", NamedTextColor.RED));
+            sender.sendMessage(config.get(Option.Command.AllItems.HELP));
             return;
         }
 
-        sender.sendMessage(Component.text("Du hast keine Rechte diesen Befehl zu benutzen. ", NamedTextColor.RED));
+        sender.sendMessage(config.get(Option.Command.NO_PERMISSION));
     }
 
 }
