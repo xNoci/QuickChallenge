@@ -47,23 +47,23 @@ public class GuiAcceptDialog extends QuickGUIProvider {
 
     @Getter
     public enum DialogType {
-        YES_NO(() -> Option.Gui.Dialog.YES_ITEM, () -> Option.Gui.Dialog.NO_ITEM),
-        ACCEPT_DECLINE(() -> Option.Gui.Dialog.ACCEPT_ITEM, () -> Option.Gui.Dialog.DECLINE_ITEM);
+        YES_NO(Option.Gui.Dialog.YES_ITEM::get, Option.Gui.Dialog.NO_ITEM::get),
+        ACCEPT_DECLINE(Option.Gui.Dialog.ACCEPT_ITEM::get, Option.Gui.Dialog.DECLINE_ITEM::get);
 
-        private final Supplier<Option<Component>> acceptSupplier;
-        private final Supplier<Option<Component>> declineSupplier;
+        private final Supplier<Component> acceptSupplier;
+        private final Supplier<Component> declineSupplier;
 
-        DialogType(Supplier<Option<Component>> acceptSupplier, Supplier<Option<Component>> declineSupplier) {
+        DialogType(Supplier<Component> acceptSupplier, Supplier<Component> declineSupplier) {
             this.acceptSupplier = acceptSupplier;
             this.declineSupplier = declineSupplier;
         }
 
         public Component acceptName() {
-            return acceptSupplier.get().get();
+            return acceptSupplier.get();
         }
 
         public Component declineName() {
-            return declineSupplier.get().get();
+            return declineSupplier.get();
         }
 
     }
