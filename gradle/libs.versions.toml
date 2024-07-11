@@ -4,6 +4,6 @@ shadow = "io.github.goooler.shadow:8.1.5"
 [libraries]
 paperlib = "io.papermc:paperlib:1.0.7"
 paper = "io.papermc.paper:paper-api:1.20.6-R0.1-SNAPSHOT"
-xseries = "com.github.cryptomorin:XSeries:9.10.0"
+xseries = "com.github.cryptomorin:XSeries:11.2.0"
 lombok = "org.projectlombok:lombok:1.18.30"
 kyori-adventure = "net.kyori:adventure-api:4.16.0"
