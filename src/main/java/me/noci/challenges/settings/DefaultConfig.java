@@ -6,6 +6,8 @@ import lombok.SneakyThrows;
 import me.noci.quickutilities.utils.Require;
 import me.noci.quickutilities.utils.Scheduler;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.apache.commons.lang3.StringUtils;
@@ -50,6 +52,7 @@ public class DefaultConfig implements Config {
             case Float f -> configuration.getDouble(path, (double) f);
             case Double d -> configuration.getDouble(path, d);
             case Component c -> get((Option<Component>) option, TagResolver.empty());
+            case TextColor c -> parseTextColor(path, c);
             default -> configuration.get(option.path(), option.defaultValue());
         };
     }
@@ -70,6 +73,21 @@ public class DefaultConfig implements Config {
     public void removeListener(Runnable listener) {
         Require.checkState(reloadListeners.contains(listener), "This listener is not registered");
         reloadListeners.remove(listener);
+    }
+
+    private TextColor parseTextColor(String path, TextColor defaultValue) {
+        String color = configuration.getString(path);
+        if (color == null || color.isBlank()) return defaultValue;
+
+        TextColor textColor;
+
+        if (color.charAt(0) == TextColor.HEX_CHARACTER) {
+            textColor = TextColor.fromHexString(color);
+        } else {
+            textColor = NamedTextColor.NAMES.value(color.toLowerCase());
+        }
+
+        return textColor != null ? textColor : defaultValue;
     }
 
     protected void load() {

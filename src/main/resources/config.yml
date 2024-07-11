@@ -24,6 +24,9 @@ settings:
         no_challenge_created: "<red>Es wurde noch keine Challenge erstellt."
         challenge_not_started: "<red>Challenge wurde noch nicht gestartet."
     server_closed: "<red>Der Server wird geschlossen."
+    timer_gradient:
+        primary: "#dc4abc"
+        accent: "#616bcd"
 all_items:
     # Extra tags:
     #   <item_icon>         - Shows the current item image
@@ -93,11 +96,11 @@ gui:
     challenge_create:
         title: "<color:#84789d>Challenge Create"
         add_modifier: "<green>Modifier hinzufügen"
-        create_modifier: "<color#0acd9d>Erstellen"
+        create_modifier: "<color:#0acd9d>Erstellen"
         cancel: "<red>Abbrechen"
         modifier_remove_hint: "<gray>Linksklick zum Entfernen"
         remove_dialog:
-            title: "<color#638065>Modifier entfernen?"
+            title: "<color:#638065>Modifier entfernen?"
             description: "<gray>Möchtest du den Modifier wirklich entfernen?"
             # Extra tags:
             #   <modifier_name> - Name of the modifier to remove

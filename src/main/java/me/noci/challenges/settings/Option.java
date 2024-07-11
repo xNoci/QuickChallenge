@@ -3,6 +3,7 @@ package me.noci.challenges.settings;
 import me.noci.challenges.QuickChallenge;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextColor;
 
 public interface Option<T> {
 
@@ -23,6 +24,12 @@ public interface Option<T> {
             Option<Component> NO_CHALLENGE_CREATED = component("settings.action_bar.no_challenge_created");
             Option<Component> CHALLENGE_NOT_STARTED = component("settings.action_bar.challenge_not_started");
         }
+
+        interface TimerGradient {
+            Option<TextColor> PRIMARY = create("settings.timer_gradient.primary", NamedTextColor.WHITE);
+            Option<TextColor> ACCENT = create("settings.timer_gradient.accent", NamedTextColor.BLACK);
+        }
+
     }
 
     interface AllItems {

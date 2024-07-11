@@ -1,19 +1,20 @@
-package me.noci.challenges.colors;
+package me.noci.challenges;
 
 import com.google.common.collect.Lists;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class ColorUtils {
+public class TextGradient {
 
-    public static Component gradientText(String text, TextColor colorA, TextColor colorB) {
-        return gradientText(text, colorA, colorB, (currentIndex, stringLength) -> (float) currentIndex / stringLength);
+    public static Component gradient(String text, @NotNull TextColor colorA, @NotNull TextColor colorB) {
+        return gradient(text, colorA, colorB, (currentIndex, stringLength) -> (float) currentIndex / stringLength);
     }
 
-    public static Component gradientText(String text, TextColor colorA, TextColor colorB, ProgressTransformer translation) {
+    public static Component gradient(String text, @NotNull TextColor colorA, @NotNull TextColor colorB, ProgressTransformer translation) {
         Iterator<TextColor> colors = gradient(colorA, colorB, text.length(), translation);
         var component = Component.text();
         text.chars().forEachOrdered(value -> component.append(Component.text((char) value, colors.next())));
