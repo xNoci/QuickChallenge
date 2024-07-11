@@ -26,6 +26,7 @@ import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.inventory.InventoryType;
@@ -112,10 +113,7 @@ public class AllItemModifier implements ChallengeModifier {
                 .filter(event -> event.getClickedInventory() != null)
                 .filter(event -> Require.nonNull(event.getClickedInventory()).getType() != InventoryType.CREATIVE)
                 .filter(event -> event.getCurrentItem() != null)
-                .filter(event -> switch (event.getClick()) {
-                    case LEFT, RIGHT -> true;
-                    default -> false;
-                })
+                .filter(event -> event.getClick() == ClickType.LEFT || event.getClick() == ClickType.RIGHT)
                 .filter(event -> event.getWhoClicked() instanceof Player)
                 .filter(event -> !challenge.paused())
                 .filter(event -> currentItem.matches(Require.nonNull(event.getCurrentItem())))
@@ -173,7 +171,8 @@ public class AllItemModifier implements ChallengeModifier {
     private void tryPickupItem(Challenge challenge, Player player, AllItem item) {
         if (allItemsCollected) return;
         if (item != currentItem) return;
-        collectedItems.add(CollectedItem.now(item, player.getName(), challenge.modifier(TimerModifier.class, TimerModifier::ticksPlayed, -1L), false));
+        long ticksPlayed = challenge.modifier(TimerModifier.class, TimerModifier::ticksPlayed, -1L);
+        collectedItems.add(CollectedItem.now(item, player.getName(), ticksPlayed, false));
         notifyItemsCollected(challenge, player, item, false);
         nextItem(challenge);
     }
