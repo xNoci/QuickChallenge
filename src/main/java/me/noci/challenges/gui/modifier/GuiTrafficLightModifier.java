@@ -39,8 +39,8 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
     private int redDurationMin = 5;
     private int redDurationMax = 30;
 
-    public GuiTrafficLightModifier(GuiProvider parentGui, Consumer<Supplier<TrafficLightModifier>> createdModifier) {
-        super(parentGui, createdModifier, Option.Gui.TrafficLightModifier.TITLE.get(), InventoryConstants.FULL_SIZE);
+    public GuiTrafficLightModifier(ModifierApplier modifierApplier) {
+        super(modifierApplier, Option.Gui.TrafficLightModifier.TITLE.get(), InventoryConstants.FULL_SIZE);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
 
         content.setItem(Slot.getSlot(6, 4), new QuickItemStack(Material.RED_WOOL, Option.Gui.TrafficLightModifier.CANCEL.get()).asGuiItem(event -> {
             if (event.getClick() != ClickType.LEFT) return;
-            parentGui.provide(event.getPlayer());
+            modifierApplier.cancel();
         }));
 
         content.setItem(Slot.getSlot(6, 6), new QuickItemStack(Material.GREEN_WOOL, Option.Gui.TrafficLightModifier.ADD_MODIFIER.get()).asGuiItem(event -> {
@@ -58,7 +58,7 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
             var yellowDuration = TimeRange.of(yellowDurationUnit, yellowDurationMin, yellowDurationMax);
             var redDuration = TimeRange.of(redDurationUnit, redDurationMin, redDurationMax);
 
-            onModifierCreate.accept(() -> new TrafficLightModifier(greenDuration, yellowDuration, redDuration, LightStatus.GREEN));
+            modifierApplier.apply(new TrafficLightModifier(greenDuration, yellowDuration, redDuration, LightStatus.GREEN));
         }));
     }
 

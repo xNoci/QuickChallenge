@@ -5,9 +5,9 @@ import com.google.common.collect.Lists;
 import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
-import me.noci.challenges.challenge.modifiers.registry.ModifierCreator;
+import me.noci.challenges.challenge.modifiers.registry.ModifierRegistry;
 import me.noci.challenges.gui.modifier.GuiModifierOverview;
-import me.noci.challenges.gui.modifier.ModifierProvider;
+import me.noci.challenges.gui.modifier.ModifierApplier;
 import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.inventory.*;
@@ -21,12 +21,12 @@ import org.bukkit.event.inventory.ClickType;
 
 import java.util.List;
 
-public class GuiChallengeCreate extends PagedQuickGUIProvider implements ModifierProvider {
+public class GuiChallengeCreate extends PagedQuickGUIProvider {
 
     private static final int[] MODIFIER_SLOTS = InventoryPattern.box(3, 3);
 
     private final ChallengeController challengeController;
-    private final List<ModifierCreator> modifiersToAdd = Lists.newArrayList();
+    private final List<ChallengeModifier> modifiers = Lists.newArrayList();
 
     public GuiChallengeCreate(ChallengeController challengeController) {
         super(Option.Gui.ChallengeCreate.TITLE.get(), InventoryConstants.FULL_SIZE);
@@ -38,17 +38,20 @@ public class GuiChallengeCreate extends PagedQuickGUIProvider implements Modifie
         GuiItem addModifier = new QuickItemStack(Material.ENDER_EYE, Option.Gui.ChallengeCreate.ADD_MODIFIER.get())
                 .asGuiItem(event -> {
                     if (event.getClick() != ClickType.LEFT) return;
-
-                    ImmutableList<Class<? extends ChallengeModifier>> modifiersToIgnore = ImmutableList.copyOf(modifiersToAdd.stream().map(ModifierCreator::type).iterator());
-                    new GuiModifierOverview(this, modifiersToIgnore).provide(event.getPlayer());
+                    ImmutableList<Class<? extends ChallengeModifier>> modifiersToIgnore = ImmutableList.copyOf(modifiers.stream().map(ChallengeModifier::getClass).iterator());
+                    ModifierApplier applier = modifier -> {
+                        if (modifier != null) {
+                            modifiers.add(modifier);
+                        }
+                        provide(player);
+                    };
+                    new GuiModifierOverview(applier, modifiersToIgnore).provide(event.getPlayer());
                 });
 
         GuiItem create = new QuickItemStack(Material.ANVIL, Option.Gui.ChallengeCreate.CREATE_MODIFIER.get())
                 .asGuiItem(event -> {
                     if (event.getClick() != ClickType.LEFT) return;
                     event.getPlayer().closeInventory();
-
-                    List<ChallengeModifier> modifiers = modifiersToAdd.stream().map(ModifierCreator::create).toList();
                     challengeController.create(modifiers);
                 });
 
@@ -74,23 +77,20 @@ public class GuiChallengeCreate extends PagedQuickGUIProvider implements Modifie
 
     @Override
     public void updatePageContent(Player player, PageContent content) {
-        if (content.getTotalItemCount() == modifiersToAdd.size()) return;
+        if (content.getTotalItemCount() == modifiers.size()) return;
 
-        GuiItem[] items = modifiersToAdd.stream()
+        GuiItem[] items = modifiers.stream()
                 .map(this::appliedModifier)
                 .toArray(GuiItem[]::new);
 
         content.setPageContent(items);
     }
 
-    @Override
-    public void onModifierAdd(ModifierCreator challengeModifier) {
-        this.modifiersToAdd.add(challengeModifier);
-    }
-
-    private GuiItem appliedModifier(ModifierCreator modifierCreator) {
+    private GuiItem appliedModifier(ChallengeModifier modifier) {
         Config config = QuickChallenge.instance().config();
-        QuickItemStack itemStack = new QuickItemStack(modifierCreator.displayItem())
+
+
+        QuickItemStack itemStack = ModifierRegistry.displayItem(modifier.getClass())
                 .itemLore(
                         Component.empty(),
                         config.get(Option.Gui.ChallengeCreate.MODIFIER_REMOVE_HINT)
@@ -105,10 +105,10 @@ public class GuiChallengeCreate extends PagedQuickGUIProvider implements Modifie
                         config.get(Option.Gui.ChallengeCreate.RemoveDialog.MODIFIER_NAME, Placeholder.unparsed("modifier_name", itemStack.getRawDisplayName()))
                 )
                 .acceptAction(event -> {
-                    this.modifiersToAdd.remove(modifierCreator);
-                    this.provide(event.getPlayer());
+                    modifiers.remove(modifier);
+                    provide(event.getPlayer());
                 })
-                .declineAction(event -> this.provide(event.getPlayer()));
+                .declineAction(event -> provide(event.getPlayer()));
 
         return itemStack.asGuiItem(event -> {
             if (event.getClick() != ClickType.LEFT) return;

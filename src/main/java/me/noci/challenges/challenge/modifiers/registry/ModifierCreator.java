@@ -1,33 +1,11 @@
 package me.noci.challenges.challenge.modifiers.registry;
 
-import me.noci.challenges.challenge.modifiers.ChallengeModifier;
-import org.bukkit.inventory.ItemStack;
+import me.noci.challenges.gui.modifier.ModifierApplier;
+import org.bukkit.entity.Player;
 
-import java.util.function.Supplier;
-
+@FunctionalInterface
 public interface ModifierCreator {
-    static <T extends ChallengeModifier> ModifierCreator of(Class<T> modifierType, ItemStack displayItem, Supplier<T> getter) {
-        return new ModifierCreator() {
-            @Override
-            public Class<T> type() {
-                return modifierType;
-            }
 
-            @Override
-            public ItemStack displayItem() {
-                return displayItem;
-            }
+    void create(Player player, ModifierApplier modifierApplier);
 
-            @Override
-            public ChallengeModifier create() {
-                return getter.get();
-            }
-        };
-    }
-
-    Class<? extends ChallengeModifier> type();
-
-    ItemStack displayItem();
-
-    ChallengeModifier create();
 }

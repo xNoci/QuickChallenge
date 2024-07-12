@@ -10,13 +10,11 @@ import java.util.function.Supplier;
 
 public abstract class ModifierCreateGui<T extends ChallengeModifier> extends QuickGUIProvider {
 
-    protected final GuiProvider parentGui;
-    protected final Consumer<Supplier<T>> onModifierCreate;
+    protected final ModifierApplier modifierApplier;
 
-    protected ModifierCreateGui(GuiProvider parentGui, Consumer<Supplier<T>> onModifierCreate, Component title, int size) {
+    protected ModifierCreateGui(ModifierApplier modifierApplier, Component title, int size) {
         super(title, size);
-        this.parentGui = parentGui;
-        this.onModifierCreate = onModifierCreate;
+        this.modifierApplier = modifierApplier;
     }
 
 }
