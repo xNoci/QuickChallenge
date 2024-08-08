@@ -1,35 +1,41 @@
 import org.apache.tools.ant.filters.ReplaceTokens
 
 plugins {
-    id("java")
+    `java-library`
+    alias(libs.plugins.paperweight)
     alias(libs.plugins.shadow)
 }
 
 group = "me.noci.challenges"
 version = project.property("plugin.version")!!
 
-repositories {
-    mavenCentral()
-    maven { url = uri("https://repo.papermc.io/repository/maven-public/") } //PaperMC
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 }
 
+paperweight.reobfArtifactConfiguration = io.papermc.paperweight.userdev.ReobfArtifactConfiguration.MOJANG_PRODUCTION
+
 dependencies {
+    paperweight.paperDevBundle(libs.versions.paper)
+
     implementation(libs.paperlib)
     implementation(libs.xseries) { isTransitive = false }
     compileOnly(libs.kyori.adventure)
 
     compileOnly(files("libs/QuickUtils.jar"))
-    compileOnly(libs.paper)
-
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
 }
 
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
-}
-
 tasks {
+    compileJava {
+        options.release = 21
+    }
+
+    javadoc {
+        options.encoding = Charsets.UTF_8.name() // We want UTF-8 for everything
+    }
+
     shadowJar {
         archiveFileName.set("${project.property("plugin.name")}-${project.version}.jar")
 
@@ -45,10 +51,6 @@ tasks {
         reloc("io.papermc.lib")
 
         minimize()
-    }
-
-    compileJava {
-        options.encoding = Charsets.UTF_8.name()
     }
 
     processResources {
