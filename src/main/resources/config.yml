@@ -24,9 +24,11 @@ settings:
         no_challenge_created: "<red>Es wurde noch keine Challenge erstellt."
         challenge_not_started: "<red>Challenge wurde noch nicht gestartet."
     server_closed: "<red>Der Server wird geschlossen."
-    timer_gradient:
-        primary: "#dc4abc"
-        accent: "#616bcd"
+    timer:
+        # Currently are two modes available: "BLINK" and "WAVE"
+        mode: "BLINK"
+        primary_color: "#57ff58"
+        accent_color: "#588f4d"
 all_items:
     # Extra tags:
     #   <item_icon>         - Shows the current item image

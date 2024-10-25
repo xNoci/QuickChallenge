@@ -25,9 +25,10 @@ public interface Option<T> {
             Option<Component> CHALLENGE_NOT_STARTED = component("settings.action_bar.challenge_not_started");
         }
 
-        interface TimerGradient {
-            Option<TextColor> PRIMARY = create("settings.timer_gradient.primary", NamedTextColor.WHITE);
-            Option<TextColor> ACCENT = create("settings.timer_gradient.accent", NamedTextColor.BLACK);
+        interface Timer {
+            Option<String> MODE = create("settings.timer.mode", "BLINK");
+            Option<TextColor> PRIMARY_COLOR = create("settings.timer.primary_color", NamedTextColor.WHITE);
+            Option<TextColor> ACCENT_COLOR = create("settings.timer.accent_color", NamedTextColor.BLACK);
         }
 
     }
@@ -120,7 +121,7 @@ public interface Option<T> {
             Option<Component> COLLECTED_BY = component("gui.all_items.collected_by");
             Option<Component> SKIPPED_BY = component("gui.all_items.skipped_by");
             Option<Component> TIMESTAMP_SUFFIX = component("gui.all_items.timestamp_suffix");
-            Option<Component> STATS_DISPLAYNAME= component("gui.all_items.stats_displayname");
+            Option<Component> STATS_DISPLAYNAME = component("gui.all_items.stats_displayname");
             Option<Component> STATS_ENTRY = component("gui.all_items.stats_entry");
             Option<Component> STATS_ENTRY_SKIPPED = component("gui.all_items.stats_entry_skipped");
         }

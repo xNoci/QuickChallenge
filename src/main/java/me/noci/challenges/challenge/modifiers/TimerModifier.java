@@ -8,6 +8,7 @@ import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.utils.BukkitUnit;
+import me.noci.quickutilities.utils.EnumUtils;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -16,28 +17,24 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class TimerModifier implements ChallengeModifier {
 
     private static final String TIMER_PAUSED_STRING = "Der Timer ist pausiert";
 
-    private static final float GRADIENT_SPEED = 0.015f;
-    private static final float GRADIENT_PERIOD = 4.5f;
-    private static final float GRADIENT_ACCENT_STRENGTH = 10;
-
-    private float gradientTranslation;
     @Getter private long ticksPlayed;
 
     private Runnable configReloadListener;
     @Nullable private TextColor gradientPrimary;
     @Nullable private TextColor gradientAccent;
+    private TimerTransformer timerMode;
 
     public TimerModifier() {
         this(0);
     }
 
     public TimerModifier(long ticksPlayed) {
-        this.gradientTranslation = 0;
         this.ticksPlayed = ticksPlayed;
     }
 
@@ -51,6 +48,7 @@ public class TimerModifier implements ChallengeModifier {
         configReloadListener = () -> {
             gradientPrimary = null;
             gradientAccent = null;
+            timerMode = null;
         };
 
         config.registerListener(configReloadListener);
@@ -73,22 +71,15 @@ public class TimerModifier implements ChallengeModifier {
             ticksPlayed++;
         }
 
-        gradientTranslation += GRADIENT_SPEED;
-        gradientTranslation %= (float) (4 * Math.PI / GRADIENT_PERIOD);
-
         List<TextDecoration> textDecorations = Lists.newArrayList(TextDecoration.BOLD);
         if (challenge.paused()) {
             textDecorations.add(TextDecoration.ITALIC);
         }
 
-        String actionBarText = challenge.paused() ? TIMER_PAUSED_STRING : playedTimeAsString();
-        Component actionBar = TextGradient.gradient(actionBarText, gradientPrimary(), gradientAccent(), (currentIndex, stringLength) -> {
-            float progress = (float) currentIndex / (GRADIENT_PERIOD * 10);
-            progress += gradientTranslation;
-            progress = 0.5f + (float) Math.sin(GRADIENT_PERIOD * progress) / 2;
-            return (float) Math.pow(progress, GRADIENT_ACCENT_STRENGTH);
-        }).decorate(textDecorations.toArray(TextDecoration[]::new));
+        timerMode().tick();
 
+        String actionBarText = challenge.paused() ? TIMER_PAUSED_STRING : playedTimeAsString();
+        Component actionBar = TextGradient.gradient(actionBarText, gradientPrimary(), gradientAccent(), timerMode()::progressTransformer).decorate(textDecorations.toArray(TextDecoration[]::new));
         players.forEach(player -> player.sendActionBar(actionBar));
     }
 
@@ -97,15 +88,22 @@ public class TimerModifier implements ChallengeModifier {
         return "Timer";
     }
 
+    private TimerTransformer timerMode() {
+        if (timerMode != null) return timerMode;
+        String mode = Option.Settings.Timer.MODE.get();
+        timerMode = EnumUtils.getIfPresent(TimerMode.class, mode).orElse(TimerMode.BLINK).createNew();
+        return timerMode;
+    }
+
     private TextColor gradientPrimary() {
         if (gradientPrimary != null) return gradientPrimary;
-        gradientPrimary = Option.Settings.TimerGradient.PRIMARY.get();
+        gradientPrimary = Option.Settings.Timer.PRIMARY_COLOR.get();
         return gradientPrimary;
     }
 
     private TextColor gradientAccent() {
         if (gradientAccent != null) return gradientAccent;
-        gradientAccent = Option.Settings.TimerGradient.ACCENT.get();
+        gradientAccent = Option.Settings.Timer.ACCENT_COLOR.get();
         return gradientAccent;
     }
 
@@ -131,6 +129,67 @@ public class TimerModifier implements ChallengeModifier {
         builder.append(seconds).append("s");
 
         return builder.toString();
+    }
+
+    private enum TimerMode {
+        BLINK(() -> new TimerTransformer(0.008f, 5.5f, 10, TimerTransformer.Transformer.BLINK)),
+        WAVE(() -> new TimerTransformer(0.015f, 4.5f, 10, TimerTransformer.Transformer.WAVE));
+
+        private final Supplier<TimerTransformer> transformer;
+
+        TimerMode(Supplier<TimerTransformer> transformer) {
+            this.transformer = transformer;
+        }
+
+        private TimerTransformer createNew() {
+            return transformer.get();
+        }
+    }
+
+    private static class TimerTransformer {
+
+        private final float gradientSpeed;
+        private final float gradientPeriod;
+        private final float gradientAccentStrength;
+        private final Transformer transformer;
+
+        private float gradientTranslation = 0;
+
+        private TimerTransformer(float gradientSpeed, float gradientPeriod, float gradientAccentStrength, Transformer transformer) {
+            this.gradientSpeed = gradientSpeed;
+            this.gradientPeriod = gradientPeriod;
+            this.gradientAccentStrength = gradientAccentStrength;
+            this.transformer = transformer;
+        }
+
+        private void tick() {
+            gradientTranslation += gradientSpeed;
+            gradientTranslation %= (float) (4 * Math.PI / gradientPeriod);
+        }
+
+        private float progressTransformer(int currentIndex, int stringLength) {
+            return transformer.transform(gradientPeriod, gradientAccentStrength, gradientTranslation, currentIndex);
+        }
+
+        @FunctionalInterface
+        private interface Transformer {
+            Transformer BLINK = (gradientPeriod, gradientAccentStrength, gradientTranslation, currentIndex) -> {
+                float progress = (gradientPeriod * 10);
+                progress += gradientTranslation;
+                progress = 0.5f + (float) Math.sin(gradientPeriod * progress) / 2;
+                return (float) Math.pow(progress, gradientAccentStrength);
+            };
+
+            Transformer WAVE = (gradientPeriod, gradientAccentStrength, gradientTranslation, currentIndex) -> {
+                float progress = (float) currentIndex / (gradientPeriod * 10);
+                progress += gradientTranslation;
+                progress = 0.5f + (float) Math.sin(gradientPeriod * progress) / 2;
+                return (float) Math.pow(progress, gradientAccentStrength);
+            };
+
+            float transform(float gradientPeriod, float gradientAccentStrength, float gradientTranslation, int currentIndex);
+        }
+
     }
 
 }
