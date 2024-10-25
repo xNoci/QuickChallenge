@@ -125,6 +125,16 @@ gui:
         # Extra tags:
         #   <time>  - After which the item was collected
         timestamp_suffix: " <gray>nach <color:#638065><time>"
+        stats_displayname: "<green><bold>Statistiken"
+        # Extra tags:
+        #   <collector> - Name of the player who collected the item
+        #   <total> - Total items collected by the collector
+        stats_entry: "<gray><collector>: <color:#638065><total>"
+        # Extra tags:
+        #   <collector> - Name of the player who collected the item
+        #   <total> - Total items collected by the collector
+        #   <skipped> - Items skipped collected by the collector
+        stats_entry_skipped: "<gray><collector>: <color:#638065><total></color> (Davon übersprungen: <color:#638065><skipped></color>)"
     traffic_light_modifier:
         title: "<color:#84789d>Timer Modifier"
         cancel: "<red>Abbrechen"

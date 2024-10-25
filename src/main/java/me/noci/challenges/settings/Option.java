@@ -120,6 +120,9 @@ public interface Option<T> {
             Option<Component> COLLECTED_BY = component("gui.all_items.collected_by");
             Option<Component> SKIPPED_BY = component("gui.all_items.skipped_by");
             Option<Component> TIMESTAMP_SUFFIX = component("gui.all_items.timestamp_suffix");
+            Option<Component> STATS_DISPLAYNAME= component("gui.all_items.stats_displayname");
+            Option<Component> STATS_ENTRY = component("gui.all_items.stats_entry");
+            Option<Component> STATS_ENTRY_SKIPPED = component("gui.all_items.stats_entry_skipped");
         }
 
         interface TrafficLightModifier {

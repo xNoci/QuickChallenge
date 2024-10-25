@@ -1,6 +1,7 @@
 package me.noci.challenges.gui;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.challenge.modifiers.allitem.AllItem;
 import me.noci.challenges.challenge.modifiers.allitem.AllItemModifier;
@@ -14,12 +15,18 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Formatter;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.BiFunction;
+import java.util.stream.Collectors;
 
 public class GuiAllItemOverview extends PagedQuickGUIProvider {
 
@@ -41,6 +48,42 @@ public class GuiAllItemOverview extends PagedQuickGUIProvider {
     @Override
     public void init(Player player, InventoryContent inventoryContent) {
         inventoryContent.fillBorders(InventoryConstants.GLAS_PANE);
+
+        Config config = QuickChallenge.instance().config();
+        QuickItemStack item = new QuickItemStack(Material.CHERRY_SIGN, config.get(Option.Gui.AllItems.STATS_DISPLAYNAME));
+
+
+        HashMap<String, CollectionData> playerStats = Maps.newHashMap();
+        modifier.collectedItems().forEach(collectedItem -> {
+            int addToCollected = !collectedItem.skipped() ? 1 : 0;
+            int addToSkip = collectedItem.skipped() ? 1 : 0;
+            BiFunction<String, CollectionData, CollectionData> merge = (key, data) -> data == null ? new CollectionData(addToCollected, addToSkip) : data.add(addToCollected, addToSkip);
+            playerStats.compute(collectedItem.collectedBy(), merge);
+        });
+
+
+        List<Component> lore = playerStats.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue())
+                .map(entry -> {
+                    CollectionData data = entry.getValue();
+
+                    TagResolver resolver = TagResolver.builder()
+                            .resolvers(
+                                    Placeholder.unparsed("collector", entry.getKey()),
+                                    Formatter.number("total", data.totalAmount()),
+                                    Formatter.number("skipped", data.skipped())
+                            )
+                            .build();
+
+                    Option<Component> line = data.skipped > 0 ? Option.Gui.AllItems.STATS_ENTRY_SKIPPED : Option.Gui.AllItems.STATS_ENTRY;
+                    return config.get(line, resolver);
+                }).collect(Collectors.toCollection(ArrayList::new));
+
+        lore.addFirst(Component.empty());
+        item.lore(lore);
+
+        inventoryContent.setItem(4, item.asGuiItem());
+
     }
 
     @Override
@@ -76,6 +119,21 @@ public class GuiAllItemOverview extends PagedQuickGUIProvider {
 
         item.itemLore(lore);
         return item.asGuiItem();
+    }
+
+    private record CollectionData(int collected, int skipped) implements Comparable<CollectionData> {
+        private int totalAmount() {
+            return collected + skipped;
+        }
+
+        private CollectionData add(int collected, int skipped) {
+            return new CollectionData(this.collected + collected, this.skipped + skipped);
+        }
+
+        @Override
+        public int compareTo(CollectionData o) {
+            return Integer.compare(o.totalAmount(), this.totalAmount());
+        }
     }
 
 }
