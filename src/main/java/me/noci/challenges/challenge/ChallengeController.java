@@ -37,6 +37,7 @@ public class ChallengeController {
             return;
         }
 
+        challenge.listenForConfigReload();
         challenge.initialiseChallengeModifiers();
 
         challenge.started(true);
@@ -48,6 +49,7 @@ public class ChallengeController {
             return;
         }
         challenge.stopChallengeModifiers();
+        challenge.stopListeningForConfigReload();
 
         challenge.started(false);
         challenge.paused(true);

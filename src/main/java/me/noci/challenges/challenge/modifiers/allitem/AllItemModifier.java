@@ -47,7 +47,6 @@ public class AllItemModifier implements ChallengeModifier {
     private SubscribedEvent<InventoryClickEvent> inventoryClickEvent;
 
     private Component currentDisplay;
-    private Runnable configReloadListener;
 
     public AllItemModifier() {
         this(EnumUtils.random(AllItem.class), Lists.newArrayList(), false);
@@ -118,14 +117,6 @@ public class AllItemModifier implements ChallengeModifier {
                 .filter(event -> !challenge.paused())
                 .filter(event -> currentItem.matches(Require.nonNull(event.getCurrentItem())))
                 .handle(event -> tryPickupItem(challenge, (Player) event.getWhoClicked(), currentItem));
-
-        Config config = QuickChallenge.instance().config();
-        if (configReloadListener != null) {
-            config.removeListener(configReloadListener);
-        }
-
-        configReloadListener = () -> currentDisplay = null;
-        config.registerListener(configReloadListener);
     }
 
     @Override
@@ -144,11 +135,6 @@ public class AllItemModifier implements ChallengeModifier {
             inventoryClickEvent = null;
         }
 
-        if (configReloadListener != null) {
-            QuickChallenge.instance().config().removeListener(configReloadListener);
-            configReloadListener = null;
-        }
-
         currentDisplay = null;
     }
 
@@ -161,6 +147,11 @@ public class AllItemModifier implements ChallengeModifier {
                 .forEach(bossBar::removeViewer);
 
         bossBar.name(itemDisplay());
+    }
+
+    @Override
+    public void onConfigReload(Logger logger, Challenge challenge, Config config) {
+        currentDisplay = null;
     }
 
     @Override

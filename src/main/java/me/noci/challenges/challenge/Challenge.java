@@ -4,7 +4,9 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import lombok.Getter;
 import lombok.Setter;
+import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
+import me.noci.challenges.settings.Config;
 import net.kyori.adventure.text.Component;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,6 +25,8 @@ public class Challenge {
     @Getter private final Set<ChallengeModifier> modifiers;
     @Getter @Setter private boolean started = false;
     @Getter @Setter private boolean paused = true;
+    private Runnable configReloadListener;
+    private boolean configReloaded = true;
 
     public Challenge(List<ChallengeModifier> modifiers) {
         this(modifiers.toArray(ChallengeModifier[]::new));
@@ -30,6 +34,23 @@ public class Challenge {
 
     public Challenge(ChallengeModifier... modifiers) {
         this.modifiers = ImmutableSet.copyOf(modifiers);
+    }
+
+    public void listenForConfigReload() {
+        Config config = QuickChallenge.instance().config();
+        if (configReloadListener != null) {
+            config.removeListener(configReloadListener);
+        }
+
+        configReloadListener = () -> configReloaded = true;
+        config.registerListener(configReloadListener);
+    }
+
+    public void stopListeningForConfigReload() {
+        if (configReloadListener == null) return;
+
+        QuickChallenge.instance().config().registerListener(configReloadListener);
+        configReloadListener = null;
     }
 
     public void initialiseChallengeModifiers() {
@@ -57,7 +78,15 @@ public class Challenge {
 
     public void tickModifiers() {
         List<Player> players = players();
-        modifiers.forEach(modifier -> modifier.onTick(LOGGER, this, players));
+        Config config = QuickChallenge.instance().config();
+        modifiers.forEach(modifier -> {
+            if (configReloaded) {
+                modifier.onConfigReload(LOGGER, this, config);
+            }
+            modifier.onTick(LOGGER, this, players);
+        });
+
+        configReloaded = false;
     }
 
     @SuppressWarnings("unchecked")

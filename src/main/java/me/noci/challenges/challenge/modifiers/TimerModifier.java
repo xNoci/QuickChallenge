@@ -2,7 +2,6 @@ package me.noci.challenges.challenge.modifiers;
 
 import com.google.common.collect.Lists;
 import lombok.Getter;
-import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.TextGradient;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.settings.Config;
@@ -14,7 +13,6 @@ import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -25,9 +23,8 @@ public class TimerModifier implements ChallengeModifier {
 
     @Getter private long ticksPlayed;
 
-    private Runnable configReloadListener;
-    @Nullable private TextColor gradientPrimary;
-    @Nullable private TextColor gradientAccent;
+    private TextColor gradientPrimary;
+    private TextColor gradientAccent;
     private TimerTransformer timerMode;
 
     public TimerModifier() {
@@ -40,29 +37,13 @@ public class TimerModifier implements ChallengeModifier {
 
     @Override
     public void onInitialise(Logger logger, Challenge challenge) {
-        Config config = QuickChallenge.instance().config();
-        if (configReloadListener != null) {
-            config.removeListener(configReloadListener);
-        }
-
-        configReloadListener = () -> {
-            gradientPrimary = null;
-            gradientAccent = null;
-            timerMode = null;
-        };
-
-        config.registerListener(configReloadListener);
     }
 
     @Override
     public void onStop(Logger logger, Challenge challenge) {
-        if (configReloadListener != null) {
-            QuickChallenge.instance().config().removeListener(configReloadListener);
-            configReloadListener = null;
-        }
-
         gradientPrimary = null;
         gradientAccent = null;
+        timerMode = null;
     }
 
     @Override
@@ -76,35 +57,25 @@ public class TimerModifier implements ChallengeModifier {
             textDecorations.add(TextDecoration.ITALIC);
         }
 
-        timerMode().tick();
+        timerMode.tick();
 
         String actionBarText = challenge.paused() ? TIMER_PAUSED_STRING : playedTimeAsString();
-        Component actionBar = TextGradient.gradient(actionBarText, gradientPrimary(), gradientAccent(), timerMode()::progressTransformer).decorate(textDecorations.toArray(TextDecoration[]::new));
+        Component actionBar = TextGradient.gradient(actionBarText, gradientPrimary, gradientAccent, timerMode::progressTransformer).decorate(textDecorations.toArray(TextDecoration[]::new));
         players.forEach(player -> player.sendActionBar(actionBar));
+    }
+
+    @Override
+    public void onConfigReload(Logger logger, Challenge challenge, Config config) {
+        gradientPrimary = Option.Settings.Timer.PRIMARY_COLOR.get();
+        gradientAccent = Option.Settings.Timer.ACCENT_COLOR.get();
+        
+        String mode = Option.Settings.Timer.MODE.get();
+        timerMode = EnumUtils.getIfPresent(TimerMode.class, mode).orElse(TimerMode.BLINK).createNew();
     }
 
     @Override
     public String name() {
         return "Timer";
-    }
-
-    private TimerTransformer timerMode() {
-        if (timerMode != null) return timerMode;
-        String mode = Option.Settings.Timer.MODE.get();
-        timerMode = EnumUtils.getIfPresent(TimerMode.class, mode).orElse(TimerMode.BLINK).createNew();
-        return timerMode;
-    }
-
-    private TextColor gradientPrimary() {
-        if (gradientPrimary != null) return gradientPrimary;
-        gradientPrimary = Option.Settings.Timer.PRIMARY_COLOR.get();
-        return gradientPrimary;
-    }
-
-    private TextColor gradientAccent() {
-        if (gradientAccent != null) return gradientAccent;
-        gradientAccent = Option.Settings.Timer.ACCENT_COLOR.get();
-        return gradientAccent;
     }
 
     public String playedTimeAsString() {
