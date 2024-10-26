@@ -1,12 +1,11 @@
 package me.noci.challenges.challenge.modifiers.registry;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.modifiers.EnderDragonFinishModifier;
 import me.noci.challenges.challenge.modifiers.StopOnDeathModifier;
-import me.noci.challenges.challenge.modifiers.TimerModifier;
+import me.noci.challenges.challenge.modifiers.timer.TimerModifier;
 import me.noci.challenges.challenge.modifiers.allitem.AllItemModifier;
 import me.noci.challenges.challenge.modifiers.trafficlight.TrafficLightModifier;
 import me.noci.challenges.gui.GuiAcceptDialog;

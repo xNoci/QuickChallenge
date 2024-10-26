@@ -8,7 +8,7 @@ import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.RandomHolder;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
-import me.noci.challenges.challenge.modifiers.TimerModifier;
+import me.noci.challenges.challenge.modifiers.timer.TimerModifier;
 import me.noci.challenges.headcomponent.HeadComponent;
 import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;

@@ -2,6 +2,7 @@ package me.noci.challenges.challenge.modifiers;
 
 import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.challenge.Challenge;
+import me.noci.challenges.challenge.modifiers.timer.TimerModifier;
 import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.events.Events;

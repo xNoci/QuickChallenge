@@ -1,6 +1,6 @@
 package me.noci.challenges.challenge.serializ;
 
-import me.noci.challenges.challenge.modifiers.TimerModifier;
+import me.noci.challenges.challenge.modifiers.timer.TimerModifier;
 import me.noci.challenges.serializer.TypeSerializer;
 
 import java.util.Optional;
