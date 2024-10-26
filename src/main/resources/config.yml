@@ -81,6 +81,7 @@ command:
         successfully_resumed: "<green>Die Challenge wurde fortgesetzt."
         help: "<red>Benutze: /timer [start/stop/pause/resume]"
     challenge:
+        already_created: "<red>Es wurde bereits eine Challenge erstellt."
         not_created: "<red>Es wurde noch keine Challenge erstellt."
         successfully_deleted: "<green>Challenge wurde gelöscht."
         failed_deletion: "<red>Challenge konnte nicht gelöscht werden."

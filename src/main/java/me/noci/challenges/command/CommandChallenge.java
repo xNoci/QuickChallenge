@@ -27,12 +27,21 @@ public class CommandChallenge extends QuickCommand {
     @SubCommand(path = "create")
     @CommandPermission("quickchallenge.create")
     public void create(Player player) {
+        if (challengeController.isChallengeCreated()) {
+            player.sendMessage(config.get(Option.Command.Challenge.ALREADY_CREATED));
+            return;
+        }
         new GuiChallengeCreate(challengeController).provide(player);
     }
 
     @SubCommand(path = "delete")
     @CommandPermission("quickchallenge.create")
     public void delete(CommandSender sender) {
+        if (!challengeController.isChallengeCreated()) {
+            sender.sendMessage(config.get(Option.Command.Challenge.NOT_CREATED));
+            return;
+        }
+
         if (challengeController.delete()) {
             sender.sendMessage(config.get(Option.Command.Challenge.SUCCESSFULLY_DELETED));
             return;

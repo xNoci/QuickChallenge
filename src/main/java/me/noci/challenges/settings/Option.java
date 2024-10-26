@@ -79,6 +79,7 @@ public interface Option<T> {
         }
 
         interface Challenge {
+            Option<Component> ALREADY_CREATED = component("command.challenge.already_created");
             Option<Component> NOT_CREATED = component("command.challenge.not_created");
             Option<Component> SUCCESSFULLY_DELETED = component("command.challenge.successfully_deleted");
             Option<Component> FAILED_DELETION = component("command.challenge.failed_deletion");

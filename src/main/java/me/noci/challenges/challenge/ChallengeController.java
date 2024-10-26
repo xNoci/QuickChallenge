@@ -21,7 +21,8 @@ public class ChallengeController {
 
     @Nullable private Challenge challenge;
 
-    public ChallengeController() {
+    public boolean isChallengeCreated() {
+        return challenge != null;
     }
 
     public Optional<Challenge> challenge() {
