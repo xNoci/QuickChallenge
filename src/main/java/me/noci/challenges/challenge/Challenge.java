@@ -49,7 +49,7 @@ public class Challenge {
     public void stopListeningForConfigReload() {
         if (configReloadListener == null) return;
 
-        QuickChallenge.instance().config().registerListener(configReloadListener);
+        QuickChallenge.instance().config().removeListener(configReloadListener);
         configReloadListener = null;
     }
 

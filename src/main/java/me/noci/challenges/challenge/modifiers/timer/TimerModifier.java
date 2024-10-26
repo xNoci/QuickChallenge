@@ -6,7 +6,6 @@ import me.noci.challenges.TextGradient;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.modifiers.timer.style.TimerStyle;
-import me.noci.challenges.challenge.modifiers.timer.style.TimerStyleData;
 import me.noci.challenges.challenge.modifiers.timer.style.TimerStyleMode;
 import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
@@ -41,6 +40,7 @@ public class TimerModifier implements ChallengeModifier {
     @Override
     public void onInitialise(Logger logger, Challenge challenge) {
         timerStyle = new TimerStyle(TimerStyleMode.BLINK.styleData());
+        loadConfigValues();
     }
 
     @Override
@@ -70,6 +70,10 @@ public class TimerModifier implements ChallengeModifier {
 
     @Override
     public void onConfigReload(Logger logger, Challenge challenge, Config config) {
+        loadConfigValues();
+    }
+
+    private void loadConfigValues() {
         gradientPrimary = Option.Settings.Timer.PRIMARY_COLOR.get();
         gradientAccent = Option.Settings.Timer.ACCENT_COLOR.get();
 
