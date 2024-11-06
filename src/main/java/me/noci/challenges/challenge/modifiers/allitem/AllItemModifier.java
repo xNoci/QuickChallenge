@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import io.papermc.paper.event.player.PlayerInventorySlotChangeEvent;
 import lombok.Getter;
-import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.RandomHolder;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
@@ -20,7 +19,6 @@ import net.kyori.adventure.bossbar.BossBar;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Formatter;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
-import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
@@ -69,26 +67,21 @@ public class AllItemModifier implements ChallengeModifier {
             isPlayer = true;
         }
 
-        TagResolver resolver = TagResolver.builder()
-                .resolvers(
-                        Placeholder.component("player_head", headComponent),
-                        Placeholder.component("player", collector.name()),
-                        Placeholder.unparsed("item_name", item.itemName())
-                )
-                .build();
-
-        Config config = QuickChallenge.instance().config();
-        Option<Component> option = skipped ? Option.AllItems.Chat.ITEM_SKIPPED : Option.AllItems.Chat.ITEM_COLLECTED;
+        Option<Component> component = skipped ? Option.AllItems.Chat.ITEM_SKIPPED : Option.AllItems.Chat.ITEM_COLLECTED;
         if (skipped && !isPlayer) {
-            option = Option.AllItems.Chat.ITEM_SKIPPED_CONSOLE;
+            component = Option.AllItems.Chat.ITEM_SKIPPED_CONSOLE;
         }
 
-        challenge.broadcast(config.get(option, resolver));
+        challenge.broadcast(component.resolve(
+                Placeholder.component("player_head", headComponent),
+                Placeholder.component("player", collector.name()),
+                Placeholder.unparsed("item_name", item.itemName())
+        ));
     }
 
     private static void broadcastNextItem(Challenge challenge, AllItem item) {
-        Config config = QuickChallenge.instance().config();
-        challenge.broadcast(config.get(Option.AllItems.Chat.NEXT_ITEM, Placeholder.unparsed("item_name", item.itemName())));
+        var component = Option.AllItems.Chat.NEXT_ITEM.resolve(Placeholder.unparsed("item_name", item.itemName()));
+        challenge.broadcast(component);
     }
 
     @Override
@@ -199,22 +192,18 @@ public class AllItemModifier implements ChallengeModifier {
     private Component itemDisplay() {
         if (currentDisplay != null) return currentDisplay;
 
-        Config config = QuickChallenge.instance().config();
         int collectedItemCount = collectedItems.size();
         int itemsToCollectCount = AllItem.values().length;
 
-        TagResolver resolver = TagResolver.builder()
-                .resolvers(
-                        Placeholder.component("item_icon", currentItem.icon()),
-                        Placeholder.unparsed("item_name", currentItem.itemName()),
-                        Formatter.number("items_collected", collectedItemCount),
-                        Formatter.number("total_items", itemsToCollectCount),
-                        Formatter.number("progress", (float) collectedItemCount / itemsToCollectCount * 100)
-                )
-                .build();
-
-        Option<Component> option = allItemsCollected ? Option.AllItems.BossBar.COMPLETE : Option.AllItems.BossBar.NEXT_ITEM;
-        currentDisplay = config.get(option, resolver);
+        Option<Component> component = allItemsCollected ? Option.AllItems.BossBar.COMPLETE : Option.AllItems.BossBar.NEXT_ITEM;
+        
+        currentDisplay = component.resolve(
+                Placeholder.component("item_icon", currentItem.icon()),
+                Placeholder.unparsed("item_name", currentItem.itemName()),
+                Formatter.number("items_collected", collectedItemCount),
+                Formatter.number("total_items", itemsToCollectCount),
+                Formatter.number("progress", (float) collectedItemCount / itemsToCollectCount * 100)
+        );
         return currentDisplay;
     }
 

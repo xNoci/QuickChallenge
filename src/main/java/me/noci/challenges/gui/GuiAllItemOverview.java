@@ -2,11 +2,9 @@ package me.noci.challenges.gui;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.challenge.modifiers.allitem.AllItem;
 import me.noci.challenges.challenge.modifiers.allitem.AllItemModifier;
 import me.noci.challenges.challenge.modifiers.allitem.CollectedItem;
-import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.inventory.*;
 import me.noci.quickutilities.utils.InventoryPattern;
@@ -33,24 +31,44 @@ public class GuiAllItemOverview extends PagedQuickGUIProvider {
     private final AllItemModifier modifier;
 
     public GuiAllItemOverview(AllItemModifier modifier) {
-        super(QuickChallenge.instance().config().get(
-                Option.Gui.AllItems.TITLE,
-                TagResolver.builder().resolvers(
-                        Formatter.number("items_collected", modifier.collectedItems().size()),
-                        Formatter.number("total_items", AllItem.values().length)
-                ).build()
+        super(Option.Gui.AllItems.TITLE.resolve(
+                Formatter.number("items_collected", modifier.collectedItems().size()),
+                Formatter.number("total_items", AllItem.values().length)
         ), InventoryConstants.FULL_SIZE);
 
 
         this.modifier = modifier;
     }
 
+    private static GuiItem toGuiItem(CollectedItem collectedItem) {
+        AllItem allItem = collectedItem.item();
+        var item = new QuickItemStack(allItem.material(), Option.Gui.AllItems.ITEM_NAME.resolve(Placeholder.unparsed("item_name", allItem.itemName())));
+        item.addItemFlags();
+
+        LocalDateTime timestamp = Instant.ofEpochMilli(collectedItem.timestamp()).atZone(ZoneId.systemDefault()).toLocalDateTime();
+        Component collected_at = Option.Gui.AllItems.COLLECTED_AT.resolve(Formatter.date("collection_time", timestamp));
+
+        Option<Component> component = collectedItem.skipped() ? Option.Gui.AllItems.SKIPPED_BY : Option.Gui.AllItems.COLLECTED_BY;
+        Component collectedBy = component.resolve(Placeholder.unparsed("collector", collectedItem.collectedBy()));
+        if (collectedItem.collectedAfterTicks() >= 0) {
+            TagResolver timestampResolver = Placeholder.unparsed("time", collectedItem.collectedAfter());
+            collectedBy = collectedBy.append(Option.Gui.AllItems.TIMESTAMP_SUFFIX.resolve(timestampResolver));
+        }
+
+        List<Component> lore = Lists.newArrayList();
+        lore.add(Component.empty());
+        lore.add(collected_at);
+        lore.add(collectedBy);
+
+        item.itemLore(lore);
+        return item.asGuiItem();
+    }
+
     @Override
     public void init(Player player, InventoryContent inventoryContent) {
         inventoryContent.fillBorders(InventoryConstants.GLAS_PANE);
 
-        Config config = QuickChallenge.instance().config();
-        QuickItemStack item = new QuickItemStack(Material.CHERRY_SIGN, config.get(Option.Gui.AllItems.STATS_DISPLAYNAME));
+        QuickItemStack item = new QuickItemStack(Material.CHERRY_SIGN, Option.Gui.AllItems.STATS_DISPLAYNAME.get());
 
 
         HashMap<String, CollectionData> playerStats = Maps.newHashMap();
@@ -76,7 +94,7 @@ public class GuiAllItemOverview extends PagedQuickGUIProvider {
                             .build();
 
                     Option<Component> line = data.skipped > 0 ? Option.Gui.AllItems.STATS_ENTRY_SKIPPED : Option.Gui.AllItems.STATS_ENTRY;
-                    return config.get(line, resolver);
+                    return line.resolve(resolver);
                 }).collect(Collectors.toCollection(ArrayList::new));
 
         lore.addFirst(Component.empty());
@@ -94,31 +112,6 @@ public class GuiAllItemOverview extends PagedQuickGUIProvider {
         pageContent.setItemSlots(InventoryPattern.box(2, 5));
         pageContent.setPreviousPageItem(Slot.getSlot(3, 1), InventoryConstants.previousPageItem(), InventoryConstants.GLAS_PANE.getItemStack());
         pageContent.setNextPageItem(Slot.getSlot(3, 9), InventoryConstants.nextPageItem(), InventoryConstants.GLAS_PANE.getItemStack());
-    }
-
-    private static GuiItem toGuiItem(CollectedItem collectedItem) {
-        Config config = QuickChallenge.instance().config();
-        AllItem allItem = collectedItem.item();
-        var item = new QuickItemStack(allItem.material(), config.get(Option.Gui.AllItems.ITEM_NAME, Placeholder.unparsed("item_name", allItem.itemName())));
-        item.addItemFlags();
-
-        LocalDateTime timestamp = Instant.ofEpochMilli(collectedItem.timestamp()).atZone(ZoneId.systemDefault()).toLocalDateTime();
-        Component collected_at = config.get(Option.Gui.AllItems.COLLECTED_AT, Formatter.date("collection_time", timestamp));
-
-        Option<Component> option = collectedItem.skipped() ? Option.Gui.AllItems.SKIPPED_BY : Option.Gui.AllItems.COLLECTED_BY;
-        Component collectedBy = config.get(option, Placeholder.unparsed("collector", collectedItem.collectedBy()));
-        if (collectedItem.collectedAfterTicks() >= 0) {
-            TagResolver timestampResolver = Placeholder.unparsed("time", collectedItem.collectedAfter());
-            collectedBy = collectedBy.append(config.get(Option.Gui.AllItems.TIMESTAMP_SUFFIX, timestampResolver));
-        }
-
-        List<Component> lore = Lists.newArrayList();
-        lore.add(Component.empty());
-        lore.add(collected_at);
-        lore.add(collectedBy);
-
-        item.itemLore(lore);
-        return item.asGuiItem();
     }
 
     private record CollectionData(int collected, int skipped) implements Comparable<CollectionData> {

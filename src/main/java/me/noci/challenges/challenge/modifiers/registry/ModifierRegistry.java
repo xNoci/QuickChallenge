@@ -1,12 +1,11 @@
 package me.noci.challenges.challenge.modifiers.registry;
 
 import com.google.common.collect.Maps;
-import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.modifiers.EnderDragonFinishModifier;
 import me.noci.challenges.challenge.modifiers.StopOnDeathModifier;
-import me.noci.challenges.challenge.modifiers.timer.TimerModifier;
 import me.noci.challenges.challenge.modifiers.allitem.AllItemModifier;
+import me.noci.challenges.challenge.modifiers.timer.TimerModifier;
 import me.noci.challenges.challenge.modifiers.trafficlight.TrafficLightModifier;
 import me.noci.challenges.gui.GuiAcceptDialog;
 import me.noci.challenges.gui.InventoryConstants;
@@ -14,7 +13,6 @@ import me.noci.challenges.gui.modifier.DisplayItemSupplier;
 import me.noci.challenges.gui.modifier.GuiTrafficLightModifier;
 import me.noci.challenges.gui.modifier.ModifierApplier;
 import me.noci.challenges.gui.modifier.ModifierCreateGui;
-import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.utils.QuickItemStack;
 import me.noci.quickutilities.utils.Require;
@@ -57,14 +55,13 @@ public class ModifierRegistry {
     private static <T extends ChallengeModifier> void registerBasic(Class<T> type, Supplier<T> modifier, DisplayItemSupplier displayItemSupplier) {
         registerDisplayItem(type, displayItemSupplier);
 
-        Config config = QuickChallenge.instance().config();
         ModifierCreator creator = (player, modifierApplier) -> GuiAcceptDialog.builder()
-                .title(config.get(Option.Gui.ModifierAcceptDialog.TITLE))
+                .title(Option.Gui.ModifierAcceptDialog.TITLE.get())
                 .description(
                         Component.empty(),
-                        config.get(Option.Gui.ModifierAcceptDialog.DESCRIPTION),
+                        Option.Gui.ModifierAcceptDialog.DESCRIPTION.get(),
                         Component.empty(),
-                        config.get(Option.Gui.ModifierAcceptDialog.MODIFIER_NAME, Placeholder.unparsed("modifier_name", displayItemSupplier.item().getRawDisplayName()))
+                        Option.Gui.ModifierAcceptDialog.MODIFIER_NAME.resolve(Placeholder.unparsed("modifier_name", displayItemSupplier.item().getRawDisplayName()))
                 )
                 .acceptAction(event -> modifierApplier.apply(modifier.get()))
                 .declineAction(event -> modifierApplier.cancel())

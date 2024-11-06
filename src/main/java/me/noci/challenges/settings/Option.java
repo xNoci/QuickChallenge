@@ -4,6 +4,8 @@ import me.noci.challenges.QuickChallenge;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 
 public interface Option<T> {
 
@@ -14,6 +16,7 @@ public interface Option<T> {
         Option<Component> PLAYER_JOIN = component("settings.player_join");
         Option<Component> PLAYER_QUIT = component("settings.player_quit");
         Option<Component> SERVER_CLOSED = component("settings.server_closed");
+        Option<Component> OPTION_IS_NOT_COMPONENT = component("settings.option_is_not_component");
 
         interface Anvil {
             Option<Boolean> COLORED_NAME = create("settings.anvil.coloredNames", true);
@@ -186,6 +189,26 @@ public interface Option<T> {
 
     default T get() {
         return QuickChallenge.instance().config().get(this);
+    }
+
+    @SuppressWarnings("unchecked")
+    default Component resolve(TagResolver resolver) {
+        var config = QuickChallenge.instance().config();
+        if (!(defaultValue() instanceof Component)) {
+            return config.resolve(Settings.OPTION_IS_NOT_COMPONENT, Placeholder.unparsed("option", path()));
+        }
+
+        return config.resolve((Option<Component>) this, resolver);
+    }
+
+    @SuppressWarnings("unchecked")
+    default Component resolve(TagResolver... resolvers) {
+        var config = QuickChallenge.instance().config();
+        if (!(defaultValue() instanceof Component)) {
+            return config.resolve(Settings.OPTION_IS_NOT_COMPONENT, Placeholder.unparsed("option", path()));
+        }
+
+        return config.resolve((Option<Component>) this, resolvers);
     }
 
 }

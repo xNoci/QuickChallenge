@@ -2,7 +2,6 @@ package me.noci.challenges;
 
 import com.google.common.io.BaseEncoding;
 import me.noci.challenges.challenge.modifiers.allitem.AllItem;
-import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.key.KeyPattern;
@@ -65,8 +64,7 @@ public final class ResourcePack {
         }
 
         public void apply(Player player) {
-            Config config = QuickChallenge.instance().config();
-            player.addResourcePack(uuid, url, hash, GsonComponentSerializer.gson().serialize(config.get(Option.ResourcePack.PROMPT)), !player.isOp() && required);
+            player.addResourcePack(uuid, url, hash, GsonComponentSerializer.gson().serialize(Option.ResourcePack.PROMPT.get()), !player.isOp() && required);
         }
 
         public boolean isSame(UUID uuid) {

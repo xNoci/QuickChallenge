@@ -29,6 +29,9 @@ settings:
         mode: "BLINK"
         primary_color: "#57ff58"
         accent_color: "#588f4d"
+    # Extra tags:
+    #   <option>    - Path of the option
+    option_is_not_component: "<red>Die Option '<option>' ist nicht vom Typ Component."
 all_items:
     # Extra tags:
     #   <item_icon>         - Shows the current item image

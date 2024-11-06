@@ -2,7 +2,6 @@ package me.noci.challenges.command;
 
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.gui.GuiChallengeCreate;
-import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.quickcommand.QuickCommand;
 import me.noci.quickutilities.quickcommand.annotation.CommandPermission;
@@ -15,20 +14,18 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class CommandChallenge extends QuickCommand {
 
     private final ChallengeController challengeController;
-    private final Config config;
 
-    public CommandChallenge(JavaPlugin plugin, ChallengeController challengeController, Config config) {
+    public CommandChallenge(JavaPlugin plugin, ChallengeController challengeController) {
         super(plugin, "challenge");
         autoRegister();
         this.challengeController = challengeController;
-        this.config = config;
     }
 
     @SubCommand(path = "create")
     @CommandPermission("quickchallenge.create")
     public void create(Player player) {
         if (challengeController.isChallengeCreated()) {
-            player.sendMessage(config.get(Option.Command.Challenge.ALREADY_CREATED));
+            player.sendMessage(Option.Command.Challenge.ALREADY_CREATED.get());
             return;
         }
         new GuiChallengeCreate(challengeController).provide(player);
@@ -38,15 +35,15 @@ public class CommandChallenge extends QuickCommand {
     @CommandPermission("quickchallenge.create")
     public void delete(CommandSender sender) {
         if (!challengeController.isChallengeCreated()) {
-            sender.sendMessage(config.get(Option.Command.Challenge.NOT_CREATED));
+            sender.sendMessage(Option.Command.Challenge.NOT_CREATED.get());
             return;
         }
 
         if (challengeController.delete()) {
-            sender.sendMessage(config.get(Option.Command.Challenge.SUCCESSFULLY_DELETED));
+            sender.sendMessage(Option.Command.Challenge.SUCCESSFULLY_DELETED.get());
             return;
         }
-        sender.sendMessage(config.get(Option.Command.Challenge.FAILED_DELETION));
+        sender.sendMessage(Option.Command.Challenge.FAILED_DELETION.get());
     }
 
 

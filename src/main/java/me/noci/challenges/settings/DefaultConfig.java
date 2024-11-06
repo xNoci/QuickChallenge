@@ -51,14 +51,21 @@ public class DefaultConfig implements Config {
             case Boolean b -> configuration.getBoolean(path, b);
             case Float f -> configuration.getDouble(path, (double) f);
             case Double d -> configuration.getDouble(path, d);
-            case Component c -> get((Option<Component>) option, TagResolver.empty());
+            case Component c -> resolve((Option<Component>) option, TagResolver.empty());
             case TextColor c -> parseTextColor(path, c);
             default -> configuration.get(option.path(), option.defaultValue());
         };
     }
 
     @Override
-    public Component get(Option<Component> option, TagResolver resolver) {
+    public Component resolve(Option<Component> option, TagResolver resolver) {
+        String string = configuration.getString(option.path());
+        return string == null ? option.defaultValue() : MiniMessage.miniMessage().deserialize(string, resolver);
+    }
+
+    @Override
+    public Component resolve(Option<Component> option, TagResolver... resolvers) {
+        TagResolver resolver = TagResolver.builder().resolvers(resolvers).build();
         String string = configuration.getString(option.path());
         return string == null ? option.defaultValue() : MiniMessage.miniMessage().deserialize(string, resolver);
     }

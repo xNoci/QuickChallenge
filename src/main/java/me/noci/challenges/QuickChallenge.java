@@ -44,7 +44,7 @@ public class QuickChallenge extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        Component kickComponent = config.get(Option.Settings.SERVER_CLOSED);
+        Component kickComponent = Option.Settings.SERVER_CLOSED.get();
         this.challengeController.stopChallenges();
         this.challengeController.save();
         Bukkit.getOnlinePlayers().forEach(player -> player.kick(kickComponent));
@@ -54,8 +54,8 @@ public class QuickChallenge extends JavaPlugin {
         Consumer<Listener> register = listener -> getServer().getPluginManager().registerEvents(listener, this);
 
         register.accept(new PlayerJoinListener());
-        register.accept(new PlayerQuitListener(challengeController, config));
-        register.accept(new ResourcePackStatusListener(config));
+        register.accept(new PlayerQuitListener(challengeController));
+        register.accept(new ResourcePackStatusListener());
         register.accept(new EnityTargetListener(challengeController));
         register.accept(new EntityDamageListener(challengeController));
         register.accept(new EntityMoveListener(challengeController));
@@ -63,17 +63,17 @@ public class QuickChallenge extends JavaPlugin {
         register.accept(new PlayerMoveListener(challengeController));
         register.accept(new BlockListener(challengeController));
         register.accept(new ItemDropListener(challengeController));
-        register.accept(new ServerListPingListener(config));
-        register.accept(new ServerTickListener(challengeController, config));
-        register.accept(new ChatListener(config));
-        register.accept(new AnvilRenameListener(config));
+        register.accept(new ServerListPingListener());
+        register.accept(new ServerTickListener(challengeController));
+        register.accept(new ChatListener());
+        register.accept(new AnvilRenameListener());
         register.accept(new PlayerInteractListener(challengeController));
     }
 
     private void registerCommands() {
-        new CommandChallenge(this, challengeController, config);
-        new CommandTimer(this, challengeController, config);
-        new CommandAllItems(this, challengeController, config);
+        new CommandChallenge(this, challengeController);
+        new CommandTimer(this, challengeController);
+        new CommandAllItems(this, challengeController);
     }
 
 }

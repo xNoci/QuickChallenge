@@ -20,7 +20,9 @@ public interface Config {
 
     <T> T get(Option<T> option);
 
-    Component get(Option<Component> option, TagResolver resolver);
+    Component resolve(Option<Component> option, TagResolver resolver);
+
+    Component resolve(Option<Component> option, TagResolver... resolvers);
 
     void registerListener(Runnable listener);
 

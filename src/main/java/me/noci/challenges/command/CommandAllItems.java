@@ -4,7 +4,6 @@ import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.challenge.modifiers.allitem.AllItemModifier;
 import me.noci.challenges.gui.GuiAllItemOverview;
-import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.quickcommand.QuickCommand;
 import me.noci.quickutilities.quickcommand.annotation.Command;
@@ -22,27 +21,25 @@ import java.util.stream.IntStream;
 public class CommandAllItems extends QuickCommand {
 
     private final ChallengeController challengeController;
-    private final Config config;
 
-    public CommandAllItems(JavaPlugin plugin, ChallengeController challengeController, Config config) {
+    public CommandAllItems(JavaPlugin plugin, ChallengeController challengeController) {
         super(plugin, "allitems");
         autoRegister();
         this.challengeController = challengeController;
-        this.config = config;
     }
 
     @Command
     public void overview(Player player) {
         Challenge challenge = challengeController.challenge().orElse(null);
         if (challenge == null) {
-            player.sendMessage(config.get(Option.Command.Challenge.NOT_CREATED));
+            player.sendMessage(Option.Command.Challenge.NOT_CREATED.get());
             return;
         }
 
         challenge.modifier(AllItemModifier.class)
                 .ifPresentOrElse(
                         allItemModifier -> new GuiAllItemOverview(allItemModifier).provide(player),
-                        () -> player.sendMessage(config.get(Option.Command.AllItems.NOT_ENABLED))
+                        () -> player.sendMessage(Option.Command.AllItems.NOT_ENABLED.get())
                 );
 
     }
@@ -50,8 +47,8 @@ public class CommandAllItems extends QuickCommand {
     @SubCommand(path = "skip")
     @CommandPermission("quickchallenge.allitems.skip")
     public void skip(CommandSender sender) {
-        if (!config.get(Option.Settings.DEBUG)) {
-            sender.sendMessage(config.get(Option.Command.DEBUG_COMMAND));
+        if (!Option.Settings.DEBUG.get()) {
+            sender.sendMessage(Option.Command.DEBUG_COMMAND.get());
             return;
         }
 
@@ -64,49 +61,49 @@ public class CommandAllItems extends QuickCommand {
         challenge.modifier(AllItemModifier.class)
                 .ifPresentOrElse(
                         allItemModifier -> allItemModifier.skip(challenge, sender),
-                        () -> sender.sendMessage(config.get(Option.Command.AllItems.NOT_ENABLED))
+                        () -> sender.sendMessage(Option.Command.AllItems.NOT_ENABLED.get())
                 );
     }
 
     @SubCommand(path = "skip")
     @CommandPermission("quickchallenge.allitems.skip")
     public void skip(CommandSender sender, int amount) {
-        if (!config.get(Option.Settings.DEBUG)) {
-            sender.sendMessage(config.get(Option.Command.DEBUG_COMMAND));
+        if (!Option.Settings.DEBUG.get()) {
+            sender.sendMessage(Option.Command.DEBUG_COMMAND.get());
             return;
         }
 
         Challenge challenge = challengeController.challenge().orElse(null);
         if (challenge == null) {
-            sender.sendMessage(config.get(Option.Command.Challenge.NOT_CREATED));
+            sender.sendMessage(Option.Command.Challenge.NOT_CREATED.get());
             return;
         }
 
         challenge.modifier(AllItemModifier.class)
                 .ifPresentOrElse(
                         allItemModifier -> IntStream.range(0, amount).forEach(i -> allItemModifier.skip(challenge, sender)),
-                        () -> sender.sendMessage(config.get(Option.Command.AllItems.NOT_ENABLED))
+                        () -> sender.sendMessage(Option.Command.AllItems.NOT_ENABLED.get())
                 );
     }
 
     @SubCommand(path = "reset")
     @CommandPermission("quickchallenge.allitems.reset")
     public void reset(CommandSender sender) {
-        if (!config.get(Option.Settings.DEBUG)) {
-            sender.sendMessage(config.get(Option.Command.DEBUG_COMMAND));
+        if (!Option.Settings.DEBUG.get()) {
+            sender.sendMessage(Option.Command.DEBUG_COMMAND.get());
             return;
         }
 
         Challenge challenge = challengeController.challenge().orElse(null);
         if (challenge == null) {
-            sender.sendMessage(config.get(Option.Command.Challenge.NOT_CREATED));
+            sender.sendMessage(Option.Command.Challenge.NOT_CREATED.get());
             return;
         }
 
         challenge.modifier(AllItemModifier.class)
                 .ifPresentOrElse(
                         AllItemModifier::reset,
-                        () -> sender.sendMessage(config.get(Option.Command.AllItems.NOT_ENABLED))
+                        () -> sender.sendMessage(Option.Command.AllItems.NOT_ENABLED.get())
                 );
     }
 
@@ -114,16 +111,16 @@ public class CommandAllItems extends QuickCommand {
     @FallbackCommand
     public void fallback(CommandSender sender) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(config.get(Option.Command.ONLY_FOR_PLAYERS));
+            sender.sendMessage(Option.Command.ONLY_FOR_PLAYERS.get());
             return;
         }
 
         if (sender.hasPermission("quickchallenge.allitems.skip") || sender.hasPermission("quickchallenge.allitems.skip")) {
-            sender.sendMessage(config.get(Option.Command.AllItems.HELP));
+            sender.sendMessage(Option.Command.AllItems.HELP.get());
             return;
         }
 
-        sender.sendMessage(config.get(Option.Command.NO_PERMISSION));
+        sender.sendMessage(Option.Command.NO_PERMISSION.get());
     }
 
 }

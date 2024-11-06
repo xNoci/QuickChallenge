@@ -2,13 +2,11 @@ package me.noci.challenges.gui;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.modifiers.registry.ModifierRegistry;
 import me.noci.challenges.gui.modifier.GuiModifierOverview;
 import me.noci.challenges.gui.modifier.ModifierApplier;
-import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.inventory.*;
 import me.noci.quickutilities.utils.InventoryPattern;
@@ -87,22 +85,19 @@ public class GuiChallengeCreate extends PagedQuickGUIProvider {
     }
 
     private GuiItem appliedModifier(ChallengeModifier modifier) {
-        Config config = QuickChallenge.instance().config();
-
-
         QuickItemStack itemStack = ModifierRegistry.displayItem(modifier.getClass())
                 .itemLore(
                         Component.empty(),
-                        config.get(Option.Gui.ChallengeCreate.MODIFIER_REMOVE_HINT)
+                        Option.Gui.ChallengeCreate.MODIFIER_REMOVE_HINT.get()
                 );
 
         var acceptDialog = GuiAcceptDialog.builder()
-                .title(config.get(Option.Gui.ChallengeCreate.RemoveDialog.TITLE))
+                .title(Option.Gui.ChallengeCreate.RemoveDialog.TITLE.get())
                 .description(
                         Component.empty(),
-                        config.get(Option.Gui.ChallengeCreate.RemoveDialog.DESCRIPTION),
+                        Option.Gui.ChallengeCreate.RemoveDialog.DESCRIPTION.get(),
                         Component.empty(),
-                        config.get(Option.Gui.ChallengeCreate.RemoveDialog.MODIFIER_NAME, Placeholder.unparsed("modifier_name", itemStack.getRawDisplayName()))
+                        Option.Gui.ChallengeCreate.RemoveDialog.MODIFIER_NAME.resolve(Placeholder.unparsed("modifier_name", itemStack.getRawDisplayName()))
                 )
                 .acceptAction(event -> {
                     modifiers.remove(modifier);

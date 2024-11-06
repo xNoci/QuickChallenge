@@ -1,6 +1,5 @@
 package me.noci.challenges.listeners;
 
-import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.event.EventHandler;
@@ -12,12 +11,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class AnvilRenameListener implements Listener {
 
-    private final Config config;
-
-    public AnvilRenameListener(Config config) {
-        this.config = config;
-    }
-
     @EventHandler
     public void onRename(PrepareAnvilEvent event) {
         AnvilInventory inventory = event.getInventory();
@@ -26,12 +19,12 @@ public class AnvilRenameListener implements Listener {
         if (inventory.getRenameText() == null || inventory.getRenameText().isBlank()) return;
 
 
-        boolean freeRename = config.get(Option.Settings.Anvil.FREE_RENAME);
+        boolean freeRename = Option.Settings.Anvil.FREE_RENAME.get();
         if (inventory.getSecondItem() == null && freeRename) {
             inventory.setRepairCost(0);
         }
 
-        boolean coloredNames = config.get(Option.Settings.Anvil.COLORED_NAME);
+        boolean coloredNames = Option.Settings.Anvil.COLORED_NAME.get();
         if (coloredNames) {
             ItemStack itemStack = event.getResult();
             ItemMeta itemMeta = itemStack.getItemMeta();

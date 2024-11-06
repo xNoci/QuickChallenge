@@ -1,9 +1,7 @@
 package me.noci.challenges.challenge.modifiers;
 
-import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.modifiers.timer.TimerModifier;
-import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.events.Events;
 import me.noci.quickutilities.events.subscriber.SubscribedEvent;
@@ -33,11 +31,10 @@ public class EnderDragonFinishModifier implements ChallengeModifier {
                 .handle(event -> {
                     challenge.paused(true);
 
-                    Config config = QuickChallenge.instance().config();
                     Optional<String> playedTime = challenge.modifier(TimerModifier.class, TimerModifier::playedTimeAsString);
-                    Option<Component> option = playedTime.isPresent() ? Option.EnderDragonFinish.WITH_TIME : Option.EnderDragonFinish.WITHOUT_TIME;
+                    Option<Component> component = playedTime.isPresent() ? Option.EnderDragonFinish.WITH_TIME : Option.EnderDragonFinish.WITHOUT_TIME;
 
-                    challenge.broadcast(config.get(option, Placeholder.unparsed("time", playedTime.orElse(""))));
+                    challenge.broadcast(component.resolve(Placeholder.unparsed("time", playedTime.orElse(""))));
                 });
 
     }

@@ -1,14 +1,11 @@
 package me.noci.challenges.gui.modifier;
 
-import me.noci.challenges.QuickChallenge;
 import me.noci.challenges.challenge.modifiers.trafficlight.LightStatus;
 import me.noci.challenges.challenge.modifiers.trafficlight.TimeRange;
 import me.noci.challenges.challenge.modifiers.trafficlight.TrafficLightModifier;
 import me.noci.challenges.gui.InventoryConstants;
-import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.inventory.GuiItem;
-import me.noci.quickutilities.inventory.GuiProvider;
 import me.noci.quickutilities.inventory.InventoryContent;
 import me.noci.quickutilities.inventory.Slot;
 import me.noci.quickutilities.utils.BukkitUnit;
@@ -91,18 +88,16 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
     }
 
     private void settingColumn(InventoryContent content, Component phase, int column, SettingValues<BukkitUnit> unit, SettingValues<Integer> min, SettingValues<Integer> max) {
-        Config config = QuickChallenge.instance().config();
-
         Component lowDecrease = Option.Gui.TrafficLightModifier.LOW_DECREASE.get();
         Component highDecrease = Option.Gui.TrafficLightModifier.HIGH_DECREASE.get();
         Component lowIncrease = Option.Gui.TrafficLightModifier.LOW_INCREASE.get();
         Component highIncrease = Option.Gui.TrafficLightModifier.HIGH_INCREASE.get();
 
         GuiItem minItem = new QuickItemStack(Material.CHERRY_BUTTON)
-                .displayName(config.get(Option.Gui.TrafficLightModifier.MIN_PHASE_VALUE, Placeholder.component("phase", phase)))
+                .displayName(Option.Gui.TrafficLightModifier.MIN_PHASE_VALUE.resolve(Placeholder.component("phase", phase)))
                 .itemLore(
                         Component.empty(),
-                        config.get(Option.Gui.TrafficLightModifier.CURRENT_VALUE, Formatter.number("value", min.get())),
+                        Option.Gui.TrafficLightModifier.CURRENT_VALUE.resolve(Formatter.number("value", min.get())),
                         Component.empty(),
                         lowDecrease,
                         highDecrease,
@@ -126,13 +121,13 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
                 });
 
         GuiItem unitItem = new QuickItemStack(Material.GLOW_ITEM_FRAME)
-                .displayName(config.get(Option.Gui.TrafficLightModifier.PHASE_TIME_UNIT, Placeholder.component("phase", phase)))
+                .displayName(Option.Gui.TrafficLightModifier.PHASE_TIME_UNIT.resolve(Placeholder.component("phase", phase)))
                 .itemLore(
                         Component.empty(),
-                        config.get(Option.Gui.TrafficLightModifier.CURRENT_VALUE, Placeholder.unparsed("value", unit.get().name())),
+                        Option.Gui.TrafficLightModifier.CURRENT_VALUE.resolve(Placeholder.unparsed("value", unit.get().name())),
                         Component.empty(),
-                        config.get(Option.Gui.TrafficLightModifier.PREVIOUS_UNIT, Placeholder.unparsed("unit", EnumUtils.previous(unit.get()).name())),
-                        config.get(Option.Gui.TrafficLightModifier.NEXT_UNIT, Placeholder.unparsed("unit", EnumUtils.next(unit.get()).name()))
+                        Option.Gui.TrafficLightModifier.PREVIOUS_UNIT.resolve(Placeholder.unparsed("unit", EnumUtils.previous(unit.get()).name())),
+                        Option.Gui.TrafficLightModifier.NEXT_UNIT.resolve(Placeholder.unparsed("unit", EnumUtils.next(unit.get()).name()))
                 )
                 .asGuiItem(event -> {
                     BukkitUnit current = unit.get();
@@ -149,10 +144,10 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
                 });
 
         GuiItem maxItem = new QuickItemStack(Material.CHERRY_BUTTON)
-                .displayName(config.get(Option.Gui.TrafficLightModifier.MAX_PHASE_VALUE, Placeholder.component("phase", phase)))
+                .displayName(Option.Gui.TrafficLightModifier.MAX_PHASE_VALUE.resolve(Placeholder.component("phase", phase)))
                 .itemLore(
                         Component.empty(),
-                        config.get(Option.Gui.TrafficLightModifier.CURRENT_VALUE, Formatter.number("value", max.get())),
+                        Option.Gui.TrafficLightModifier.CURRENT_VALUE.resolve(Formatter.number("value", max.get())),
                         Component.empty(),
                         lowDecrease,
                         highDecrease,

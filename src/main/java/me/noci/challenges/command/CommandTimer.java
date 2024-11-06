@@ -1,7 +1,6 @@
 package me.noci.challenges.command;
 
 import me.noci.challenges.challenge.ChallengeController;
-import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.quickcommand.QuickCommand;
 import me.noci.quickutilities.quickcommand.annotation.CommandPermission;
@@ -14,13 +13,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class CommandTimer extends QuickCommand {
 
     private final ChallengeController challengeController;
-    private final Config config;
 
-    public CommandTimer(JavaPlugin plugin, ChallengeController challengeController, Config config) {
+    public CommandTimer(JavaPlugin plugin, ChallengeController challengeController) {
         super(plugin, "timer");
         autoRegister();
         this.challengeController = challengeController;
-        this.config = config;
     }
 
     @SubCommand(path = "start")
@@ -30,13 +27,13 @@ public class CommandTimer extends QuickCommand {
                 .ifPresentOrElse(
                         challenge -> {
                             if (challenge.started()) {
-                                sender.sendMessage(config.get(Option.Command.Timer.ALREADY_STARTED));
+                                sender.sendMessage(Option.Command.Timer.ALREADY_STARTED.get());
                                 return;
                             }
                             challengeController.startChallenge();
-                            sender.sendMessage(config.get(Option.Command.Timer.SUCCESSFULLY_STARTED));
+                            sender.sendMessage(Option.Command.Timer.SUCCESSFULLY_STARTED.get());
                         },
-                        () -> sender.sendMessage(config.get(Option.Command.Challenge.NOT_CREATED))
+                        () -> sender.sendMessage(Option.Command.Challenge.NOT_CREATED.get())
                 );
     }
 
@@ -47,13 +44,13 @@ public class CommandTimer extends QuickCommand {
                 .ifPresentOrElse(
                         challenge -> {
                             if (!challenge.started()) {
-                                sender.sendMessage(config.get(Option.Command.Timer.NOT_RUNNING));
+                                sender.sendMessage(Option.Command.Timer.NOT_RUNNING.get());
                                 return;
                             }
                             challengeController.stopChallenge();
-                            sender.sendMessage(config.get(Option.Command.Timer.SUCCESSFULLY_STOPPED));
+                            sender.sendMessage(Option.Command.Timer.SUCCESSFULLY_STOPPED.get());
                         },
-                        () -> sender.sendMessage(config.get(Option.Command.Challenge.NOT_CREATED))
+                        () -> sender.sendMessage(Option.Command.Challenge.NOT_CREATED.get())
                 );
     }
 
@@ -64,13 +61,13 @@ public class CommandTimer extends QuickCommand {
                 .ifPresentOrElse(
                         challenge -> {
                             if (!challenge.started() || challenge.paused()) {
-                                sender.sendMessage(config.get(Option.Command.Timer.NOT_RUNNING));
+                                sender.sendMessage(Option.Command.Timer.NOT_RUNNING.get());
                                 return;
                             }
                             challenge.paused(true);
-                            sender.sendMessage(config.get(Option.Command.Timer.SUCCESSFULLY_PAUSED));
+                            sender.sendMessage(Option.Command.Timer.SUCCESSFULLY_PAUSED.get());
                         },
-                        () -> sender.sendMessage(config.get(Option.Command.Challenge.NOT_CREATED))
+                        () -> sender.sendMessage(Option.Command.Challenge.NOT_CREATED.get())
                 );
     }
 
@@ -81,29 +78,29 @@ public class CommandTimer extends QuickCommand {
                 .ifPresentOrElse(
                         challenge -> {
                             if (!challenge.started() || !challenge.paused()) {
-                                sender.sendMessage(config.get(Option.Command.Timer.NOT_PAUSED));
+                                sender.sendMessage(Option.Command.Timer.NOT_PAUSED.get());
                                 return;
                             }
                             challenge.paused(false);
-                            sender.sendMessage(config.get(Option.Command.Timer.SUCCESSFULLY_RESUMED));
+                            sender.sendMessage(Option.Command.Timer.SUCCESSFULLY_RESUMED.get());
                         },
-                        () -> sender.sendMessage(config.get(Option.Command.Challenge.NOT_CREATED))
+                        () -> sender.sendMessage(Option.Command.Challenge.NOT_CREATED.get())
                 );
     }
 
     @FallbackCommand
     public void fallback(CommandSender sender) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(config.get(Option.Command.ONLY_FOR_PLAYERS));
+            sender.sendMessage(Option.Command.ONLY_FOR_PLAYERS.get());
             return;
         }
 
         if (sender.hasPermission("quickchallenge.timer.start") || sender.hasPermission("quickchallenge.timer.stop") || sender.hasPermission("quickchallenge.timer.resume") || sender.hasPermission("quickchallenge.timer.pause")) {
-            sender.sendMessage(config.get(Option.Command.Timer.HELP));
+            sender.sendMessage(Option.Command.Timer.HELP.get());
             return;
         }
 
-        sender.sendMessage(config.get(Option.Command.NO_PERMISSION));
+        sender.sendMessage(Option.Command.NO_PERMISSION.get());
     }
 
 }
