@@ -9,6 +9,52 @@ import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 
 public interface Option<T> {
 
+    private static Option<Component> component(String path) {
+        return create(path, Component.text("Failed to load '" + path + "' from config", NamedTextColor.RED));
+    }
+
+    private static <T> Option<T> create(String path, T def) {
+        return new Option<>() {
+            @Override
+            public String path() {
+                return path;
+            }
+
+            @Override
+            public T defaultValue() {
+                return def;
+            }
+        };
+    }
+
+    String path();
+
+    T defaultValue();
+
+    default T get() {
+        return QuickChallenge.instance().config().get(this);
+    }
+
+    @SuppressWarnings("unchecked")
+    default Component resolve(TagResolver resolver) {
+        var config = QuickChallenge.instance().config();
+        if (!(defaultValue() instanceof Component)) {
+            return config.resolve(Settings.OPTION_IS_NOT_COMPONENT, Placeholder.unparsed("option", path()));
+        }
+
+        return config.resolve((Option<Component>) this, resolver);
+    }
+
+    @SuppressWarnings("unchecked")
+    default Component resolve(TagResolver... resolvers) {
+        var config = QuickChallenge.instance().config();
+        if (!(defaultValue() instanceof Component)) {
+            return config.resolve(Settings.OPTION_IS_NOT_COMPONENT, Placeholder.unparsed("option", path()));
+        }
+
+        return config.resolve((Option<Component>) this, resolvers);
+    }
+
     interface Settings {
         Option<Boolean> DEBUG = create("settings.debug", false);
         Option<Component> MOTD = component("settings.motd");
@@ -27,13 +73,13 @@ public interface Option<T> {
             Option<Component> NO_CHALLENGE_CREATED = component("settings.action_bar.no_challenge_created");
             Option<Component> CHALLENGE_NOT_STARTED = component("settings.action_bar.challenge_not_started");
         }
+    }
 
-        interface Timer {
-            Option<String> MODE = create("settings.timer.mode", "BLINK");
-            Option<TextColor> PRIMARY_COLOR = create("settings.timer.primary_color", NamedTextColor.WHITE);
-            Option<TextColor> ACCENT_COLOR = create("settings.timer.accent_color", NamedTextColor.BLACK);
-        }
-
+    interface Timer {
+        Option<String> MODE = create("settings.timer.mode", "BLINK");
+        Option<TextColor> PRIMARY_COLOR = create("settings.timer.primary_color", NamedTextColor.WHITE);
+        Option<TextColor> ACCENT_COLOR = create("settings.timer.accent_color", NamedTextColor.BLACK);
+        Option<String> PAUSED = create("timer.paused", "Der Timer ist pausiert");
     }
 
     interface AllItems {
@@ -163,52 +209,6 @@ public interface Option<T> {
         Option<Component> TIMER = component("modifiers.timer");
         Option<Component> ALL_ITEM = component("modifiers.all_item");
         Option<Component> TRAFFIC_LIGHT = component("modifiers.traffic_light");
-    }
-
-    private static Option<Component> component(String path) {
-        return create(path, Component.text("Failed to load '" + path + "' from config", NamedTextColor.RED));
-    }
-
-    private static <T> Option<T> create(String path, T def) {
-        return new Option<>() {
-            @Override
-            public String path() {
-                return path;
-            }
-
-            @Override
-            public T defaultValue() {
-                return def;
-            }
-        };
-    }
-
-    String path();
-
-    T defaultValue();
-
-    default T get() {
-        return QuickChallenge.instance().config().get(this);
-    }
-
-    @SuppressWarnings("unchecked")
-    default Component resolve(TagResolver resolver) {
-        var config = QuickChallenge.instance().config();
-        if (!(defaultValue() instanceof Component)) {
-            return config.resolve(Settings.OPTION_IS_NOT_COMPONENT, Placeholder.unparsed("option", path()));
-        }
-
-        return config.resolve((Option<Component>) this, resolver);
-    }
-
-    @SuppressWarnings("unchecked")
-    default Component resolve(TagResolver... resolvers) {
-        var config = QuickChallenge.instance().config();
-        if (!(defaultValue() instanceof Component)) {
-            return config.resolve(Settings.OPTION_IS_NOT_COMPONENT, Placeholder.unparsed("option", path()));
-        }
-
-        return config.resolve((Option<Component>) this, resolvers);
     }
 
 }

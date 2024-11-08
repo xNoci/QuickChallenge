@@ -29,6 +29,7 @@ settings:
         mode: "BLINK"
         primary_color: "#57ff58"
         accent_color: "#588f4d"
+        paused: "Der Timer ist pausiert"
     # Extra tags:
     #   <option>    - Path of the option
     option_is_not_component: "<red>Die Option '<option>' ist nicht vom Typ Component."

@@ -21,8 +21,6 @@ import java.util.List;
 
 public class TimerModifier implements ChallengeModifier {
 
-    private static final String TIMER_PAUSED_STRING = "Der Timer ist pausiert";
-
     @Getter private long ticksPlayed;
 
     private TextColor gradientPrimary;
@@ -63,7 +61,7 @@ public class TimerModifier implements ChallengeModifier {
 
         timerStyle.tick();
 
-        String actionBarText = challenge.paused() ? TIMER_PAUSED_STRING : playedTimeAsString();
+        String actionBarText = challenge.paused() ? Option.Timer.PAUSED.get() : playedTimeAsString();
         Component actionBar = TextGradient.gradient(actionBarText, gradientPrimary, gradientAccent, timerStyle::progressTransformer).decorate(textDecorations.toArray(TextDecoration[]::new));
         players.forEach(player -> player.sendActionBar(actionBar));
     }
@@ -74,10 +72,10 @@ public class TimerModifier implements ChallengeModifier {
     }
 
     private void loadConfigValues() {
-        gradientPrimary = Option.Settings.Timer.PRIMARY_COLOR.get();
-        gradientAccent = Option.Settings.Timer.ACCENT_COLOR.get();
+        gradientPrimary = Option.Timer.PRIMARY_COLOR.get();
+        gradientAccent = Option.Timer.ACCENT_COLOR.get();
 
-        String mode = Option.Settings.Timer.MODE.get();
+        String mode = Option.Timer.MODE.get();
         TimerStyleMode styleMode = EnumUtils.getIfPresent(TimerStyleMode.class, mode).orElse(TimerStyleMode.BLINK);
         timerStyle.styleData(styleMode.styleData());
     }
