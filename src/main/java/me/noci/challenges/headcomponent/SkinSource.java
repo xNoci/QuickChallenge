@@ -1,43 +1,24 @@
 package me.noci.challenges.headcomponent;
 
-import lombok.SneakyThrows;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.net.URI;
+import java.net.URL;
 import java.util.UUID;
 
 public enum SkinSource {
 
-    CRAFATAR((uuid, overlay) -> "https://crafatar.com/avatars/%s?size=8%s".formatted(uuid, overlay ? "&overlay" : "")),
-    MINOTAR((uuid, overlay) -> "https://minotar.net/%s/%s/8".formatted(overlay ? "helm" : "avatar", uuid));
-    //TODO Maybe support mojang
+    MOJANG(new MojangUrlMapper(), new MojangColorMapper()),
+    CRAFATAR((uuid, overlay) -> "https://crafatar.com/avatars/%s?size=8%s".formatted(uuid, overlay ? "&overlay" : ""), DefaultColorMapper.INSTANCE),
+    MINOTAR((uuid, overlay) -> "https://minotar.net/%s/%s/8".formatted(overlay ? "helm" : "avatar", uuid), DefaultColorMapper.INSTANCE);
 
     private final UrlMapper urlMapper;
+    private final ColorMapper colorMapper;
 
-    SkinSource(UrlMapper urlMapper) {
+    SkinSource(UrlMapper urlMapper, ColorMapper colorMapper) {
         this.urlMapper = urlMapper;
+        this.colorMapper = colorMapper;
     }
 
-    @SneakyThrows
-    public int[] colors(UUID uuid, boolean overlay) {
-        String url = urlMapper.map(uuid.toString(), overlay);
-
-        BufferedImage image = ImageIO.read(new URI(url).toURL());
-
-        int[] colors = new int[64];
-        for (int x = 0; x < image.getWidth(); x++) {
-            for (int y = 0; y < image.getHeight(); y++) {
-                colors[x + y * 8] = image.getRGB(x, y) & 0xFFFFFF;
-            }
-        }
-
-        return colors;
+    public int[] colors(UUID uuid, boolean useOverlay) {
+        URL url = urlMapper.url(uuid, useOverlay);
+        return colorMapper.colors(url, useOverlay);
     }
-
-    @FunctionalInterface
-    private interface UrlMapper {
-        String map(String uuid, boolean overlay);
-    }
-
 }

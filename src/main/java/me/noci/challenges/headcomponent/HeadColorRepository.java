@@ -12,8 +12,11 @@ public class HeadColorRepository {
     private static final Cache<UUID, int[]> NON_OVERLAY = CacheBuilder.newBuilder().expireAfterAccess(1, TimeUnit.HOURS).build();
     private static final Cache<UUID, int[]> OVERLAY = CacheBuilder.newBuilder().expireAfterAccess(1, TimeUnit.HOURS).build();
 
+    private HeadColorRepository() {
+    }
+
     @SneakyThrows
-    public static int[] color(SkinSource source, UUID uuid, boolean overlay) {
+    protected static int[] color(SkinSource source, UUID uuid, boolean overlay) {
         var cache = overlay ? OVERLAY : NON_OVERLAY;
         return cache.get(uuid, () -> source.colors(uuid, overlay));
     }
