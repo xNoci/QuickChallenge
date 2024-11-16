@@ -5,12 +5,7 @@ build/
 !**/src/test/**/build/
 
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-.idea/material_theme_project_new.xml
-.idea/uiDesigner.xml
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -44,10 +39,4 @@ bin/
 .DS_Store
 
 ### OTHER ###
-.idea/discord.xml
-.idea/vcs.xml
-.idea/gradle.xml
-.idea/.gitignore
-.idea/**/misc.xml
-
 allItem_gen
