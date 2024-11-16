@@ -15,6 +15,8 @@ import java.util.UUID;
 
 public class MojangUrlMapper implements UrlMapper {
 
+    private static final String MOJANG_PROFILE = "https://sessionserver.mojang.com/session/minecraft/profile/";
+
     private static final String ALEX_URL = "https://minecraft.wiki/images/Alex_%28slim_texture%29_JE3.png";
     private static final String ARI_URL = "https://minecraft.wiki/images/Ari_%28slim_texture%29_JE1.png";
     private static final String EFE_URL = "https://minecraft.wiki/images/Efe_%28slim_texture%29_JE1.png";
@@ -42,7 +44,7 @@ public class MojangUrlMapper implements UrlMapper {
     @SneakyThrows
     @Override
     public String map(String uuid, boolean useOverlay) {
-        URL url = new URI("https://sessionserver.mojang.com/session/minecraft/profile/" + uuid).toURL();
+        URL url = new URI(MOJANG_PROFILE + uuid).toURL();
         String rawJSON = IOUtils.toString(url, StandardCharsets.UTF_8);
         JsonObject json = GSON.fromJson(rawJSON, JsonObject.class);
         JsonArray properties = json.getAsJsonArray("properties");
