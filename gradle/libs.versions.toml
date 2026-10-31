@@ -1,12 +1,16 @@
 [versions]
-paper = "1.20.6-R0.1-SNAPSHOT"
+paper = "26.3.build.+"
+shadow = "9.6.1"
+paperweight = "2.0.0-beta.24"
+xseries = "14.0.0"
+lombok = "1.18.48"
+kyori-adventure = "5.2.0"
 
 [plugins]
-shadow = "io.github.goooler.shadow:8.1.7"
-paperweight = "io.papermc.paperweight.userdev:1.7.1"
+shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
+paperweight = { id = "io.papermc.paperweight.userdev", version.ref = "paperweight" }
 
 [libraries]
-paperlib = "io.papermc:paperlib:1.0.7"
-xseries = "com.github.cryptomorin:XSeries:11.2.0"
-lombok = "org.projectlombok:lombok:1.18.30"
-kyori-adventure = "net.kyori:adventure-api:4.16.0"
+xseries = { module = "com.github.cryptomorin:XSeries", version.ref = "xseries" }
+lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
+kyori-adventure = { module = "net.kyori:adventure-api", version.ref = "kyori-adventure" }

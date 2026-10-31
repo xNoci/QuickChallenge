@@ -1,7 +1,7 @@
 package me.noci.challenges.challenge;
 
 import lombok.SneakyThrows;
-import me.noci.challenges.QuickChallenge;
+import me.noci.challenges.paper.QuickChallenge;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.serializ.ChallengeSerializer;
 import org.apache.logging.log4j.LogManager;
@@ -17,9 +17,13 @@ import java.util.stream.Collectors;
 public class ChallengeController {
 
     private static final Logger LOGGER = LogManager.getLogger("Challenge Controller");
-    private static final Path CHALLENGE_FILE = QuickChallenge.instance().getDataFolder().toPath().resolve("challenge.qcc");
 
+    private final Path challengeFile;
     @Nullable private Challenge challenge;
+
+    public ChallengeController(Path challengeFile) {
+        this.challengeFile = challengeFile;
+    }
 
     public boolean isChallengeCreated() {
         return challenge != null;
@@ -72,7 +76,7 @@ public class ChallengeController {
             return false;
         }
         challenge.stopChallengeModifiers();
-        Files.deleteIfExists(CHALLENGE_FILE);
+        Files.deleteIfExists(challengeFile);
         challenge = null;
 
         return true;
@@ -92,8 +96,8 @@ public class ChallengeController {
         long start = System.currentTimeMillis();
 
         byte[] data = ChallengeSerializer.serialize(challenge);
-        Files.createDirectories(CHALLENGE_FILE.getParent());
-        Files.write(CHALLENGE_FILE, data);
+        Files.createDirectories(challengeFile.getParent());
+        Files.write(challengeFile, data);
 
         LOGGER.info("Challenge saved to disk. Took {} ms", System.currentTimeMillis() - start);
     }
@@ -101,7 +105,7 @@ public class ChallengeController {
 
     @SneakyThrows
     public void tryLoadChallenge() {
-        if (!Files.exists(CHALLENGE_FILE)) {
+        if (!Files.exists(challengeFile)) {
             LOGGER.info("Cannot load challenge. Challenge wasn't created yet.");
             return;
         }
@@ -109,7 +113,7 @@ public class ChallengeController {
         LOGGER.info("Loading challenge from file...");
         long start = System.currentTimeMillis();
 
-        Optional<Challenge> challenge = ChallengeSerializer.read(Files.readAllBytes(CHALLENGE_FILE));
+        Optional<Challenge> challenge = ChallengeSerializer.read(Files.readAllBytes(challengeFile));
         if (challenge.isEmpty()) {
             LOGGER.info("Failed to load challenge from file.");
             return;

@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import me.noci.quickutilities.utils.Require;
-import me.noci.quickutilities.utils.Scheduler;
+import me.noci.quickutilities.utils.time.Scheduler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;

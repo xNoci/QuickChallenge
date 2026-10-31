@@ -1,6 +1,6 @@
 package me.noci.challenges.challenge.modifiers.allitem;
 
-import me.noci.quickutilities.utils.BukkitUnit;
+import me.noci.quickutilities.utils.time.BukkitUnit;
 
 public record CollectedItem(AllItem item, long timestamp, String collectedBy, long collectedAfterTicks,
                             boolean skipped) {

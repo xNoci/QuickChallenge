@@ -1,0 +1,17 @@
+name: ${plugin.name}
+version: ${plugin.version}
+main: me.noci.challenges.paper.QuickChallenge
+description: A plugin for creating custom minecraft challenges.
+api-version: '26.3'
+bootstrapper: me.noci.challenges.paper.QuickChallengeBootstrap
+
+dependencies:
+  server:
+    ProtocolLib:
+      load: BEFORE
+      required: true
+      join-classpath: true
+    QuickUtils:
+      load: BEFORE
+      required: true
+      join-classpath: true

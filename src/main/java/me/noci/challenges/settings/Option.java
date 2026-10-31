@@ -1,6 +1,6 @@
 package me.noci.challenges.settings;
 
-import me.noci.challenges.QuickChallenge;
+import me.noci.challenges.paper.QuickChallenge;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;

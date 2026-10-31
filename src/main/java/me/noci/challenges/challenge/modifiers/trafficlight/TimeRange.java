@@ -1,7 +1,7 @@
 package me.noci.challenges.challenge.modifiers.trafficlight;
 
 import me.noci.challenges.RandomHolder;
-import me.noci.quickutilities.utils.BukkitUnit;
+import me.noci.quickutilities.utils.time.BukkitUnit;
 
 public record TimeRange(BukkitUnit unit, int minDelay, int maxDelay) {
 

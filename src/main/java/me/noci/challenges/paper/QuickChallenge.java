@@ -1,12 +1,26 @@
-package me.noci.challenges;
+package me.noci.challenges.paper;
 
-import io.papermc.lib.PaperLib;
 import lombok.Getter;
+import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.command.CommandAllItems;
 import me.noci.challenges.command.CommandChallenge;
 import me.noci.challenges.command.CommandTimer;
-import me.noci.challenges.listeners.*;
+import me.noci.challenges.listeners.AnvilRenameListener;
+import me.noci.challenges.listeners.BlockListener;
+import me.noci.challenges.listeners.ChatListener;
+import me.noci.challenges.listeners.EnityTargetListener;
+import me.noci.challenges.listeners.EntityDamageListener;
+import me.noci.challenges.listeners.EntityMoveListener;
+import me.noci.challenges.listeners.FoodLevelChangeListener;
+import me.noci.challenges.listeners.ItemDropListener;
+import me.noci.challenges.listeners.PlayerInteractListener;
+import me.noci.challenges.listeners.PlayerJoinListener;
+import me.noci.challenges.listeners.PlayerMoveListener;
+import me.noci.challenges.listeners.PlayerQuitListener;
+import me.noci.challenges.listeners.ResourcePackStatusListener;
+import me.noci.challenges.listeners.ServerListPingListener;
+import me.noci.challenges.listeners.ServerTickListener;
 import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import net.kyori.adventure.text.Component;
@@ -18,28 +32,25 @@ import java.util.function.Consumer;
 
 public class QuickChallenge extends JavaPlugin {
 
-    @Getter private static QuickChallenge instance;
+    @Getter
+    private static QuickChallenge instance;
 
-    @Getter private Config config;
-    private ChallengeController challengeController;
+    @Getter
+    private Config config;
+    private final ChallengeController challengeController;
+
+    public QuickChallenge(ChallengeController challengeController) {
+        instance = this;
+        this.challengeController = challengeController;
+    }
 
     @Override
     public void onEnable() {
-        if (!PaperLib.isPaper()) {
-            Bukkit.getPluginManager().disablePlugin(this);
-            getLogger().info("This plugin only works with PaperMC.");
-            return;
-        }
-
-        instance = this;
 
         this.config = Config.create(this, "config.yml", false, true);
-
-        this.challengeController = new ChallengeController();
         this.challengeController.tryLoadChallenge();
 
         registerListeners();
-        registerCommands();
     }
 
     @Override
@@ -68,12 +79,6 @@ public class QuickChallenge extends JavaPlugin {
         register.accept(new ChatListener());
         register.accept(new AnvilRenameListener());
         register.accept(new PlayerInteractListener(challengeController));
-    }
-
-    private void registerCommands() {
-        new CommandChallenge(this, challengeController);
-        new CommandTimer(this, challengeController);
-        new CommandAllItems(this, challengeController);
     }
 
 }

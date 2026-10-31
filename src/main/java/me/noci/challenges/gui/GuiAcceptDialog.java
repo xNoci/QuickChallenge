@@ -3,7 +3,7 @@ package me.noci.challenges.gui;
 import lombok.Getter;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.inventory.*;
-import me.noci.quickutilities.utils.QuickItemStack;
+import me.noci.quickutilities.utils.ItemBuilder;
 import me.noci.quickutilities.utils.Require;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
@@ -45,6 +45,11 @@ public class GuiAcceptDialog extends QuickGUIProvider {
         inventoryContent.setItem(Slot.getSlot(2, 7), declineItem);
     }
 
+    @Override
+    public void update(Player player, InventoryContent inventoryContent) {
+
+    }
+
     @Getter
     public enum DialogType {
         YES_NO(Option.Gui.Dialog.YES_ITEM::get, Option.Gui.Dialog.NO_ITEM::get),
@@ -70,11 +75,16 @@ public class GuiAcceptDialog extends QuickGUIProvider {
 
     public static class Builder {
 
-        @NotNull private DialogType dialogType = DialogType.YES_NO;
-        @Nullable private Component title = null;
-        @Nullable private List<Component> lore = null;
-        @Nullable private Consumer<SlotClickEvent> onAccept = null;
-        @Nullable private Consumer<SlotClickEvent> onDecline = null;
+        @NotNull
+        private DialogType dialogType = DialogType.YES_NO;
+        @Nullable
+        private Component title = null;
+        @Nullable
+        private List<Component> lore = null;
+        @Nullable
+        private Consumer<SlotClickEvent> onAccept = null;
+        @Nullable
+        private Consumer<SlotClickEvent> onDecline = null;
 
         public Builder dialogType(DialogType dialogType) {
             Require.nonNull(dialogType, "dialogType cannot be null");
@@ -125,17 +135,18 @@ public class GuiAcceptDialog extends QuickGUIProvider {
 
         public void provide(Player player) {
             var title = this.title != null ? this.title : Component.text("");
-            var acceptItem = new QuickItemStack(Material.GREEN_WOOL, this.dialogType.acceptName());
-            var declineItem = new QuickItemStack(Material.RED_WOOL, this.dialogType.declineName());
-            var descriptionItem = new QuickItemStack(Material.OAK_SIGN, Option.Gui.Dialog.DESCRIPTION_ITEM.get());
+            var acceptItem = ItemBuilder.of(Material.GREEN_WOOL, this.dialogType.acceptName());
+            var declineItem = ItemBuilder.of(Material.RED_WOOL, this.dialogType.declineName());
+            var descriptionItem = ItemBuilder.of(Material.OAK_SIGN, Option.Gui.Dialog.DESCRIPTION_ITEM.get());
 
             List<Component> lore = this.lore != null ? this.lore : List.of();
-            descriptionItem.lore(lore);
+            descriptionItem.withLore(lore);
 
             Consumer<SlotClickEvent> onAccept = this.onAccept != null ? this.onAccept : EMPTY_CLICK;
             Consumer<SlotClickEvent> onDecline = this.onDecline != null ? this.onDecline : EMPTY_CLICK;
 
-            var gui = new GuiAcceptDialog(title, acceptItem.asGuiItem(onlyLeftClick(onAccept)), declineItem.asGuiItem(onlyLeftClick(onDecline)), descriptionItem.asGuiItem());
+            var gui = new GuiAcceptDialog(title, acceptItem.asGuiItem(onlyLeftClick(onAccept)),
+                    declineItem.asGuiItem(onlyLeftClick(onDecline)), descriptionItem.asGuiItem());
             gui.provide(player);
         }
 

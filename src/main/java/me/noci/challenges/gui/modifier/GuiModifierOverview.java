@@ -7,7 +7,7 @@ import me.noci.challenges.gui.InventoryConstants;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.inventory.*;
 import me.noci.quickutilities.utils.InventoryPattern;
-import me.noci.quickutilities.utils.QuickItemStack;
+import me.noci.quickutilities.utils.ItemBuilder;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 
@@ -33,15 +33,20 @@ public class GuiModifierOverview extends PagedQuickGUIProvider {
     }
 
     @Override
-    public void initPage(Player player, PageContent content) {
-        content.setItemSlots(PAGE_SLOTS);
-        content.setPreviousPageItem(Slot.getSlot(3, 1), InventoryConstants.previousPageItem(), InventoryConstants.GLAS_PANE.getItemStack());
-        content.setNextPageItem(Slot.getSlot(3, 1), InventoryConstants.nextPageItem(), InventoryConstants.GLAS_PANE.getItemStack());
+    public void update(Player player, InventoryContent inventoryContent) {
+
+    }
+
+    @Override
+    public void initPage(Player player, InventoryPageContent content) {
+        content.itemSlots(PAGE_SLOTS);
+        content.previousPageButton(Slot.getSlot(3, 1), InventoryConstants.previousPageItem(), InventoryConstants.GLAS_PANE.getItemStack());
+        content.nextPageButton(Slot.getSlot(3, 1), InventoryConstants.nextPageItem(), InventoryConstants.GLAS_PANE.getItemStack());
 
         GuiItem[] items = ModifierRegistry.modifiers()
                 .filter(modifier -> !ignoredModifiers.contains(modifier.type()))
                 .map(modifier -> {
-                    QuickItemStack item = ModifierRegistry.displayItem(modifier.type());
+                    ItemBuilder item = ModifierRegistry.displayItem(modifier.type());
 
                     return item.asGuiItem(event -> {
                         if (event.getClick() != ClickType.LEFT) return;
@@ -50,7 +55,12 @@ public class GuiModifierOverview extends PagedQuickGUIProvider {
                 })
                 .toArray(GuiItem[]::new);
 
-        content.setPageContent(items);
+        content.pageContent(items);
+    }
+
+    @Override
+    public void updatePageContent(Player player, InventoryPageContent inventoryPageContent) {
+
     }
 
 }

@@ -4,7 +4,7 @@ import me.noci.challenges.challenge.modifiers.allitem.AllItem;
 import me.noci.challenges.challenge.modifiers.allitem.CollectedItem;
 import me.noci.challenges.challenge.modifiers.trafficlight.LightStatus;
 import me.noci.challenges.challenge.modifiers.trafficlight.TimeRange;
-import me.noci.quickutilities.utils.BukkitUnit;
+import me.noci.quickutilities.utils.time.BukkitUnit;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;

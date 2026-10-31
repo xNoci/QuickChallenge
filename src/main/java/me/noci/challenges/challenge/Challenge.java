@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import lombok.Getter;
 import lombok.Setter;
-import me.noci.challenges.QuickChallenge;
+import me.noci.challenges.paper.QuickChallenge;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.settings.Config;
 import net.kyori.adventure.text.Component;

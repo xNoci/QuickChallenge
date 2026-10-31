@@ -219,7 +219,7 @@ public enum AllItem {
     CARTOGRAPHY_TABLE("Kartentisch", Material.CARTOGRAPHY_TABLE),
     CARVED_PUMPKIN("Geschnitzter Kürbis", Material.CARVED_PUMPKIN),
     CAULDRON("Kessel", Material.CAULDRON),
-    CHAIN("Kette", Material.CHAIN),
+    CHAIN("Kette", Material.IRON_CHAIN),
     CHAINMAIL_BOOTS("Kettenstiefel", Material.CHAINMAIL_BOOTS),
     CHAINMAIL_CHESTPLATE("Kettenhemd", Material.CHAINMAIL_CHESTPLATE),
     CHAINMAIL_HELMET("Kettenhaube", Material.CHAINMAIL_HELMET),

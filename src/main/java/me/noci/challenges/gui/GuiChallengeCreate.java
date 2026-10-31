@@ -10,7 +10,7 @@ import me.noci.challenges.gui.modifier.ModifierApplier;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.inventory.*;
 import me.noci.quickutilities.utils.InventoryPattern;
-import me.noci.quickutilities.utils.QuickItemStack;
+import me.noci.quickutilities.utils.ItemBuilder;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
@@ -33,10 +33,11 @@ public class GuiChallengeCreate extends PagedQuickGUIProvider {
 
     @Override
     public void init(Player player, InventoryContent content) {
-        GuiItem addModifier = new QuickItemStack(Material.ENDER_EYE, Option.Gui.ChallengeCreate.ADD_MODIFIER.get())
+        GuiItem addModifier = ItemBuilder.of(Material.ENDER_EYE, Option.Gui.ChallengeCreate.ADD_MODIFIER.get())
                 .asGuiItem(event -> {
                     if (event.getClick() != ClickType.LEFT) return;
-                    ImmutableList<Class<? extends ChallengeModifier>> modifiersToIgnore = ImmutableList.copyOf(modifiers.stream().map(ChallengeModifier::getClass).iterator());
+                    ImmutableList<Class<? extends ChallengeModifier>> modifiersToIgnore = ImmutableList.copyOf(
+                            modifiers.stream().map(ChallengeModifier::getClass).iterator());
                     ModifierApplier applier = modifier -> {
                         if (modifier != null) {
                             modifiers.add(modifier);
@@ -46,14 +47,14 @@ public class GuiChallengeCreate extends PagedQuickGUIProvider {
                     new GuiModifierOverview(applier, modifiersToIgnore).provide(event.getPlayer());
                 });
 
-        GuiItem create = new QuickItemStack(Material.ANVIL, Option.Gui.ChallengeCreate.CREATE_MODIFIER.get())
+        GuiItem create = ItemBuilder.of(Material.ANVIL, Option.Gui.ChallengeCreate.CREATE_MODIFIER.get())
                 .asGuiItem(event -> {
                     if (event.getClick() != ClickType.LEFT) return;
                     event.getPlayer().closeInventory();
                     challengeController.create(modifiers);
                 });
 
-        GuiItem cancel = new QuickItemStack(Material.BARRIER, Option.Gui.ChallengeCreate.CANCEL.get())
+        GuiItem cancel = ItemBuilder.of(Material.BARRIER, Option.Gui.ChallengeCreate.CANCEL.get())
                 .asGuiItem(event -> {
                     if (event.getClick() != ClickType.LEFT) return;
                     event.getPlayer().closeInventory();
@@ -67,26 +68,33 @@ public class GuiChallengeCreate extends PagedQuickGUIProvider {
     }
 
     @Override
-    public void initPage(Player player, PageContent content) {
-        content.setItemSlots(MODIFIER_SLOTS);
-        content.setPreviousPageItem(Slot.getSlot(3, 1), InventoryConstants.previousPageItem(), InventoryConstants.GLAS_PANE.getItemStack());
-        content.setNextPageItem(Slot.getSlot(3, 9), InventoryConstants.nextPageItem(), InventoryConstants.GLAS_PANE.getItemStack());
+    public void update(Player player, InventoryContent inventoryContent) {
+
     }
 
     @Override
-    public void updatePageContent(Player player, PageContent content) {
-        if (content.getTotalItemCount() == modifiers.size()) return;
+    public void initPage(Player player, InventoryPageContent content) {
+        content.itemSlots(MODIFIER_SLOTS);
+        content.previousPageButton(Slot.getSlot(3, 1), InventoryConstants.previousPageItem(),
+                InventoryConstants.GLAS_PANE.getItemStack());
+        content.nextPageButton(Slot.getSlot(3, 9), InventoryConstants.nextPageItem(),
+                InventoryConstants.GLAS_PANE.getItemStack());
+    }
+
+    @Override
+    public void updatePageContent(Player player, InventoryPageContent content) {
+        if (content.contentSize() == modifiers.size()) return;
 
         GuiItem[] items = modifiers.stream()
                 .map(this::appliedModifier)
                 .toArray(GuiItem[]::new);
 
-        content.setPageContent(items);
+        content.pageContent(items);
     }
 
     private GuiItem appliedModifier(ChallengeModifier modifier) {
-        QuickItemStack itemStack = ModifierRegistry.displayItem(modifier.getClass())
-                .itemLore(
+        ItemBuilder itemStack = ModifierRegistry.displayItem(modifier.getClass())
+                .withLore(
                         Component.empty(),
                         Option.Gui.ChallengeCreate.MODIFIER_REMOVE_HINT.get()
                 );
@@ -97,7 +105,8 @@ public class GuiChallengeCreate extends PagedQuickGUIProvider {
                         Component.empty(),
                         Option.Gui.ChallengeCreate.RemoveDialog.DESCRIPTION.get(),
                         Component.empty(),
-                        Option.Gui.ChallengeCreate.RemoveDialog.MODIFIER_NAME.resolve(Placeholder.unparsed("modifier_name", itemStack.getRawDisplayName()))
+                        Option.Gui.ChallengeCreate.RemoveDialog.MODIFIER_NAME.resolve(
+                                Placeholder.component("modifier_name", itemStack.build().displayName()))
                 )
                 .acceptAction(event -> {
                     modifiers.remove(modifier);

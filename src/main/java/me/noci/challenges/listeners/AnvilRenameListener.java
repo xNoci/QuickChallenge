@@ -8,20 +8,23 @@ import org.bukkit.event.inventory.PrepareAnvilEvent;
 import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.view.AnvilView;
 
 public class AnvilRenameListener implements Listener {
 
     @EventHandler
     public void onRename(PrepareAnvilEvent event) {
         AnvilInventory inventory = event.getInventory();
+        AnvilView view = event.getView();
 
         if (event.getResult() == null) return;
-        if (inventory.getRenameText() == null || inventory.getRenameText().isBlank()) return;
+
+        if (view.getRenameText() == null || view.getRenameText().isBlank()) return;
 
 
         boolean freeRename = Option.Settings.Anvil.FREE_RENAME.get();
         if (inventory.getSecondItem() == null && freeRename) {
-            inventory.setRepairCost(0);
+            view.setRepairCost(0);
         }
 
         boolean coloredNames = Option.Settings.Anvil.COLORED_NAME.get();
@@ -29,7 +32,7 @@ public class AnvilRenameListener implements Listener {
             ItemStack itemStack = event.getResult();
             ItemMeta itemMeta = itemStack.getItemMeta();
 
-            String renameText = inventory.getRenameText();
+            String renameText = view.getRenameText();
             itemMeta.displayName(MiniMessage.miniMessage().deserialize(renameText));
 
             itemStack.setItemMeta(itemMeta);

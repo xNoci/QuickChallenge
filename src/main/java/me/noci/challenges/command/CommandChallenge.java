@@ -1,54 +1,65 @@
 package me.noci.challenges.command;
 
+import com.mojang.brigadier.Command;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import io.papermc.paper.command.brigadier.CommandSourceStack;
+import io.papermc.paper.command.brigadier.Commands;
+import lombok.SneakyThrows;
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.gui.GuiChallengeCreate;
 import me.noci.challenges.settings.Option;
-import me.noci.quickutilities.quickcommand.QuickCommand;
-import me.noci.quickutilities.quickcommand.annotation.CommandPermission;
-import me.noci.quickutilities.quickcommand.annotation.FallbackCommand;
-import me.noci.quickutilities.quickcommand.annotation.SubCommand;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
 
-public class CommandChallenge extends QuickCommand {
+public class CommandChallenge {
 
-    private final ChallengeController challengeController;
-
-    public CommandChallenge(JavaPlugin plugin, ChallengeController challengeController) {
-        super(plugin, "challenge");
-        autoRegister();
-        this.challengeController = challengeController;
+    public static LiteralCommandNode<CommandSourceStack> createCommand(ChallengeController controller) {
+        return Commands.literal("challenge")
+                .then(
+                        Commands.literal("create")
+                                .requires(source -> source.getSender() instanceof Player)
+                                .requires(source -> source.getSender().hasPermission("quickchallenge.create"))
+                                .executes(context -> create(context, controller))
+                )
+                .then(
+                        Commands.literal("delete")
+                                .requires(source -> source.getSender().hasPermission("quickchallenge.delete"))
+                                .executes(context -> delete(context, controller))
+                )
+                .build();
     }
 
-    @SubCommand(path = "create")
-    @CommandPermission("quickchallenge.create")
-    public void create(Player player) {
-        if (challengeController.isChallengeCreated()) {
+    @SneakyThrows
+    private static int create(CommandContext<CommandSourceStack> context, ChallengeController controller) {
+        Player player = context.getSource().getPlayerOrThrow();
+
+        if (controller.isChallengeCreated()) {
             player.sendMessage(Option.Command.Challenge.ALREADY_CREATED.get());
-            return;
+            return Command.SINGLE_SUCCESS;
         }
-        new GuiChallengeCreate(challengeController).provide(player);
+
+        new GuiChallengeCreate(controller).provide(player);
+
+        return Command.SINGLE_SUCCESS;
     }
 
-    @SubCommand(path = "delete")
-    @CommandPermission("quickchallenge.create")
-    public void delete(CommandSender sender) {
-        if (!challengeController.isChallengeCreated()) {
+
+    private static int delete(CommandContext<CommandSourceStack> context, ChallengeController controller) {
+        CommandSender sender = context.getSource().getSender();
+
+        if (!controller.isChallengeCreated()) {
             sender.sendMessage(Option.Command.Challenge.NOT_CREATED.get());
-            return;
+            return Command.SINGLE_SUCCESS;
         }
 
-        if (challengeController.delete()) {
+        if (controller.delete()) {
             sender.sendMessage(Option.Command.Challenge.SUCCESSFULLY_DELETED.get());
-            return;
+            return Command.SINGLE_SUCCESS;
         }
+
         sender.sendMessage(Option.Command.Challenge.FAILED_DELETION.get());
-    }
-
-
-    @FallbackCommand
-    public void fallback(CommandSender sender) {
+        return Command.SINGLE_SUCCESS;
     }
 
 }

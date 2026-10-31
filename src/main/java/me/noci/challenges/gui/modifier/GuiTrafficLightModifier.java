@@ -8,13 +8,14 @@ import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.inventory.GuiItem;
 import me.noci.quickutilities.inventory.InventoryContent;
 import me.noci.quickutilities.inventory.Slot;
-import me.noci.quickutilities.utils.BukkitUnit;
+import me.noci.quickutilities.utils.ItemBuilder;
+import me.noci.quickutilities.utils.time.BukkitUnit;
 import me.noci.quickutilities.utils.EnumUtils;
-import me.noci.quickutilities.utils.QuickItemStack;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Formatter;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 
@@ -44,12 +45,12 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
     public void init(Player player, InventoryContent content) {
         content.fill(InventoryConstants.GLAS_PANE);
 
-        content.setItem(Slot.getSlot(6, 4), new QuickItemStack(Material.RED_WOOL, Option.Gui.TrafficLightModifier.CANCEL.get()).asGuiItem(event -> {
+        content.setItem(Slot.getSlot(6, 4), ItemBuilder.of(Material.RED_WOOL, Option.Gui.TrafficLightModifier.CANCEL.get()).asGuiItem(event -> {
             if (event.getClick() != ClickType.LEFT) return;
             modifierApplier.cancel();
         }));
 
-        content.setItem(Slot.getSlot(6, 6), new QuickItemStack(Material.GREEN_WOOL, Option.Gui.TrafficLightModifier.ADD_MODIFIER.get()).asGuiItem(event -> {
+        content.setItem(Slot.getSlot(6, 6), ItemBuilder.of(Material.GREEN_WOOL, Option.Gui.TrafficLightModifier.ADD_MODIFIER.get()).asGuiItem(event -> {
             if (event.getClick() != ClickType.LEFT) return;
             var greenDuration = TimeRange.of(greenDurationUnit, greenDurationMin, greenDurationMax);
             var yellowDuration = TimeRange.of(yellowDurationUnit, yellowDurationMin, yellowDurationMax);
@@ -93,9 +94,9 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
         Component lowIncrease = Option.Gui.TrafficLightModifier.LOW_INCREASE.get();
         Component highIncrease = Option.Gui.TrafficLightModifier.HIGH_INCREASE.get();
 
-        GuiItem minItem = new QuickItemStack(Material.CHERRY_BUTTON)
-                .displayName(Option.Gui.TrafficLightModifier.MIN_PHASE_VALUE.resolve(Placeholder.component("phase", phase)))
-                .itemLore(
+        GuiItem minItem = ItemBuilder.of(Material.CHERRY_BUTTON)
+                .withDisplayName(Option.Gui.TrafficLightModifier.MIN_PHASE_VALUE.resolve(Placeholder.component("phase", phase)))
+                .withLore(
                         Component.empty(),
                         Option.Gui.TrafficLightModifier.CURRENT_VALUE.resolve(Formatter.number("value", min.get())),
                         Component.empty(),
@@ -120,9 +121,9 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
                     }
                 });
 
-        GuiItem unitItem = new QuickItemStack(Material.GLOW_ITEM_FRAME)
-                .displayName(Option.Gui.TrafficLightModifier.PHASE_TIME_UNIT.resolve(Placeholder.component("phase", phase)))
-                .itemLore(
+        GuiItem unitItem = ItemBuilder.of(Material.GLOW_ITEM_FRAME)
+                .withDisplayName(Option.Gui.TrafficLightModifier.PHASE_TIME_UNIT.resolve(Placeholder.component("phase", phase)))
+                .withLore(
                         Component.empty(),
                         Option.Gui.TrafficLightModifier.CURRENT_VALUE.resolve(Placeholder.unparsed("value", unit.get().name())),
                         Component.empty(),
@@ -143,9 +144,9 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
                     }
                 });
 
-        GuiItem maxItem = new QuickItemStack(Material.CHERRY_BUTTON)
-                .displayName(Option.Gui.TrafficLightModifier.MAX_PHASE_VALUE.resolve(Placeholder.component("phase", phase)))
-                .itemLore(
+        GuiItem maxItem = ItemBuilder.of(Material.CHERRY_BUTTON)
+                .withDisplayName(Option.Gui.TrafficLightModifier.MAX_PHASE_VALUE.resolve(Placeholder.component("phase", phase)))
+                .withLore(
                         Component.empty(),
                         Option.Gui.TrafficLightModifier.CURRENT_VALUE.resolve(Formatter.number("value", max.get())),
                         Component.empty(),
