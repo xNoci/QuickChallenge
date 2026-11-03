@@ -19,6 +19,7 @@ public class QuickChallenge extends JavaPlugin {
 
     @Getter
     private Config config;
+    @Getter
     private final ChallengeController challengeController;
 
     public QuickChallenge(ChallengeController challengeController) {

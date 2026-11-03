@@ -8,12 +8,12 @@ import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.command.CommandAllItems;
 import me.noci.challenges.command.CommandChallenge;
 import me.noci.challenges.command.CommandTimer;
+import me.noci.challenges.gui.GuiChallengeCreate;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.nio.file.Path;
 
 public class QuickChallengeBootstrap implements PluginBootstrap {
-
 
     private ChallengeController controller;
 
@@ -24,9 +24,9 @@ public class QuickChallengeBootstrap implements PluginBootstrap {
 
         context.getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, event -> {
             event.registrar()
-                    .register(CommandAllItems.createCommand(controller), "Command to control all items challenge");
-            event.registrar().register(CommandChallenge.createCommand(controller), "Command to control the challenge");
-            event.registrar().register(CommandTimer.createCommand(controller), "Command to control the timer");
+                    .register(CommandAllItems.createCommand(), "Command to control all items challenge");
+            event.registrar().register(CommandChallenge.createCommand(), "Command to control the challenge");
+            event.registrar().register(CommandTimer.createCommand(), "Command to control the timer");
         });
     }
 

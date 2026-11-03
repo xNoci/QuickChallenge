@@ -18,7 +18,7 @@ import java.util.stream.IntStream;
 
 public class CommandAllItems {
 
-    public static LiteralCommandNode<CommandSourceStack> createCommand(ChallengeController controller) {
+    public static LiteralCommandNode<CommandSourceStack> createCommand() {
         return Commands.literal("allitems")
                 .then(
                         Commands.literal("skip")
@@ -27,25 +27,26 @@ public class CommandAllItems {
                                         Commands.argument("amount", IntegerArgumentType.integer(1))
                                                 .executes(context -> {
                                                     int amount = IntegerArgumentType.getInteger(context, "amount");
-                                                    return skip(context, controller, amount);
+                                                    return skip(context, amount);
                                                 })
                                 )
-                                .executes(context -> skip(context, controller, 1))
+                                .executes(context -> skip(context, 1))
                 )
                 .then(
                         Commands.literal("reset")
                                 .requires(source -> source.getSender().hasPermission("quickchallenge.allitems.reset"))
-                                .executes(context -> reset(context, controller))
+                                .executes(CommandAllItems::reset)
                 )
-                .requires(source -> source.getExecutor() instanceof Player) // Should send custom message here
-                .executes(context -> overview(context, controller))
+                .requires(source -> source.getExecutor() instanceof Player)
+                .executes(CommandAllItems::overview)
                 .build();
     }
 
 
     @SneakyThrows
-    private static int overview(CommandContext<CommandSourceStack> context, ChallengeController challengeController) {
+    private static int overview(CommandContext<CommandSourceStack> context) {
         Player player = context.getSource().getPlayerOrThrow();
+        ChallengeController challengeController = QuickChallenge.instance().challengeController();
 
         Challenge challenge = challengeController.getCurrentChallenge();
         if (challenge == null) {
@@ -62,9 +63,9 @@ public class CommandAllItems {
         return Command.SINGLE_SUCCESS;
     }
 
-    private static int skip(CommandContext<CommandSourceStack> context, ChallengeController challengeController,
-                            int amount) {
+    private static int skip(CommandContext<CommandSourceStack> context, int amount) {
         CommandSender sender = context.getSource().getSender();
+        ChallengeController challengeController = QuickChallenge.instance().challengeController();
 
         if (!Option.Settings.DEBUG.get()) {
             sender.sendMessage(Option.Command.DEBUG_COMMAND.get());
@@ -87,8 +88,9 @@ public class CommandAllItems {
         return Command.SINGLE_SUCCESS;
     }
 
-    private static int reset(CommandContext<CommandSourceStack> context, ChallengeController challengeController) {
+    private static int reset(CommandContext<CommandSourceStack> context) {
         CommandSender sender = context.getSource().getSender();
+        ChallengeController challengeController = QuickChallenge.instance().challengeController();
 
         if (!Option.Settings.DEBUG.get()) {
             sender.sendMessage(Option.Command.DEBUG_COMMAND.get());
