@@ -6,7 +6,6 @@ import lombok.Getter;
 import me.noci.challenges.RandomHolder;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.modifiers.timer.TimerModifier;
-import me.noci.challenges.headcomponent.HeadComponent;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.utils.EnumUtils;
 import net.kyori.adventure.bossbar.BossBar;
@@ -22,15 +21,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class AllItemModifier extends ChallengeModifier {
-
 
 
     private final BossBar bossBar;
@@ -170,20 +165,15 @@ public class AllItemModifier extends ChallengeModifier {
         Bukkit.getOnlinePlayers()
                 .forEach(player -> player.playSound(player, Sound.BLOCK_NOTE_BLOCK_PLING, SoundCategory.MASTER, 1, 1));
 
-        boolean isPlayer = false;
-        Component headComponent = Component.empty();
-        if (collector instanceof Player player) {
-            headComponent = HeadComponent.create(player.getUniqueId()).build();
-            isPlayer = true;
-        }
+        UUID senderUUId = collector instanceof Player player ? player.getUniqueId() : null;
 
         Option<Component> component = skipped ? Option.AllItems.Chat.ITEM_SKIPPED : Option.AllItems.Chat.ITEM_COLLECTED;
-        if (skipped && !isPlayer) {
+        if (skipped && senderUUId == null) {
             component = Option.AllItems.Chat.ITEM_SKIPPED_CONSOLE;
         }
 
         Bukkit.broadcast(component.resolve(
-                Placeholder.component("player_head", headComponent),
+                Placeholder.parsed("player_head", "<head:" + senderUUId + ":true>"),
                 Placeholder.component("player", collector.name()),
                 Placeholder.component("item_name", item.itemName())
         ));

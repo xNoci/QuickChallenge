@@ -2,7 +2,6 @@ package me.noci.challenges.listeners;
 
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.ChallengeController;
-import me.noci.challenges.headcomponent.HeadComponent;
 import me.noci.challenges.settings.Option;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
@@ -23,7 +22,7 @@ public class PlayerQuitListener implements Listener {
     public void handlePlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         event.quitMessage(Option.Settings.PLAYER_QUIT.resolve(
-                Placeholder.component("player_head", HeadComponent.create(player.getUniqueId()).build()),
+                Placeholder.parsed("player_head", "<head:" + player.getUniqueId() + ":true>"),
                 Placeholder.component("player_name", player.name())
         ));
 

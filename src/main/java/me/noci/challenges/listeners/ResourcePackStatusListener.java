@@ -1,8 +1,8 @@
 package me.noci.challenges.listeners;
 
 import me.noci.challenges.ResourcePack;
-import me.noci.challenges.headcomponent.HeadComponent;
 import me.noci.challenges.settings.Option;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -24,7 +24,7 @@ public class ResourcePackStatusListener implements Listener {
                 Player player = event.getPlayer();
 
                 Bukkit.broadcast(Option.Settings.PLAYER_JOIN.resolve(
-                        Placeholder.component("player_head", HeadComponent.create(player.getUniqueId()).build()),
+                        Placeholder.parsed("player_head", "<head:" + player.getUniqueId() + ":true>"),
                         Placeholder.component("player_name", player.name())
                 ));
             }

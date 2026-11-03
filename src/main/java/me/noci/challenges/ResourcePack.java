@@ -32,19 +32,6 @@ public final class ResourcePack {
         public static final Component RED_LIGHT = value('\uEff3', FONT_NAME);
     }
 
-    public static class PlayerHead {
-        private static final String FONT_NAME = "player_head";
-
-        public static Component negative(@Range(from = 1, to = 2) int value) {
-            return value((char) (0xE000 + value), FONT_NAME);
-        }
-
-        public static Component pixel(int height, int color) {
-            int value = 0xEff0 + height;
-            return value((char) value, FONT_NAME).color(TextColor.color(color));
-        }
-    }
-
     public static class AllItems {
         private static final String FONT_NAME = "all_items";
 
