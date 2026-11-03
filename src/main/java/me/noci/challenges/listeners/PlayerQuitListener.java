@@ -1,5 +1,6 @@
 package me.noci.challenges.listeners;
 
+import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.headcomponent.HeadComponent;
 import me.noci.challenges.settings.Option;
@@ -26,12 +27,10 @@ public class PlayerQuitListener implements Listener {
                 Placeholder.component("player_name", player.name())
         ));
 
-        challengeController.challenge().ifPresent(challenge -> {
-            if (Bukkit.getOnlinePlayers().size() != 1) return;
-            if (challenge.paused()) return;
+        Challenge challenge = challengeController.getCurrentChallenge();
+        if (challenge != null && Bukkit.getOnlinePlayers().size() == 1) {
             challenge.paused(true);
-        });
-
+        }
     }
 
 }

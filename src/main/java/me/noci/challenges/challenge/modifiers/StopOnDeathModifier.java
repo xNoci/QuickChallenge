@@ -11,25 +11,13 @@ import java.util.List;
 
 public class StopOnDeathModifier implements ChallengeModifier {
 
-    private SubscribedEvent<PlayerDeathEvent> playerDeathEvent;
 
     @Override
     public void onInitialise(Logger logger, Challenge challenge) {
-        if (playerDeathEvent != null) {
-            playerDeathEvent.unsubscribe();
-        }
-
-        playerDeathEvent = Events.subscribe(PlayerDeathEvent.class)
-                .filter(event -> !challenge.paused())
-                .handle(event -> challenge.paused(true));
     }
 
     @Override
     public void onStop(Logger logger, Challenge challenge) {
-        if (playerDeathEvent != null) {
-            playerDeathEvent.unsubscribe();
-            playerDeathEvent = null;
-        }
     }
 
     @Override

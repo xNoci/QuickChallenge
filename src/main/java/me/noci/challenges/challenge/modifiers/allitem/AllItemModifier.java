@@ -41,8 +41,6 @@ public class AllItemModifier implements ChallengeModifier {
     @Getter private final List<CollectedItem> collectedItems;
     @Getter @NotNull private AllItem currentItem;
     @Getter private boolean allItemsCollected;
-    private SubscribedEvent<PlayerInventorySlotChangeEvent> slotChangeEvent;
-    private SubscribedEvent<InventoryClickEvent> inventoryClickEvent;
 
     private Component currentDisplay;
 
@@ -86,30 +84,7 @@ public class AllItemModifier implements ChallengeModifier {
 
     @Override
     public void onInitialise(Logger logger, Challenge challenge) {
-        if (slotChangeEvent != null) {
-            slotChangeEvent.unsubscribe();
-        }
 
-        slotChangeEvent = Events.subscribe(PlayerInventorySlotChangeEvent.class)
-                .filter(event -> !challenge.paused())
-                .filter(event -> currentItem.matches(event.getNewItemStack()))
-                .handle(event -> tryPickupItem(challenge, event.getPlayer(), currentItem));
-
-        if (inventoryClickEvent != null) {
-            inventoryClickEvent.unsubscribe();
-        }
-
-        inventoryClickEvent = Events.subscribe(InventoryClickEvent.class)
-                .strict(false)
-                .filter(Predicate.not(InventoryInteractEvent::isCancelled))
-                .filter(event -> event.getClickedInventory() != null)
-                .filter(event -> Require.nonNull(event.getClickedInventory()).getType() != InventoryType.CREATIVE)
-                .filter(event -> event.getCurrentItem() != null)
-                .filter(event -> event.getClick() == ClickType.LEFT || event.getClick() == ClickType.RIGHT)
-                .filter(event -> event.getWhoClicked() instanceof Player)
-                .filter(event -> !challenge.paused())
-                .filter(event -> currentItem.matches(Require.nonNull(event.getCurrentItem())))
-                .handle(event -> tryPickupItem(challenge, (Player) event.getWhoClicked(), currentItem));
     }
 
     @Override
@@ -118,15 +93,6 @@ public class AllItemModifier implements ChallengeModifier {
                 .map(viewer -> (Player) viewer)
                 .forEach(bossBar::removeViewer);
 
-        if (slotChangeEvent != null) {
-            slotChangeEvent.unsubscribe();
-            slotChangeEvent = null;
-        }
-
-        if (inventoryClickEvent != null) {
-            inventoryClickEvent.unsubscribe();
-            inventoryClickEvent = null;
-        }
 
         currentDisplay = null;
     }
