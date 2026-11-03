@@ -11,6 +11,7 @@ import me.noci.challenges.challenge.modifiers.registry.ModifierRegistry;
 import me.noci.challenges.challenge.modifiers.timer.TimerModifier;
 import me.noci.challenges.challenge.modifiers.trafficlight.TrafficLightModifier;
 import me.noci.challenges.serializer.utils.Node;
+import net.kyori.adventure.key.Key;
 import org.spongepowered.configurate.ConfigurationNode;
 import org.spongepowered.configurate.loader.ConfigurationLoader;
 import org.spongepowered.configurate.serialize.SerializationException;
@@ -43,7 +44,7 @@ public final class ChallengeSerializer implements TypeSerializer<Challenge> {
         Map<Class<? extends ChallengeModifier>, ChallengeModifier> modifiers = Maps.newHashMap();
 
         for (ModifierHolder<? extends ChallengeModifier> holder : ModifierRegistry.modifiers()) {
-            String key = holder.key();
+            String key = holder.key().asString();
 
             if (modifierNodes.hasChild(key)) {
                 ChallengeModifier modifierInstance = Node.nonVirtual(modifierNodes, key).get(holder.type());
@@ -67,7 +68,8 @@ public final class ChallengeSerializer implements TypeSerializer<Challenge> {
         ConfigurationNode modifierNodes = target.node(MODIFIERS);
 
         for (ChallengeModifier modifier : obj.modifiers()) {
-            modifierNodes.node(modifier.getClass().getSimpleName()).set(modifier.getClass(), modifier);
+            Key key = ModifierRegistry.fromType(modifier.getClass()).key();
+            modifierNodes.node(key.asString()).set(modifier.getClass(), modifier);
         }
     }
 }

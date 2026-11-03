@@ -1,24 +1,14 @@
 package me.noci.challenges.challenge.modifiers.registry;
 
-import lombok.Getter;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
+import net.kyori.adventure.key.Key;
 
 import java.util.function.Supplier;
 
-public class ModifierHolder<T extends ChallengeModifier> {
+public record ModifierHolder<T extends ChallengeModifier>(Class<T> type, Supplier<T> creator, Key key) {
 
-    @Getter
-    private final Class<T> type;
-    @Getter
-    private final Supplier<T> creator;
-
-    protected ModifierHolder(Class<T> type, Supplier<T> creator) {
-        this.type = type;
-        this.creator = creator;
-    }
-
-    public String key() {
-        return type.getSimpleName();
+    ModifierHolder(Key key, Class<T> type, Supplier<T> creator) {
+        this(type, creator, key);
     }
 
 }
