@@ -1,24 +1,8 @@
 package me.noci.challenges.gui;
 
-import lombok.Getter;
-import me.noci.challenges.settings.Option;
-import me.noci.quickutilities.inventory.*;
-import me.noci.quickutilities.utils.ItemBuilder;
-import me.noci.quickutilities.utils.Require;
-import net.kyori.adventure.text.Component;
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.ClickType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+public class GuiAcceptDialog {
 
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-
-public class GuiAcceptDialog extends QuickGUIProvider {
-
-    private static final Consumer<SlotClickEvent> EMPTY_CLICK = event -> {
+   /* private static final Consumer<SlotClickEvent> EMPTY_CLICK = event -> {
     };
 
     private final GuiItem acceptItem;
@@ -157,7 +141,7 @@ public class GuiAcceptDialog extends QuickGUIProvider {
             };
         }
 
-    }
+    }*/
 
 
 }

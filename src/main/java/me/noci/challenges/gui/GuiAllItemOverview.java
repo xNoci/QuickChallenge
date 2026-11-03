@@ -1,34 +1,8 @@
 package me.noci.challenges.gui;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import me.noci.challenges.challenge.modifiers.allitem.AllItem;
-import me.noci.challenges.challenge.modifiers.allitem.AllItemModifier;
-import me.noci.challenges.challenge.modifiers.allitem.CollectedItem;
-import me.noci.challenges.settings.Option;
-import me.noci.quickutilities.inventory.*;
-import me.noci.quickutilities.utils.InventoryPattern;
-import me.noci.quickutilities.utils.ItemBuilder;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.tag.resolver.Formatter;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
-import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
+public class GuiAllItemOverview {
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.BiFunction;
-import java.util.stream.Collectors;
-
-public class GuiAllItemOverview extends PagedQuickGUIProvider {
-
-    private final AllItemModifier modifier;
+  /*  private final AllItemModifier modifier;
 
     public GuiAllItemOverview(AllItemModifier modifier) {
         super(Option.Gui.AllItems.TITLE.resolve(Formatter.number("items_collected", modifier.collectedItems().size()),
@@ -40,7 +14,7 @@ public class GuiAllItemOverview extends PagedQuickGUIProvider {
     private static GuiItem toGuiItem(CollectedItem collectedItem) {
         AllItem allItem = collectedItem.item();
         ItemBuilder item = ItemBuilder.of(allItem.material(),
-                Option.Gui.AllItems.ITEM_NAME.resolve(Placeholder.unparsed("item_name", allItem.itemName())));
+                Option.Gui.AllItems.ITEM_NAME.resolve(Placeholder.component("item_name", allItem.itemName())));
         item.withItemFlags();
 
         LocalDateTime timestamp =
@@ -133,6 +107,6 @@ public class GuiAllItemOverview extends PagedQuickGUIProvider {
         public int compareTo(CollectionData o) {
             return Integer.compare(o.totalAmount(), this.totalAmount());
         }
-    }
+    }*/
 
 }

@@ -19,7 +19,7 @@ public class QuickChallengeBootstrap implements PluginBootstrap {
 
     @Override
     public void bootstrap(BootstrapContext context) {
-        Path challengeFile = context.getDataDirectory().resolve("challenge.qcc");
+        Path challengeFile = context.getDataDirectory().resolve("challenge.yml");
         this.controller = new ChallengeController(challengeFile);
 
         context.getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, event -> {

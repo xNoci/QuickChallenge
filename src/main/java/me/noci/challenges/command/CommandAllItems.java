@@ -10,7 +10,6 @@ import lombok.SneakyThrows;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.challenge.modifiers.allitem.AllItemModifier;
-import me.noci.challenges.gui.GuiAllItemOverview;
 import me.noci.challenges.settings.Option;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -48,17 +47,17 @@ public class CommandAllItems {
     private static int overview(CommandContext<CommandSourceStack> context, ChallengeController challengeController) {
         Player player = context.getSource().getPlayerOrThrow();
 
-        Challenge challenge = challengeController.challenge().orElse(null);
+        Challenge challenge = challengeController.getCurrentChallenge();
         if (challenge == null) {
             player.sendMessage(Option.Command.Challenge.NOT_CREATED.get());
             return Command.SINGLE_SUCCESS;
         }
-
+/*
         challenge.modifier(AllItemModifier.class)
                 .ifPresentOrElse(
                         allItemModifier -> new GuiAllItemOverview(allItemModifier).provide(player),
                         () -> player.sendMessage(Option.Command.AllItems.NOT_ENABLED.get())
-                );
+                );*/
 
         return Command.SINGLE_SUCCESS;
     }
@@ -72,7 +71,7 @@ public class CommandAllItems {
             return Command.SINGLE_SUCCESS;
         }
 
-        Challenge challenge = challengeController.challenge().orElse(null);
+        Challenge challenge = challengeController.getCurrentChallenge();
         if (challenge == null) {
             sender.sendMessage(Option.Command.Challenge.NOT_CREATED.get());
             return Command.SINGLE_SUCCESS;
@@ -81,7 +80,7 @@ public class CommandAllItems {
         challenge.modifier(AllItemModifier.class)
                 .ifPresentOrElse(
                         allItemModifier -> IntStream.range(0, amount)
-                                .forEach(i -> allItemModifier.skip(challenge, sender)),
+                                .forEach(i -> allItemModifier.skipCurrentItem(sender)),
                         () -> sender.sendMessage(Option.Command.AllItems.NOT_ENABLED.get())
                 );
 
@@ -96,7 +95,7 @@ public class CommandAllItems {
             return Command.SINGLE_SUCCESS;
         }
 
-        Challenge challenge = challengeController.challenge().orElse(null);
+        Challenge challenge = challengeController.getCurrentChallenge();
         if (challenge == null) {
             sender.sendMessage(Option.Command.Challenge.NOT_CREATED.get());
             return Command.SINGLE_SUCCESS;

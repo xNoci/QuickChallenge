@@ -7,7 +7,6 @@ import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.modifiers.timer.style.TimerStyle;
 import me.noci.challenges.challenge.modifiers.timer.style.TimerStyleMode;
-import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.utils.EnumUtils;
 import me.noci.quickutilities.utils.time.BukkitUnit;
@@ -16,12 +15,15 @@ import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.Collection;
 import java.util.List;
 
-public class TimerModifier implements ChallengeModifier {
+public class TimerModifier extends ChallengeModifier {
 
-    @Getter private long ticksPlayed;
+    @Getter
+    private long ticksPlayed;
 
     private TextColor gradientPrimary;
     private TextColor gradientAccent;
@@ -32,42 +34,44 @@ public class TimerModifier implements ChallengeModifier {
     }
 
     public TimerModifier(long ticksPlayed) {
+        super("Timer");
         this.ticksPlayed = ticksPlayed;
     }
 
     @Override
-    public void onInitialise(Logger logger, Challenge challenge) {
+    public void onInitialise(Logger logger) {
         timerStyle = new TimerStyle(TimerStyleMode.BLINK.styleData());
         loadConfigValues();
     }
 
     @Override
-    public void onStop(Logger logger, Challenge challenge) {
+    public void onStop(Logger logger) {
         gradientPrimary = null;
         gradientAccent = null;
         timerStyle = null;
     }
 
     @Override
-    public void onTick(Logger logger, Challenge challenge, List<Player> players) {
-        if (!challenge.paused()) {
+    public void onTick(Logger logger, Collection<? extends Player> players) {
+        if (!getChallenge().paused()) {
             ticksPlayed++;
         }
 
         List<TextDecoration> textDecorations = Lists.newArrayList(TextDecoration.BOLD);
-        if (challenge.paused()) {
+        if (getChallenge().paused()) {
             textDecorations.add(TextDecoration.ITALIC);
         }
 
         timerStyle.tick();
 
-        String actionBarText = challenge.paused() ? Option.Timer.PAUSED.get() : playedTimeAsString();
-        Component actionBar = TextGradient.gradient(actionBarText, gradientPrimary, gradientAccent, timerStyle::progressTransformer).decorate(textDecorations.toArray(TextDecoration[]::new));
+        String actionBarText = getChallenge().paused() ? Option.Timer.PAUSED.get() : playedTimeAsString();
+        Component actionBar = TextGradient.gradient(actionBarText, gradientPrimary, gradientAccent,
+                timerStyle::progressTransformer).decorate(textDecorations.toArray(TextDecoration[]::new));
         players.forEach(player -> player.sendActionBar(actionBar));
     }
 
     @Override
-    public void onConfigReload(Logger logger, Challenge challenge, Config config) {
+    public void onConfigReload(Logger logger) {
         loadConfigValues();
     }
 
@@ -78,11 +82,6 @@ public class TimerModifier implements ChallengeModifier {
         String mode = Option.Timer.MODE.get();
         TimerStyleMode styleMode = EnumUtils.getIfPresent(TimerStyleMode.class, mode).orElse(TimerStyleMode.BLINK);
         timerStyle.styleData(styleMode.styleData());
-    }
-
-    @Override
-    public String name() {
-        return "Timer";
     }
 
     public String playedTimeAsString() {

@@ -2,8 +2,12 @@ package me.noci.challenges.challenge.modifiers.trafficlight;
 
 import me.noci.challenges.RandomHolder;
 import me.noci.quickutilities.utils.time.BukkitUnit;
+import org.spongepowered.configurate.objectmapping.ConfigSerializable;
+import org.spongepowered.configurate.objectmapping.meta.Setting;
 
-public record TimeRange(BukkitUnit unit, int minDelay, int maxDelay) {
+@ConfigSerializable
+public record TimeRange(@Setting("unit") BukkitUnit unit, @Setting("min-delay") int minDelay,
+                        @Setting("max-delay") int maxDelay) {
 
     public static TimeRange of(BukkitUnit unit, int min, int max) {
         return new TimeRange(unit, min, max);

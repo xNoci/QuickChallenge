@@ -1,19 +1,8 @@
 package me.noci.challenges.gui.modifier;
 
-import com.google.common.collect.ImmutableList;
-import me.noci.challenges.challenge.modifiers.ChallengeModifier;
-import me.noci.challenges.challenge.modifiers.registry.ModifierRegistry;
-import me.noci.challenges.gui.InventoryConstants;
-import me.noci.challenges.settings.Option;
-import me.noci.quickutilities.inventory.*;
-import me.noci.quickutilities.utils.InventoryPattern;
-import me.noci.quickutilities.utils.ItemBuilder;
-import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.ClickType;
+public class GuiModifierOverview {
 
-public class GuiModifierOverview extends PagedQuickGUIProvider {
-
-    private static final int[] PAGE_SLOTS = InventoryPattern.box(2, 3);
+   /* private static final int[] PAGE_SLOTS = InventoryPattern.box(2, 3);
 
     private final ModifierApplier modifierApplier;
     private final ImmutableList<Class<? extends ChallengeModifier>> ignoredModifiers;
@@ -61,6 +50,6 @@ public class GuiModifierOverview extends PagedQuickGUIProvider {
     @Override
     public void updatePageContent(Player player, InventoryPageContent inventoryPageContent) {
 
-    }
+    }*/
 
 }

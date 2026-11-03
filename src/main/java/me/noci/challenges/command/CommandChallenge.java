@@ -27,6 +27,20 @@ public class CommandChallenge {
                                 .requires(source -> source.getSender().hasPermission("quickchallenge.delete"))
                                 .executes(context -> delete(context, controller))
                 )
+                .then(
+                        Commands.literal("save")
+                                .executes(context -> {
+                                    controller.create();
+                                    controller.save();
+                                    return Command.SINGLE_SUCCESS;
+                                })
+                ).then(
+                        Commands.literal("load")
+                                .executes(context -> {
+                                    controller.tryLoadChallenge();
+                                    return Command.SINGLE_SUCCESS;
+                                })
+                )
                 .build();
     }
 
@@ -39,7 +53,7 @@ public class CommandChallenge {
             return Command.SINGLE_SUCCESS;
         }
 
-        new GuiChallengeCreate(controller).provide(player);
+        GuiChallengeCreate.openGui(player, controller);
 
         return Command.SINGLE_SUCCESS;
     }

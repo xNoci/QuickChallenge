@@ -1,31 +1,9 @@
 package me.noci.challenges.gui.modifier;
 
-import me.noci.challenges.challenge.modifiers.trafficlight.LightStatus;
-import me.noci.challenges.challenge.modifiers.trafficlight.TimeRange;
-import me.noci.challenges.challenge.modifiers.trafficlight.TrafficLightModifier;
-import me.noci.challenges.gui.InventoryConstants;
-import me.noci.challenges.settings.Option;
-import me.noci.quickutilities.inventory.GuiItem;
-import me.noci.quickutilities.inventory.InventoryContent;
-import me.noci.quickutilities.inventory.Slot;
-import me.noci.quickutilities.utils.ItemBuilder;
-import me.noci.quickutilities.utils.time.BukkitUnit;
-import me.noci.quickutilities.utils.EnumUtils;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.tag.resolver.Formatter;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
-import org.bukkit.Material;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.ClickType;
-
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-
-public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModifier> {
+public class GuiTrafficLightModifier {
 
 
-    private BukkitUnit greenDurationUnit = BukkitUnit.SECONDS;
+  /*  private BukkitUnit greenDurationUnit = BukkitUnit.SECONDS;
     private int greenDurationMin = 90;
     private int greenDurationMax = 300;
 
@@ -191,6 +169,6 @@ public class GuiTrafficLightModifier extends ModifierCreateGui<TrafficLightModif
             setter.accept(value);
         }
 
-    }
+    }*/
 
 }

@@ -3,59 +3,73 @@ package me.noci.challenges.challenge.modifiers.trafficlight;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.Getter;
-import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.quickutilities.utils.EnumUtils;
+import me.noci.quickutilities.utils.time.BukkitUnit;
+import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.bossbar.BossBar;
+import net.kyori.adventure.bossbar.BossBarViewer;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
 import java.util.function.Predicate;
 
-public class TrafficLightModifier implements ChallengeModifier {
+public class TrafficLightModifier extends ChallengeModifier {
+
+    private static TimeRange DEFAULT_RANGE = TimeRange.of(BukkitUnit.SECONDS, 10, 20);
 
     private final HashMap<UUID, LastLocation> lastLocations = Maps.newHashMap();
-    @Getter private final TimeRange greenDuration;
-    @Getter private final TimeRange yellowDuration;
-    @Getter private final TimeRange redDuration;
     private final BossBar bossBar;
-    @Getter private LightStatus lightStatus;
-    @Getter private long nextAction;
+    @Getter
+    private TimeRange greenDuration;
+    @Getter
+    private TimeRange yellowDuration;
+    @Getter
+    private TimeRange redDuration;
+    @Getter
+    private LightStatus lightStatus;
+    @Getter
+    private long nextActionTimer;
 
-    public TrafficLightModifier(TimeRange greenDuration, TimeRange yellowDuration, TimeRange redDuration, LightStatus lightStatus) {
-        this(greenDuration, yellowDuration, redDuration, lightStatus, greenDuration.randomAsTick());
+    public TrafficLightModifier() {
+        this(DEFAULT_RANGE, DEFAULT_RANGE, DEFAULT_RANGE, LightStatus.GREEN);
     }
 
-    public TrafficLightModifier(TimeRange greenDuration, TimeRange yellowDuration, TimeRange redDuration, LightStatus lightStatus, long nextAction) {
+    public TrafficLightModifier(TimeRange greenDuration, TimeRange yellowDuration,
+                                TimeRange redDuration, LightStatus lightStatus) {
+        super("Traffic Light");
         this.greenDuration = greenDuration;
         this.yellowDuration = yellowDuration;
         this.redDuration = redDuration;
         this.lightStatus = lightStatus;
-        this.nextAction = nextAction;
+        this.nextActionTimer = randomDuration();
         this.bossBar = BossBar.bossBar(lightStatus.texture(), 0, BossBar.Color.WHITE, BossBar.Overlay.PROGRESS);
     }
 
     @Override
-    public void onInitialise(Logger logger, Challenge challenge) {
-        logger.info("Traffic Light is set to {}, next action in {} ticks; Green Duration: {}; Yellow Duration: {}, Red Duration: {}", lightStatus, nextAction, greenDuration, yellowDuration, redDuration);
+    public void onInitialise(Logger logger) {
+        logger.info(
+                "Traffic Light is set to {}, next action in {} ticks; Green Duration: {}; Yellow Duration: {}, Red Duration: {}",
+                lightStatus, nextActionTimer, greenDuration, yellowDuration, redDuration);
         lastLocations.clear();
     }
 
     @Override
-    public void onStop(Logger logger, Challenge challenge) {
-        Lists.newArrayList(bossBar.viewers()).stream()
-                .map(viewer -> (Player) viewer)
-                .forEach(bossBar::removeViewer);
+    public void onStop(Logger logger) {
+        for (BossBarViewer viewer : bossBar.viewers()) {
+            bossBar.removeViewer((Audience) viewer);
+        }
+
         lastLocations.clear();
     }
 
     @Override
-    public void onTick(Logger logger, Challenge challenge, List<Player> players) {
+    public void onTick(Logger logger, Collection<? extends Player> players) {
         players.forEach(bossBar::addViewer);
 
         Lists.newArrayList(bossBar.viewers()).stream()
@@ -64,21 +78,17 @@ public class TrafficLightModifier implements ChallengeModifier {
                 .forEach(bossBar::removeViewer);
 
         if (lightStatus == LightStatus.RED) {
-            if (!challenge.paused()) {
+            if (!getChallenge().paused()) {
                 players.stream().filter(this::checkMovement).forEach(player -> player.setHealth(0));
             } else {
                 lastLocations.clear();
             }
         }
 
-        if (nextAction <= 0) {
+        if (nextActionTimer <= 0) {
             lightStatus = EnumUtils.next(lightStatus);
 
-            nextAction = switch (lightStatus) {
-                case GREEN -> greenDuration.randomAsTick();
-                case YELLOW -> yellowDuration.randomAsTick();
-                case RED -> redDuration.randomAsTick();
-            };
+            nextActionTimer = randomDuration();
 
             bossBar.name(lightStatus.texture());
 
@@ -87,17 +97,21 @@ public class TrafficLightModifier implements ChallengeModifier {
             }
 
             players.forEach(player -> player.playSound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 5, 2));
-            logger.info("Switched traffic light to {}, next phase {} in {} ticks", lightStatus, EnumUtils.next(lightStatus), nextAction);
+            logger.info("Switched traffic light to {}, next phase {} in {} ticks", lightStatus,
+                    EnumUtils.next(lightStatus), nextActionTimer);
         }
 
-        if (!challenge.paused()) {
-            nextAction--;
+        if (!getChallenge().paused()) {
+            nextActionTimer--;
         }
     }
 
-    @Override
-    public String name() {
-        return "Traffic Light";
+    private long randomDuration() {
+        return switch (lightStatus) {
+            case GREEN -> greenDuration.randomAsTick();
+            case YELLOW -> yellowDuration.randomAsTick();
+            case RED -> redDuration.randomAsTick();
+        };
     }
 
     private boolean checkMovement(Player player) {

@@ -1,123 +1,47 @@
 package me.noci.challenges.gui;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 import me.noci.challenges.challenge.ChallengeController;
-import me.noci.challenges.challenge.modifiers.ChallengeModifier;
-import me.noci.challenges.challenge.modifiers.registry.ModifierRegistry;
-import me.noci.challenges.gui.modifier.GuiModifierOverview;
-import me.noci.challenges.gui.modifier.ModifierApplier;
 import me.noci.challenges.settings.Option;
-import me.noci.quickutilities.inventory.*;
+import me.noci.quickutilities.gui.Gui;
+import me.noci.quickutilities.gui.PagedGui;
 import me.noci.quickutilities.utils.InventoryPattern;
 import me.noci.quickutilities.utils.ItemBuilder;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.ClickType;
 
-import java.util.List;
+import java.util.Arrays;
 
-public class GuiChallengeCreate extends PagedQuickGUIProvider {
+public class GuiChallengeCreate {
 
     private static final int[] MODIFIER_SLOTS = InventoryPattern.box(3, 3);
 
-    private final ChallengeController challengeController;
-    private final List<ChallengeModifier> modifiers = Lists.newArrayList();
+    //TODO In the overview ui just add the modifier than give the option in this ui to edit them with right click
+    // Mabye move this ui in ChallengeController
+    // No longer us an AcceptDialog, clicking add just adds the modifier
+    // Decouple Modifier UI code from ModifierRegistry
+    // Use json/yaml to save challegne instead of byte file https://docs.papermc.io/paper/dev/plugin-configurations/#custom-configuration-files
+    // One file for overall challenge settings, and than one file per modifier (if the modifier has configuration)
+    // https://docs.papermc.io/paper/dev/plugin-configurations/
 
-    public GuiChallengeCreate(ChallengeController challengeController) {
-        super(Option.Gui.ChallengeCreate.TITLE.get(), InventoryConstants.FULL_SIZE);
-        this.challengeController = challengeController;
+
+    public static void openGui(Player player, ChallengeController controller) {
+        PagedGui pagedGui = Gui.pageed()
+                .title(Option.Gui.ChallengeCreate.TITLE.get())
+                .rows(9)
+                .create();
+
+        pagedGui.setItem(2, 5,
+                ItemBuilder.of(Material.ENDER_EYE, Option.Gui.ChallengeCreate.ADD_MODIFIER.get()).asGuiItem());
+        pagedGui.setItem(5, 4,
+                ItemBuilder.of(Material.ANVIL, Option.Gui.ChallengeCreate.CREATE_MODIFIER.get()).asGuiItem());
+        pagedGui.setItem(5, 6, ItemBuilder.of(Material.BARRIER, Option.Gui.ChallengeCreate.CANCEL.get()).asGuiItem());
+
+
+        pagedGui.fillPattern(ItemBuilder.of(Material.BLACK_STAINED_GLASS_PANE).build(), InventoryPattern.FULL);
+        Arrays.stream(MODIFIER_SLOTS).forEach(pagedGui::removeItem);
+
+        pagedGui.open(player);
     }
 
-    @Override
-    public void init(Player player, InventoryContent content) {
-        GuiItem addModifier = ItemBuilder.of(Material.ENDER_EYE, Option.Gui.ChallengeCreate.ADD_MODIFIER.get())
-                .asGuiItem(event -> {
-                    if (event.getClick() != ClickType.LEFT) return;
-                    ImmutableList<Class<? extends ChallengeModifier>> modifiersToIgnore = ImmutableList.copyOf(
-                            modifiers.stream().map(ChallengeModifier::getClass).iterator());
-                    ModifierApplier applier = modifier -> {
-                        if (modifier != null) {
-                            modifiers.add(modifier);
-                        }
-                        provide(player);
-                    };
-                    new GuiModifierOverview(applier, modifiersToIgnore).provide(event.getPlayer());
-                });
 
-        GuiItem create = ItemBuilder.of(Material.ANVIL, Option.Gui.ChallengeCreate.CREATE_MODIFIER.get())
-                .asGuiItem(event -> {
-                    if (event.getClick() != ClickType.LEFT) return;
-                    event.getPlayer().closeInventory();
-                    challengeController.create(modifiers);
-                });
-
-        GuiItem cancel = ItemBuilder.of(Material.BARRIER, Option.Gui.ChallengeCreate.CANCEL.get())
-                .asGuiItem(event -> {
-                    if (event.getClick() != ClickType.LEFT) return;
-                    event.getPlayer().closeInventory();
-                });
-
-        content.fill(InventoryConstants.GLAS_PANE);
-        content.fillSlots(GuiItem.empty(), MODIFIER_SLOTS);
-        content.setItem(Slot.getSlot(2, 5), addModifier);
-        content.setItem(Slot.getSlot(5, 4), cancel);
-        content.setItem(Slot.getSlot(5, 6), create);
-    }
-
-    @Override
-    public void update(Player player, InventoryContent inventoryContent) {
-
-    }
-
-    @Override
-    public void initPage(Player player, InventoryPageContent content) {
-        content.itemSlots(MODIFIER_SLOTS);
-        content.previousPageButton(Slot.getSlot(3, 1), InventoryConstants.previousPageItem(),
-                InventoryConstants.GLAS_PANE.getItemStack());
-        content.nextPageButton(Slot.getSlot(3, 9), InventoryConstants.nextPageItem(),
-                InventoryConstants.GLAS_PANE.getItemStack());
-    }
-
-    @Override
-    public void updatePageContent(Player player, InventoryPageContent content) {
-        if (content.contentSize() == modifiers.size()) return;
-
-        GuiItem[] items = modifiers.stream()
-                .map(this::appliedModifier)
-                .toArray(GuiItem[]::new);
-
-        content.pageContent(items);
-    }
-
-    private GuiItem appliedModifier(ChallengeModifier modifier) {
-        ItemBuilder itemStack = ModifierRegistry.displayItem(modifier.getClass())
-                .withLore(
-                        Component.empty(),
-                        Option.Gui.ChallengeCreate.MODIFIER_REMOVE_HINT.get()
-                );
-
-        var acceptDialog = GuiAcceptDialog.builder()
-                .title(Option.Gui.ChallengeCreate.RemoveDialog.TITLE.get())
-                .description(
-                        Component.empty(),
-                        Option.Gui.ChallengeCreate.RemoveDialog.DESCRIPTION.get(),
-                        Component.empty(),
-                        Option.Gui.ChallengeCreate.RemoveDialog.MODIFIER_NAME.resolve(
-                                Placeholder.component("modifier_name", itemStack.build().displayName()))
-                )
-                .acceptAction(event -> {
-                    modifiers.remove(modifier);
-                    provide(event.getPlayer());
-                })
-                .declineAction(event -> provide(event.getPlayer()));
-
-        return itemStack.asGuiItem(event -> {
-            if (event.getClick() != ClickType.LEFT) return;
-            acceptDialog.provide(event.getPlayer());
-        });
-
-    }
 }
