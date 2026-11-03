@@ -10,6 +10,8 @@ import lombok.SneakyThrows;
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.challenge.modifiers.allitem.AllItemModifier;
+import me.noci.challenges.gui.GuiAllItemOverview;
+import me.noci.challenges.paper.QuickChallenge;
 import me.noci.challenges.settings.Option;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -53,12 +55,12 @@ public class CommandAllItems {
             player.sendMessage(Option.Command.Challenge.NOT_CREATED.get());
             return Command.SINGLE_SUCCESS;
         }
-/*
+
         challenge.modifier(AllItemModifier.class)
                 .ifPresentOrElse(
-                        allItemModifier -> new GuiAllItemOverview(allItemModifier).provide(player),
+                        allItemModifier -> GuiAllItemOverview.openGui(player, allItemModifier),
                         () -> player.sendMessage(Option.Command.AllItems.NOT_ENABLED.get())
-                );*/
+                );
 
         return Command.SINGLE_SUCCESS;
     }

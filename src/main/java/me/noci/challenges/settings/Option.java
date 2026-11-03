@@ -131,6 +131,7 @@ public interface Option<T> {
             Option<Component> ALREADY_CREATED = component("command.challenge.already_created");
             Option<Component> NOT_CREATED = component("command.challenge.not_created");
             Option<Component> SUCCESSFULLY_DELETED = component("command.challenge.successfully_deleted");
+            Option<Component> SUCCESSFULLY_CREATED = component("command.challenge.successfully_created");
             Option<Component> FAILED_DELETION = component("command.challenge.failed_deletion");
         }
 
@@ -153,7 +154,7 @@ public interface Option<T> {
         interface ChallengeCreate {
             Option<Component> TITLE = component("gui.challenge_create.title");
             Option<Component> ADD_MODIFIER = component("gui.challenge_create.add_modifier");
-            Option<Component> CREATE_MODIFIER = component("gui.challenge_create.create_modifier");
+            Option<Component> CREATE = component("gui.challenge_create.create");
             Option<Component> CANCEL = component("gui.challenge_create.cancel");
             Option<Component> MODIFIER_REMOVE_HINT = component("gui.challenge_create.modifier_remove_hint");
 

@@ -1,14 +1,14 @@
 package me.noci.challenges.challenge.modifiers.registry;
 
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
+import me.noci.challenges.gui.modifier.ModifierApplier;
 import net.kyori.adventure.key.Key;
+import org.bukkit.entity.HumanEntity;
 
-import java.util.function.Supplier;
+public record ModifierHolder<T extends ChallengeModifier>(Key key, Class<T> type, ModifierCreator creator) {
 
-public record ModifierHolder<T extends ChallengeModifier>(Class<T> type, Supplier<T> creator, Key key) {
-
-    ModifierHolder(Key key, Class<T> type, Supplier<T> creator) {
-        this(type, creator, key);
+    public void openCreateGui(HumanEntity player, ModifierApplier applier) {
+        creator.open(player, applier);
     }
 
 }

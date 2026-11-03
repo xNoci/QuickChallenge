@@ -45,7 +45,7 @@ public class CommandChallenge {
             return Command.SINGLE_SUCCESS;
         }
 
-        GuiChallengeCreate.openGui(player, controller);
+        new GuiChallengeCreate().openGui(player);
 
         return Command.SINGLE_SUCCESS;
     }

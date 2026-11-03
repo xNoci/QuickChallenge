@@ -2,14 +2,11 @@ package me.noci.challenges.challenge;
 
 import lombok.SneakyThrows;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
-import me.noci.challenges.challenge.modifiers.EnderDragonFinishModifier;
-import me.noci.challenges.challenge.modifiers.StopOnDeathModifier;
-import me.noci.challenges.challenge.modifiers.allitem.AllItemModifier;
-import me.noci.challenges.challenge.modifiers.timer.TimerModifier;
-import me.noci.challenges.challenge.modifiers.trafficlight.TrafficLightModifier;
 import me.noci.challenges.serializer.ChallengeLoader;
+import me.noci.challenges.settings.Option;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.bukkit.entity.HumanEntity;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.configurate.ConfigurateException;
 import org.spongepowered.configurate.ConfigurationNode;
@@ -17,8 +14,7 @@ import org.spongepowered.configurate.loader.ConfigurationLoader;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ChallengeController {
@@ -79,20 +75,15 @@ public class ChallengeController {
         LOGGER.info("Challenge stopped. Took {} ms", System.currentTimeMillis() - start);
     }
 
-    public void create() {
+    public void createNewChallenge(HumanEntity entity, Set<ChallengeModifier> modifiers) {
         if (challenge != null) {
             LOGGER.info("Could not create challenge. A challenge already exists.");
             return;
         }
 
-        Map<Class<? extends ChallengeModifier>, ChallengeModifier> modifiers = new HashMap<>();
-        modifiers.put(AllItemModifier.class, new AllItemModifier());
-        modifiers.put(StopOnDeathModifier.class, new StopOnDeathModifier());
-        modifiers.put(TimerModifier.class, new TimerModifier());
-        modifiers.put(EnderDragonFinishModifier.class, new EnderDragonFinishModifier());
-        modifiers.put(TrafficLightModifier.class, new TrafficLightModifier());
-        this.challenge = new Challenge("Test", System.currentTimeMillis(), modifiers);
+        this.challenge = new Challenge(entity.getName(), System.currentTimeMillis(), modifiers);
         LOGGER.info("Challenge created.");
+        entity.sendMessage(Option.Command.Challenge.SUCCESSFULLY_CREATED.get());
 
     }
 

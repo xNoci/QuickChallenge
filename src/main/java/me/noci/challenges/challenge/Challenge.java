@@ -11,9 +11,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
 
 public class Challenge {
@@ -24,7 +24,7 @@ public class Challenge {
     private final String createdBy;
     @Getter
     private final long createTimestamp;
-    private final Map<Class<? extends ChallengeModifier>, ChallengeModifier> modifiers;
+    private final Set<ChallengeModifier> modifiers;
     @Getter
     @Setter
     private boolean started = false;
@@ -34,9 +34,8 @@ public class Challenge {
 
     private Runnable configReloadListener;
 
-    public Challenge(String createdBy,
-                     long createTimestamp, Map<Class<? extends ChallengeModifier>, ChallengeModifier> modifiers) {
-        this.modifiers = new HashMap<>(modifiers);
+    public Challenge(String createdBy, long createTimestamp, Set<ChallengeModifier> modifiers) {
+        this.modifiers = new HashSet<>(modifiers);
         this.createdBy = createdBy;
         this.createTimestamp = createTimestamp;
 
@@ -70,7 +69,7 @@ public class Challenge {
         long start = System.currentTimeMillis();
         LOGGER.info("Initialising challenge modifiers..");
 
-        for (ChallengeModifier modifier : modifiers.values()) {
+        for (ChallengeModifier modifier : modifiers) {
             LOGGER.info("Initialising challenge modifier '{}'...", modifier.getName());
             modifier.onInitialise(LOGGER);
         }
@@ -82,7 +81,7 @@ public class Challenge {
         long start = System.currentTimeMillis();
         LOGGER.info("Stopping challenge modifiers..");
 
-        for (ChallengeModifier modifier : modifiers()) {
+        for (ChallengeModifier modifier : modifiers) {
             modifier.onStop(LOGGER);
             LOGGER.info("Stopped challenge modifier '{}'", modifier.getName());
         }
@@ -93,14 +92,17 @@ public class Challenge {
     public void tickModifiers() {
         Collection<? extends Player> players = Bukkit.getOnlinePlayers();
 
-        for (ChallengeModifier modifier : modifiers()) {
+        for (ChallengeModifier modifier : modifiers) {
             modifier.onTick(LOGGER, players);
         }
     }
 
     @SuppressWarnings("unchecked")
-    public <T extends ChallengeModifier> Optional<T> modifier(Class<T> modifier) {
-        return Optional.ofNullable((T) modifiers.get(modifier));
+    public <T extends ChallengeModifier> Optional<T> modifier(Class<T> modifierType) {
+        return modifiers.stream()
+                .filter(modifierType::isInstance)
+                .map(m -> (T) m)
+                .findFirst();
     }
 
     public <T extends ChallengeModifier, E> Optional<E> modifier(Class<T> modifier, Function<T, E> mapper) {
@@ -112,11 +114,11 @@ public class Challenge {
     }
 
     public <T extends ChallengeModifier> boolean hasModifier(Class<T> modifier) {
-        return modifiers.containsKey(modifier);
+        return modifier(modifier).isPresent();
     }
 
     public Collection<ChallengeModifier> modifiers() {
-        return modifiers.values();
+        return new HashSet<>(modifiers);
     }
 
 }

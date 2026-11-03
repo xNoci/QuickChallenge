@@ -89,6 +89,7 @@ command:
         not_created: "<red>Es wurde noch keine Challenge erstellt."
         successfully_deleted: "<green>Challenge wurde gelöscht."
         failed_deletion: "<red>Challenge konnte nicht gelöscht werden."
+        successfully_created: "<green>Du hast die Challenge erfolgreich erstellt."
 gui:
     next_page_item: "<gray>Nächste Seite <dark_gray><bold>▶"
     previous_page_item: "<dark_gray><bold>◀</bold> <gray>Vorherige Seite"
@@ -103,7 +104,7 @@ gui:
     challenge_create:
         title: "<color:#84789d>Challenge Create"
         add_modifier: "<green>Modifier hinzufügen"
-        create_modifier: "<color:#0acd9d>Erstellen"
+        create: "<color:#0acd9d>Erstellen"
         cancel: "<red>Abbrechen"
         modifier_remove_hint: "<gray>Linksklick zum Entfernen"
         remove_dialog:

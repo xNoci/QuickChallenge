@@ -23,6 +23,10 @@ public class ResourcePackStatusListener implements Listener {
             case SUCCESSFULLY_LOADED: {
                 Player player = event.getPlayer();
 
+                Bukkit.broadcast(MiniMessage.miniMessage().deserialize("<head:" + player.getUniqueId() + ":true>"));
+                Bukkit.broadcast(MiniMessage.miniMessage().deserialize("<sprite:blocks:block/stone>"));
+                Bukkit.broadcast(MiniMessage.miniMessage().deserialize("<sprite:minecraft:items:item/porkchop>"));
+
                 Bukkit.broadcast(Option.Settings.PLAYER_JOIN.resolve(
                         Placeholder.parsed("player_head", "<head:" + player.getUniqueId() + ":true>"),
                         Placeholder.component("player_name", player.name())
