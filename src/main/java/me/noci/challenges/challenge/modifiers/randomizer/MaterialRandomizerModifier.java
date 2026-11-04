@@ -13,7 +13,7 @@ public abstract class MaterialRandomizerModifier extends RandomizerModifier<Mate
 
     private static final Supplier<Map<Material, Material>> CACHE_SUPPLIER = () -> Maps.newEnumMap(Material.class);
     private static final Material[] MATERIALS = Arrays.stream(Material.values())
-            .filter(Predicate.not(Material::isLegacy)).toArray(Material[]::new);
+            .filter(Predicate.not(Material::isLegacy)).filter(Material::isItem).toArray(Material[]::new);
 
     public MaterialRandomizerModifier(String name) {
         super(name, CACHE_SUPPLIER);
@@ -21,7 +21,7 @@ public abstract class MaterialRandomizerModifier extends RandomizerModifier<Mate
 
 
     @Override
-    public Material randomize(Long seed, Material value, RandomProvider generator) {
+    protected Material randomize(Long seed, Material value, RandomProvider generator) {
         RandomGenerator randomGenerator = generator.create(seed + value.ordinal());
         return MATERIALS[randomGenerator.nextInt(MATERIALS.length)];
     }
