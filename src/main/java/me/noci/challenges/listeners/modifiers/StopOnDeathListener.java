@@ -1,4 +1,4 @@
-package me.noci.challenges.listeners;
+package me.noci.challenges.listeners.modifiers;
 
 import me.noci.challenges.challenge.Challenge;
 import me.noci.challenges.challenge.ChallengeController;

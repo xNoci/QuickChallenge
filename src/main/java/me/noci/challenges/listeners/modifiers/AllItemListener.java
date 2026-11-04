@@ -1,4 +1,4 @@
-package me.noci.challenges.listeners;
+package me.noci.challenges.listeners.modifiers;
 
 import io.papermc.paper.event.player.PlayerInventorySlotChangeEvent;
 import me.noci.challenges.challenge.Challenge;
