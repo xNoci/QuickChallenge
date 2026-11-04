@@ -9,6 +9,7 @@ import me.noci.quickutilities.utils.time.BukkitUnit;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.bossbar.BossBar;
 import net.kyori.adventure.bossbar.BossBarViewer;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -21,7 +22,12 @@ import java.util.function.Predicate;
 
 public class TrafficLightModifier extends ChallengeModifier {
 
-    private static TimeRange DEFAULT_RANGE = TimeRange.of(BukkitUnit.SECONDS, 10, 20);
+    private static final Logger LOGGER = LogManager.getLogger("Traffic Light");
+
+
+    public static final TimeRange DEFAULT_GREEN = TimeRange.of(BukkitUnit.SECONDS, 30, 180);
+    public static final TimeRange DEFAULT_YELLOW = TimeRange.of(BukkitUnit.TICKS, 30, 100);
+    public static final TimeRange DEFAULT_RED = TimeRange.of(BukkitUnit.SECONDS, 5, 15);
 
     private final HashMap<UUID, LastLocation> lastLocations = Maps.newHashMap();
     private final BossBar bossBar;
@@ -36,10 +42,6 @@ public class TrafficLightModifier extends ChallengeModifier {
     @Getter
     private long nextActionTimer;
 
-    public TrafficLightModifier() {
-        this(DEFAULT_RANGE, DEFAULT_RANGE, DEFAULT_RANGE, LightStatus.GREEN);
-    }
-
     public TrafficLightModifier(TimeRange greenDuration, TimeRange yellowDuration,
                                 TimeRange redDuration, LightStatus lightStatus) {
         super("Traffic Light");
@@ -52,15 +54,15 @@ public class TrafficLightModifier extends ChallengeModifier {
     }
 
     @Override
-    public void onInitialise(Logger logger) {
-        logger.info(
-                "Traffic Light is set to {}, next action in {} ticks; Green Duration: {}; Yellow Duration: {}, Red Duration: {}",
+    public void onInitialise() {
+        LOGGER.info(
+                "Light is set to {}, next action in {} ticks; Green Duration: {}; Yellow Duration: {}, Red Duration: {}",
                 lightStatus, nextActionTimer, greenDuration, yellowDuration, redDuration);
         lastLocations.clear();
     }
 
     @Override
-    public void onStop(Logger logger) {
+    public void onStop() {
         for (BossBarViewer viewer : bossBar.viewers()) {
             bossBar.removeViewer((Audience) viewer);
         }
@@ -69,7 +71,7 @@ public class TrafficLightModifier extends ChallengeModifier {
     }
 
     @Override
-    public void onTick(Logger logger, Collection<? extends Player> players) {
+    public void onTick(Collection<? extends Player> players) {
         players.forEach(bossBar::addViewer);
 
         Lists.newArrayList(bossBar.viewers()).stream()
@@ -86,24 +88,31 @@ public class TrafficLightModifier extends ChallengeModifier {
         }
 
         if (nextActionTimer <= 0) {
-            lightStatus = EnumUtils.next(lightStatus);
-
-            nextActionTimer = randomDuration();
-
-            bossBar.name(lightStatus.texture());
-
-            if (lightStatus == LightStatus.RED) {
-                players.forEach(this::checkMovement);
-            }
-
-            players.forEach(player -> player.playSound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 5, 2));
-            logger.info("Switched traffic light to {}, next phase {} in {} ticks", lightStatus,
-                    EnumUtils.next(lightStatus), nextActionTimer);
+            nextPhase(players);
         }
 
         if (!getChallenge().paused()) {
             nextActionTimer--;
         }
+    }
+
+    public void nextPhase(Collection<? extends Player> players) {
+        setPhase(EnumUtils.next(lightStatus), players);
+    }
+
+    public void setPhase(LightStatus status, Collection<? extends Player> players) {
+        lightStatus = status;
+        nextActionTimer = randomDuration();
+
+        bossBar.name(lightStatus.texture());
+
+        if (lightStatus == LightStatus.RED) {
+            players.forEach(this::checkMovement);
+        }
+
+        players.forEach(player -> player.playSound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 5, 2));
+        LOGGER.info("Switched traffic light to {}, next phase {} in {} ticks", lightStatus,
+                EnumUtils.next(lightStatus), nextActionTimer);
     }
 
     private long randomDuration() {

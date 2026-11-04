@@ -12,7 +12,6 @@ import net.kyori.adventure.bossbar.BossBar;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Formatter;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
-import org.apache.logging.log4j.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
@@ -52,12 +51,12 @@ public class AllItemModifier extends ChallengeModifier {
     }
 
     @Override
-    public void onInitialise(Logger logger) {
+    public void onInitialise() {
 
     }
 
     @Override
-    public void onStop(Logger logger) {
+    public void onStop() {
         Lists.newArrayList(bossBar.viewers()).stream()
                 .map(viewer -> (Player) viewer)
                 .forEach(bossBar::removeViewer);
@@ -67,7 +66,7 @@ public class AllItemModifier extends ChallengeModifier {
     }
 
     @Override
-    public void onTick(Logger logger, Collection<? extends Player> players) {
+    public void onTick(Collection<? extends Player> players) {
         players.forEach(bossBar::addViewer);
         Lists.newArrayList(bossBar.viewers()).stream()
                 .map(viewer -> (Player) viewer)
@@ -78,7 +77,7 @@ public class AllItemModifier extends ChallengeModifier {
     }
 
     @Override
-    public void onConfigReload(Logger logger) {
+    public void onConfigReload() {
         currentDisplay = null;
     }
 

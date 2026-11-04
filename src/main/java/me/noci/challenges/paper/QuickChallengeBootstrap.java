@@ -27,6 +27,11 @@ public class QuickChallengeBootstrap implements PluginBootstrap {
                     .register(CommandAllItems.createCommand(), "Command to control all items challenge");
             event.registrar().register(CommandChallenge.createCommand(), "Command to control the challenge");
             event.registrar().register(CommandTimer.createCommand(), "Command to control the timer");
+            event.registrar().register(
+                    CommandTrafficLight.createCommand(),
+                    "Command to control the traffic light",
+                    List.of("tl")
+            );
         });
     }
 

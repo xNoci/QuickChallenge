@@ -28,18 +28,17 @@ public class GuiTrafficLightModifier {
     private final Gui gui;
     private final ModifierApplier modifierApplier;
 
-    private BukkitUnit greenDurationUnit = BukkitUnit.SECONDS;
-    private int greenDurationMin = 90;
-    private int greenDurationMax = 300;
+    private BukkitUnit greenDurationUnit = TrafficLightModifier.DEFAULT_GREEN.unit();
+    private int greenDurationMin = TrafficLightModifier.DEFAULT_GREEN.minDelay();
+    private int greenDurationMax = TrafficLightModifier.DEFAULT_GREEN.maxDelay();
 
-    private BukkitUnit yellowDurationUnit = BukkitUnit.TICKS;
-    private int yellowDurationMin = 30;
-    private int yellowDurationMax = 100;
+    private BukkitUnit yellowDurationUnit = TrafficLightModifier.DEFAULT_YELLOW.unit();
+    private int yellowDurationMin = TrafficLightModifier.DEFAULT_YELLOW.minDelay();
+    private int yellowDurationMax = TrafficLightModifier.DEFAULT_YELLOW.maxDelay();
 
-    private BukkitUnit redDurationUnit = BukkitUnit.SECONDS;
-    private int redDurationMin = 5;
-    private int redDurationMax = 30;
-
+    private BukkitUnit redDurationUnit = TrafficLightModifier.DEFAULT_RED.unit();
+    private int redDurationMin = TrafficLightModifier.DEFAULT_RED.minDelay();
+    private int redDurationMax = TrafficLightModifier.DEFAULT_RED.maxDelay();
 
     public GuiTrafficLightModifier(HumanEntity entity, ModifierApplier modifierApplier) {
         this.gui = createGui();

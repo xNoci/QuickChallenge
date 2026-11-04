@@ -52,7 +52,7 @@ public class Challenge {
 
         configReloadListener = () -> {
             for (ChallengeModifier modifier : modifiers()) {
-                modifier.onConfigReload(LOGGER);
+                modifier.onConfigReload();
             }
         };
         config.registerListener(configReloadListener);
@@ -71,7 +71,7 @@ public class Challenge {
 
         for (ChallengeModifier modifier : modifiers) {
             LOGGER.info("Initialising challenge modifier '{}'...", modifier.getName());
-            modifier.onInitialise(LOGGER);
+            modifier.onInitialise();
         }
 
         LOGGER.info("Challenge modifiers initialised. Took {} ms", System.currentTimeMillis() - start);
@@ -82,7 +82,7 @@ public class Challenge {
         LOGGER.info("Stopping challenge modifiers..");
 
         for (ChallengeModifier modifier : modifiers) {
-            modifier.onStop(LOGGER);
+            modifier.onStop();
             LOGGER.info("Stopped challenge modifier '{}'", modifier.getName());
         }
 
@@ -93,7 +93,7 @@ public class Challenge {
         Collection<? extends Player> players = Bukkit.getOnlinePlayers();
 
         for (ChallengeModifier modifier : modifiers) {
-            modifier.onTick(LOGGER, players);
+            modifier.onTick(players);
         }
     }
 

@@ -2,7 +2,6 @@ package me.noci.challenges.challenge.modifiers;
 
 import me.noci.challenges.challenge.Challenge;
 import me.noci.quickutilities.utils.Require;
-import org.apache.logging.log4j.Logger;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -23,13 +22,13 @@ public abstract class ChallengeModifier {
         this.owner = challenge;
     }
 
-    public abstract void onInitialise(Logger logger);
+    public abstract void onInitialise();
 
-    public abstract void onStop(Logger logger);
+    public abstract void onStop();
 
-    public abstract void onTick(Logger logger, Collection<? extends Player> players);
+    public abstract void onTick(Collection<? extends Player> players);
 
-    public void onConfigReload(Logger logger) {
+    public void onConfigReload() {
     }
 
     public final String getName() {

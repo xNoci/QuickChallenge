@@ -116,6 +116,12 @@ public interface Option<T> {
             Option<Component> HELP = component("command.all_items.help");
         }
 
+        interface TrafficLight {
+            Option<Component> NOT_ENABLED = component("command.traffic_light.not_enabled");
+            Option<Component> INFO = component("command.traffic_light.info");
+            Option<Component> NEW_PHASE = component("command.traffic_light.new_phase");
+        }
+
         interface Timer {
             Option<Component> ALREADY_STARTED = component("command.timer.already_started");
             Option<Component> NOT_RUNNING = component("command.timer.not_running");

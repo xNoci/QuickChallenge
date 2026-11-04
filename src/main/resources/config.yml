@@ -75,6 +75,15 @@ command:
     all_items:
         not_enabled: "<red>Deine aktuelle Challenge besitzt kein AllItems Modifier."
         help: "<red>Benutze: /allitems [skip/reset]"
+    traffic_light:
+        not_enabled: "<red>Deine aktuelle Challenge besitzt kein TrafficLight Modifier."
+        # Extra tags:
+        #   <phase> - Current phase
+        #   <time> - Time until next phase
+        info: "<green>Die aktuelle Phase ist <gold><phase><green>. Die nächste Phase beginnt in <gold><time><green>."
+        # Extra tags:
+        #   <phase> - Current phase
+        new_phase: "<green>Die neue Phase ist nun <gold><phase><green>."
     timer:
         already_started: "<red>Die Challenge ist bereits gestartet."
         not_running: "<red>Die Challenge ist noch nicht gestartet."

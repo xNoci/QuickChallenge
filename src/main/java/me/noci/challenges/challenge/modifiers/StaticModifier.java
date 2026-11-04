@@ -1,6 +1,5 @@
 package me.noci.challenges.challenge.modifiers;
 
-import org.apache.logging.log4j.Logger;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,17 +11,17 @@ public class StaticModifier extends ChallengeModifier {
     }
 
     @Override
-    public void onInitialise(Logger logger) {
+    public void onInitialise() {
 
     }
 
     @Override
-    public void onStop(Logger logger) {
+    public void onStop() {
 
     }
 
     @Override
-    public void onTick(Logger logger, Collection<? extends Player> players) {
+    public void onTick(Collection<? extends Player> players) {
 
     }
 }
