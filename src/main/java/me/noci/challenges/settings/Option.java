@@ -216,6 +216,8 @@ public interface Option<T> {
         Option<Component> TIMER = component("modifiers.timer");
         Option<Component> ALL_ITEM = component("modifiers.all_item");
         Option<Component> TRAFFIC_LIGHT = component("modifiers.traffic_light");
+        Option<Component> BLOCK_RANDOMIZER = component("modifiers.block_randomizer");
+        Option<Component> MOB_DROP_RANDOMIZER = component("modifiers.mob_drop_randomizer");
     }
 
 }

@@ -2,6 +2,7 @@ package me.noci.challenges.serializer;
 
 import me.noci.challenges.challenge.modifiers.StopOnDeathModifier;
 import me.noci.challenges.challenge.modifiers.timer.TimerModifier;
+import me.noci.challenges.serializer.utils.Node;
 import org.jspecify.annotations.Nullable;
 import org.spongepowered.configurate.ConfigurationNode;
 import org.spongepowered.configurate.serialize.SerializationException;
@@ -22,7 +23,7 @@ public final class TimerSerializer implements TypeSerializer<TimerModifier> {
 
     @Override
     public TimerModifier deserialize(Type type, ConfigurationNode node) throws SerializationException {
-        long timePlayed = node.node(TIME_PLAYED).getLong(0);
+        long timePlayed = Node.nonVirtual(node, TIME_PLAYED).getLong(0);
         return new TimerModifier(timePlayed);
     }
 

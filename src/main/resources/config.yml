@@ -193,3 +193,5 @@ modifiers:
     timer: "<dark_aqua>Timer"
     all_item: "<dark_purple>All Item"
     traffic_light: "<green>Traffic Light"
+    block_randomizer: "<blue>Block Randomizer"
+    mob_drop_randomizer: "<light_purple>Mob Drop Randomizer"

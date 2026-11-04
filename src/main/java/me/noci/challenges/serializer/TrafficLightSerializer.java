@@ -4,6 +4,7 @@ import me.noci.challenges.challenge.modifiers.timer.TimerModifier;
 import me.noci.challenges.challenge.modifiers.trafficlight.LightStatus;
 import me.noci.challenges.challenge.modifiers.trafficlight.TimeRange;
 import me.noci.challenges.challenge.modifiers.trafficlight.TrafficLightModifier;
+import me.noci.challenges.serializer.utils.Node;
 import org.jspecify.annotations.Nullable;
 import org.spongepowered.configurate.ConfigurationNode;
 import org.spongepowered.configurate.serialize.SerializationException;
@@ -27,10 +28,10 @@ public final class TrafficLightSerializer implements TypeSerializer<TrafficLight
 
     @Override
     public TrafficLightModifier deserialize(Type type, ConfigurationNode node) throws SerializationException {
-        TimeRange greenDuration = node.node(GREEN_DURATION).get(TimeRange.class);
-        TimeRange yellowDuration = node.node(YELLOW_DURATION).get(TimeRange.class);
-        TimeRange redDuration = node.node(RED_DURATION).get(TimeRange.class);
-        LightStatus lightStatus = node.node(LIGHT_STATUS).get(LightStatus.class);
+        TimeRange greenDuration = Node.nonVirtual(node, GREEN_DURATION).get(TimeRange.class);
+        TimeRange yellowDuration = Node.nonVirtual(node, YELLOW_DURATION).get(TimeRange.class);
+        TimeRange redDuration = Node.nonVirtual(node, RED_DURATION).get(TimeRange.class);
+        LightStatus lightStatus = Node.nonVirtual(node, LIGHT_STATUS).get(LightStatus.class);
         return new TrafficLightModifier(greenDuration, yellowDuration, redDuration, lightStatus);
     }
 

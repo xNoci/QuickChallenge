@@ -19,6 +19,7 @@ public class ChallengeLoader {
                 .registerExact(StopOnDeathSerializer.TYPE, StopOnDeathSerializer.INSTANCE)
                 .registerExact(TrafficLightSerializer.TYPE, TrafficLightSerializer.INSTANCE)
                 .registerExact(TimerSerializer.TYPE, TimerSerializer.INSTANCE)
+                .register(RandomizerSerializer.TYPE, RandomizerSerializer.INSTANCE)
                 .build();
     }
 

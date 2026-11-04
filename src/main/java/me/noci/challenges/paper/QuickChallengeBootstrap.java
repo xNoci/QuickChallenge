@@ -8,10 +8,11 @@ import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.command.CommandAllItems;
 import me.noci.challenges.command.CommandChallenge;
 import me.noci.challenges.command.CommandTimer;
-import me.noci.challenges.gui.GuiChallengeCreate;
+import me.noci.challenges.command.CommandTrafficLight;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.nio.file.Path;
+import java.util.List;
 
 public class QuickChallengeBootstrap implements PluginBootstrap {
 

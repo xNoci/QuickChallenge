@@ -3,6 +3,7 @@ package me.noci.challenges.paper;
 import lombok.Getter;
 import me.noci.challenges.challenge.ChallengeController;
 import me.noci.challenges.listeners.*;
+import me.noci.challenges.listeners.modifiers.*;
 import me.noci.challenges.settings.Config;
 import me.noci.challenges.settings.Option;
 import net.kyori.adventure.text.Component;
@@ -53,6 +54,8 @@ public class QuickChallenge extends JavaPlugin {
         register.accept(new AllItemListener(challengeController));
         register.accept(new EnderDragonFinishListener(challengeController));
         register.accept(new StopOnDeathListener(challengeController));
+        register.accept(new BlockRandomizeListener(challengeController));
+        register.accept(new MobDropRandomizeListener(challengeController));
 
         // Others
         register.accept(new PlayerJoinListener());
