@@ -14,6 +14,7 @@ public class RandomizerRegistry {
     static {
         REGISTRY.put(ModifierRegistry.BLOCK_RANDOMIZER, BlockRandomizerModifier::new);
         REGISTRY.put(ModifierRegistry.MOB_DROP_RANDOMIZER, MobDropRandomizerModifier::new);
+        REGISTRY.put(ModifierRegistry.LOOT_TABLE_RANDOMIZER, LootTableRandomizerModifier::new);
     }
 
     public static RandomizerModifier<?, ?> createRandomizer(Key key) {

@@ -6,6 +6,7 @@ import me.noci.challenges.challenge.modifiers.EnderDragonFinishModifier;
 import me.noci.challenges.challenge.modifiers.StopOnDeathModifier;
 import me.noci.challenges.challenge.modifiers.allitem.AllItemModifier;
 import me.noci.challenges.challenge.modifiers.randomizer.BlockRandomizerModifier;
+import me.noci.challenges.challenge.modifiers.randomizer.LootTableRandomizerModifier;
 import me.noci.challenges.challenge.modifiers.randomizer.MobDropRandomizerModifier;
 import me.noci.challenges.challenge.modifiers.timer.TimerModifier;
 import me.noci.challenges.challenge.modifiers.trafficlight.TrafficLightModifier;
@@ -38,6 +39,7 @@ public class ModifierRegistry {
     public static final Key TRAFFIC_LIGHT = Key.key(NAMESPACE, "traffic-light");
     public static final Key BLOCK_RANDOMIZER = Key.key(NAMESPACE, "block-randomizer");
     public static final Key MOB_DROP_RANDOMIZER = Key.key(NAMESPACE, "mob-drpp-randomizer");
+    public static final Key LOOT_TABLE_RANDOMIZER = Key.key(NAMESPACE, "loot-randomizer");
 
     static {
         registerBasic(STOP_ON_DEATH, StopOnDeathModifier.class, StopOnDeathModifier::new,
@@ -52,6 +54,8 @@ public class ModifierRegistry {
                 () -> ItemBuilder.of(Material.DROPPER, Option.Modifiers.BLOCK_RANDOMIZER.get()));
         registerBasic(MOB_DROP_RANDOMIZER, MobDropRandomizerModifier.class, MobDropRandomizerModifier::new,
                 () -> ItemBuilder.of(Material.ROTTEN_FLESH, Option.Modifiers.MOB_DROP_RANDOMIZER.get()));
+        registerBasic(LOOT_TABLE_RANDOMIZER, LootTableRandomizerModifier.class, LootTableRandomizerModifier::new,
+                () -> ItemBuilder.of(Material.BURIED_TREASURE_MAP, Option.Modifiers.LOOT_RANDOMIZER.get()));
         register(TRAFFIC_LIGHT, TrafficLightModifier.class, GuiTrafficLightModifier::new,
                 () -> ItemBuilder.of(Material.GREEN_WOOL, Option.Modifiers.TRAFFIC_LIGHT.get()));
     }

@@ -56,6 +56,7 @@ public class QuickChallenge extends JavaPlugin {
         register.accept(new StopOnDeathListener(challengeController));
         register.accept(new BlockRandomizeListener(challengeController));
         register.accept(new MobDropRandomizeListener(challengeController));
+        register.accept(new LootRandomizeListener(challengeController));
 
         // Others
         register.accept(new PlayerJoinListener());

@@ -2,10 +2,8 @@ package me.noci.challenges.challenge.modifiers.randomizer;
 
 import com.google.common.collect.Maps;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
-import me.noci.challenges.challenge.modifiers.registry.ModifierRegistry;
 import me.noci.challenges.team.Team;
 import me.noci.quickutilities.utils.RandomUtils;
-import net.kyori.adventure.key.Key;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -38,7 +36,7 @@ public abstract class RandomizerModifier<T, U> extends ChallengeModifier {
     }
 
 
-    public abstract U randomize(Long seed, T value, RandomProvider generator);
+    protected abstract U randomize(Long seed, T value, RandomProvider generator);
 
     public U randomize(Team team, T value) {
         UUID uuid = globalRandomizer ? STATIC_UUID : team.uuid();
