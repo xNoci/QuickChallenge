@@ -2,6 +2,7 @@ package me.noci.challenges.challenge.modifiers.allitem;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import me.noci.challenges.challenge.modifiers.allitem.custommatcher.AbandonedCampMapMatcher;
 import me.noci.challenges.challenge.modifiers.allitem.custommatcher.ItemMatcher;
 import me.noci.challenges.challenge.modifiers.allitem.custommatcher.OminousBannerMatcher;
 import me.noci.challenges.challenge.modifiers.allitem.custommatcher.PotionMatcher;
@@ -40,6 +41,8 @@ public class AllItemRegistry {
                 matcher = new OminousBannerMatcher();
             } else if (config.potion().isPresent()) {
                 matcher = new PotionMatcher(config.material().orElse(Material.POTION), config.potion().get());
+            } else if (config.abandonedCamp().isPresent()) {
+                matcher = new AbandonedCampMapMatcher(config.abandonedCamp().get());
             } else {
                 matcher = new ItemMatcher(
                         config.material().orElseThrow(() -> new IllegalStateException("Material is missing.")));

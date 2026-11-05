@@ -39,12 +39,19 @@ public class ItemConfig {
     @Setting("ominous_banner")
     private boolean ominousBanner;
 
+    @Setting("abandoned_camp")
+    private String abandonedCamp;
+
     public Optional<Material> material() {
         return Optional.ofNullable(material);
     }
 
     public Optional<PotionType> potion() {
         return Optional.ofNullable(potion);
+    }
+
+    public Optional<String> abandonedCamp() {
+        return Optional.ofNullable(abandonedCamp);
     }
 
     @SuppressWarnings("unchecked")

@@ -104,6 +104,8 @@ public class AllItemFileParser {
 
             if (data.ominousBanner) {
                 builder.append(" ominous_banner: true").append(System.lineSeparator());
+            } else if (data.abandonedCampMap != null) {
+                builder.append(" abandoned_camp: ").append(data.abandonedCampMap).append(System.lineSeparator());
             } else if (data.potionType != null) {
                 if (!data.bukkitMaterialName.equals("POTION")) {
                     builder.append(" material: ").append(data.bukkitMaterialName).append(System.lineSeparator());
