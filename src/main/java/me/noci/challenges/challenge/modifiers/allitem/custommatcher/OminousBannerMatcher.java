@@ -36,7 +36,7 @@ public class OminousBannerMatcher extends ItemMatcher {
         if (!super.matches(itemStack)) return false;
         ItemMeta itemMeta = itemStack.getItemMeta();
         if (itemMeta == null) return false;
-        if (!(itemMeta.displayName() instanceof TranslatableComponent component)) return false;
+        if (!(itemMeta.itemName() instanceof TranslatableComponent component)) return false;
         return component.key().equals(translationKey());
     }
 
