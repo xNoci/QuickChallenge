@@ -42,13 +42,7 @@ public final class RandomizerSerializer implements TypeSerializer<RandomizerModi
             seeds = Maps.newHashMap();
         }
 
-        String keyValue = Node.nonVirtual(source, RANDOMIZER_TYPE).getString();
-        if (keyValue == null) {
-            throw new SerializationException("Randomizer type is null");
-        }
-
-        Key key = Key.key(keyValue, ':');
-
+        Key key = Node.nonVirtual(source, RANDOMIZER_TYPE).get(Key.class);
         RandomizerModifier<?, ?> modifier = RandomizerRegistry.createRandomizer(key);
         if (modifier == null) {
             throw new SerializationException("Unknown randomizer type: " + key);
@@ -67,7 +61,7 @@ public final class RandomizerSerializer implements TypeSerializer<RandomizerModi
         }
 
         Key key = ModifierRegistry.fromType(obj.getClass()).key();
-        target.node(RANDOMIZER_TYPE).set(key.asString());
+        target.node(RANDOMIZER_TYPE).set(Key.class, key);
         target.node(SEEDS).set(SEED_MAP_TYPE, obj.seeds());
     }
 

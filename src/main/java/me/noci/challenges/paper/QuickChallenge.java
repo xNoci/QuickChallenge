@@ -2,6 +2,7 @@ package me.noci.challenges.paper;
 
 import lombok.Getter;
 import me.noci.challenges.challenge.ChallengeController;
+import me.noci.challenges.challenge.modifiers.allitem.AllItemRegistry;
 import me.noci.challenges.listeners.*;
 import me.noci.challenges.listeners.modifiers.*;
 import me.noci.challenges.settings.Config;
@@ -11,6 +12,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.nio.file.Path;
 import java.util.function.Consumer;
 
 public class QuickChallenge extends JavaPlugin {
@@ -30,6 +32,9 @@ public class QuickChallenge extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        Path allItemsFile = getDataPath().resolve("all_items.yml");
+        AllItemRegistry.loadItems(allItemsFile);
+
         this.config = Config.create(this, "config.yml", false, true);
         this.challengeController.tryLoadChallenge();
 

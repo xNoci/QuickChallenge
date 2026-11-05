@@ -19,7 +19,8 @@ dependencies {
     paperweight.paperDevBundle(libs.versions.paper)
 
     implementation(libs.xseries) { isTransitive = false }
-    compileOnly(libs.kyori.adventure)
+    implementation(libs.kyori.adventure.serializer)
+    compileOnly(libs.kyori.adventure.api)
 
     compileOnly(files("libs/QuickUtils.jar"))
     compileOnly(libs.lombok)

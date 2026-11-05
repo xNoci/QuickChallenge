@@ -1,10 +1,10 @@
 package me.noci.challenges.serializer;
 
-import me.noci.challenges.challenge.modifiers.allitem.AllItem;
 import me.noci.challenges.challenge.modifiers.allitem.AllItemModifier;
+import me.noci.challenges.challenge.modifiers.allitem.AllItemRegistry;
 import me.noci.challenges.challenge.modifiers.allitem.CollectedItem;
 import me.noci.challenges.serializer.utils.Node;
-import me.noci.quickutilities.utils.EnumUtils;
+import net.kyori.adventure.key.Key;
 import org.jspecify.annotations.Nullable;
 import org.spongepowered.configurate.ConfigurationNode;
 import org.spongepowered.configurate.serialize.SerializationException;
@@ -29,9 +29,9 @@ public final class AllItemSerializer implements TypeSerializer<AllItemModifier> 
     @Override
     public AllItemModifier deserialize(Type type, ConfigurationNode node) throws SerializationException {
         List<CollectedItem> collectedItems = Node.nonVirtual(node, COLLECTED_ITEMS).getList(CollectedItem.class);
-        AllItem currentItem = Node.nonVirtual(node, CURRENT_ITEM).get(AllItem.class, EnumUtils.random(AllItem.class));
+        Key currentItemKey = Node.nonVirtual(node, CURRENT_ITEM).get(Key.class);
         boolean allCollected = Node.nonVirtual(node, ALL_COLLECTED).getBoolean(false);
-        return new AllItemModifier(collectedItems, currentItem, allCollected);
+        return new AllItemModifier(collectedItems, AllItemRegistry.fromKey(currentItemKey), allCollected);
     }
 
     @Override
@@ -43,7 +43,7 @@ public final class AllItemSerializer implements TypeSerializer<AllItemModifier> 
         }
 
         target.node(COLLECTED_ITEMS).setList(CollectedItem.class, obj.collectedItems());
-        target.node(CURRENT_ITEM).set(obj.currentItem());
+        target.node(CURRENT_ITEM).set(Key.class, obj.currentItem().key());
         target.node(ALL_COLLECTED).set(obj.allItemsCollected());
 
     }

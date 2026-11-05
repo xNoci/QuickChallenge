@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import me.noci.challenges.challenge.modifiers.allitem.AllItem;
 import me.noci.challenges.challenge.modifiers.allitem.AllItemModifier;
+import me.noci.challenges.challenge.modifiers.allitem.AllItemRegistry;
 import me.noci.challenges.challenge.modifiers.allitem.CollectedItem;
 import me.noci.challenges.settings.Option;
 import me.noci.quickutilities.gui.Gui;
@@ -33,7 +34,7 @@ public class GuiAllItemOverview {
     public static void openGui(Player player, AllItemModifier modifier) {
         Component title = Option.Gui.AllItems.TITLE.resolve(
                 Formatter.number("items_collected", modifier.collectedItems().size()),
-                Formatter.number("total_items", AllItem.values().length)
+                Formatter.number("total_items", AllItemRegistry.totalItemCount())
         );
 
         PagedGui gui = Gui.paged()
@@ -89,10 +90,10 @@ public class GuiAllItemOverview {
     }
 
     private static GuiItem toGuiItem(CollectedItem collectedItem) {
-        AllItem allItem = collectedItem.item();
-        ItemBuilder item = ItemBuilder.of(allItem.material())
+        AllItem allItem = AllItemRegistry.fromKey(collectedItem.itemKey());
+        ItemBuilder item = allItem.asItemBuilder()
                 .displayName(
-                        Option.Gui.AllItems.ITEM_NAME.resolve(Placeholder.component("item_name", allItem.itemName())))
+                        Option.Gui.AllItems.ITEM_NAME.resolve(Placeholder.component("item_name", allItem.name())))
                 .itemFlags();
 
         LocalDateTime timestamp =

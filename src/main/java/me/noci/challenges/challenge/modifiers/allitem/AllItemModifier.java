@@ -1,14 +1,13 @@
 package me.noci.challenges.challenge.modifiers.allitem;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import lombok.Getter;
 import me.noci.challenges.RandomHolder;
 import me.noci.challenges.challenge.modifiers.ChallengeModifier;
 import me.noci.challenges.challenge.modifiers.timer.TimerModifier;
 import me.noci.challenges.settings.Option;
-import me.noci.quickutilities.utils.EnumUtils;
 import net.kyori.adventure.bossbar.BossBar;
+import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Formatter;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -22,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class AllItemModifier extends ChallengeModifier {
@@ -39,7 +39,7 @@ public class AllItemModifier extends ChallengeModifier {
     private Component currentDisplay;
 
     public AllItemModifier() {
-        this(Lists.newArrayList(), EnumUtils.random(AllItem.class), false);
+        this(Lists.newArrayList(), AllItemRegistry.random(), false);
     }
 
     public AllItemModifier(List<CollectedItem> items, @NotNull AllItem current, boolean allCollected) {
@@ -52,7 +52,6 @@ public class AllItemModifier extends ChallengeModifier {
 
     @Override
     public void onInitialise() {
-
     }
 
     @Override
@@ -84,7 +83,7 @@ public class AllItemModifier extends ChallengeModifier {
     public void collectCurrentItem(CommandSender collector) {
         if (allItemsCollected) return;
         long ticksPlayed = getChallenge().modifier(TimerModifier.class, TimerModifier::ticksPlayed, -1L);
-        collectedItems.add(CollectedItem.now(currentItem, collector.getName(), ticksPlayed, false));
+        collectedItems.add(CollectedItem.now(currentItem.key(), collector.getName(), ticksPlayed, false));
         notifyItemsCollected(collector, currentItem, false);
         nextItem();
     }
@@ -92,7 +91,7 @@ public class AllItemModifier extends ChallengeModifier {
     public void skipCurrentItem(CommandSender collector) {
         if (allItemsCollected) return;
         long ticksPlayed = getChallenge().modifier(TimerModifier.class, TimerModifier::ticksPlayed, -1L);
-        collectedItems.add(CollectedItem.now(currentItem, collector.getName(), ticksPlayed, true));
+        collectedItems.add(CollectedItem.now(currentItem.key(), collector.getName(), ticksPlayed, true));
         notifyItemsCollected(collector, currentItem, true);
         nextItem();
     }
@@ -112,16 +111,15 @@ public class AllItemModifier extends ChallengeModifier {
     public void reset() {
         this.collectedItems.clear();
         this.allItemsCollected = false;
-        currentItem = EnumUtils.random(AllItem.class);
+        currentItem = AllItemRegistry.random();
         currentDisplay = null;
     }
 
     private List<AllItem> remainingItems() {
-        EnumSet<AllItem> alreadyCollected = Sets.newEnumSet(collectedItems.stream().map(CollectedItem::item).toList(),
-                AllItem.class);
+        Set<Key> collectedItemKeys = collectedItems.stream().map(CollectedItem::itemKey).collect(Collectors.toSet());
 
-        return EnumUtils.asStream(AllItem.class)
-                .filter(Predicate.not(alreadyCollected::contains))
+        return AllItemRegistry.all().stream()
+                .filter(item -> !collectedItemKeys.contains(item.key()))
                 .toList();
     }
 
@@ -129,14 +127,14 @@ public class AllItemModifier extends ChallengeModifier {
         if (currentDisplay != null) return currentDisplay;
 
         int collectedItemCount = collectedItems.size();
-        int itemsToCollectCount = AllItem.values().length;
+        int itemsToCollectCount = AllItemRegistry.totalItemCount();
 
         Option<Component> component =
                 allItemsCollected ? Option.AllItems.BossBar.COMPLETE : Option.AllItems.BossBar.NEXT_ITEM;
 
         currentDisplay = component.resolve(
                 Placeholder.component("item_icon", currentItem.icon()),
-                Placeholder.component("item_name", currentItem.itemName()),
+                Placeholder.component("item_name", currentItem.name()),
                 Formatter.number("items_collected", collectedItemCount),
                 Formatter.number("total_items", itemsToCollectCount),
                 Formatter.number("progress", (float) collectedItemCount / itemsToCollectCount * 100)
@@ -174,12 +172,12 @@ public class AllItemModifier extends ChallengeModifier {
         Bukkit.broadcast(component.resolve(
                 Placeholder.parsed("player_head", "<head:" + senderUUId + ":true>"),
                 Placeholder.component("player", collector.name()),
-                Placeholder.component("item_name", item.itemName())
+                Placeholder.component("item_name", item.name())
         ));
     }
 
     private static void broadcastNextItem(AllItem item) {
-        var component = Option.AllItems.Chat.NEXT_ITEM.resolve(Placeholder.component("item_name", item.itemName()));
+        var component = Option.AllItems.Chat.NEXT_ITEM.resolve(Placeholder.component("item_name", item.name()));
         Bukkit.broadcast(component);
     }
 

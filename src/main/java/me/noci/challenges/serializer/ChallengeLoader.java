@@ -1,5 +1,6 @@
 package me.noci.challenges.serializer;
 
+import net.kyori.adventure.serializer.configurate4.ConfigurateComponentSerializer;
 import org.spongepowered.configurate.loader.ConfigurationLoader;
 import org.spongepowered.configurate.serialize.TypeSerializerCollection;
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
@@ -20,6 +21,7 @@ public class ChallengeLoader {
                 .registerExact(TrafficLightSerializer.TYPE, TrafficLightSerializer.INSTANCE)
                 .registerExact(TimerSerializer.TYPE, TimerSerializer.INSTANCE)
                 .register(RandomizerSerializer.TYPE, RandomizerSerializer.INSTANCE)
+                .registerAll(ConfigurateComponentSerializer.configurate().serializers())
                 .build();
     }
 

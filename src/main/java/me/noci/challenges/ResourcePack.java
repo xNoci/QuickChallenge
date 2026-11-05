@@ -1,15 +1,12 @@
 package me.noci.challenges;
 
 import com.google.common.io.BaseEncoding;
-import me.noci.challenges.challenge.modifiers.allitem.AllItem;
 import me.noci.challenges.settings.Option;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.key.KeyPattern;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.Range;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
@@ -35,10 +32,8 @@ public final class ResourcePack {
     public static class AllItems {
         private static final String FONT_NAME = "all_items";
 
-        public static Component itemIcon(AllItem item) {
-            int value = 0xE001;
-            value += item.ordinal();
-            return value((char) value, FONT_NAME);
+        public static Component itemIcon(char fontChar) {
+            return value(fontChar, FONT_NAME);
         }
 
     }

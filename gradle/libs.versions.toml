@@ -13,4 +13,5 @@ paperweight = { id = "io.papermc.paperweight.userdev", version.ref = "paperweigh
 [libraries]
 xseries = { module = "com.github.cryptomorin:XSeries", version.ref = "xseries" }
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
-kyori-adventure = { module = "net.kyori:adventure-api", version.ref = "kyori-adventure" }
+kyori-adventure-api = { module = "net.kyori:adventure-api", version.ref = "kyori-adventure" }
+kyori-adventure-serializer = { module = "net.kyori:adventure-serializer-configurate4", version.ref = "kyori-adventure" }
