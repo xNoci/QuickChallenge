@@ -112,20 +112,20 @@ public class GuiTrafficLightModifier {
         Component highIncrease = Option.Gui.TrafficLightModifier.HIGH_INCREASE.get();
 
         GuiItem minItem = ItemBuilder.of(Material.CHERRY_BUTTON)
-                .displayName(
+                .itemName(
                         Option.Gui.TrafficLightModifier.MIN_PHASE_VALUE.resolve(Placeholder.component("phase", phase))
                 )
                 .lore(currentValueLore(lowDecrease, highDecrease, lowIncrease, highIncrease, min.get()))
                 .asGuiItem(event -> updateValue(event, min));
 
         GuiItem unitItem = ItemBuilder.of(Material.GLOW_ITEM_FRAME)
-                .displayName(
+                .itemName(
                         Option.Gui.TrafficLightModifier.PHASE_TIME_UNIT.resolve(Placeholder.component("phase", phase)))
                 .lore(unitLore(unit.get()))
                 .asGuiItem(event -> updateUnit(event, unit));
 
         GuiItem maxItem = ItemBuilder.of(Material.CHERRY_BUTTON)
-                .displayName(
+                .itemName(
                         Option.Gui.TrafficLightModifier.MAX_PHASE_VALUE.resolve(Placeholder.component("phase", phase))
                 )
                 .lore(currentValueLore(lowDecrease, highDecrease, lowIncrease, highIncrease, max.get()))

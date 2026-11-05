@@ -92,7 +92,7 @@ public class GuiAllItemOverview {
     private static GuiItem toGuiItem(CollectedItem collectedItem) {
         AllItem allItem = AllItemRegistry.fromKey(collectedItem.itemKey());
         ItemBuilder item = allItem.asItemBuilder()
-                .displayName(
+                .itemName(
                         Option.Gui.AllItems.ITEM_NAME.resolve(Placeholder.component("item_name", allItem.name())))
                 .itemFlags();
 

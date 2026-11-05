@@ -43,7 +43,7 @@ public class ModifierRegistry {
 
     static {
         registerBasic(STOP_ON_DEATH, StopOnDeathModifier.class, StopOnDeathModifier::new,
-                () -> InventoryConstants.woodPauseSkull().displayName(Option.Modifiers.STOP_ON_DEATH.get()));
+                () -> InventoryConstants.woodPauseSkull().itemName(Option.Modifiers.STOP_ON_DEATH.get()));
         registerBasic(ENDER_DRAGON_FINISH, EnderDragonFinishModifier.class, EnderDragonFinishModifier::new,
                 () -> ItemBuilder.of(Material.DRAGON_HEAD, Option.Modifiers.ENDER_DRAGON_FINISH.get()));
         registerBasic(TIMER, TimerModifier.class, TimerModifier::new,
