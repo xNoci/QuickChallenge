@@ -18,23 +18,28 @@ import java.util.logging.Logger;
 public class AllItemFileParser {
 
     private static final Logger logger = Logger.getLogger("AllItemsFormatter");
+    private static final int START_CHAR = 0xE001;
 
     //All-Items spreadsheet https://docs.google.com/spreadsheets/d/1KOeIRDNQ3wyDcof5HucwPX1ITayj7Go6SdOafVQRyvk/edit?usp=sharing
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         AllItemFileParser parser = new AllItemFileParser();
         List<ItemData> itemData = parser.readFile("/all_items.csv");
 
         String enumConstants = parser.generateEnumConstants(itemData);
-        parser.writeToFile("allItem_gen/enumConstants.text", enumConstants);
+        parser.writeToFile("allItem_gen/all_items.yml", enumConstants);
 
         String fontFile = parser.generateFontFile(itemData);
-        parser.writeToFile("allItem_gen/all_items.json", fontFile);
+        parser.writeToFile("allItem_gen/all_items_font.json", fontFile);
     }
 
     private static String stringOrNull(String string) {
         if (string == null || string.isBlank()) return null;
         return string;
+    }
+
+    private static boolean stringToBoolean(String string) {
+        return string.equalsIgnoreCase("true");
     }
 
     @SneakyThrows
@@ -49,11 +54,10 @@ public class AllItemFileParser {
         StringBuilder builder = new StringBuilder();
 
         var iterator = itemDataList.iterator();
-        final int charUnicode = 0xE001;
 
         while (iterator.hasNext()) {
             ItemData data = iterator.next();
-            String hexValue = Integer.toHexString(charUnicode + itemDataList.indexOf(data)).toUpperCase();
+            String hexValue = Integer.toHexString(data.fontChar).toUpperCase();
             builder.append("""
                     {
                           "type":"bitmap",
@@ -95,29 +99,19 @@ public class AllItemFileParser {
 
         while (iterator.hasNext()) {
             ItemData data = iterator.next();
+            builder.append(data.key).append(":").append(System.lineSeparator());
+            builder.append(" icon: '").append(data.fontChar).append("'").append(System.lineSeparator());
 
-            builder.append(data.enumName())
-                    .append("(\"")
-                    .append(data.displayName())
-                    .append("\", Material.")
-                    .append(data.bukkitMaterialName());
-
-            if (data.potionType() != null) {
-                builder.append(", CustomMatcher.potion(PotionType.");
-                builder.append(data.potionType());
-                builder.append(")");
-            } else if (data.translationKey() != null) {
-                builder.append(", CustomMatcher.translation(\"");
-                builder.append(data.translationKey());
-                builder.append("\")");
+            if (data.ominousBanner) {
+                builder.append(" ominous_banner: true").append(System.lineSeparator());
+            } else if (data.potionType != null) {
+                if (!data.bukkitMaterialName.equals("POTION")) {
+                    builder.append(" material: ").append(data.bukkitMaterialName).append(System.lineSeparator());
+                }
+                builder.append(" potion: ").append(data.potionType).append(System.lineSeparator());
+            } else {
+                builder.append(" material: ").append(data.bukkitMaterialName).append(System.lineSeparator());
             }
-
-            builder.append(")");
-
-
-            builder.append(iterator.hasNext() ? "," : ";");
-            builder.append(System.lineSeparator());
-
         }
 
         return builder.toString();
@@ -132,6 +126,7 @@ public class AllItemFileParser {
         }
 
         List<ItemData> data = new ArrayList<>();
+        int fontChar = START_CHAR;
         try (BufferedReader input = new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8))) {
 
             //Skip header
@@ -141,9 +136,10 @@ public class AllItemFileParser {
 
             while (input.ready()) {
                 String line = input.readLine();
-                String[] values = line.split(",", 6);
+                String[] values = line.split(",", 7);
 
-                data.add(new ItemData(values[0], values[1], values[2], values[3], stringOrNull(values[4]), stringOrNull(values[5])));
+                data.add(new ItemData(values[0], values[2], values[3], stringOrNull(values[4]),
+                        stringToBoolean(values[5]), stringOrNull(values[6]), (char) (fontChar++)));
             }
 
             return Collections.unmodifiableList(data);
@@ -153,8 +149,9 @@ public class AllItemFileParser {
         }
     }
 
-    private record ItemData(String enumName, String bukkitMaterialName, String displayName, String fileName,
-                            @Nullable String potionType, @Nullable String translationKey) {
+    private record ItemData(String key, String bukkitMaterialName, String fileName,
+                            @Nullable String potionType, boolean ominousBanner, @Nullable String abandonedCampMap,
+                            char fontChar) {
     }
 
 }

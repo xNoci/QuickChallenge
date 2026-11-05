@@ -33,7 +33,7 @@ public class QuickChallenge extends JavaPlugin {
     @Override
     public void onEnable() {
         Path allItemsFile = getDataPath().resolve("all_items.yml");
-        AllItemRegistry.loadItems(allItemsFile);
+        AllItemRegistry.loadItems(this, "all_items.yml", allItemsFile);
 
         this.config = Config.create(this, "config.yml", false, true);
         this.challengeController.tryLoadChallenge();

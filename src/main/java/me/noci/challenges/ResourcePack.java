@@ -42,11 +42,14 @@ public final class ResourcePack {
 
         public static TexturePack of(String hash, String url, boolean required) {
             byte[] hashArray = BaseEncoding.base16().lowerCase().decode(hash.toLowerCase(Locale.ROOT));
-            return new TexturePack(hashArray, url, UUID.nameUUIDFromBytes(url.getBytes(StandardCharsets.UTF_8)), required);
+            return new TexturePack(hashArray, url, UUID.nameUUIDFromBytes(url.getBytes(StandardCharsets.UTF_8)),
+                    required);
         }
 
         public void apply(Player player) {
-            player.addResourcePack(uuid, url, hash, GsonComponentSerializer.gson().serialize(Option.ResourcePack.PROMPT.get()), !player.isOp() && required);
+            player.addResourcePack(uuid, url, hash,
+                    GsonComponentSerializer.gson().serialize(Option.ResourcePack.PROMPT.get()),
+                    !player.isOp() && required);
         }
 
         public boolean isSame(UUID uuid) {
