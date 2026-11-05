@@ -35,6 +35,11 @@ public class CommandAllItems {
                                 .executes(context -> skip(context, 1))
                 )
                 .then(
+                        Commands.literal("give")
+                                .requires(source -> source.getSender() instanceof Player player &&
+                                        player.hasPermission("quickchallenge.allitems.give"))
+                                .executes(CommandAllItems::give))
+                .then(
                         Commands.literal("reset")
                                 .requires(source -> source.getSender().hasPermission("quickchallenge.allitems.reset"))
                                 .executes(CommandAllItems::reset)
@@ -109,6 +114,31 @@ public class CommandAllItems {
                 .ifPresentOrElse(
                         AllItemModifier::reset,
                         () -> sender.sendMessage(Option.Command.AllItems.NOT_ENABLED.get())
+                );
+
+        return Command.SINGLE_SUCCESS;
+    }
+
+    @SneakyThrows
+    private static int give(CommandContext<CommandSourceStack> context) {
+        Player player = context.getSource().getPlayerOrThrow();
+        ChallengeController challengeController = QuickChallenge.instance().challengeController();
+
+        if (!Option.Settings.DEBUG.get()) {
+            player.sendMessage(Option.Command.DEBUG_COMMAND.get());
+            return Command.SINGLE_SUCCESS;
+        }
+
+        Challenge challenge = challengeController.getCurrentChallenge();
+        if (challenge == null) {
+            player.sendMessage(Option.Command.Challenge.NOT_CREATED.get());
+            return Command.SINGLE_SUCCESS;
+        }
+
+        challenge.modifier(AllItemModifier.class)
+                .ifPresentOrElse(
+                        modifier -> player.getInventory().addItem(modifier.currentItem().asItem()),
+                        () -> player.sendMessage(Option.Command.AllItems.NOT_ENABLED.get())
                 );
 
         return Command.SINGLE_SUCCESS;
