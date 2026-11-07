@@ -1,0 +1,3 @@
+https://minecraft.wiki/w/Effect_colors
+
+File Namen dann: potion_[effect].png
