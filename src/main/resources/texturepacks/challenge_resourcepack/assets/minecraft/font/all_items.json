@@ -1889,7 +1889,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/chain.png",
+      "file": "item/iron_chain.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6146,7 +6146,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/map_buried_treasure.png",
+      "file": "item/buried_treasure_map.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6164,7 +6164,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/map_ocean.png",
+      "file": "item/filled_map.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6173,7 +6173,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/map_mansion.png",
+      "file": "item/ocean_monument_map.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6182,7 +6182,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/melon.png",
+      "file": "item/woodland_mansion_map.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6191,7 +6191,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/melon_seeds.png",
+      "file": "customfont/all_items/melon.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6200,7 +6200,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/melon_slice.png",
+      "file": "item/melon_seeds.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6209,7 +6209,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/minecart.png",
+      "file": "item/melon_slice.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6218,7 +6218,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/chest_minecart.png",
+      "file": "item/minecart.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6227,7 +6227,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/furnace_minecart.png",
+      "file": "item/chest_minecart.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6236,7 +6236,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/hopper_minecart.png",
+      "file": "item/furnace_minecart.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6245,7 +6245,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/tnt_minecart.png",
+      "file": "item/hopper_minecart.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6254,7 +6254,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/moss.png",
+      "file": "item/tnt_minecart.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6263,7 +6263,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/carpet_moss.png",
+      "file": "customfont/all_items/moss.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6272,7 +6272,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/mossy_cobblestone.png",
+      "file": "customfont/all_items/carpet_moss.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6281,7 +6281,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_mossy_cobblestone.png",
+      "file": "customfont/all_items/mossy_cobblestone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6290,7 +6290,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_mossy_cobblestone.png",
+      "file": "customfont/all_items/slab_mossy_cobblestone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6299,7 +6299,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/wall_mossy_cobblestone.png",
+      "file": "customfont/all_items/stairs_mossy_cobblestone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6308,7 +6308,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_mossy_stone_bricks.png",
+      "file": "customfont/all_items/wall_mossy_cobblestone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6317,7 +6317,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_mossy_stone_bricks.png",
+      "file": "customfont/all_items/slab_mossy_stone_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6326,7 +6326,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/wall_mossy_stone_bricks.png",
+      "file": "customfont/all_items/stairs_mossy_stone_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6335,7 +6335,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/mossy_stone_bricks.png",
+      "file": "customfont/all_items/wall_mossy_stone_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6344,7 +6344,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/mud.png",
+      "file": "customfont/all_items/mossy_stone_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6353,7 +6353,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_mud_bricks.png",
+      "file": "customfont/all_items/mud.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6362,7 +6362,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_mud_bricks.png",
+      "file": "customfont/all_items/slab_mud_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6371,7 +6371,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/wall_mud_bricks.png",
+      "file": "customfont/all_items/stairs_mud_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6380,7 +6380,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/mud_bricks.png",
+      "file": "customfont/all_items/wall_mud_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6389,7 +6389,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/packed_mud.png",
+      "file": "customfont/all_items/mud_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6398,7 +6398,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/muddy_mangrove_roots.png",
+      "file": "customfont/all_items/packed_mud.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6407,7 +6407,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/brown_mushroom_block.png",
+      "file": "customfont/all_items/muddy_mangrove_roots.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6416,7 +6416,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/red_mushroom_block.png",
+      "file": "customfont/all_items/brown_mushroom_block.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6425,7 +6425,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/brown_mushroom.png",
+      "file": "customfont/all_items/red_mushroom_block.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6434,7 +6434,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/red_mushroom.png",
+      "file": "block/brown_mushroom.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6443,7 +6443,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/mushroom_stem.png",
+      "file": "block/red_mushroom.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6452,7 +6452,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/mushroom_stew.png",
+      "file": "customfont/all_items/mushroom_stem.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6461,7 +6461,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/mutton.png",
+      "file": "item/mushroom_stew.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6470,7 +6470,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/cooked_mutton.png",
+      "file": "item/mutton.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6479,7 +6479,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/mycelium.png",
+      "file": "item/cooked_mutton.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6488,7 +6488,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/name_tag.png",
+      "file": "customfont/all_items/mycelium.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6497,7 +6497,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/nautilus_shell.png",
+      "file": "item/name_tag.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6506,7 +6506,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/nether_brick.png",
+      "file": "item/nautilus_shell.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6515,7 +6515,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/fence_nether_bricks.png",
+      "file": "item/nether_brick.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6524,7 +6524,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_nether_bricks.png",
+      "file": "customfont/all_items/fence_nether_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6533,7 +6533,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_nether_bricks.png",
+      "file": "customfont/all_items/slab_nether_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6542,7 +6542,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_red_nether_bricks.png",
+      "file": "customfont/all_items/stairs_nether_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6551,7 +6551,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/wall_nether_bricks.png",
+      "file": "customfont/all_items/stairs_red_nether_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6560,7 +6560,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/wall_red_nether_bricks.png",
+      "file": "customfont/all_items/wall_nether_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6569,7 +6569,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/nether_bricks.png",
+      "file": "customfont/all_items/wall_red_nether_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6578,7 +6578,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/red_nether_bricks.png",
+      "file": "customfont/all_items/nether_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6587,7 +6587,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/nether_gold_ore.png",
+      "file": "customfont/all_items/red_nether_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6596,7 +6596,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/nether_quartz_ore.png",
+      "file": "customfont/all_items/nether_gold_ore.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6605,7 +6605,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/nether_sprouts.png",
+      "file": "customfont/all_items/nether_quartz_ore.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6614,7 +6614,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/nether_star.png",
+      "file": "block/nether_sprouts.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6623,7 +6623,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/nether_wart.png",
+      "file": "item/nether_star.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6632,7 +6632,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/nether_wart_block.png",
+      "file": "item/nether_wart.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6641,7 +6641,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/netherite_axe.png",
+      "file": "customfont/all_items/nether_wart_block.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6650,7 +6650,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/netherite_block.png",
+      "file": "item/netherite_axe.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6659,7 +6659,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/netherite_boots.png",
+      "file": "customfont/all_items/netherite_block.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6668,7 +6668,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/netherite_chestplate.png",
+      "file": "item/netherite_boots.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6677,7 +6677,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/netherite_helmet.png",
+      "file": "item/netherite_chestplate.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6686,7 +6686,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/netherite_hoe.png",
+      "file": "item/netherite_helmet.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6695,7 +6695,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/netherite_ingot.png",
+      "file": "item/netherite_hoe.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6704,7 +6704,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/netherite_leggings.png",
+      "file": "item/netherite_ingot.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6713,7 +6713,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/netherite_pickaxe.png",
+      "file": "item/netherite_leggings.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6722,7 +6722,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/netherite_scrap.png",
+      "file": "item/netherite_pickaxe.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6731,7 +6731,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/netherite_shovel.png",
+      "file": "item/netherite_scrap.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6740,7 +6740,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/netherite_sword.png",
+      "file": "item/netherite_shovel.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6749,7 +6749,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/netherrack.png",
+      "file": "item/netherite_sword.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6758,7 +6758,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/note_block.png",
+      "file": "customfont/all_items/netherrack.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6767,7 +6767,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/oak_boat.png",
+      "file": "customfont/all_items/note_block.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6776,7 +6776,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/button_oak.png",
+      "file": "item/oak_boat.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6785,7 +6785,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/oak_chest_boat.png",
+      "file": "customfont/all_items/button_oak.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6794,7 +6794,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/oak_door.png",
+      "file": "item/oak_chest_boat.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6803,7 +6803,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/fence_oak.png",
+      "file": "item/oak_door.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6812,7 +6812,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/fence_gate_oak.png",
+      "file": "customfont/all_items/fence_oak.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6821,7 +6821,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/oak_hanging_sign.png",
+      "file": "customfont/all_items/fence_gate_oak.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6830,7 +6830,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/oak_leaves.png",
+      "file": "item/oak_hanging_sign.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6839,7 +6839,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/oak_log.png",
+      "file": "customfont/all_items/oak_leaves.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6848,7 +6848,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stripped_oak_log.png",
+      "file": "customfont/all_items/oak_log.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6857,7 +6857,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/oak_planks.png",
+      "file": "customfont/all_items/stripped_oak_log.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6866,7 +6866,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/pressure_plate_oak.png",
+      "file": "customfont/all_items/oak_planks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6875,7 +6875,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/oak_sapling.png",
+      "file": "customfont/all_items/pressure_plate_oak.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6884,7 +6884,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/oak_sign.png",
+      "file": "block/oak_sapling.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6893,7 +6893,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_oak.png",
+      "file": "item/oak_sign.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6902,7 +6902,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_oak.png",
+      "file": "customfont/all_items/slab_oak.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6911,7 +6911,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/trapdoor_oak.png",
+      "file": "customfont/all_items/stairs_oak.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6920,7 +6920,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/oak_wood.png",
+      "file": "customfont/all_items/trapdoor_oak.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6929,7 +6929,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stripped_oak_wood.png",
+      "file": "customfont/all_items/oak_wood.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6938,7 +6938,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/observer.png",
+      "file": "customfont/all_items/stripped_oak_wood.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6947,7 +6947,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/obsidian.png",
+      "file": "customfont/all_items/observer.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6956,7 +6956,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/blue_orchid.png",
+      "file": "customfont/all_items/obsidian.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6965,7 +6965,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/oxeye_daisy.png",
+      "file": "block/blue_orchid.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6974,7 +6974,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/painting.png",
+      "file": "block/oxeye_daisy.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6983,7 +6983,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/paper.png",
+      "file": "item/painting.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -6992,7 +6992,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/peony_top.png",
+      "file": "item/paper.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7001,7 +7001,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/pink_petals.png",
+      "file": "block/peony_top.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7010,7 +7010,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/phantom_membrane.png",
+      "file": "item/pink_petals.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7019,7 +7019,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/piston.png",
+      "file": "item/phantom_membrane.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7028,7 +7028,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/pitcher_plant.png",
+      "file": "customfont/all_items/piston.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7037,7 +7037,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/pitcher_pod.png",
+      "file": "item/pitcher_plant.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7046,7 +7046,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/podzol.png",
+      "file": "item/pitcher_pod.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7055,7 +7055,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/pointed_dripstone.png",
+      "file": "customfont/all_items/podzol.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7064,7 +7064,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/polished_andesite.png",
+      "file": "item/pointed_dripstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7073,7 +7073,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_polished_andesite.png",
+      "file": "customfont/all_items/polished_andesite.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7082,7 +7082,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_polished_andesite.png",
+      "file": "customfont/all_items/slab_polished_andesite.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7091,7 +7091,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/polished_basalt.png",
+      "file": "customfont/all_items/stairs_polished_andesite.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7100,7 +7100,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/polished_blackstone.png",
+      "file": "customfont/all_items/polished_basalt.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7109,7 +7109,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_polished_blackstone_bricks.png",
+      "file": "customfont/all_items/polished_blackstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7118,7 +7118,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_polished_blackstone_bricks.png",
+      "file": "customfont/all_items/slab_polished_blackstone_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7127,7 +7127,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/wall_polished_blackstone_bricks.png",
+      "file": "customfont/all_items/stairs_polished_blackstone_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7136,7 +7136,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/polished_blackstone_bricks.png",
+      "file": "customfont/all_items/wall_polished_blackstone_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7145,7 +7145,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/button_polished_blackstone.png",
+      "file": "customfont/all_items/polished_blackstone_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7154,7 +7154,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/pressure_plate_polished_blackstone.png",
+      "file": "customfont/all_items/button_polished_blackstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7163,7 +7163,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_polished_blackstone.png",
+      "file": "customfont/all_items/pressure_plate_polished_blackstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7172,7 +7172,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_polished_blackstone.png",
+      "file": "customfont/all_items/slab_polished_blackstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7181,7 +7181,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/wall_polished_blackstone.png",
+      "file": "customfont/all_items/stairs_polished_blackstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7190,7 +7190,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/polished_deepslate.png",
+      "file": "customfont/all_items/wall_polished_blackstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7199,7 +7199,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_polished_deepslate.png",
+      "file": "customfont/all_items/polished_deepslate.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7208,7 +7208,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_polished_deepslate.png",
+      "file": "customfont/all_items/slab_polished_deepslate.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7217,7 +7217,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/wall_polished_deepslate.png",
+      "file": "customfont/all_items/stairs_polished_deepslate.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7226,7 +7226,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/polished_diorite.png",
+      "file": "customfont/all_items/wall_polished_deepslate.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7235,7 +7235,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_polished_diorite.png",
+      "file": "customfont/all_items/polished_diorite.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7244,7 +7244,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_polished_diorite.png",
+      "file": "customfont/all_items/slab_polished_diorite.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7253,7 +7253,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/polished_granite.png",
+      "file": "customfont/all_items/stairs_polished_diorite.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7262,7 +7262,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_polished_granite.png",
+      "file": "customfont/all_items/polished_granite.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7271,7 +7271,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_polished_granite.png",
+      "file": "customfont/all_items/slab_polished_granite.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7280,7 +7280,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/popped_chorus_fruit.png",
+      "file": "customfont/all_items/stairs_polished_granite.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7289,7 +7289,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/poppy.png",
+      "file": "item/popped_chorus_fruit.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7298,7 +7298,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/porkchop.png",
+      "file": "block/poppy.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7307,7 +7307,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/cooked_porkchop.png",
+      "file": "item/porkchop.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7316,7 +7316,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/potato.png",
+      "file": "item/cooked_porkchop.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7325,7 +7325,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/baked_potato.png",
+      "file": "item/potato.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7334,7 +7334,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/poisonous_potato.png",
+      "file": "item/baked_potato.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7343,7 +7343,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_water.png",
+      "file": "item/poisonous_potato.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7352,7 +7352,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_fire.png",
+      "file": "customfont/all_items/potion_water.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7370,7 +7370,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_damage.png",
+      "file": "customfont/all_items/potion_fire.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7388,7 +7388,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_heal.png",
+      "file": "customfont/all_items/potion_damage.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7406,7 +7406,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_invis.png",
+      "file": "customfont/all_items/potion_heal.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7424,7 +7424,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_jump.png",
+      "file": "customfont/all_items/potion_invis.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7451,7 +7451,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_water.png",
+      "file": "customfont/all_items/potion_jump.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7460,7 +7460,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_night.png",
+      "file": "customfont/all_items/potion_water.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7478,7 +7478,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_poison.png",
+      "file": "customfont/all_items/potion_night.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7505,7 +7505,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_regen.png",
+      "file": "customfont/all_items/potion_poison.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7532,7 +7532,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_slow_falling.png",
+      "file": "customfont/all_items/potion_regen.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7550,7 +7550,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_slowness.png",
+      "file": "customfont/all_items/potion_slow_falling.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7577,7 +7577,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_strength.png",
+      "file": "customfont/all_items/potion_slowness.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7604,7 +7604,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_speed.png",
+      "file": "customfont/all_items/potion_strength.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7631,7 +7631,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_water.png",
+      "file": "customfont/all_items/potion_speed.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7640,7 +7640,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_turtle.png",
+      "file": "customfont/all_items/potion_water.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7667,7 +7667,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_water.png",
+      "file": "customfont/all_items/potion_turtle.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7676,7 +7676,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_water_breathing.png",
+      "file": "customfont/all_items/potion_water.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7694,7 +7694,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/potion_weakness.png",
+      "file": "customfont/all_items/potion_water_breathing.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7712,7 +7712,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/prismarine.png",
+      "file": "customfont/all_items/potion_weakness.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7721,7 +7721,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_prismarine_brick.png",
+      "file": "customfont/all_items/prismarine.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7730,7 +7730,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_prismarin_bricks.png",
+      "file": "customfont/all_items/slab_prismarine_brick.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7739,7 +7739,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/prismarine_bricks.png",
+      "file": "customfont/all_items/stairs_prismarin_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7748,7 +7748,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/prismarine_crystals.png",
+      "file": "customfont/all_items/prismarine_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7757,7 +7757,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/prismarine_shard.png",
+      "file": "item/prismarine_crystals.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7766,7 +7766,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_prismarine.png",
+      "file": "item/prismarine_shard.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7775,7 +7775,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_prismarine.png",
+      "file": "customfont/all_items/slab_prismarine.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7784,7 +7784,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/wall_prismarin.png",
+      "file": "customfont/all_items/stairs_prismarine.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7793,7 +7793,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/pufferfish.png",
+      "file": "customfont/all_items/wall_prismarin.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7802,7 +7802,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/pumpkin.png",
+      "file": "item/pufferfish.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7811,7 +7811,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/pumpkin_pie.png",
+      "file": "customfont/all_items/pumpkin.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7820,7 +7820,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/pumpkin_seeds.png",
+      "file": "item/pumpkin_pie.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7829,7 +7829,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/purpur.png",
+      "file": "item/pumpkin_seeds.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7838,7 +7838,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/purpur_pillar.png",
+      "file": "customfont/all_items/purpur.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7847,7 +7847,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_purpur.png",
+      "file": "customfont/all_items/purpur_pillar.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7856,7 +7856,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_purpur.png",
+      "file": "customfont/all_items/slab_purpur.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7865,7 +7865,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/quartz.png",
+      "file": "customfont/all_items/stairs_purpur.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7874,7 +7874,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/quartz_block.png",
+      "file": "item/quartz.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7883,7 +7883,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/quartz_bricks.png",
+      "file": "customfont/all_items/quartz_block.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7892,7 +7892,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/quartz_pillar.png",
+      "file": "customfont/all_items/quartz_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7901,7 +7901,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_quartz.png",
+      "file": "customfont/all_items/quartz_pillar.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7910,7 +7910,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_quartz.png",
+      "file": "customfont/all_items/slab_quartz.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7919,7 +7919,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/rabbit.png",
+      "file": "customfont/all_items/stairs_quartz.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7928,7 +7928,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/cooked_rabbit.png",
+      "file": "item/rabbit.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7937,7 +7937,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/rabbit_foot.png",
+      "file": "item/cooked_rabbit.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7946,7 +7946,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/rabbit_hide.png",
+      "file": "item/rabbit_foot.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7955,7 +7955,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/rabbit_stew.png",
+      "file": "item/rabbit_hide.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7964,7 +7964,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/rail.png",
+      "file": "item/rabbit_stew.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7973,7 +7973,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/activator_rail.png",
+      "file": "block/rail.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7982,7 +7982,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/detector_rail.png",
+      "file": "block/activator_rail.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -7991,7 +7991,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/powered_rail.png",
+      "file": "block/detector_rail.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8000,7 +8000,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/recovery_compass_00.png",
+      "file": "block/powered_rail.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8009,7 +8009,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_red_nether_bricks.png",
+      "file": "item/recovery_compass_00.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8018,7 +8018,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/redstone.png",
+      "file": "customfont/all_items/slab_red_nether_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8027,7 +8027,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/redstone_block.png",
+      "file": "item/redstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8036,7 +8036,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/redstone_lamp.png",
+      "file": "customfont/all_items/redstone_block.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8045,7 +8045,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/redstone_ore.png",
+      "file": "customfont/all_items/redstone_lamp.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8054,7 +8054,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/deepslate_redstone_ore.png",
+      "file": "customfont/all_items/redstone_ore.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8063,7 +8063,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/redstone_torch.png",
+      "file": "customfont/all_items/deepslate_redstone_ore.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8072,7 +8072,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/repeater.png",
+      "file": "block/redstone_torch.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8081,7 +8081,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/respawn_anchor.png",
+      "file": "item/repeater.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8090,7 +8090,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/rooted_dirt.png",
+      "file": "customfont/all_items/respawn_anchor.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8099,7 +8099,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/rose_bush_top.png",
+      "file": "customfont/all_items/rooted_dirt.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8108,7 +8108,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/rotten_flesh.png",
+      "file": "block/rose_bush_top.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8117,7 +8117,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/saddle.png",
+      "file": "item/rotten_flesh.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8126,7 +8126,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/salmon.png",
+      "file": "item/saddle.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8135,7 +8135,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/cooked_salmon.png",
+      "file": "item/salmon.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8144,7 +8144,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/sand.png",
+      "file": "item/cooked_salmon.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8153,7 +8153,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/red_sand.png",
+      "file": "customfont/all_items/sand.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8162,7 +8162,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/sandstone.png",
+      "file": "customfont/all_items/red_sand.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8171,7 +8171,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/red_sandstone.png",
+      "file": "customfont/all_items/sandstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8180,7 +8180,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_sandstone.png",
+      "file": "customfont/all_items/red_sandstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8189,7 +8189,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_red_sandstone.png",
+      "file": "customfont/all_items/slab_sandstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8198,7 +8198,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_sandstone.png",
+      "file": "customfont/all_items/slab_red_sandstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8207,7 +8207,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_red_sandstone.png",
+      "file": "customfont/all_items/stairs_sandstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8216,7 +8216,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/wall_sandstone.png",
+      "file": "customfont/all_items/stairs_red_sandstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8225,7 +8225,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/wall_red_sandstone.png",
+      "file": "customfont/all_items/wall_sandstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8234,7 +8234,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/scaffolding.png",
+      "file": "customfont/all_items/wall_red_sandstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8243,7 +8243,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/sculk.png",
+      "file": "customfont/all_items/scaffolding.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8252,7 +8252,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/sculk_catalyst.png",
+      "file": "customfont/all_items/sculk.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8261,7 +8261,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/sculk_sensor.png",
+      "file": "customfont/all_items/sculk_catalyst.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8270,7 +8270,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/sculk_shrieker.png",
+      "file": "customfont/all_items/sculk_sensor.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8279,7 +8279,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/sculk_vein.png",
+      "file": "customfont/all_items/sculk_shrieker.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8288,7 +8288,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/sea_lantern.png",
+      "file": "customfont/all_items/sculk_vein.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8297,7 +8297,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/sea_pickle.png",
+      "file": "customfont/all_items/sea_lantern.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8306,7 +8306,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/seagrass.png",
+      "file": "item/sea_pickle.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8315,7 +8315,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/shears.png",
+      "file": "item/seagrass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8324,7 +8324,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/angler_pottery_sherd.png",
+      "file": "item/shears.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8333,7 +8333,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/archer_pottery_sherd.png",
+      "file": "item/angler_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8342,7 +8342,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/arms_up_pottery_sherd.png",
+      "file": "item/archer_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8351,7 +8351,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/blade_pottery_sherd.png",
+      "file": "item/arms_up_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8360,7 +8360,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/brewer_pottery_sherd.png",
+      "file": "item/blade_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8369,7 +8369,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/burn_pottery_sherd.png",
+      "file": "item/brewer_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8378,7 +8378,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/danger_pottery_sherd.png",
+      "file": "item/burn_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8387,7 +8387,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/explorer_pottery_sherd.png",
+      "file": "item/danger_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8396,7 +8396,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/friend_pottery_sherd.png",
+      "file": "item/explorer_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8405,7 +8405,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/heart_pottery_sherd.png",
+      "file": "item/friend_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8414,7 +8414,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/heartbreak_pottery_sherd.png",
+      "file": "item/heart_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8423,7 +8423,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/howl_pottery_sherd.png",
+      "file": "item/heartbreak_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8432,7 +8432,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/miner_pottery_sherd.png",
+      "file": "item/howl_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8441,7 +8441,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/mourner_pottery_sherd.png",
+      "file": "item/miner_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8450,7 +8450,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/plenty_pottery_sherd.png",
+      "file": "item/mourner_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8459,7 +8459,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/prize_pottery_sherd.png",
+      "file": "item/plenty_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8468,7 +8468,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/sheaf_pottery_sherd.png",
+      "file": "item/prize_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8477,7 +8477,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/shelter_pottery_sherd.png",
+      "file": "item/sheaf_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8486,7 +8486,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/skull_pottery_sherd.png",
+      "file": "item/shelter_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8495,7 +8495,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/snort_pottery_sherd.png",
+      "file": "item/skull_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8504,7 +8504,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shield.png",
+      "file": "item/snort_pottery_sherd.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8513,7 +8513,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shroomlight.png",
+      "file": "customfont/all_items/shield.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8522,7 +8522,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shulker_box.png",
+      "file": "customfont/all_items/shroomlight.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8531,7 +8531,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shulker_box_black.png",
+      "file": "customfont/all_items/shulker_box.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8540,7 +8540,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shulker_box_blue.png",
+      "file": "customfont/all_items/shulker_box_black.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8549,7 +8549,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shulker_box_brown.png",
+      "file": "customfont/all_items/shulker_box_blue.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8558,7 +8558,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shulker_box_cyan.png",
+      "file": "customfont/all_items/shulker_box_brown.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8567,7 +8567,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shulker_box_gray.png",
+      "file": "customfont/all_items/shulker_box_cyan.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8576,7 +8576,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shulker_box_green.png",
+      "file": "customfont/all_items/shulker_box_gray.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8585,7 +8585,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shulker_box_light_blue.png",
+      "file": "customfont/all_items/shulker_box_green.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8594,7 +8594,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shulker_box_light_gray.png",
+      "file": "customfont/all_items/shulker_box_light_blue.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8603,7 +8603,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shulker_box_lime.png",
+      "file": "customfont/all_items/shulker_box_light_gray.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8612,7 +8612,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shulker_box_magenta.png",
+      "file": "customfont/all_items/shulker_box_lime.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8621,7 +8621,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shulker_box_orange.png",
+      "file": "customfont/all_items/shulker_box_magenta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8630,7 +8630,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shulker_box_pink.png",
+      "file": "customfont/all_items/shulker_box_orange.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8639,7 +8639,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shulker_box_purple.png",
+      "file": "customfont/all_items/shulker_box_pink.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8648,7 +8648,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shulker_box_red.png",
+      "file": "customfont/all_items/shulker_box_purple.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8657,7 +8657,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shulker_box_white.png",
+      "file": "customfont/all_items/shulker_box_red.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8666,7 +8666,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/shulker_box_yellow.png",
+      "file": "customfont/all_items/shulker_box_white.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8675,7 +8675,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/shulker_shell.png",
+      "file": "customfont/all_items/shulker_box_yellow.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8684,7 +8684,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/slime_ball.png",
+      "file": "item/shulker_shell.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8693,7 +8693,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slime_block.png",
+      "file": "item/slime_ball.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8702,7 +8702,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/smithing_table.png",
+      "file": "customfont/all_items/slime_block.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8711,7 +8711,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/smoker.png",
+      "file": "customfont/all_items/smithing_table.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8720,7 +8720,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/smooth_basalt.png",
+      "file": "customfont/all_items/smoker.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8729,7 +8729,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/smooth_quartz.png",
+      "file": "customfont/all_items/smooth_basalt.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8738,7 +8738,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_quartz.png",
+      "file": "customfont/all_items/smooth_quartz.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8747,7 +8747,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_quartz.png",
+      "file": "customfont/all_items/slab_quartz.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8756,7 +8756,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/smooth_red_sandstone.png",
+      "file": "customfont/all_items/stairs_quartz.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8765,7 +8765,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_red_smooth_sandstone.png",
+      "file": "customfont/all_items/smooth_red_sandstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8774,7 +8774,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_red_sandstone_smooth.png",
+      "file": "customfont/all_items/slab_red_smooth_sandstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8783,7 +8783,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/smooth_sandstone.png",
+      "file": "customfont/all_items/stairs_red_sandstone_smooth.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8792,7 +8792,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_smooth_sandstone.png",
+      "file": "customfont/all_items/smooth_sandstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8801,7 +8801,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_sandstone_smooth.png",
+      "file": "customfont/all_items/slab_smooth_sandstone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8810,7 +8810,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/smooth_stone.png",
+      "file": "customfont/all_items/stairs_sandstone_smooth.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8819,7 +8819,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_smooth_stone.png",
+      "file": "customfont/all_items/smooth_stone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8828,7 +8828,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/sniffer_egg.png",
+      "file": "customfont/all_items/slab_smooth_stone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8837,7 +8837,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/snow.png",
+      "file": "item/sniffer_egg.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8846,7 +8846,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/snow_block.png",
+      "file": "customfont/all_items/snow.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8855,7 +8855,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/snowball.png",
+      "file": "customfont/all_items/snow_block.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8864,7 +8864,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/soul_campfire.png",
+      "file": "item/snowball.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8873,7 +8873,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/soul_lantern.png",
+      "file": "customfont/all_items/soul_campfire.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8882,7 +8882,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/soul_sand.png",
+      "file": "item/soul_lantern.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8891,7 +8891,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/soul_soil.png",
+      "file": "customfont/all_items/soul_sand.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8900,7 +8900,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/soul_torch.png",
+      "file": "customfont/all_items/soul_soil.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8909,7 +8909,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/spectral_arrow.png",
+      "file": "block/soul_torch.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8918,7 +8918,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/spider_eye.png",
+      "file": "item/spectral_arrow.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8927,7 +8927,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/sponge.png",
+      "file": "item/spider_eye.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8936,7 +8936,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/wet_sponge.png",
+      "file": "customfont/all_items/sponge.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8945,7 +8945,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/spore_blossom.png",
+      "file": "customfont/all_items/wet_sponge.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8954,7 +8954,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/spruce_boat.png",
+      "file": "customfont/all_items/spore_blossom.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8963,7 +8963,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/button_spruce.png",
+      "file": "item/spruce_boat.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8972,7 +8972,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/spruce_chest_boat.png",
+      "file": "customfont/all_items/button_spruce.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8981,7 +8981,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/spruce_door.png",
+      "file": "item/spruce_chest_boat.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8990,7 +8990,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/fence_spruce.png",
+      "file": "item/spruce_door.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -8999,7 +8999,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/fence_gate_spruce.png",
+      "file": "customfont/all_items/fence_spruce.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9008,7 +9008,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/spruce_hanging_sign.png",
+      "file": "customfont/all_items/fence_gate_spruce.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9017,7 +9017,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/spruce_leaves.png",
+      "file": "item/spruce_hanging_sign.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9026,7 +9026,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/spruce_log.png",
+      "file": "customfont/all_items/spruce_leaves.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9035,7 +9035,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stripped_spruce_log.png",
+      "file": "customfont/all_items/spruce_log.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9044,7 +9044,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/spruce_planks.png",
+      "file": "customfont/all_items/stripped_spruce_log.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9053,7 +9053,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/pressure_plate_spruce.png",
+      "file": "customfont/all_items/spruce_planks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9062,7 +9062,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/spruce_sapling.png",
+      "file": "customfont/all_items/pressure_plate_spruce.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9071,7 +9071,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/spruce_sign.png",
+      "file": "block/spruce_sapling.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9080,7 +9080,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_spruce.png",
+      "file": "item/spruce_sign.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9089,7 +9089,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_spruce.png",
+      "file": "customfont/all_items/slab_spruce.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9098,7 +9098,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/trapdoor_spruce.png",
+      "file": "customfont/all_items/stairs_spruce.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9107,7 +9107,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/spruce_wood.png",
+      "file": "customfont/all_items/trapdoor_spruce.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9116,7 +9116,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stripped_spruce_wood.png",
+      "file": "customfont/all_items/spruce_wood.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9125,7 +9125,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/spyglass.png",
+      "file": "customfont/all_items/stripped_spruce_wood.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9134,7 +9134,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stained_glass_black.png",
+      "file": "item/spyglass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9143,7 +9143,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stained_glass_blue.png",
+      "file": "customfont/all_items/stained_glass_black.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9152,7 +9152,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stained_glass_brown.png",
+      "file": "customfont/all_items/stained_glass_blue.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9161,7 +9161,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stained_glass_cyan.png",
+      "file": "customfont/all_items/stained_glass_brown.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9170,7 +9170,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stained_glass_gray.png",
+      "file": "customfont/all_items/stained_glass_cyan.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9179,7 +9179,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stained_glass_green.png",
+      "file": "customfont/all_items/stained_glass_gray.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9188,7 +9188,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stained_glass_light_blue.png",
+      "file": "customfont/all_items/stained_glass_green.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9197,7 +9197,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stained_glass_light_gray.png",
+      "file": "customfont/all_items/stained_glass_light_blue.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9206,7 +9206,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stained_glass_lime.png",
+      "file": "customfont/all_items/stained_glass_light_gray.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9215,7 +9215,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stained_glass_magenta.png",
+      "file": "customfont/all_items/stained_glass_lime.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9224,7 +9224,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stained_glass_orange.png",
+      "file": "customfont/all_items/stained_glass_magenta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9233,7 +9233,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/black_stained_glass.png",
+      "file": "customfont/all_items/stained_glass_orange.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9242,7 +9242,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/blue_stained_glass.png",
+      "file": "block/black_stained_glass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9251,7 +9251,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/brown_stained_glass.png",
+      "file": "block/blue_stained_glass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9260,7 +9260,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/cyan_stained_glass.png",
+      "file": "block/brown_stained_glass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9269,7 +9269,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/gray_stained_glass.png",
+      "file": "block/cyan_stained_glass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9278,7 +9278,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/green_stained_glass.png",
+      "file": "block/gray_stained_glass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9287,7 +9287,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/light_blue_stained_glass.png",
+      "file": "block/green_stained_glass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9296,7 +9296,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/light_gray_stained_glass.png",
+      "file": "block/light_blue_stained_glass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9305,7 +9305,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/lime_stained_glass.png",
+      "file": "block/light_gray_stained_glass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9314,7 +9314,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/magenta_stained_glass.png",
+      "file": "block/lime_stained_glass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9323,7 +9323,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/orange_stained_glass.png",
+      "file": "block/magenta_stained_glass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9332,7 +9332,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/pink_stained_glass.png",
+      "file": "block/orange_stained_glass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9341,7 +9341,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/purple_stained_glass.png",
+      "file": "block/pink_stained_glass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9350,7 +9350,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/red_stained_glass.png",
+      "file": "block/purple_stained_glass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9359,7 +9359,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/white_stained_glass.png",
+      "file": "block/red_stained_glass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9368,7 +9368,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/yellow_stained_glass.png",
+      "file": "block/white_stained_glass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9377,7 +9377,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stained_glass_pink.png",
+      "file": "block/yellow_stained_glass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9386,7 +9386,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stained_glass_purple.png",
+      "file": "customfont/all_items/stained_glass_pink.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9395,7 +9395,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stained_glass_red.png",
+      "file": "customfont/all_items/stained_glass_purple.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9404,7 +9404,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stained_glass_white.png",
+      "file": "customfont/all_items/stained_glass_red.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9413,7 +9413,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stained_glass_yellow.png",
+      "file": "customfont/all_items/stained_glass_white.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9422,7 +9422,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/stick.png",
+      "file": "customfont/all_items/stained_glass_yellow.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9431,7 +9431,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/sticky_piston.png",
+      "file": "item/stick.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9440,7 +9440,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stone.png",
+      "file": "customfont/all_items/sticky_piston.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9449,7 +9449,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/stone_axe.png",
+      "file": "customfont/all_items/stone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9458,7 +9458,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_stone_bricks.png",
+      "file": "item/stone_axe.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9467,7 +9467,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_stone_bricks.png",
+      "file": "customfont/all_items/slab_stone_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9476,7 +9476,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/wall_stone_bricks.png",
+      "file": "customfont/all_items/stairs_stone_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9485,7 +9485,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stone_bricks.png",
+      "file": "customfont/all_items/wall_stone_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9494,7 +9494,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/button_stone.png",
+      "file": "customfont/all_items/stone_bricks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9503,7 +9503,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/stone_hoe.png",
+      "file": "customfont/all_items/button_stone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9512,7 +9512,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/stone_pickaxe.png",
+      "file": "item/stone_hoe.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9521,7 +9521,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/pressure_plate_stone.png",
+      "file": "item/stone_pickaxe.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9530,7 +9530,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/stone_shovel.png",
+      "file": "customfont/all_items/pressure_plate_stone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9539,7 +9539,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_stone.png",
+      "file": "item/stone_shovel.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9548,7 +9548,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_stone.png",
+      "file": "customfont/all_items/slab_stone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9557,7 +9557,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/stone_sword.png",
+      "file": "customfont/all_items/stairs_stone.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9566,7 +9566,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stonecutter.png",
+      "file": "item/stone_sword.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9575,7 +9575,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/string.png",
+      "file": "customfont/all_items/stonecutter.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9584,7 +9584,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stripped_bamboo_block.png",
+      "file": "item/string.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9593,7 +9593,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/sugar.png",
+      "file": "customfont/all_items/stripped_bamboo_block.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9602,7 +9602,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/sugar_cane.png",
+      "file": "item/sugar.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9611,7 +9611,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/sunflower_front.png",
+      "file": "item/sugar_cane.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9620,7 +9620,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/suspicious_stew.png",
+      "file": "block/sunflower_front.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9629,7 +9629,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/sweet_berries.png",
+      "file": "item/suspicious_stew.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9638,7 +9638,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/target.png",
+      "file": "item/sweet_berries.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9647,7 +9647,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/coast_armor_trim_smithing_template.png",
+      "file": "customfont/all_items/target.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9656,7 +9656,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/dune_armor_trim_smithing_template.png",
+      "file": "item/coast_armor_trim_smithing_template.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9665,7 +9665,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/eye_armor_trim_smithing_template.png",
+      "file": "item/dune_armor_trim_smithing_template.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9674,7 +9674,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/host_armor_trim_smithing_template.png",
+      "file": "item/eye_armor_trim_smithing_template.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9683,7 +9683,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/netherite_upgrade_smithing_template.png",
+      "file": "item/host_armor_trim_smithing_template.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9692,7 +9692,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/raiser_armor_trim_smithing_template.png",
+      "file": "item/netherite_upgrade_smithing_template.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9701,7 +9701,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/rib_armor_trim_smithing_template.png",
+      "file": "item/raiser_armor_trim_smithing_template.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9710,7 +9710,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/sentry_armor_trim_smithing_template.png",
+      "file": "item/rib_armor_trim_smithing_template.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9719,7 +9719,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/shaper_armor_trim_smithing_template.png",
+      "file": "item/sentry_armor_trim_smithing_template.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9728,7 +9728,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/silence_armor_trim_smithing_template.png",
+      "file": "item/shaper_armor_trim_smithing_template.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9737,7 +9737,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/snout_armor_trim_smithing_template.png",
+      "file": "item/silence_armor_trim_smithing_template.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9746,7 +9746,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/spire_armor_trim_smithing_template.png",
+      "file": "item/snout_armor_trim_smithing_template.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9755,7 +9755,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/tide_armor_trim_smithing_template.png",
+      "file": "item/spire_armor_trim_smithing_template.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9764,7 +9764,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/vex_armor_trim_smithing_template.png",
+      "file": "item/tide_armor_trim_smithing_template.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9773,7 +9773,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/ward_armor_trim_smithing_template.png",
+      "file": "item/vex_armor_trim_smithing_template.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9782,7 +9782,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/wayfinder_armor_trim_smithing_template.png",
+      "file": "item/ward_armor_trim_smithing_template.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9791,7 +9791,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/wild_armor_trim_smithing_template.png",
+      "file": "item/wayfinder_armor_trim_smithing_template.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9800,7 +9800,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/terracotta.png",
+      "file": "item/wild_armor_trim_smithing_template.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9809,7 +9809,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/black_terracotta.png",
+      "file": "customfont/all_items/terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9818,7 +9818,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/blue_terracotta.png",
+      "file": "customfont/all_items/black_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9827,7 +9827,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/brown_terracotta.png",
+      "file": "customfont/all_items/blue_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9836,7 +9836,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/cyan_terracotta.png",
+      "file": "customfont/all_items/brown_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9845,7 +9845,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/black_glazed_terracotta.png",
+      "file": "customfont/all_items/cyan_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9854,7 +9854,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/blue_glazed_terracotta.png",
+      "file": "customfont/all_items/black_glazed_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9863,7 +9863,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/brown_glazed_terracotta.png",
+      "file": "customfont/all_items/blue_glazed_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9872,7 +9872,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/cyan_glazed_terracotta.png",
+      "file": "customfont/all_items/brown_glazed_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9881,7 +9881,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/gray_glazed_terracotta.png",
+      "file": "customfont/all_items/cyan_glazed_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9890,7 +9890,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/green_glazed_terracotta.png",
+      "file": "customfont/all_items/gray_glazed_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9899,7 +9899,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/light_blue_glazed_terracotta.png",
+      "file": "customfont/all_items/green_glazed_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9908,7 +9908,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/light_gray_glazed_terracotta.png",
+      "file": "customfont/all_items/light_blue_glazed_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9917,7 +9917,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/lime_glazed_terracotta.png",
+      "file": "customfont/all_items/light_gray_glazed_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9926,7 +9926,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/magenta_glazed_terracotta.png",
+      "file": "customfont/all_items/lime_glazed_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9935,7 +9935,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/orange_glazed_terracotta.png",
+      "file": "customfont/all_items/magenta_glazed_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9944,7 +9944,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/pink_glazed_terracotta.png",
+      "file": "customfont/all_items/orange_glazed_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9953,7 +9953,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/purple_glazed_terracotta.png",
+      "file": "customfont/all_items/pink_glazed_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9962,7 +9962,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/red_glazed_terracotta.png",
+      "file": "customfont/all_items/purple_glazed_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9971,7 +9971,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/white_glazed_terracotta.png",
+      "file": "customfont/all_items/red_glazed_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9980,7 +9980,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/yellow_glazed_terracotta.png",
+      "file": "customfont/all_items/white_glazed_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9989,7 +9989,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/gray_terracotta.png",
+      "file": "customfont/all_items/yellow_glazed_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -9998,7 +9998,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/green_terracotta.png",
+      "file": "customfont/all_items/gray_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10007,7 +10007,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/light_blue_terracotta.png",
+      "file": "customfont/all_items/green_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10016,7 +10016,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/light_gray_terracotta.png",
+      "file": "customfont/all_items/light_blue_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10025,7 +10025,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/lime_terracotta.png",
+      "file": "customfont/all_items/light_gray_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10034,7 +10034,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/magenta_terracotta.png",
+      "file": "customfont/all_items/lime_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10043,7 +10043,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/orange_terracotta.png",
+      "file": "customfont/all_items/magenta_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10052,7 +10052,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/pink_terracotta.png",
+      "file": "customfont/all_items/orange_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10061,7 +10061,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/purple_terracotta.png",
+      "file": "customfont/all_items/pink_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10070,7 +10070,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/red_terracotta.png",
+      "file": "customfont/all_items/purple_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10079,7 +10079,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/white_terracotta.png",
+      "file": "customfont/all_items/red_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10088,7 +10088,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/yellow_terracotta.png",
+      "file": "customfont/all_items/white_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10097,7 +10097,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/tinted_glass.png",
+      "file": "customfont/all_items/yellow_terracotta.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10106,7 +10106,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/tipped_arrow.png",
+      "file": "customfont/all_items/tinted_glass.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10115,7 +10115,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/tnt.png",
+      "file": "customfont/all_items/tipped_arrow.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10124,7 +10124,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/torch.png",
+      "file": "customfont/all_items/tnt.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10133,7 +10133,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/torchflower.png",
+      "file": "block/torch.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10142,7 +10142,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/torchflower_seeds.png",
+      "file": "block/torchflower.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10151,7 +10151,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/totem_of_undying.png",
+      "file": "item/torchflower_seeds.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10160,7 +10160,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/trapped_chest.png",
+      "file": "item/totem_of_undying.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10169,7 +10169,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/trident.png",
+      "file": "customfont/all_items/trapped_chest.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10178,7 +10178,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/tripwire_hook.png",
+      "file": "item/trident.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10187,7 +10187,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/tropical_fish.png",
+      "file": "block/tripwire_hook.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10196,7 +10196,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/tuff.png",
+      "file": "item/tropical_fish.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10205,7 +10205,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/orange_tulip.png",
+      "file": "customfont/all_items/tuff.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10214,7 +10214,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/pink_tulip.png",
+      "file": "block/orange_tulip.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10223,7 +10223,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/red_tulip.png",
+      "file": "block/pink_tulip.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10232,7 +10232,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/white_tulip.png",
+      "file": "block/red_tulip.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10241,7 +10241,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/turtle_egg.png",
+      "file": "block/white_tulip.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10250,7 +10250,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/turtle_helmet.png",
+      "file": "item/turtle_egg.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10259,7 +10259,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/turtle_scute.png",
+      "file": "item/turtle_helmet.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10268,7 +10268,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/vine.png",
+      "file": "item/turtle_scute.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10277,7 +10277,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/twisting_vines_plant.png",
+      "file": "customfont/all_items/vine.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10286,7 +10286,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/weeping_vines_plant.png",
+      "file": "block/twisting_vines_plant.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10295,7 +10295,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/button_warped.png",
+      "file": "block/weeping_vines_plant.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10304,7 +10304,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/warped_door.png",
+      "file": "customfont/all_items/button_warped.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10313,7 +10313,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/fence_warped.png",
+      "file": "item/warped_door.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10322,7 +10322,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/fence_gate_warped.png",
+      "file": "customfont/all_items/fence_warped.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10331,7 +10331,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/warped_fungus.png",
+      "file": "customfont/all_items/fence_gate_warped.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10340,7 +10340,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/warped_fungus_on_a_stick.png",
+      "file": "block/warped_fungus.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10349,7 +10349,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/warped_hanging_sign.png",
+      "file": "item/warped_fungus_on_a_stick.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10358,7 +10358,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/warped_hyphae.png",
+      "file": "item/warped_hanging_sign.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10367,7 +10367,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/warped_nylium.png",
+      "file": "customfont/all_items/warped_hyphae.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10376,7 +10376,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/warped_planks.png",
+      "file": "customfont/all_items/warped_nylium.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10385,7 +10385,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/pressure_plate_warped.png",
+      "file": "customfont/all_items/warped_planks.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10394,7 +10394,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/warped_roots.png",
+      "file": "customfont/all_items/pressure_plate_warped.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10403,7 +10403,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/warped_sign.png",
+      "file": "block/warped_roots.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10412,7 +10412,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/slab_warped.png",
+      "file": "item/warped_sign.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10421,7 +10421,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stairs_warped.png",
+      "file": "customfont/all_items/slab_warped.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10430,7 +10430,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/warped_stem.png",
+      "file": "customfont/all_items/stairs_warped.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10439,7 +10439,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stripped_warped_stem.png",
+      "file": "customfont/all_items/warped_stem.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10448,7 +10448,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/trapdoor_warped.png",
+      "file": "customfont/all_items/stripped_warped_stem.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10457,7 +10457,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/warped_wart_block.png",
+      "file": "customfont/all_items/trapdoor_warped.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10466,7 +10466,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/stripped_warped_hyphae.png",
+      "file": "customfont/all_items/warped_wart_block.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10475,7 +10475,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/wheat.png",
+      "file": "customfont/all_items/stripped_warped_hyphae.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10484,7 +10484,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/wheat_seeds.png",
+      "file": "item/wheat.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10493,7 +10493,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/white_candle.png",
+      "file": "item/wheat_seeds.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10502,7 +10502,7 @@
     },
     {
       "type": "bitmap",
-      "file": "block/wither_rose.png",
+      "file": "item/white_candle.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10511,7 +10511,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/wolf_armor.png",
+      "file": "block/wither_rose.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10520,7 +10520,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/wooden_axe.png",
+      "file": "item/wolf_armor.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10529,7 +10529,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/wooden_hoe.png",
+      "file": "item/wooden_axe.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10538,7 +10538,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/wooden_pickaxe.png",
+      "file": "item/wooden_hoe.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10547,7 +10547,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/wooden_shovel.png",
+      "file": "item/wooden_pickaxe.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10556,7 +10556,7 @@
     },
     {
       "type": "bitmap",
-      "file": "item/wooden_sword.png",
+      "file": "item/wooden_shovel.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10565,7 +10565,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/black_wool.png",
+      "file": "item/wooden_sword.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10574,7 +10574,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/blue_wool.png",
+      "file": "customfont/all_items/black_wool.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10583,7 +10583,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/brown_wool.png",
+      "file": "customfont/all_items/blue_wool.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10592,7 +10592,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/cyan_wool.png",
+      "file": "customfont/all_items/brown_wool.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10601,7 +10601,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/gray_wool.png",
+      "file": "customfont/all_items/cyan_wool.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10610,7 +10610,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/green_wool.png",
+      "file": "customfont/all_items/gray_wool.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10619,7 +10619,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/light_blue_wool.png",
+      "file": "customfont/all_items/green_wool.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10628,7 +10628,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/light_gray_wool.png",
+      "file": "customfont/all_items/light_blue_wool.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10637,7 +10637,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/lime_wool.png",
+      "file": "customfont/all_items/light_gray_wool.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10646,7 +10646,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/magenta_wool.png",
+      "file": "customfont/all_items/lime_wool.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10655,7 +10655,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/orange_wool.png",
+      "file": "customfont/all_items/magenta_wool.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10664,7 +10664,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/pink_wool.png",
+      "file": "customfont/all_items/orange_wool.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10673,7 +10673,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/purple_wool.png",
+      "file": "customfont/all_items/pink_wool.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10682,7 +10682,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/red_wool.png",
+      "file": "customfont/all_items/purple_wool.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10691,7 +10691,7 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/white_wool.png",
+      "file": "customfont/all_items/red_wool.png",
       "ascent": 16,
       "height": 24,
       "chars": [
@@ -10700,11 +10700,3575 @@
     },
     {
       "type": "bitmap",
-      "file": "customfont/all_items/yellow_wool.png",
+      "file": "customfont/all_items/white_wool.png",
       "ascent": 16,
       "height": 24,
       "chars": [
         "\uE4A5"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/yellow_wool.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4A6"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/crafter.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4A7"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/copper_bulb.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4A8"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/chiseled_copper.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4A9"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/copper_grate.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4AA"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_door.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4AB"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/copper_trapdoor.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4AC"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/exposed_copper_bulb.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4AD"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/exposed_chiseled_copper.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4AE"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/exposed_copper_grate.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4AF"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/exposed_copper_door.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4B0"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/exposed_copper_trapdoor.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4B1"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/weathered_copper_bulb.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4B2"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/weathered_chiseled_copper.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4B3"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/weathered_copper_grate.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4B4"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/weathered_copper_door.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4B5"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/weathered_copper_trapdoor.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4B6"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/oxidized_copper_bulb.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4B7"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont(all_items/oxidized_chiseled_copper.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4B8"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_itmes/oxidized_copper_grate.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4B9"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/oxidized_copper_door.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4BA"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/oxidized_copper_trapdoor.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4BB"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/copper_bulb.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4BC"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/chiseled_copper.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4BD"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/copper_grate.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4BE"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_door.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4BF"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/copper_trapdoor.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4C0"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/exposed_copper_bulb.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4C1"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/exposed_chiseled_copper.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4C2"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/exposed_copper_grate.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4C3"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/exposed_copper_door.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4C4"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/exposed_copper_trapdoor.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4C5"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/weathered_copper_bulb.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4C6"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/weathered_chiseled_copper.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4C7"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/weathered_copper_grate.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4C8"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/weathered_copper_door.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4C9"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/weathered_copper_trapdoor.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4CA"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/oxidized_copper_bulb.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4CB"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont(all_items/oxidized_chiseled_copper.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4CC"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_itmes/oxidized_copper_grate.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4CD"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/oxidized_copper_door.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4CE"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/oxidized_copper_trapdoor.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4CF"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/tuff_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4D0"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/tuff_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4D1"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/tuff_wall.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4D2"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/chiseled_tuff.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4D3"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/polished_tuff.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4D4"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/polished_tuff_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4D5"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/polished_tuff_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4D6"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/polished_tuff_wall.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4D7"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/tuff_bricks.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4D8"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/tuff_bricks_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4D9"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/tuff_bricks_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4DA"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/tuff_bricks_wall.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4DB"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/chiseled_tuff_bricks.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4DC"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/trial_key.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4DD"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/wind_charge.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4DE"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/breeze_rod.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4DF"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/heavy_core.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4E0"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/mace.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4E1"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/flow_armor_trim_smithing_template.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4E2"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/bolt_armor_trim_smithing_template.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4E3"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/flow_pottery_sherd.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4E4"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/guster_pottery_sherd.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4E5"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/scrape_pottery_sherd.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4E6"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/flow_banner_pattern.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4E7"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/guster_banner_pattern.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4E8"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/buried_trial_chambers_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4E9"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/ominous_trial_key.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4EA"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/ominous_bottle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4EB"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/potion_wind_charge.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4EC"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/potion_weaving.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4ED"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/potion_oozing.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4EE"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/potion_infested.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4EF"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/music_disc_precipice.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4F0"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/music_disc_creator.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4F1"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/music_disc_creator_music_box.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4F2"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/field_masoned_banner_pattern.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4F3"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/bordure_indented_banner_pattern.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4F4"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/bundle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4F5"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/white_bundle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4F6"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/light_gray_bundle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4F7"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/gray_bundle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4F8"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/black_bundle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4F9"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/brown_bundle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4FA"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/red_bundle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4FB"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/orange_bundle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4FC"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/yellow_bundle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4FD"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/lime_bundle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4FE"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/green_bundle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE4FF"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/cyan_bundle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE500"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/light_blue_bundle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE501"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/blue_bundle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE502"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/purple_bundle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE503"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/magenta_bundle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE504"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/pink_bundle.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE505"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/creaking_heart.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE506"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/pale_oak_log.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE507"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/stripped_pale_oak_log.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE508"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/pale_oak_wood.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE509"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/stripped_pale_oak_wood.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE50A"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/pale_oak_planks.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE50B"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/pale_oak_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE50C"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/pale_oak_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE50D"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/pale_oak_sign.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE50E"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/pale_oak_hanging_sign.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE50F"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/pale_oak_button.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE510"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/pale_oak_pressure_plate.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE511"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/pale_oak_door.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE512"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/fence_pale_oak.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE513"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/fence_gate_pale_oak.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE514"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/trapdoor_pale_oak.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE515"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/pale_oak_boat.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE516"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/pale_oak_chest_boat.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE517"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "block/pale_hanging_moss.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE518"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/pale_moss_block.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE519"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/pale_moss_carpet.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE51A"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/pale_oak_leaves.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE51B"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "block/pale_oak_sapling.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE51C"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/eyeblossom_opened.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE51D"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "cusotmfont/all_items/eyeblossom_closed.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE51E"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/resin_block.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE51F"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/resin_bricks.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE520"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/chiseled_resin_bricks.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE521"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/resin_brick_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE522"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/resin_brick_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE523"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/resin_brick_wall.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE524"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/resin_clump.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE525"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/resin_brick.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE526"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/leaf_litter.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE527"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/wildflowers.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE528"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/bush.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE529"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/firefly_bush.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE52A"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/cactus_flower.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE52B"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "block/short_dry_grass.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE52C"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "block/tall_dry_grass.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE52D"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/brown_egg.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE52E"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/blue_egg.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE52F"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/jungle_pyramid_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE530"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/swamp_hut_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE531"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/desert_village_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE532"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/plains_village_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE533"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/savanna_village_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE534"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/snowy_village_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE535"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/taiga_village_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE536"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE537"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/white_harness.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE538"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/light_gray_harness.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE539"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/gray_harness.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE53A"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/black_harness.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE53B"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/brown_harness.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE53C"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/red_harness.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE53D"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/orange_harness.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE53E"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/yellow_harness.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE53F"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/green_harness.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE540"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/lime_harness.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE541"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/cyan_harness.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE542"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/light_blue_harness.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE543"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/blue_harness.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE544"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/magenta_harness.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE545"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/purple_harness.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE546"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/pink_harness.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE547"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/music_disc_tears.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE548"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/music_disc_lava_chicken.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE549"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/copper_chest.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE54A"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/copper_golem.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE54B"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "block/copper_bars.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE54C"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_chain.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE54D"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/exposed_copper_chest.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE54E"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/copper_golem_statue_exposed.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE54F"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "block/exposed_copper_bars.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE550"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/exposed_copper_chain.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE551"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/weathered_copper_chest.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE552"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/copper_golem_weathered.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE553"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "block/weathered_copper_bars.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE554"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/weathered_copper_chain.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE555"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/oxidized_copper_chest.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE556"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/copper_golem_oxidized.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE557"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "block/oxidized_copper_bars.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE558"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/oxidized_copper_chain.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE559"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/copper_chest.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE55A"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/copper_golem.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE55B"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "block/copper_bars.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE55C"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_chain.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE55D"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/exposed_copper_chest.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE55E"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/copper_golem_statue_exposed.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE55F"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "block/exposed_copper_bars.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE560"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/exposed_copper_chain.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE561"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/weathered_copper_chest.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE562"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/copper_golem_weathered.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE563"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "block/weathered_copper_bars.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE564"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/weathered_copper_chain.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE565"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/oxidized_copper_chest.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE566"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/copper_golem_oxidized.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE567"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "block/oxidized_copper_bars.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE568"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/oxidized_copper_chain.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE569"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/exposed_lightning_rod.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE56A"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/weathered_lightning_rod.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE56B"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/oxidized_lightning_rod.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE56C"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/lightning_rod.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE56D"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/exposed_lightning_rod.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE56E"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/weathered_lightning_rod.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE56F"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/oxidized_lightning_rod.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE570"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/oak_shelf.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE571"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customblock/all_items/birch_shelf.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE572"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/spruce_shelf.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE573"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/jungle_shelf.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE574"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/acacia_shelf.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE575"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/dark_oak_shelf.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE576"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/crimson_shelf.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE577"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/warped_shelf.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE578"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/mangrove_shelf.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE579"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/bamboo_shelf.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE57A"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/cherry_shelf.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE57B"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/pale_oak_shelf.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE57C"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_sword.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE57D"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_axe.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE57E"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_pickaxe.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE57F"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_shovel.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE580"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_hoe.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE581"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_helmet.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE582"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_chestplate.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE583"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_leggings.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE584"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_boots.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE585"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_horse_armor.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE586"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_nugget.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE587"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "block/copper_torch.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE588"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_lantern.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE589"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/exposed_copper_lantern.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE58A"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/weathered_copper_lantern.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE58B"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/oxidized_copper_lantern.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE58C"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_lantern.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE58D"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/exposed_copper_lantern.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE58E"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/weathered_copper_lantern.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE58F"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/oxidized_copper_lantern.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE590"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_nautilus_armor.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE591"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/iron_nautilus_armor.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE592"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/golden_nautilus_armor.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE593"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/diamond_nautilus_armor.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE594"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/netherite_nautilus_armor.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE595"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/netherite_horse_armor.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE596"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/wooden_spear.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE597"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/stone_spear.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE598"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/copper_spear.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE599"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/iron_spear.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE59A"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/golden_spear.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE59B"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/diamond_spear.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE59C"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/netherite_spear.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE59D"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "block/golden_dandelion.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE59E"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/cinnabar.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE59F"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/cinnabar_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5A0"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/cinnabar_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5A1"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/cinnabar_wall.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5A2"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/polished_cinnabar.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5A3"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/polished_cinnabar_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5A4"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/polished_cinnabar_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5A5"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/polished_cinnabar_wall.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5A6"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/cinnabar_bricks.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5A7"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/cinnabar_bricks_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5A8"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/cinnabar_brick_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5A9"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/cinnabar_bricks_wall.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5AA"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/chiseled_cinnabar.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5AB"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/potent_sulfur.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5AC"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/sulfur.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5AD"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/sulfur_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5AE"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/sulfur_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5AF"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/sulfur_wall.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5B0"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/polished_sulfur.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5B1"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/polished_sulfur_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5B2"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/polished_sulfur_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5B3"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/polished_sulfur_wall.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5B4"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/sulfur_bricks.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5B5"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/sulfur_bricks_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5B6"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/sulfur_bricks_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5B7"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/sulfur_brick_wall.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5B8"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/chiseled_sulfur.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5B9"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/sulfur_spike.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5BA"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/sulfur_cube_bucket.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5BB"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/music_disc_bounce.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5BC"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/poplar_log.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5BD"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/stripped_poplar_log.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5BE"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/poplar_wood.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5BF"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/stripped_poplar_wood.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5C0"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/poplar_planks.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5C1"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/poplar_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5C2"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/poplar_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5C3"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/poplar_sign.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5C4"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/poplar_hanging_sign.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5C5"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/poplar_button.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5C6"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/poplar_pressure_plate.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5C7"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/poplar_door.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5C8"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/poplar_fence.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5C9"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/poplar_fence_gate.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5CA"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/poplar_trapdoor.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5CB"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/poplar_shelf.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5CC"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/poplar_boat.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5CD"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/poplar_chest_boat.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5CE"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/red_poplar_leaves.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5CF"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/orange_poplar_leaves.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5D0"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/yellow_poplar_leaves.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5D1"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "block/poplar_sapling.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5D2"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/red_shrub.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5D3"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/shelf_mushroom.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5D4"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/white_wool_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5D5"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/white_wool_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5D6"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/white_cushion.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5D7"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/light_gray_wool_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5D8"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/light_gray_wool_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5D9"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/light_gray_cushion.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5DA"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/gray_wool_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5DB"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/gray_wool_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5DC"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/gray_cushion.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5DD"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/black_wool_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5DE"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/black_wool_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5DF"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/black_cushion.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5E0"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/brown_wool_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5E1"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/brown_wool_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5E2"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/brown_cushion.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5E3"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/red_wool_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5E4"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/red_wool_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5E5"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/red_cushion.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5E6"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/orange_wool_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5E7"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/orange_wool_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5E8"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/orange_cushion.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5E9"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/yellow_wool_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5EA"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/yellow_wool_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5EB"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/yellow_cushion.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5EC"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/lime_wool_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5ED"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/lime_wool_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5EE"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/lime_cushion.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5EF"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/green_wool_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5F0"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/green_wool_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5F1"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/green_cushion.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5F2"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/cyan_wool_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5F3"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/cyan_wool_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5F4"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/cyan_cushion.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5F5"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/light_blue_wool_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5F6"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/light_blue_wool_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5F7"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/light_blue_cushion.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5F8"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/blue_wool_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5F9"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/blue_wool_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5FA"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/blue_cushion.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5FB"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/purple_wool_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5FC"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/purple_wool_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5FD"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/purple_cushion.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5FE"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/magenta_wool_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE5FF"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/magenta_wool_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE600"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/magenta_cushion.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE601"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/pink_wool_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE602"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/pink_wool_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE603"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/pink_cushion.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE604"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/white_concrete_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE605"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/white_concrete_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE606"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/light_gray_concrete_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE607"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/light_gray_concrete_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE608"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/gray_concrete_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE609"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/gray_concrete_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE60A"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/black_concrete_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE60B"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/black_concrete_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE60C"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/brown_concrete_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE60D"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/brown_concrete_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE60E"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/red_concrete_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE60F"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/red_concrete_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE610"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/orange_concrete_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE611"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/orange_concrete_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE612"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/yellow_concrete_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE613"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/yellow_concrete_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE614"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/lime_concrete_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE615"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/lime_concrete_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE616"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/green_concrete_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE617"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/green_concrete_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE618"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/cyan_concrete_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE619"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/cyan_concrete_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE61A"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/light_blue_concrete_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE61B"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/light_blue_concrete_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE61C"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/blue_concrete_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE61D"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/blue_concrete_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE61E"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/purple_concrete_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE61F"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/purple_concrete_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE620"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/magenta_concrete_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE621"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/magenta_concrete_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE622"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/pink_concrete_stairs.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE623"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/pink_concrete_slab.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE624"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "customfont/all_items/straw_bed.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE625"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/buried_ancient_city_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE626"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/buried_mineshaft_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE627"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/desert_pyramid_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE628"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/warm_ocean_ruins_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE629"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/abandoned_camp_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE62A"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/abandoned_camp_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE62B"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/abandoned_camp_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE62C"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/abandoned_camp_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE62D"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/abandoned_camp_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE62E"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/abandoned_camp_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE62F"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/abandoned_camp_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE630"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "item/abandoned_camp_map.png",
+      "ascent": 16,
+      "height": 24,
+      "chars": [
+        "\uE631"
       ]
     }
   ]

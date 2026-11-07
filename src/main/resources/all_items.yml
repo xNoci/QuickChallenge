@@ -2050,2655 +2050,2706 @@ map_buried_treasure:
 map_empty:
  icon: ''
  material: MAP
-map_ocean_explorer:
+filled_map:
  icon: ''
+ material: FILLED_MAP
+map_ocean_explorer:
+ icon: ''
  material: OCEAN_MONUMENT_MAP
 map_woodland_explorer:
- icon: ''
+ icon: ''
  material: WOODLAND_MANSION_MAP
 melon_block:
- icon: ''
+ icon: ''
  material: MELON
 melon_seeds:
- icon: ''
+ icon: ''
  material: MELON_SEEDS
 melon_slice:
- icon: ''
+ icon: ''
  material: MELON_SLICE
 minecart:
- icon: ''
+ icon: ''
  material: MINECART
 minecart_chest:
- icon: ''
+ icon: ''
  material: CHEST_MINECART
 minecart_furnace:
- icon: ''
+ icon: ''
  material: FURNACE_MINECART
 minecart_hopper:
- icon: ''
+ icon: ''
  material: HOPPER_MINECART
 minecart_tnt:
- icon: ''
+ icon: ''
  material: TNT_MINECART
 moss_block:
- icon: ''
+ icon: ''
  material: MOSS_BLOCK
 moss_carpet:
- icon: ''
+ icon: ''
  material: MOSS_CARPET
 mossy_cobblestone:
- icon: ''
+ icon: ''
  material: MOSSY_COBBLESTONE
 mossy_cobblestone_slab:
- icon: ''
+ icon: ''
  material: MOSSY_COBBLESTONE_SLAB
 mossy_cobblestone_stairs:
- icon: ''
+ icon: ''
  material: MOSSY_COBBLESTONE_STAIRS
 mossy_cobblestone_wall:
- icon: ''
+ icon: ''
  material: MOSSY_COBBLESTONE_WALL
 mossy_stone_brick_slab:
- icon: ''
+ icon: ''
  material: MOSSY_STONE_BRICK_SLAB
 mossy_stone_brick_stairs:
- icon: ''
+ icon: ''
  material: MOSSY_STONE_BRICK_STAIRS
 mossy_stone_brick_wall:
- icon: ''
+ icon: ''
  material: MOSSY_STONE_BRICK_WALL
 mossy_stone_bricks:
- icon: ''
+ icon: ''
  material: MOSSY_STONE_BRICKS
 mud:
- icon: ''
+ icon: ''
  material: MUD
 mud_brick_slab:
- icon: ''
+ icon: ''
  material: MUD_BRICK_SLAB
 mud_brick_stairs:
- icon: ''
+ icon: ''
  material: MUD_BRICK_STAIRS
 mud_brick_wall:
- icon: ''
+ icon: ''
  material: MUD_BRICK_WALL
 mud_bricks:
- icon: ''
+ icon: ''
  material: MUD_BRICKS
 mud_packed:
- icon: ''
+ icon: ''
  material: PACKED_MUD
 muddy_mangrove_roots:
- icon: ''
+ icon: ''
  material: MUDDY_MANGROVE_ROOTS
 mushroom_block_brown:
- icon: ''
+ icon: ''
  material: BROWN_MUSHROOM_BLOCK
 mushroom_block_red:
- icon: ''
+ icon: ''
  material: RED_MUSHROOM_BLOCK
 mushroom_brown:
- icon: ''
+ icon: ''
  material: BROWN_MUSHROOM
 mushroom_red:
- icon: ''
+ icon: ''
  material: RED_MUSHROOM
 mushroom_stem:
- icon: ''
+ icon: ''
  material: MUSHROOM_STEM
 mushroom_stew:
- icon: ''
+ icon: ''
  material: MUSHROOM_STEW
 mutton:
- icon: ''
+ icon: ''
  material: MUTTON
 mutton_cooked:
- icon: ''
+ icon: ''
  material: COOKED_MUTTON
 mycelium:
- icon: ''
+ icon: ''
  material: MYCELIUM
 name_tag:
- icon: ''
+ icon: ''
  material: NAME_TAG
 nautilus_shell:
- icon: ''
+ icon: ''
  material: NAUTILUS_SHELL
 nether_brick:
- icon: ''
+ icon: ''
  material: NETHER_BRICK
 nether_brick_fence:
- icon: ''
+ icon: ''
  material: NETHER_BRICK_FENCE
 nether_brick_slab:
- icon: ''
+ icon: ''
  material: NETHER_BRICK_SLAB
 nether_brick_stairs:
- icon: ''
+ icon: ''
  material: NETHER_BRICK_STAIRS
 nether_brick_stairs_red:
- icon: ''
+ icon: ''
  material: RED_NETHER_BRICK_STAIRS
 nether_brick_wall:
- icon: ''
+ icon: ''
  material: NETHER_BRICK_WALL
 nether_brick_wall_red:
- icon: ''
+ icon: ''
  material: RED_NETHER_BRICK_WALL
 nether_bricks:
- icon: ''
+ icon: ''
  material: NETHER_BRICKS
 nether_bricks_red:
- icon: ''
+ icon: ''
  material: RED_NETHER_BRICKS
 nether_gold_ore:
- icon: ''
+ icon: ''
  material: NETHER_GOLD_ORE
 nether_quartz_ore:
- icon: ''
+ icon: ''
  material: NETHER_QUARTZ_ORE
 nether_sprouts:
- icon: ''
+ icon: ''
  material: NETHER_SPROUTS
 nether_star:
- icon: ''
+ icon: ''
  material: NETHER_STAR
 nether_wart:
- icon: ''
+ icon: ''
  material: NETHER_WART
 nether_wart_block:
- icon: ''
+ icon: ''
  material: NETHER_WART_BLOCK
 netherite_axe:
- icon: ''
+ icon: ''
  material: NETHERITE_AXE
 netherite_block:
- icon: ''
+ icon: ''
  material: NETHERITE_BLOCK
 netherite_boots:
- icon: ''
+ icon: ''
  material: NETHERITE_BOOTS
 netherite_chestplate:
- icon: ''
+ icon: ''
  material: NETHERITE_CHESTPLATE
 netherite_helmet:
- icon: ''
+ icon: ''
  material: NETHERITE_HELMET
 netherite_hoe:
- icon: ''
+ icon: ''
  material: NETHERITE_HOE
 netherite_ingot:
- icon: ''
+ icon: ''
  material: NETHERITE_INGOT
 netherite_leggings:
- icon: ''
+ icon: ''
  material: NETHERITE_LEGGINGS
 netherite_pickaxe:
- icon: ''
+ icon: ''
  material: NETHERITE_PICKAXE
 netherite_scrap:
- icon: ''
+ icon: ''
  material: NETHERITE_SCRAP
 netherite_shovel:
- icon: ''
+ icon: ''
  material: NETHERITE_SHOVEL
 netherite_sword:
- icon: ''
+ icon: ''
  material: NETHERITE_SWORD
 netherrack:
- icon: ''
+ icon: ''
  material: NETHERRACK
 note_block:
- icon: ''
+ icon: ''
  material: NOTE_BLOCK
 oak_boat:
- icon: ''
+ icon: ''
  material: OAK_BOAT
 oak_button:
- icon: ''
+ icon: ''
  material: OAK_BUTTON
 oak_chest_boat:
- icon: ''
+ icon: ''
  material: OAK_CHEST_BOAT
 oak_door:
- icon: ''
+ icon: ''
  material: OAK_DOOR
 oak_fence:
- icon: ''
+ icon: ''
  material: OAK_FENCE
 oak_fence_gate:
- icon: ''
+ icon: ''
  material: OAK_FENCE_GATE
 oak_hanging_sign:
- icon: ''
+ icon: ''
  material: OAK_HANGING_SIGN
 oak_leaves:
- icon: ''
+ icon: ''
  material: OAK_LEAVES
 oak_log:
- icon: ''
+ icon: ''
  material: OAK_LOG
 oak_log_stripped:
- icon: ''
+ icon: ''
  material: STRIPPED_OAK_LOG
 oak_planks:
- icon: ''
+ icon: ''
  material: OAK_PLANKS
 oak_pressure_plate:
- icon: ''
+ icon: ''
  material: OAK_PRESSURE_PLATE
 oak_sapling:
- icon: ''
+ icon: ''
  material: OAK_SAPLING
 oak_sign:
- icon: ''
+ icon: ''
  material: OAK_SIGN
 oak_slab:
- icon: ''
+ icon: ''
  material: OAK_SLAB
 oak_stairs:
- icon: ''
+ icon: ''
  material: OAK_STAIRS
 oak_trapdoor:
- icon: ''
+ icon: ''
  material: OAK_TRAPDOOR
 oak_wood:
- icon: ''
+ icon: ''
  material: OAK_WOOD
 oak_wood_stripped:
- icon: ''
+ icon: ''
  material: STRIPPED_OAK_WOOD
 observer:
- icon: ''
+ icon: ''
  material: OBSERVER
 obsidian:
- icon: ''
+ icon: ''
  material: OBSIDIAN
 orchid:
- icon: ''
+ icon: ''
  material: BLUE_ORCHID
 oxeye_daisy:
- icon: ''
+ icon: ''
  material: OXEYE_DAISY
 painting:
- icon: ''
+ icon: ''
  material: PAINTING
 paper:
- icon: ''
+ icon: ''
  material: PAPER
 peony:
- icon: ''
+ icon: ''
  material: PEONY
 petals:
- icon: ''
+ icon: ''
  material: PINK_PETALS
 phantom_membrane:
- icon: ''
+ icon: ''
  material: PHANTOM_MEMBRANE
 piston:
- icon: ''
+ icon: ''
  material: PISTON
 pitcher_plant:
- icon: ''
+ icon: ''
  material: PITCHER_PLANT
 pitcher_pod:
- icon: ''
+ icon: ''
  material: PITCHER_POD
 podzol:
- icon: ''
+ icon: ''
  material: PODZOL
 pointed_dripstone:
- icon: ''
+ icon: ''
  material: POINTED_DRIPSTONE
 polished_andesite:
- icon: ''
+ icon: ''
  material: POLISHED_ANDESITE
 polished_andesite_slab:
- icon: ''
+ icon: ''
  material: POLISHED_ANDESITE_SLAB
 polished_andesite_stairs:
- icon: ''
+ icon: ''
  material: POLISHED_ANDESITE_STAIRS
 polished_basalt:
- icon: ''
+ icon: ''
  material: POLISHED_BASALT
 polished_blackstone:
- icon: ''
+ icon: ''
  material: POLISHED_BLACKSTONE
 polished_blackstone_brick_slab:
- icon: ''
+ icon: ''
  material: POLISHED_BLACKSTONE_BRICK_SLAB
 polished_blackstone_brick_stairs:
- icon: ''
+ icon: ''
  material: POLISHED_BLACKSTONE_BRICK_STAIRS
 polished_blackstone_brick_wall:
- icon: ''
+ icon: ''
  material: POLISHED_BLACKSTONE_BRICK_WALL
 polished_blackstone_bricks:
- icon: ''
+ icon: ''
  material: POLISHED_BLACKSTONE_BRICKS
 polished_blackstone_button:
- icon: ''
+ icon: ''
  material: POLISHED_BLACKSTONE_BUTTON
 polished_blackstone_pressure_plate:
- icon: ''
+ icon: ''
  material: POLISHED_BLACKSTONE_PRESSURE_PLATE
 polished_blackstone_slab:
- icon: ''
+ icon: ''
  material: POLISHED_BLACKSTONE_SLAB
 polished_blackstone_stairs:
- icon: ''
+ icon: ''
  material: POLISHED_BLACKSTONE_STAIRS
 polished_blackstone_wall:
- icon: ''
+ icon: ''
  material: POLISHED_BLACKSTONE_WALL
 polished_deepslate:
- icon: ''
+ icon: ''
  material: POLISHED_DEEPSLATE
 polished_deepslate_slab:
- icon: ''
+ icon: ''
  material: POLISHED_DEEPSLATE_SLAB
 polished_deepslate_stairs:
- icon: ''
+ icon: ''
  material: POLISHED_DEEPSLATE_STAIRS
 polished_deepslate_wall:
- icon: ''
+ icon: ''
  material: POLISHED_DEEPSLATE_WALL
 polished_diorite:
- icon: ''
+ icon: ''
  material: POLISHED_DIORITE
 polished_diorite_slab:
- icon: ''
+ icon: ''
  material: POLISHED_DIORITE_SLAB
 polished_diorite_stairs:
- icon: ''
+ icon: ''
  material: POLISHED_DIORITE_STAIRS
 polished_granite:
- icon: ''
+ icon: ''
  material: POLISHED_GRANITE
 polished_granite_slab:
- icon: ''
+ icon: ''
  material: POLISHED_GRANITE_SLAB
 polished_granite_stairs:
- icon: ''
+ icon: ''
  material: POLISHED_GRANITE_STAIRS
 popped_chorus_fruit:
- icon: ''
+ icon: ''
  material: POPPED_CHORUS_FRUIT
 poppy:
- icon: ''
+ icon: ''
  material: POPPY
 porkchop:
- icon: ''
+ icon: ''
  material: PORKCHOP
 porkchop_cooked:
- icon: ''
+ icon: ''
  material: COOKED_PORKCHOP
 potato:
- icon: ''
+ icon: ''
  material: POTATO
 potato_baked:
- icon: ''
+ icon: ''
  material: BAKED_POTATO
 potato_poisonous:
- icon: ''
+ icon: ''
  material: POISONOUS_POTATO
 potion_awkward:
- icon: ''
+ icon: ''
  potion: AWKWARD
 potion_fire_resistance:
- icon: ''
+ icon: ''
  potion: FIRE_RESISTANCE
 potion_fire_resistance_long:
- icon: ''
+ icon: ''
  potion: LONG_FIRE_RESISTANCE
 potion_harming:
- icon: ''
+ icon: ''
  potion: HARMING
 potion_harming_strong:
- icon: ''
+ icon: ''
  potion: STRONG_HARMING
 potion_healing:
- icon: ''
+ icon: ''
  potion: HEALING
 potion_healing_strong:
- icon: ''
+ icon: ''
  potion: STRONG_HEALING
 potion_invisibility:
- icon: ''
+ icon: ''
  potion: INVISIBILITY
 potion_invisibility_long:
- icon: ''
+ icon: ''
  potion: LONG_INVISIBILITY
 potion_leaping:
- icon: ''
+ icon: ''
  potion: LEAPING
 potion_leaping_long:
- icon: ''
+ icon: ''
  potion: LONG_LEAPING
 potion_leaping_strong:
- icon: ''
+ icon: ''
  potion: STRONG_LEAPING
 potion_mundane:
- icon: ''
+ icon: ''
  potion: MUNDANE
 potion_night_vision:
- icon: ''
+ icon: ''
  potion: NIGHT_VISION
 potion_night_vision_long:
- icon: ''
+ icon: ''
  potion: LONG_NIGHT_VISION
 potion_poison:
- icon: ''
+ icon: ''
  potion: POISON
 potion_poison_long:
- icon: ''
+ icon: ''
  potion: LONG_POISON
 potion_poison_strong:
- icon: ''
+ icon: ''
  potion: STRONG_POISON
 potion_regeneration:
- icon: ''
+ icon: ''
  potion: REGENERATION
 potion_regeneration_long:
- icon: ''
+ icon: ''
  potion: LONG_REGENERATION
 potion_regeneration_strong:
- icon: ''
+ icon: ''
  potion: STRONG_REGENERATION
 potion_slow_falling:
- icon: ''
+ icon: ''
  potion: SLOW_FALLING
 potion_slow_falling_long:
- icon: ''
+ icon: ''
  potion: LONG_SLOW_FALLING
 potion_slowness:
- icon: ''
+ icon: ''
  potion: SLOWNESS
 potion_slowness_long:
- icon: ''
+ icon: ''
  potion: LONG_SLOWNESS
 potion_slowness_strong:
- icon: ''
+ icon: ''
  potion: STRONG_SLOWNESS
 potion_strength:
- icon: ''
+ icon: ''
  potion: STRENGTH
 potion_strength_long:
- icon: ''
+ icon: ''
  potion: LONG_STRENGTH
 potion_strength_strong:
- icon: ''
+ icon: ''
  potion: STRONG_STRENGTH
 potion_swiftness:
- icon: ''
+ icon: ''
  potion: SWIFTNESS
 potion_swiftness_long:
- icon: ''
+ icon: ''
  potion: LONG_SWIFTNESS
 potion_swiftness_strong:
- icon: ''
+ icon: ''
  potion: STRONG_SWIFTNESS
 potion_thick:
- icon: ''
+ icon: ''
  potion: THICK
 potion_turtle_master:
- icon: ''
+ icon: ''
  potion: TURTLE_MASTER
 potion_turtle_master_long:
- icon: ''
+ icon: ''
  potion: LONG_TURTLE_MASTER
 potion_turtle_master_strong:
- icon: ''
+ icon: ''
  potion: STRONG_TURTLE_MASTER
 potion_water_bottle:
- icon: ''
+ icon: ''
  potion: WATER
 potion_water_breathing:
- icon: ''
+ icon: ''
  potion: WATER_BREATHING
 potion_water_breathing_long:
- icon: ''
+ icon: ''
  potion: LONG_WATER_BREATHING
 potion_weakness:
- icon: ''
+ icon: ''
  potion: WEAKNESS
 potion_weakness_long:
- icon: ''
+ icon: ''
  potion: LONG_WEAKNESS
 prismarine:
- icon: ''
+ icon: ''
  material: PRISMARINE
 prismarine_brick_slab:
- icon: ''
+ icon: ''
  material: PRISMARINE_BRICK_SLAB
 prismarine_brick_stairs:
- icon: ''
+ icon: ''
  material: PRISMARINE_BRICK_STAIRS
 prismarine_bricks:
- icon: ''
+ icon: ''
  material: PRISMARINE_BRICKS
 prismarine_crystals:
- icon: ''
+ icon: ''
  material: PRISMARINE_CRYSTALS
 prismarine_shard:
- icon: ''
+ icon: ''
  material: PRISMARINE_SHARD
 prismarine_slab:
- icon: ''
+ icon: ''
  material: PRISMARINE_SLAB
 prismarine_stairs:
- icon: ''
+ icon: ''
  material: PRISMARINE_STAIRS
 prismarine_wall:
- icon: ''
+ icon: ''
  material: PRISMARINE_WALL
 pufferfish:
- icon: ''
+ icon: ''
  material: PUFFERFISH
 pumpkin:
- icon: ''
+ icon: ''
  material: PUMPKIN
 pumpkin_pie:
- icon: ''
+ icon: ''
  material: PUMPKIN_PIE
 pumpkin_seeds:
- icon: ''
+ icon: ''
  material: PUMPKIN_SEEDS
 purpur_block:
- icon: ''
+ icon: ''
  material: PURPUR_BLOCK
 purpur_pillar:
- icon: ''
+ icon: ''
  material: PURPUR_PILLAR
 purpur_slab:
- icon: ''
+ icon: ''
  material: PURPUR_SLAB
 purpur_stairs:
- icon: ''
+ icon: ''
  material: PURPUR_STAIRS
 quartz:
- icon: ''
+ icon: ''
  material: QUARTZ
 quartz_block:
- icon: ''
+ icon: ''
  material: QUARTZ_BLOCK
 quartz_bricks:
- icon: ''
+ icon: ''
  material: QUARTZ_BRICKS
 quartz_pillar:
- icon: ''
+ icon: ''
  material: QUARTZ_PILLAR
 quartz_slab:
- icon: ''
+ icon: ''
  material: QUARTZ_SLAB
 quartz_stairs:
- icon: ''
+ icon: ''
  material: QUARTZ_STAIRS
 rabbit:
- icon: ''
+ icon: ''
  material: RABBIT
 rabbit_cooked:
- icon: ''
+ icon: ''
  material: COOKED_RABBIT
 rabbit_foot:
- icon: ''
+ icon: ''
  material: RABBIT_FOOT
 rabbit_hide:
- icon: ''
+ icon: ''
  material: RABBIT_HIDE
 rabbit_stew:
- icon: ''
+ icon: ''
  material: RABBIT_STEW
 rail:
- icon: ''
+ icon: ''
  material: RAIL
 rail_activator:
- icon: ''
+ icon: ''
  material: ACTIVATOR_RAIL
 rail_detector:
- icon: ''
+ icon: ''
  material: DETECTOR_RAIL
 rail_powered:
- icon: ''
+ icon: ''
  material: POWERED_RAIL
 recovery_compass:
- icon: ''
+ icon: ''
  material: RECOVERY_COMPASS
 red_nether_brick_slab:
- icon: ''
+ icon: ''
  material: RED_NETHER_BRICK_SLAB
 redstone:
- icon: ''
+ icon: ''
  material: REDSTONE
 redstone_block:
- icon: ''
+ icon: ''
  material: REDSTONE_BLOCK
 redstone_lamp:
- icon: ''
+ icon: ''
  material: REDSTONE_LAMP
 redstone_ore:
- icon: ''
+ icon: ''
  material: REDSTONE_ORE
 redstone_ore_deepslate:
- icon: ''
+ icon: ''
  material: DEEPSLATE_REDSTONE_ORE
 redstone_torch:
- icon: ''
+ icon: ''
  material: REDSTONE_TORCH
 repeater:
- icon: ''
+ icon: ''
  material: REPEATER
 respawn_anchor:
- icon: ''
+ icon: ''
  material: RESPAWN_ANCHOR
 rooted_dirt:
- icon: ''
+ icon: ''
  material: ROOTED_DIRT
 rose_bush:
- icon: ''
+ icon: ''
  material: ROSE_BUSH
 rotten_flesh:
- icon: ''
+ icon: ''
  material: ROTTEN_FLESH
 saddle:
- icon: ''
+ icon: ''
  material: SADDLE
 salmon:
- icon: ''
+ icon: ''
  material: SALMON
 salmon_cooked:
- icon: ''
+ icon: ''
  material: COOKED_SALMON
 sand:
- icon: ''
+ icon: ''
  material: SAND
 sand_red:
- icon: ''
+ icon: ''
  material: RED_SAND
 sandstone:
- icon: ''
+ icon: ''
  material: SANDSTONE
 sandstone_red:
- icon: ''
+ icon: ''
  material: RED_SANDSTONE
 sandstone_slab:
- icon: ''
+ icon: ''
  material: SANDSTONE_SLAB
 sandstone_slab_red:
- icon: ''
+ icon: ''
  material: RED_SANDSTONE_SLAB
 sandstone_stairs:
- icon: ''
+ icon: ''
  material: SANDSTONE_STAIRS
 sandstone_stairs_red:
- icon: ''
+ icon: ''
  material: RED_SANDSTONE_STAIRS
 sandstone_wall:
- icon: ''
+ icon: ''
  material: SANDSTONE_WALL
 sandstone_wall_red:
- icon: ''
+ icon: ''
  material: RED_SANDSTONE_WALL
 scaffolding:
- icon: ''
+ icon: ''
  material: SCAFFOLDING
 sculk:
- icon: ''
+ icon: ''
  material: SCULK
 sculk_catalyst:
- icon: ''
+ icon: ''
  material: SCULK_CATALYST
 sculk_sensor:
- icon: ''
+ icon: ''
  material: SCULK_SENSOR
 sculk_shrieker:
- icon: ''
+ icon: ''
  material: SCULK_SHRIEKER
 sculk_vein:
- icon: ''
+ icon: ''
  material: SCULK_VEIN
 sea_lantern:
- icon: ''
+ icon: ''
  material: SEA_LANTERN
 sea_pickle:
- icon: ''
+ icon: ''
  material: SEA_PICKLE
 seagrass:
- icon: ''
+ icon: ''
  material: SEAGRASS
 shears:
- icon: ''
+ icon: ''
  material: SHEARS
 sherd_angler:
- icon: ''
+ icon: ''
  material: ANGLER_POTTERY_SHERD
 sherd_archer:
- icon: ''
+ icon: ''
  material: ARCHER_POTTERY_SHERD
 sherd_arms_up:
- icon: ''
+ icon: ''
  material: ARMS_UP_POTTERY_SHERD
 sherd_blade:
- icon: ''
+ icon: ''
  material: BLADE_POTTERY_SHERD
 sherd_brewer:
- icon: ''
+ icon: ''
  material: BREWER_POTTERY_SHERD
 sherd_burn:
- icon: ''
+ icon: ''
  material: BURN_POTTERY_SHERD
 sherd_danger:
- icon: ''
+ icon: ''
  material: DANGER_POTTERY_SHERD
 sherd_explorer:
- icon: ''
+ icon: ''
  material: EXPLORER_POTTERY_SHERD
 sherd_friend:
- icon: ''
+ icon: ''
  material: FRIEND_POTTERY_SHERD
 sherd_heart:
- icon: ''
+ icon: ''
  material: HEART_POTTERY_SHERD
 sherd_heartbreaker:
- icon: ''
+ icon: ''
  material: HEARTBREAK_POTTERY_SHERD
 sherd_howl:
- icon: ''
+ icon: ''
  material: HOWL_POTTERY_SHERD
 sherd_miner:
- icon: ''
+ icon: ''
  material: MINER_POTTERY_SHERD
 sherd_mourner:
- icon: ''
+ icon: ''
  material: MOURNER_POTTERY_SHERD
 sherd_plenty:
- icon: ''
+ icon: ''
  material: PLENTY_POTTERY_SHERD
 sherd_prize:
- icon: ''
+ icon: ''
  material: PRIZE_POTTERY_SHERD
 sherd_sheaf:
- icon: ''
+ icon: ''
  material: SHEAF_POTTERY_SHERD
 sherd_shelter:
- icon: ''
+ icon: ''
  material: SHELTER_POTTERY_SHERD
 sherd_skull:
- icon: ''
+ icon: ''
  material: SKULL_POTTERY_SHERD
 sherd_snort:
- icon: ''
+ icon: ''
  material: SNORT_POTTERY_SHERD
 shield:
- icon: ''
+ icon: ''
  material: SHIELD
 shroomlight:
- icon: ''
+ icon: ''
  material: SHROOMLIGHT
 shulker_box:
- icon: ''
+ icon: ''
  material: SHULKER_BOX
 shulker_box_black:
- icon: ''
+ icon: ''
  material: BLACK_SHULKER_BOX
 shulker_box_blue:
- icon: ''
+ icon: ''
  material: BLUE_SHULKER_BOX
 shulker_box_brown:
- icon: ''
+ icon: ''
  material: BROWN_SHULKER_BOX
 shulker_box_cyan:
- icon: ''
+ icon: ''
  material: CYAN_SHULKER_BOX
 shulker_box_gray:
- icon: ''
+ icon: ''
  material: GRAY_SHULKER_BOX
 shulker_box_green:
- icon: ''
+ icon: ''
  material: GREEN_SHULKER_BOX
 shulker_box_light_blue:
- icon: ''
+ icon: ''
  material: LIGHT_BLUE_SHULKER_BOX
 shulker_box_light_gray:
- icon: ''
+ icon: ''
  material: LIGHT_GRAY_SHULKER_BOX
 shulker_box_lime:
- icon: ''
+ icon: ''
  material: LIME_SHULKER_BOX
 shulker_box_magenta:
- icon: ''
+ icon: ''
  material: MAGENTA_SHULKER_BOX
 shulker_box_orange:
- icon: ''
+ icon: ''
  material: ORANGE_SHULKER_BOX
 shulker_box_pink:
- icon: ''
+ icon: ''
  material: PINK_SHULKER_BOX
 shulker_box_purple:
- icon: ''
+ icon: ''
  material: PURPLE_SHULKER_BOX
 shulker_box_red:
- icon: ''
+ icon: ''
  material: RED_SHULKER_BOX
 shulker_box_white:
- icon: ''
+ icon: ''
  material: WHITE_SHULKER_BOX
 shulker_box_yellow:
- icon: ''
+ icon: ''
  material: YELLOW_SHULKER_BOX
 shulker_shell:
- icon: ''
+ icon: ''
  material: SHULKER_SHELL
 slime_ball:
- icon: ''
+ icon: ''
  material: SLIME_BALL
 slime_block:
- icon: ''
+ icon: ''
  material: SLIME_BLOCK
 smithing_table:
- icon: ''
+ icon: ''
  material: SMITHING_TABLE
 smoker:
- icon: ''
+ icon: ''
  material: SMOKER
 smooth_basalt:
- icon: ''
+ icon: ''
  material: SMOOTH_BASALT
 smooth_quartz:
- icon: ''
+ icon: ''
  material: SMOOTH_QUARTZ
 smooth_quartz_slab:
- icon: ''
+ icon: ''
  material: SMOOTH_QUARTZ_SLAB
 smooth_quartz_stairs:
- icon: ''
+ icon: ''
  material: SMOOTH_QUARTZ_STAIRS
 smooth_red_sandstone:
- icon: ''
+ icon: ''
  material: SMOOTH_RED_SANDSTONE
 smooth_red_sandstone_slab:
- icon: ''
+ icon: ''
  material: SMOOTH_RED_SANDSTONE_SLAB
 smooth_red_sandstone_stairs:
- icon: ''
+ icon: ''
  material: SMOOTH_RED_SANDSTONE_STAIRS
 smooth_sandstone:
- icon: ''
+ icon: ''
  material: SMOOTH_SANDSTONE
 smooth_sandstone_slab:
- icon: ''
+ icon: ''
  material: SMOOTH_SANDSTONE_SLAB
 smooth_sandstone_stairs:
- icon: ''
+ icon: ''
  material: SMOOTH_SANDSTONE_STAIRS
 smooth_stone:
- icon: ''
+ icon: ''
  material: SMOOTH_STONE
 smooth_stone_slab:
- icon: ''
+ icon: ''
  material: SMOOTH_STONE_SLAB
 sniffer_egg:
- icon: ''
+ icon: ''
  material: SNIFFER_EGG
 snow:
- icon: ''
+ icon: ''
  material: SNOW
 snow_block:
- icon: ''
+ icon: ''
  material: SNOW_BLOCK
 snowball:
- icon: ''
+ icon: ''
  material: SNOWBALL
 soul_campfire:
- icon: ''
+ icon: ''
  material: SOUL_CAMPFIRE
 soul_lantern:
- icon: ''
+ icon: ''
  material: SOUL_LANTERN
 soul_sand:
- icon: ''
+ icon: ''
  material: SOUL_SAND
 soul_soil:
- icon: ''
+ icon: ''
  material: SOUL_SOIL
 soul_torch:
- icon: ''
+ icon: ''
  material: SOUL_TORCH
 spectral_arrow:
- icon: ''
+ icon: ''
  material: SPECTRAL_ARROW
 spider_eye:
- icon: ''
+ icon: ''
  material: SPIDER_EYE
 sponge:
- icon: ''
+ icon: ''
  material: SPONGE
 sponge_wet:
- icon: ''
+ icon: ''
  material: WET_SPONGE
 spore_blossom:
- icon: ''
+ icon: ''
  material: SPORE_BLOSSOM
 spruce_boat:
- icon: ''
+ icon: ''
  material: SPRUCE_BOAT
 spruce_button:
- icon: ''
+ icon: ''
  material: SPRUCE_BUTTON
 spruce_chest_boat:
- icon: ''
+ icon: ''
  material: SPRUCE_CHEST_BOAT
 spruce_door:
- icon: ''
+ icon: ''
  material: SPRUCE_DOOR
 spruce_fence:
- icon: ''
+ icon: ''
  material: SPRUCE_FENCE
 spruce_fence_gate:
- icon: ''
+ icon: ''
  material: SPRUCE_FENCE_GATE
 spruce_hanging_sign:
- icon: ''
+ icon: ''
  material: SPRUCE_HANGING_SIGN
 spruce_leaves:
- icon: ''
+ icon: ''
  material: SPRUCE_LEAVES
 spruce_log:
- icon: ''
+ icon: ''
  material: SPRUCE_LOG
 spruce_log_stripped:
- icon: ''
+ icon: ''
  material: STRIPPED_SPRUCE_LOG
 spruce_planks:
- icon: ''
+ icon: ''
  material: SPRUCE_PLANKS
 spruce_pressure_plate:
- icon: ''
+ icon: ''
  material: SPRUCE_PRESSURE_PLATE
 spruce_sapling:
- icon: ''
+ icon: ''
  material: SPRUCE_SAPLING
 spruce_sign:
- icon: ''
+ icon: ''
  material: SPRUCE_SIGN
 spruce_slab:
- icon: ''
+ icon: ''
  material: SPRUCE_SLAB
 spruce_stairs:
- icon: ''
+ icon: ''
  material: SPRUCE_STAIRS
 spruce_trapdoor:
- icon: ''
+ icon: ''
  material: SPRUCE_TRAPDOOR
 spruce_wood:
- icon: ''
+ icon: ''
  material: SPRUCE_WOOD
 spruce_wood_stripped:
- icon: ''
+ icon: ''
  material: STRIPPED_SPRUCE_WOOD
 spyglass:
- icon: ''
+ icon: ''
  material: SPYGLASS
 stained_glass_black:
- icon: ''
+ icon: ''
  material: BLACK_STAINED_GLASS
 stained_glass_blue:
- icon: ''
+ icon: ''
  material: BLUE_STAINED_GLASS
 stained_glass_brown:
- icon: ''
+ icon: ''
  material: BROWN_STAINED_GLASS
 stained_glass_cyan:
- icon: ''
+ icon: ''
  material: CYAN_STAINED_GLASS
 stained_glass_gray:
- icon: ''
+ icon: ''
  material: GRAY_STAINED_GLASS
 stained_glass_green:
- icon: ''
+ icon: ''
  material: GREEN_STAINED_GLASS
 stained_glass_light_blue:
- icon: ''
+ icon: ''
  material: LIGHT_BLUE_STAINED_GLASS
 stained_glass_light_gray:
- icon: ''
+ icon: ''
  material: LIGHT_GRAY_STAINED_GLASS
 stained_glass_lime:
- icon: ''
+ icon: ''
  material: LIME_STAINED_GLASS
 stained_glass_magenta:
- icon: ''
+ icon: ''
  material: MAGENTA_STAINED_GLASS
 stained_glass_orange:
- icon: ''
+ icon: ''
  material: ORANGE_STAINED_GLASS
 stained_glass_pane_black:
- icon: ''
+ icon: ''
  material: BLACK_STAINED_GLASS_PANE
 stained_glass_pane_blue:
- icon: ''
+ icon: ''
  material: BLUE_STAINED_GLASS_PANE
 stained_glass_pane_brown:
- icon: ''
+ icon: ''
  material: BROWN_STAINED_GLASS_PANE
 stained_glass_pane_cyan:
- icon: ''
+ icon: ''
  material: CYAN_STAINED_GLASS_PANE
 stained_glass_pane_gray:
- icon: ''
+ icon: ''
  material: GRAY_STAINED_GLASS_PANE
 stained_glass_pane_green:
- icon: ''
+ icon: ''
  material: GREEN_STAINED_GLASS_PANE
 stained_glass_pane_light_blue:
- icon: ''
+ icon: ''
  material: LIGHT_BLUE_STAINED_GLASS_PANE
 stained_glass_pane_light_gray:
- icon: ''
+ icon: ''
  material: LIGHT_GRAY_STAINED_GLASS_PANE
 stained_glass_pane_lime:
- icon: ''
+ icon: ''
  material: LIME_STAINED_GLASS_PANE
 stained_glass_pane_magneta:
- icon: ''
+ icon: ''
  material: MAGENTA_STAINED_GLASS_PANE
 stained_glass_pane_orange:
- icon: ''
+ icon: ''
  material: ORANGE_STAINED_GLASS_PANE
 stained_glass_pane_pink:
- icon: ''
+ icon: ''
  material: PINK_STAINED_GLASS_PANE
 stained_glass_pane_purple:
- icon: ''
+ icon: ''
  material: PURPLE_STAINED_GLASS_PANE
 stained_glass_pane_red:
- icon: ''
+ icon: ''
  material: RED_STAINED_GLASS_PANE
 stained_glass_pane_white:
- icon: ''
+ icon: ''
  material: WHITE_STAINED_GLASS_PANE
 stained_glass_pane_yellow:
- icon: ''
+ icon: ''
  material: YELLOW_STAINED_GLASS_PANE
 stained_glass_pink:
- icon: ''
+ icon: ''
  material: PINK_STAINED_GLASS
 stained_glass_purple:
- icon: ''
+ icon: ''
  material: PURPLE_STAINED_GLASS
 stained_glass_red:
- icon: ''
+ icon: ''
  material: RED_STAINED_GLASS
 stained_glass_white:
- icon: ''
+ icon: ''
  material: WHITE_STAINED_GLASS
 stained_glass_yellow:
- icon: ''
+ icon: ''
  material: YELLOW_STAINED_GLASS
 stick:
- icon: ''
+ icon: ''
  material: STICK
 sticky_piston:
- icon: ''
+ icon: ''
  material: STICKY_PISTON
 stone:
- icon: ''
+ icon: ''
  material: STONE
 stone_axe:
- icon: ''
+ icon: ''
  material: STONE_AXE
 stone_brick_slab:
- icon: ''
+ icon: ''
  material: STONE_BRICK_SLAB
 stone_brick_stairs:
- icon: ''
+ icon: ''
  material: STONE_BRICK_STAIRS
 stone_brick_wall:
- icon: ''
+ icon: ''
  material: STONE_BRICK_WALL
 stone_bricks:
- icon: ''
+ icon: ''
  material: STONE_BRICKS
 stone_button:
- icon: ''
+ icon: ''
  material: STONE_BUTTON
 stone_hoe:
- icon: ''
+ icon: ''
  material: STONE_HOE
 stone_pickaxe:
- icon: ''
+ icon: ''
  material: STONE_PICKAXE
 stone_pressure_plate:
- icon: ''
+ icon: ''
  material: STONE_PRESSURE_PLATE
 stone_shovel:
- icon: ''
+ icon: ''
  material: STONE_SHOVEL
 stone_slab:
- icon: ''
+ icon: ''
  material: STONE_SLAB
 stone_stairs:
- icon: ''
+ icon: ''
  material: STONE_STAIRS
 stone_sword:
- icon: ''
+ icon: ''
  material: STONE_SWORD
 stonecutter:
- icon: ''
+ icon: ''
  material: STONECUTTER
 string:
- icon: ''
+ icon: ''
  material: STRING
 stripped_bamboo_block:
- icon: ''
+ icon: ''
  material: STRIPPED_BAMBOO_BLOCK
 sugar:
- icon: ''
+ icon: ''
  material: SUGAR
 sugar_cane:
- icon: ''
+ icon: ''
  material: SUGAR_CANE
 sunflower:
- icon: ''
+ icon: ''
  material: SUNFLOWER
 suspicious_stew:
- icon: ''
+ icon: ''
  material: SUSPICIOUS_STEW
 sweet_berries:
- icon: ''
+ icon: ''
  material: SWEET_BERRIES
 target:
- icon: ''
+ icon: ''
  material: TARGET
 template_coast:
- icon: ''
+ icon: ''
  material: COAST_ARMOR_TRIM_SMITHING_TEMPLATE
 template_dune:
- icon: ''
+ icon: ''
  material: DUNE_ARMOR_TRIM_SMITHING_TEMPLATE
 template_eye:
- icon: ''
+ icon: ''
  material: EYE_ARMOR_TRIM_SMITHING_TEMPLATE
 template_host:
- icon: ''
+ icon: ''
  material: HOST_ARMOR_TRIM_SMITHING_TEMPLATE
 template_netherite_upgrade:
- icon: ''
+ icon: ''
  material: NETHERITE_UPGRADE_SMITHING_TEMPLATE
 template_raiser:
- icon: ''
+ icon: ''
  material: RAISER_ARMOR_TRIM_SMITHING_TEMPLATE
 template_rib:
- icon: ''
+ icon: ''
  material: RIB_ARMOR_TRIM_SMITHING_TEMPLATE
 template_sentry:
- icon: ''
+ icon: ''
  material: SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE
 template_shaper:
- icon: ''
+ icon: ''
  material: SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE
 template_silence:
- icon: ''
+ icon: ''
  material: SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE
 template_snout:
- icon: ''
+ icon: ''
  material: SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE
 template_spire:
- icon: ''
+ icon: ''
  material: SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE
 template_tide:
- icon: ''
+ icon: ''
  material: TIDE_ARMOR_TRIM_SMITHING_TEMPLATE
 template_vex:
- icon: ''
+ icon: ''
  material: VEX_ARMOR_TRIM_SMITHING_TEMPLATE
 template_ward:
- icon: ''
+ icon: ''
  material: WARD_ARMOR_TRIM_SMITHING_TEMPLATE
 template_wayfinder:
- icon: ''
+ icon: ''
  material: WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE
 template_wild:
- icon: ''
+ icon: ''
  material: WILD_ARMOR_TRIM_SMITHING_TEMPLATE
 terracotta:
- icon: ''
+ icon: ''
  material: TERRACOTTA
 terracotta_black:
- icon: ''
+ icon: ''
  material: BLACK_TERRACOTTA
 terracotta_blue:
- icon: ''
+ icon: ''
  material: BLUE_TERRACOTTA
 terracotta_brown:
- icon: ''
+ icon: ''
  material: BROWN_TERRACOTTA
 terracotta_cyan:
- icon: ''
+ icon: ''
  material: CYAN_TERRACOTTA
 terracotta_glazed_black:
- icon: ''
+ icon: ''
  material: BLACK_GLAZED_TERRACOTTA
 terracotta_glazed_blue:
- icon: ''
+ icon: ''
  material: BLUE_GLAZED_TERRACOTTA
 terracotta_glazed_brown:
- icon: ''
+ icon: ''
  material: BROWN_GLAZED_TERRACOTTA
 terracotta_glazed_cyan:
- icon: ''
+ icon: ''
  material: CYAN_GLAZED_TERRACOTTA
 terracotta_glazed_gray:
- icon: ''
+ icon: ''
  material: GRAY_GLAZED_TERRACOTTA
 terracotta_glazed_green:
- icon: ''
+ icon: ''
  material: GREEN_GLAZED_TERRACOTTA
 terracotta_glazed_light_blue:
- icon: ''
+ icon: ''
  material: LIGHT_BLUE_GLAZED_TERRACOTTA
 terracotta_glazed_light_gray:
- icon: ''
+ icon: ''
  material: LIGHT_GRAY_GLAZED_TERRACOTTA
 terracotta_glazed_lime:
- icon: ''
+ icon: ''
  material: LIME_GLAZED_TERRACOTTA
 terracotta_glazed_magenta:
- icon: ''
+ icon: ''
  material: MAGENTA_GLAZED_TERRACOTTA
 terracotta_glazed_orange:
- icon: ''
+ icon: ''
  material: ORANGE_GLAZED_TERRACOTTA
 terracotta_glazed_pink:
- icon: ''
+ icon: ''
  material: PINK_GLAZED_TERRACOTTA
 terracotta_glazed_purple:
- icon: ''
+ icon: ''
  material: PURPLE_GLAZED_TERRACOTTA
 terracotta_glazed_red:
- icon: ''
+ icon: ''
  material: RED_GLAZED_TERRACOTTA
 terracotta_glazed_white:
- icon: ''
+ icon: ''
  material: WHITE_GLAZED_TERRACOTTA
 terracotta_glazed_yellow:
- icon: ''
+ icon: ''
  material: YELLOW_GLAZED_TERRACOTTA
 terracotta_gray:
- icon: ''
+ icon: ''
  material: GRAY_TERRACOTTA
 terracotta_green:
- icon: ''
+ icon: ''
  material: GREEN_TERRACOTTA
 terracotta_light_blue:
- icon: ''
+ icon: ''
  material: LIGHT_BLUE_TERRACOTTA
 terracotta_light_gray:
- icon: ''
+ icon: ''
  material: LIGHT_GRAY_TERRACOTTA
 terracotta_lime:
- icon: ''
+ icon: ''
  material: LIME_TERRACOTTA
 terracotta_magenta:
- icon: ''
+ icon: ''
  material: MAGENTA_TERRACOTTA
 terracotta_orange:
- icon: ''
+ icon: ''
  material: ORANGE_TERRACOTTA
 terracotta_pink:
- icon: ''
+ icon: ''
  material: PINK_TERRACOTTA
 terracotta_purple:
- icon: ''
+ icon: ''
  material: PURPLE_TERRACOTTA
 terracotta_red:
- icon: ''
+ icon: ''
  material: RED_TERRACOTTA
 terracotta_white:
- icon: ''
+ icon: ''
  material: WHITE_TERRACOTTA
 terracotta_yellow:
- icon: ''
+ icon: ''
  material: YELLOW_TERRACOTTA
 tinted_glass:
- icon: ''
+ icon: ''
  material: TINTED_GLASS
 tipped_arrow:
- icon: ''
+ icon: ''
  material: TIPPED_ARROW
 tnt:
- icon: ''
+ icon: ''
  material: TNT
 torch:
- icon: ''
+ icon: ''
  material: TORCH
 torchflower:
- icon: ''
+ icon: ''
  material: TORCHFLOWER
 torchflower_seeds:
- icon: ''
+ icon: ''
  material: TORCHFLOWER_SEEDS
 totem_of_undying:
- icon: ''
+ icon: ''
  material: TOTEM_OF_UNDYING
 trapped_chest:
- icon: ''
+ icon: ''
  material: TRAPPED_CHEST
 trident:
- icon: ''
+ icon: ''
  material: TRIDENT
 tripwire_hook:
- icon: ''
+ icon: ''
  material: TRIPWIRE_HOOK
 tropical_fish:
- icon: ''
+ icon: ''
  material: TROPICAL_FISH
 tuff:
- icon: ''
+ icon: ''
  material: TUFF
 tulip_orange:
- icon: ''
+ icon: ''
  material: ORANGE_TULIP
 tulip_pink:
- icon: ''
+ icon: ''
  material: PINK_TULIP
 tulip_red:
- icon: ''
+ icon: ''
  material: RED_TULIP
 tulip_white:
- icon: ''
+ icon: ''
  material: WHITE_TULIP
 turtle_egg:
- icon: ''
+ icon: ''
  material: TURTLE_EGG
 turtle_helmet:
- icon: ''
+ icon: ''
  material: TURTLE_HELMET
 turtle_scute:
- icon: ''
+ icon: ''
  material: TURTLE_SCUTE
 vine:
- icon: ''
+ icon: ''
  material: VINE
 vine_twisting:
- icon: ''
+ icon: ''
  material: TWISTING_VINES
 vine_weeping:
- icon: ''
+ icon: ''
  material: WEEPING_VINES
 warped_button:
- icon: ''
+ icon: ''
  material: WARPED_BUTTON
 warped_door:
- icon: ''
+ icon: ''
  material: WARPED_DOOR
 warped_fence:
- icon: ''
+ icon: ''
  material: WARPED_FENCE
 warped_fence_gate:
- icon: ''
+ icon: ''
  material: WARPED_FENCE_GATE
 warped_fungus:
- icon: ''
+ icon: ''
  material: WARPED_FUNGUS
 warped_fungus_on_a_stick:
- icon: ''
+ icon: ''
  material: WARPED_FUNGUS_ON_A_STICK
 warped_hanging_sign:
- icon: ''
+ icon: ''
  material: WARPED_HANGING_SIGN
 warped_hyphae:
- icon: ''
+ icon: ''
  material: WARPED_HYPHAE
 warped_nylium:
- icon: ''
+ icon: ''
  material: WARPED_NYLIUM
 warped_planks:
- icon: ''
+ icon: ''
  material: WARPED_PLANKS
 warped_pressure_plate:
- icon: ''
+ icon: ''
  material: WARPED_PRESSURE_PLATE
 warped_roots:
- icon: ''
+ icon: ''
  material: WARPED_ROOTS
 warped_sign:
- icon: ''
+ icon: ''
  material: WARPED_SIGN
 warped_slab:
- icon: ''
+ icon: ''
  material: WARPED_SLAB
 warped_stairs:
- icon: ''
+ icon: ''
  material: WARPED_STAIRS
 warped_stem:
- icon: ''
+ icon: ''
  material: WARPED_STEM
 warped_stem_stripped:
- icon: ''
+ icon: ''
  material: STRIPPED_WARPED_STEM
 warped_trapdoor:
- icon: ''
+ icon: ''
  material: WARPED_TRAPDOOR
 warped_wart_block:
- icon: ''
+ icon: ''
  material: WARPED_WART_BLOCK
 warrped_hyphae_stripped:
- icon: ''
+ icon: ''
  material: STRIPPED_WARPED_HYPHAE
 wheat:
- icon: ''
+ icon: ''
  material: WHEAT
 wheat_seeds:
- icon: ''
+ icon: ''
  material: WHEAT_SEEDS
 white_candle:
- icon: ''
+ icon: ''
  material: WHITE_CANDLE
 wither_rose:
- icon: ''
+ icon: ''
  material: WITHER_ROSE
 wolf_armor:
- icon: ''
+ icon: ''
  material: WOLF_ARMOR
 wooden_axe:
- icon: ''
+ icon: ''
  material: WOODEN_AXE
 wooden_hoe:
- icon: ''
+ icon: ''
  material: WOODEN_HOE
 wooden_pickaxe:
- icon: ''
+ icon: ''
  material: WOODEN_PICKAXE
 wooden_shovel:
- icon: ''
+ icon: ''
  material: WOODEN_SHOVEL
 wooden_sword:
- icon: ''
+ icon: ''
  material: WOODEN_SWORD
 wool_black:
- icon: ''
+ icon: ''
  material: BLACK_WOOL
 wool_blue:
- icon: ''
+ icon: ''
  material: BLUE_WOOL
 wool_brown:
- icon: ''
+ icon: ''
  material: BROWN_WOOL
 wool_cyan:
- icon: ''
+ icon: ''
  material: CYAN_WOOL
 wool_gray:
- icon: ''
+ icon: ''
  material: GRAY_WOOL
 wool_green:
- icon: ''
+ icon: ''
  material: GREEN_WOOL
 wool_light_blue:
- icon: ''
+ icon: ''
  material: LIGHT_BLUE_WOOL
 wool_light_gray:
- icon: ''
+ icon: ''
  material: LIGHT_GRAY_WOOL
 wool_lime:
- icon: ''
+ icon: ''
  material: LIME_WOOL
 wool_magneta:
- icon: ''
+ icon: ''
  material: MAGENTA_WOOL
 wool_orange:
- icon: ''
+ icon: ''
  material: ORANGE_WOOL
 wool_pink:
- icon: ''
+ icon: ''
  material: PINK_WOOL
 wool_purple:
- icon: ''
+ icon: ''
  material: PURPLE_WOOL
 wool_red:
- icon: ''
+ icon: ''
  material: RED_WOOL
 wool_white:
- icon: ''
+ icon: ''
  material: WHITE_WOOL
 wool_yellow:
- icon: ''
+ icon: ''
  material: YELLOW_WOOL
 crafter:
- icon: ''
+ icon: ''
  material: CRAFTER
 copper_bulb:
- icon: ''
+ icon: ''
  material: COPPER_BULB
 copper_chiseled:
- icon: ''
+ icon: ''
  material: CHISELED_COPPER
 copper_grate:
- icon: ''
+ icon: ''
  material: COPPER_GRATE
 copper_door:
- icon: ''
+ icon: ''
  material: COPPER_DOOR
 copper_trapdoor:
- icon: ''
+ icon: ''
  material: COPPER_TRAPDOOR
 copper_bulb_exposed:
- icon: ''
+ icon: ''
  material: EXPOSED_COPPER_BULB
 copper_chiseled_exposed:
- icon: ''
+ icon: ''
  material: EXPOSED_CHISELED_COPPER
 copper_grate_exposed:
- icon: ''
+ icon: ''
  material: EXPOSED_COPPER_GRATE
 copper_door_exposed:
- icon: ''
+ icon: ''
  material: EXPOSED_COPPER_DOOR
 copper_trapdoor_exposed:
- icon: ''
+ icon: ''
  material: EXPOSED_COPPER_TRAPDOOR
 copper_bulb_weathered:
- icon: ''
+ icon: ''
  material: WEATHERED_COPPER_BULB
 copper_chiseled_weathered:
- icon: ''
+ icon: ''
  material: WEATHERED_CHISELED_COPPER
 copper_grate_weathered:
- icon: ''
+ icon: ''
  material: WEATHERED_COPPER_GRATE
 copper_door_weathered:
- icon: ''
+ icon: ''
  material: WEATHERED_COPPER_DOOR
 copper_trapdoor_weathered:
- icon: ''
+ icon: ''
  material: WEATHERED_COPPER_TRAPDOOR
 copper_bulb_oxidized:
- icon: ''
+ icon: ''
  material: OXIDIZED_COPPER_BULB
 copper_chiseled_oxidized:
- icon: ''
+ icon: ''
  material: OXIDIZED_CHISELED_COPPER
 copper_grate_oxidized:
- icon: ''
+ icon: ''
  material: OXIDIZED_COPPER_GRATE
 copper_door_oxidized:
- icon: ''
+ icon: ''
  material: OXIDIZED_COPPER_DOOR
 copper_trapdoor_oxidized:
- icon: ''
+ icon: ''
  material: OXIDIZED_COPPER_TRAPDOOR
 copper_bulb_waxed:
- icon: ''
+ icon: ''
  material: WAXED_COPPER_BULB
 copper_chiseled_waxed:
- icon: ''
+ icon: ''
  material: WAXED_CHISELED_COPPER
 copper_grate_waxed:
- icon: ''
+ icon: ''
  material: WAXED_COPPER_GRATE
 copper_door_waxed:
- icon: ''
+ icon: ''
  material: WAXED_COPPER_DOOR
 copper_trapdoor_waxed:
- icon: ''
+ icon: ''
  material: WAXED_COPPER_TRAPDOOR
 copper_bulb_exposed_waxed:
- icon: ''
+ icon: ''
  material: WAXED_EXPOSED_COPPER_BULB
 copper_chiseled_exposed_waxed:
- icon: ''
+ icon: ''
  material: WAXED_EXPOSED_CHISELED_COPPER
 copper_grate_exposed_waxed:
- icon: ''
+ icon: ''
  material: WAXED_EXPOSED_COPPER_GRATE
 copper_door_exposed_waxed:
- icon: ''
+ icon: ''
  material: WAXED_EXPOSED_COPPER_DOOR
 copper_trapdoor_exposed_waxed:
- icon: ''
+ icon: ''
  material: WAXED_EXPOSED_COPPER_TRAPDOOR
 copper_bulb_weathered_waxed:
- icon: ''
+ icon: ''
  material: WAXED_WEATHERED_COPPER_BULB
 copper_chiseled_weathered_waxed:
- icon: ''
+ icon: ''
  material: WAXED_WEATHERED_CHISELED_COPPER
 copper_grate_weathered_waxed:
- icon: ''
+ icon: ''
  material: WAXED_WEATHERED_COPPER_GRATE
 copper_door_weathered_waxed:
- icon: ''
+ icon: ''
  material: WAXED_WEATHERED_COPPER_DOOR
 copper_trapdoor_weathered_waxed:
- icon: ''
+ icon: ''
  material: WAXED_WEATHERED_COPPER_TRAPDOOR
 copper_bulb_oxidized_waxed:
- icon: ''
+ icon: ''
  material: WAXED_OXIDIZED_COPPER_BULB
 copper_chiseled_oxidized_waxed:
- icon: ''
+ icon: ''
  material: WAXED_OXIDIZED_CHISELED_COPPER
 copper_grate_oxidized_waxed:
- icon: ''
+ icon: ''
  material: WAXED_OXIDIZED_COPPER_GRATE
 copper_door_oxidized_waxed:
- icon: ''
+ icon: ''
  material: WAXED_OXIDIZED_COPPER_DOOR
 copper_trapdoor_oxidized_waxed:
- icon: ''
+ icon: ''
  material: WAXED_OXIDIZED_COPPER_TRAPDOOR
 tuff_stairs:
- icon: ''
+ icon: ''
  material: TUFF_STAIRS
 tuff_slab:
- icon: ''
+ icon: ''
  material: TUFF_SLAB
 tuff_wall:
- icon: ''
+ icon: ''
  material: TUFF_WALL
 tuff_chiseled:
- icon: ''
+ icon: ''
  material: CHISELED_TUFF
 tuff_polished:
- icon: ''
+ icon: ''
  material: POLISHED_TUFF
 tuff_stairs_polished:
- icon: ''
+ icon: ''
  material: POLISHED_TUFF_STAIRS
 tuff_slab_polished:
- icon: ''
+ icon: ''
  material: POLISHED_TUFF_SLAB
 tuff_wall_polished:
- icon: ''
+ icon: ''
  material: POLISHED_TUFF_WALL
 tuff_bricks:
- icon: ''
+ icon: ''
  material: TUFF_BRICKS
 tuff_brick_stairs:
- icon: ''
+ icon: ''
  material: TUFF_BRICK_STAIRS
 tuff_brick_slab:
- icon: ''
+ icon: ''
  material: TUFF_BRICK_SLAB
 tuff_brick_wall:
- icon: ''
+ icon: ''
  material: TUFF_BRICK_WALL
 tuff_brick_chiseled:
- icon: ''
+ icon: ''
  material: CHISELED_TUFF_BRICKS
 trial_key:
- icon: ''
+ icon: ''
  material: TRIAL_KEY
 wind_charge:
- icon: ''
+ icon: ''
  material: WIND_CHARGE
 breeze_rod:
- icon: ''
+ icon: ''
  material: BREEZE_ROD
 heavy_core:
- icon: ''
+ icon: ''
  material: HEAVY_CORE
 mace:
- icon: ''
+ icon: ''
  material: MACE
 template_flow:
- icon: ''
+ icon: ''
  material: FLOW_ARMOR_TRIM_SMITHING_TEMPLATE
 template_bolt:
- icon: ''
+ icon: ''
  material: BOLT_ARMOR_TRIM_SMITHING_TEMPLATE
 sherd_flow:
- icon: ''
+ icon: ''
  material: FLOW_POTTERY_SHERD
 sherd_guster:
- icon: ''
+ icon: ''
  material: GUSTER_POTTERY_SHERD
 sherd_scrape:
- icon: ''
+ icon: ''
  material: SCRAPE_POTTERY_SHERD
 banner_pattern_flow:
- icon: ''
+ icon: ''
  material: FLOW_BANNER_PATTERN
 banner_pattern_guster:
- icon: ''
+ icon: ''
  material: GUSTER_BANNER_PATTERN
 map_trail_chamber:
- icon: ''
+ icon: ''
  material: BURIED_TRIAL_CHAMBERS_MAP
 ominous_trial_key:
- icon: ''
+ icon: ''
  material: OMINOUS_TRIAL_KEY
 ominous_bottle:
- icon: ''
+ icon: ''
  material: OMINOUS_BOTTLE
 potion_wind_charge:
- icon: ''
+ icon: ''
  potion: WIND_CHARGED
 potion_weaving:
- icon: ''
+ icon: ''
  potion: WEAVING
 potion_oozing:
- icon: ''
+ icon: ''
  potion: OOZING
 potion_infested:
- icon: ''
+ icon: ''
  potion: INFESTED
 disc_precipice:
- icon: ''
+ icon: ''
  material: MUSIC_DISC_PRECIPICE
 disc_creator:
- icon: ''
+ icon: ''
  material: MUSIC_DISC_CREATOR
 disc_creator_box:
- icon: ''
+ icon: ''
  material: MUSIC_DISC_CREATOR_MUSIC_BOX
 banner_pattern_field_masoned:
- icon: ''
+ icon: ''
  material: FIELD_MASONED_BANNER_PATTERN
 banner_pattern_bordure_indented:
- icon: ''
+ icon: ''
  material: BORDURE_INDENTED_BANNER_PATTERN
 bundle:
- icon: ''
- material: BUNDLE
-creaking_heart:
  icon: ''
+ material: BUNDLE
+bundle_white:
+ icon: ''
+ material: WHITE_BUNDLE
+bundle_light_gray:
+ icon: ''
+ material: LIGHT_GRAY_BUNDLE
+bundle_gray:
+ icon: ''
+ material: GRAY_BUNDLE
+bundle_black:
+ icon: ''
+ material: BLACK_BUNDLE
+bundle_brown:
+ icon: ''
+ material: BROWN_BUNDLE
+bundle_red:
+ icon: ''
+ material: RED_BUNDLE
+bundle_orange:
+ icon: ''
+ material: ORANGE_BUNDLE
+bundle_yellow:
+ icon: ''
+ material: YELLOW_BUNDLE
+bundle_lime:
+ icon: ''
+ material: LIME_BUNDLE
+bundle_green:
+ icon: ''
+ material: GREEN_BUNDLE
+bundle_cyan:
+ icon: ''
+ material: CYAN_BUNDLE
+bundle_light_blue:
+ icon: ''
+ material: LIGHT_BLUE_BUNDLE
+bundle_blue:
+ icon: ''
+ material: BLUE_BUNDLE
+bundle_purple:
+ icon: ''
+ material: PURPLE_BUNDLE
+bundle_magenta:
+ icon: ''
+ material: MAGENTA_BUNDLE
+bundle_pink:
+ icon: ''
+ material: PINK_BUNDLE
+creaking_heart:
+ icon: ''
  material: CREAKING_HEART
 pale_oak_log:
- icon: ''
+ icon: ''
  material: PALE_OAK_LOG
 pale_oak_log_stripped:
- icon: ''
+ icon: ''
  material: STRIPPED_PALE_OAK_LOG
 pale_oak_wood:
- icon: ''
+ icon: ''
  material: PALE_OAK_WOOD
 pale_oak_wood_stripped:
- icon: ''
+ icon: ''
  material: STRIPPED_PALE_OAK_WOOD
 pale_oak_planks:
- icon: ''
+ icon: ''
  material: PALE_OAK_PLANKS
 pale_oak_stairs:
- icon: ''
+ icon: ''
  material: PALE_OAK_STAIRS
 pale_oak_slab:
- icon: ''
+ icon: ''
  material: PALE_OAK_SLAB
 pale_oak_sign:
- icon: ''
+ icon: ''
  material: PALE_OAK_SIGN
 pale_oak_hanging_sign:
- icon: ''
+ icon: ''
  material: PALE_OAK_HANGING_SIGN
 pale_oak_button:
- icon: ''
+ icon: ''
  material: PALE_OAK_BUTTON
 pale_oak_pressure_plate:
- icon: ''
+ icon: ''
  material: PALE_OAK_PRESSURE_PLATE
 pale_oak_door:
- icon: ''
+ icon: ''
  material: PALE_OAK_DOOR
 pale_oak_fence:
- icon: ''
+ icon: ''
  material: PALE_OAK_FENCE
 pale_oak_fence_gate:
- icon: ''
+ icon: ''
  material: PALE_OAK_FENCE_GATE
 pale_oak_trapdoor:
- icon: ''
+ icon: ''
  material: PALE_OAK_TRAPDOOR
 pale_oak_boat:
- icon: ''
+ icon: ''
  material: PALE_OAK_BOAT
 pale_oak_chest_boat:
- icon: ''
+ icon: ''
  material: PALE_OAK_CHEST_BOAT
 pale_hanging_moss:
- icon: ''
+ icon: ''
  material: PALE_HANGING_MOSS
 pale_moss_block:
- icon: ''
+ icon: ''
  material: PALE_MOSS_BLOCK
 pale_moss_carpet:
- icon: ''
+ icon: ''
  material: PALE_MOSS_CARPET
 pale_oak_leaves:
- icon: ''
+ icon: ''
  material: PALE_OAK_LEAVES
 pale_oak_sapling:
- icon: ''
+ icon: ''
  material: PALE_OAK_SAPLING
 eyeblossom_opened:
- icon: ''
+ icon: ''
  material: OPEN_EYEBLOSSOM
 eyeblossom_closed:
- icon: ''
+ icon: ''
  material: CLOSED_EYEBLOSSOM
 resin_block:
- icon: ''
+ icon: ''
  material: RESIN_BLOCK
 resin_bricks:
- icon: ''
+ icon: ''
  material: RESIN_BRICKS
 resin_bricks_chiseled:
- icon: ''
+ icon: ''
  material: CHISELED_RESIN_BRICKS
 resin_brick_slab:
- icon: ''
+ icon: ''
  material: RESIN_BRICK_SLAB
 resin_brick_stairs:
- icon: ''
+ icon: ''
  material: RESIN_BRICK_STAIRS
 resin_brick_wall:
- icon: ''
+ icon: ''
  material: RESIN_BRICK_WALL
 resin_clump:
- icon: ''
+ icon: ''
  material: RESIN_CLUMP
 resin_brick:
- icon: ''
+ icon: ''
  material: RESIN_BRICK
 leaf_litter:
- icon: ''
+ icon: ''
  material: LEAF_LITTER
 wildflowers:
- icon: ''
+ icon: ''
  material: WILDFLOWERS
 bush:
- icon: ''
+ icon: ''
  material: BUSH
 firefly_bush:
- icon: ''
+ icon: ''
  material: FIREFLY_BUSH
 cactus_flower:
- icon: ''
+ icon: ''
  material: CACTUS_FLOWER
 short_dry_grass:
- icon: ''
+ icon: ''
  material: SHORT_DRY_GRASS
 tall_dry_grass:
- icon: ''
+ icon: ''
  material: TALL_DRY_GRASS
 brown_egg:
- icon: ''
+ icon: ''
  material: BROWN_EGG
 blue_egg:
- icon: ''
+ icon: ''
  material: BLUE_EGG
 map_jungle_pyramid:
- icon: ''
+ icon: ''
  material: JUNGLE_PYRAMID_MAP
 map_swamp_hut:
- icon: ''
+ icon: ''
  material: SWAMP_HUT_MAP
 map_desert_village:
- icon: ''
+ icon: ''
  material: DESERT_VILLAGE_MAP
 map_plains_village:
- icon: ''
+ icon: ''
  material: PLAINS_VILLAGE_MAP
 map_savanna_village:
- icon: ''
+ icon: ''
  material: SAVANNA_VILLAGE_MAP
 map_snowy_village:
- icon: ''
+ icon: ''
  material: SNOWY_VILLAGE_MAP
 map_taiga_village:
- icon: ''
+ icon: ''
  material: TAIGA_VILLAGE_MAP
 dried_ghast:
- icon: ''
+ icon: ''
  material: DRIED_GHAST
 white_harness:
- icon: ''
+ icon: ''
  material: WHITE_HARNESS
 light_gray_harness:
- icon: ''
+ icon: ''
  material: LIGHT_GRAY_HARNESS
 gray_harness:
- icon: ''
+ icon: ''
  material: GRAY_HARNESS
 black_harness:
- icon: ''
+ icon: ''
  material: BLACK_HARNESS
 brown_harness:
- icon: ''
+ icon: ''
  material: BROWN_HARNESS
 red_harness:
- icon: ''
+ icon: ''
  material: RED_HARNESS
 orange_harness:
- icon: ''
+ icon: ''
  material: ORANGE_HARNESS
 yellow_harness:
- icon: ''
+ icon: ''
  material: YELLOW_HARNESS
 green_harness:
- icon: ''
+ icon: ''
  material: GREEN_HARNESS
 lime_harness:
- icon: ''
+ icon: ''
  material: LIME_HARNESS
 cyan_harness:
- icon: ''
+ icon: ''
  material: CYAN_HARNESS
 light_blue_harness:
- icon: ''
+ icon: ''
  material: LIGHT_BLUE_HARNESS
 blue_harness:
- icon: ''
+ icon: ''
  material: BLUE_HARNESS
 magenta_harness:
- icon: ''
+ icon: ''
  material: MAGENTA_HARNESS
 purple_harness:
- icon: ''
+ icon: ''
  material: PURPLE_HARNESS
 pink_harness:
- icon: ''
+ icon: ''
  material: PINK_HARNESS
 music_disc_tears:
- icon: ''
+ icon: ''
  material: MUSIC_DISC_TEARS
 music_disc_lava_chicken:
- icon: ''
+ icon: ''
  material: MUSIC_DISC_LAVA_CHICKEN
 copper_chest:
- icon: ''
+ icon: ''
  material: COPPER_CHEST
 copper_golem_statue:
- icon: ''
+ icon: ''
  material: COPPER_GOLEM_STATUE
 copper_bars:
- icon: ''
+ icon: ''
  material: COPPER_BARS
 copper_chain:
- icon: ''
+ icon: ''
  material: COPPER_CHAIN
 copper_chest_expossed:
- icon: ''
+ icon: ''
  material: EXPOSED_COPPER_CHEST
 copper_golem_statue_expossed:
- icon: ''
+ icon: ''
  material: EXPOSED_COPPER_GOLEM_STATUE
 copper_bars_expossed:
- icon: ''
+ icon: ''
  material: EXPOSED_COPPER_BARS
 copper_chain_expossed:
- icon: ''
+ icon: ''
  material: EXPOSED_COPPER_CHAIN
 copper_chest_weathered:
- icon: ''
+ icon: ''
  material: WEATHERED_COPPER_CHEST
 copper_golem_statue_weathered:
- icon: ''
+ icon: ''
  material: WEATHERED_COPPER_GOLEM_STATUE
 copper_bars_weathered:
- icon: ''
+ icon: ''
  material: WEATHERED_COPPER_BARS
 copper_chain_weathered:
- icon: ''
+ icon: ''
  material: WEATHERED_COPPER_CHAIN
 copper_chest_oxidized:
- icon: ''
+ icon: ''
  material: OXIDIZED_COPPER_CHEST
 copper_golem_statue_oxidized:
- icon: ''
+ icon: ''
  material: OXIDIZED_COPPER_GOLEM_STATUE
 copper_bars_oxidized:
- icon: ''
+ icon: ''
  material: OXIDIZED_COPPER_BARS
 copper_chain_oxidized:
- icon: ''
+ icon: ''
  material: OXIDIZED_COPPER_CHAIN
 copper_chest_waxed:
- icon: ''
+ icon: ''
  material: WAXED_COPPER_CHEST
 copper_golem_statue_waxed:
- icon: ''
+ icon: ''
  material: WAXED_COPPER_GOLEM_STATUE
 copper_bars_waxed:
- icon: ''
+ icon: ''
  material: WAXED_COPPER_BARS
 copper_chain_waxed:
- icon: ''
+ icon: ''
  material: WAXED_COPPER_CHAIN
 copper_chest_expossed_waxed:
- icon: ''
+ icon: ''
  material: WAXED_EXPOSED_COPPER_CHEST
 copper_golem_statue_expossed_waxed:
- icon: ''
+ icon: ''
  material: WAXED_EXPOSED_COPPER_GOLEM_STATUE
 copper_bars_expossed_waxed:
- icon: ''
+ icon: ''
  material: WAXED_EXPOSED_COPPER_BARS
 copper_chain_expossed_waxed:
- icon: ''
+ icon: ''
  material: WAXED_EXPOSED_COPPER_CHAIN
 copper_chest_weathered_waxed:
- icon: ''
+ icon: ''
  material: WAXED_WEATHERED_COPPER_CHEST
 copper_golem_statue_weathered_waxed:
- icon: ''
+ icon: ''
  material: WAXED_WEATHERED_COPPER_GOLEM_STATUE
 copper_bars_weathered_waxed:
- icon: ''
+ icon: ''
  material: WAXED_WEATHERED_COPPER_BARS
 copper_chain_weathered_waxed:
- icon: ''
+ icon: ''
  material: WAXED_WEATHERED_COPPER_CHAIN
 copper_chest_oxidized_waxed:
- icon: ''
+ icon: ''
  material: WAXED_OXIDIZED_COPPER_CHEST
 copper_golem_statue_oxidized_waxed:
- icon: ''
+ icon: ''
  material: WAXED_OXIDIZED_COPPER_GOLEM_STATUE
 copper_bars_oxidized_waxed:
- icon: ''
+ icon: ''
  material: WAXED_OXIDIZED_COPPER_BARS
 copper_chain_oxidized_waxed:
- icon: ''
+ icon: ''
  material: WAXED_OXIDIZED_COPPER_CHAIN
 lightning_rod_exposed:
- icon: ''
+ icon: ''
  material: EXPOSED_LIGHTNING_ROD
 lightning_rod_weathered:
- icon: ''
+ icon: ''
  material: WEATHERED_LIGHTNING_ROD
 lightning_rod_oxidized:
- icon: ''
+ icon: ''
  material: OXIDIZED_LIGHTNING_ROD
 lightning_rod_waxed:
- icon: ''
+ icon: ''
  material: WAXED_LIGHTNING_ROD
 lightning_rod_exposed_waxed:
- icon: ''
+ icon: ''
  material: WAXED_EXPOSED_LIGHTNING_ROD
 lightning_rod_weathered_waxed:
- icon: ''
+ icon: ''
  material: WAXED_WEATHERED_LIGHTNING_ROD
 lightning_rod_oxidized_waxed:
- icon: ''
+ icon: ''
  material: WAXED_OXIDIZED_LIGHTNING_ROD
 oak_shelf:
- icon: ''
+ icon: ''
  material: OAK_SHELF
 birch_shelf:
- icon: ''
+ icon: ''
  material: BIRCH_SHELF
 spruce_shelf:
- icon: ''
+ icon: ''
  material: SPRUCE_SHELF
 jungle_shelf:
- icon: ''
+ icon: ''
  material: JUNGLE_SHELF
 acacia_shelf:
- icon: ''
+ icon: ''
  material: ACACIA_SHELF
 dark_oak_shelf:
- icon: ''
+ icon: ''
  material: DARK_OAK_SHELF
 crimson_shelf:
- icon: ''
+ icon: ''
  material: CRIMSON_SHELF
 warped_shelf:
- icon: ''
+ icon: ''
  material: WARPED_SHELF
 mangrove_shelf:
- icon: ''
+ icon: ''
  material: MANGROVE_SHELF
 bamboo_shelf:
- icon: ''
+ icon: ''
  material: BAMBOO_SHELF
 cherry_shelf:
- icon: ''
+ icon: ''
  material: CHERRY_SHELF
 pale_oak_shelf:
- icon: ''
+ icon: ''
  material: PALE_OAK_SHELF
 copper_sword:
- icon: ''
+ icon: ''
  material: COPPER_SWORD
 copper_axe:
- icon: ''
+ icon: ''
  material: COPPER_AXE
 copper_pickaxe:
- icon: ''
+ icon: ''
  material: COPPER_PICKAXE
 copper_shovel:
- icon: ''
+ icon: ''
  material: COPPER_SHOVEL
 copper_hoe:
- icon: ''
+ icon: ''
  material: COPPER_HOE
 copper_helmet:
- icon: ''
+ icon: ''
  material: COPPER_HELMET
 copper_chestplate:
- icon: ''
+ icon: ''
  material: COPPER_CHESTPLATE
 copper_leggings:
- icon: ''
+ icon: ''
  material: COPPER_LEGGINGS
 copper_boots:
- icon: ''
+ icon: ''
  material: COPPER_BOOTS
 copper_horse_armor:
- icon: ''
+ icon: ''
  material: COPPER_HORSE_ARMOR
 copper_nugget:
- icon: ''
+ icon: ''
  material: COPPER_NUGGET
 copper_torch:
- icon: ''
+ icon: ''
  material: COPPER_TORCH
 copper_lantern:
- icon: ''
+ icon: ''
  material: COPPER_LANTERN
 copper_lantern_exposed:
- icon: ''
+ icon: ''
  material: EXPOSED_COPPER_LANTERN
 copper_lantern_weathered:
- icon: ''
+ icon: ''
  material: WEATHERED_COPPER_LANTERN
 copper_lantern_oxidized:
- icon: ''
+ icon: ''
  material: OXIDIZED_COPPER_LANTERN
 copper_lantern_waxed:
- icon: ''
+ icon: ''
  material: WAXED_COPPER_LANTERN
 copper_lantern_exposed_waxed:
- icon: ''
+ icon: ''
  material: WAXED_EXPOSED_COPPER_LANTERN
 copper_lantern_weathered_waxed:
- icon: ''
+ icon: ''
  material: WAXED_WEATHERED_COPPER_LANTERN
 copper_lantern_oxidized_waxed:
- icon: ''
+ icon: ''
  material: WAXED_OXIDIZED_COPPER_LANTERN
 copper_nautilus_armor:
- icon: ''
+ icon: ''
  material: COPPER_NAUTILUS_ARMOR
 iron_nautilus_armor:
- icon: ''
+ icon: ''
  material: IRON_NAUTILUS_ARMOR
 golden_nautilus_armor:
- icon: ''
+ icon: ''
  material: GOLDEN_NAUTILUS_ARMOR
 diamond_nautilus_armor:
- icon: ''
+ icon: ''
  material: DIAMOND_NAUTILUS_ARMOR
 netherite_nautilus_armor:
- icon: ''
+ icon: ''
  material: NETHERITE_NAUTILUS_ARMOR
 netherite_horse_armor:
- icon: ''
+ icon: ''
  material: NETHERITE_HORSE_ARMOR
 wooden_spear:
- icon: ''
+ icon: ''
  material: WOODEN_SPEAR
 stone_spear:
- icon: ''
+ icon: ''
  material: STONE_SPEAR
 copper_spear:
- icon: ''
+ icon: ''
  material: COPPER_SPEAR
 iron_spear:
- icon: ''
+ icon: ''
  material: IRON_SPEAR
 golden_spear:
- icon: ''
+ icon: ''
  material: GOLDEN_SPEAR
 diamond_spear:
- icon: ''
+ icon: ''
  material: DIAMOND_SPEAR
 netherite_spear:
- icon: ''
+ icon: ''
  material: NETHERITE_SPEAR
 golden_dandelion:
- icon: ''
+ icon: ''
  material: GOLDEN_DANDELION
 cinnabar:
- icon: ''
+ icon: ''
  material: CINNABAR
 cinnabar_slab:
- icon: ''
+ icon: ''
  material: CINNABAR_SLAB
 cinnabar_stairs:
- icon: ''
+ icon: ''
  material: CINNABAR_STAIRS
 cinnabar_wall:
- icon: ''
+ icon: ''
  material: CINNABAR_WALL
 cinnabar_polished:
- icon: ''
+ icon: ''
  material: POLISHED_CINNABAR
 cinnabar_slab_polished:
- icon: ''
+ icon: ''
  material: POLISHED_CINNABAR_SLAB
 cinnabar_stairs_polished:
- icon: ''
+ icon: ''
  material: POLISHED_CINNABAR_STAIRS
 cinnabar_wall_polished:
- icon: ''
+ icon: ''
  material: POLISHED_CINNABAR_WALL
 cinnabar_bricks:
- icon: ''
+ icon: ''
  material: CINNABAR_BRICKS
 cinnabar_brick_slab:
- icon: ''
+ icon: ''
  material: CINNABAR_BRICK_SLAB
 cinnabar_brick_stairs:
- icon: ''
+ icon: ''
  material: CINNABAR_BRICK_STAIRS
 cinnabar_brick_wall:
- icon: ''
+ icon: ''
  material: CINNABAR_BRICK_WALL
 cinnabar_chiseled:
- icon: ''
+ icon: ''
  material: CHISELED_CINNABAR
 sulfur_potent:
- icon: ''
+ icon: ''
  material: POTENT_SULFUR
 sulfur:
- icon: ''
+ icon: ''
  material: SULFUR
 sulfur_slab:
- icon: ''
+ icon: ''
  material: SULFUR_SLAB
 sulfur_stairs:
- icon: ''
+ icon: ''
  material: SULFUR_STAIRS
 sulfur_wall:
- icon: ''
+ icon: ''
  material: SULFUR_WALL
 sulfur_polished:
- icon: ''
+ icon: ''
  material: POLISHED_SULFUR
 sulfur_slab_polished:
- icon: ''
+ icon: ''
  material: POLISHED_SULFUR_SLAB
 sulfur_stairs_polished:
- icon: ''
+ icon: ''
  material: POLISHED_SULFUR_STAIRS
 sulfur_wall_polished:
- icon: ''
+ icon: ''
  material: POLISHED_SULFUR_WALL
 sulfur_bricks:
- icon: ''
+ icon: ''
  material: SULFUR_BRICKS
 sulfur_brick_slab:
- icon: ''
+ icon: ''
  material: SULFUR_BRICK_SLAB
 sulfur_brick_stairs:
- icon: ''
+ icon: ''
  material: SULFUR_BRICK_STAIRS
 sulfur_brick_wall:
- icon: ''
+ icon: ''
  material: SULFUR_BRICK_WALL
 sulfur_chiseled:
- icon: ''
+ icon: ''
  material: CHISELED_SULFUR
 sulfur_spike:
- icon: ''
+ icon: ''
  material: SULFUR_SPIKE
 sulfur_cube_bucket:
- icon: ''
+ icon: ''
  material: SULFUR_CUBE_BUCKET
 music_disc_bounce:
- icon: ''
+ icon: ''
  material: MUSIC_DISC_BOUNCE
 poplar_log:
- icon: ''
+ icon: ''
  material: POPLAR_LOG
 poplar_log_stripped:
- icon: ''
+ icon: ''
  material: STRIPPED_POPLAR_LOG
 poplar_wood:
- icon: ''
+ icon: ''
  material: POPLAR_WOOD
 poplar_wood_stripped:
- icon: ''
+ icon: ''
  material: STRIPPED_POPLAR_WOOD
 poplar_planks:
- icon: ''
+ icon: ''
  material: POPLAR_PLANKS
 poplar_stairs:
- icon: ''
+ icon: ''
  material: POPLAR_STAIRS
 poplar_slab:
- icon: ''
+ icon: ''
  material: POPLAR_SLAB
 poplar_sign:
- icon: ''
+ icon: ''
  material: POPLAR_SIGN
 poplar_hanging_sign:
- icon: ''
+ icon: ''
  material: POPLAR_HANGING_SIGN
 poplar_button:
- icon: ''
+ icon: ''
  material: POPLAR_BUTTON
 poplar_pressure_plate:
- icon: ''
+ icon: ''
  material: POPLAR_PRESSURE_PLATE
 poplar_door:
- icon: ''
+ icon: ''
  material: POPLAR_DOOR
 poplar_fence:
- icon: ''
+ icon: ''
  material: POPLAR_FENCE
 poplar_fence_gate:
- icon: ''
+ icon: ''
  material: POPLAR_FENCE_GATE
 poplar_trapdoor:
- icon: ''
+ icon: ''
  material: POPLAR_TRAPDOOR
 poplar_shelf:
- icon: ''
+ icon: ''
  material: POPLAR_SHELF
 poplar_boat:
- icon: ''
+ icon: ''
  material: POPLAR_BOAT
 poplar_chest_boat:
- icon: ''
+ icon: ''
  material: POPLAR_CHEST_BOAT
 poplar_leaves_red:
- icon: ''
+ icon: ''
  material: RED_POPLAR_LEAVES
 poplar_leaves_orange:
- icon: ''
+ icon: ''
  material: ORANGE_POPLAR_LEAVES
 poplar_leaves_yellow:
- icon: ''
+ icon: ''
  material: YELLOW_POPLAR_LEAVES
 poplar_sapling:
- icon: ''
+ icon: ''
  material: POPLAR_SAPLING
 red_shrub:
- icon: ''
+ icon: ''
  material: RED_SHRUB
 shelf_mushroom:
- icon: ''
+ icon: ''
  material: SHELF_MUSHROOM
 wool_white_stairs:
- icon: ''
+ icon: ''
  material: WHITE_WOOL_STAIRS
 wool_white_slabs:
- icon: ''
+ icon: ''
  material: WHITE_WOOL_SLAB
 cushion_white:
- icon: ''
+ icon: ''
  material: WHITE_CUSHION
 wool_light_gray_stairs:
- icon: ''
+ icon: ''
  material: LIGHT_GRAY_WOOL_STAIRS
 wool_light_gray_slabs:
- icon: ''
+ icon: ''
  material: LIGHT_GRAY_WOOL_SLAB
 cushion_light_gray:
- icon: ''
+ icon: ''
  material: LIGHT_GRAY_CUSHION
 wool_gray_stairs:
- icon: ''
+ icon: ''
  material: GRAY_WOOL_STAIRS
 wool_gray_slabs:
- icon: ''
+ icon: ''
  material: GRAY_WOOL_SLAB
 cushion_gray:
- icon: ''
+ icon: ''
  material: GRAY_CUSHION
 wool_black_stairs:
- icon: ''
+ icon: ''
  material: BLACK_WOOL_STAIRS
 wool_black_slabs:
- icon: ''
+ icon: ''
  material: BLACK_WOOL_SLAB
 cushion_black:
- icon: ''
+ icon: ''
  material: BLACK_CUSHION
 wool_brown_stairs:
- icon: ''
+ icon: ''
  material: BROWN_WOOL_STAIRS
 wool_brown_slabs:
- icon: ''
+ icon: ''
  material: BROWN_WOOL_SLAB
 cushion_brown:
- icon: ''
+ icon: ''
  material: BROWN_CUSHION
 wool_red_stairs:
- icon: ''
+ icon: ''
  material: RED_WOOL_STAIRS
 wool_red_slabs:
- icon: ''
+ icon: ''
  material: RED_WOOL_SLAB
 cushion_red:
- icon: ''
+ icon: ''
  material: RED_CUSHION
 wool_orange_stairs:
- icon: ''
+ icon: ''
  material: ORANGE_WOOL_STAIRS
 wool_orange_slabs:
- icon: ''
+ icon: ''
  material: ORANGE_WOOL_SLAB
 cushion_orange:
- icon: ''
+ icon: ''
  material: ORANGE_CUSHION
 wool_yellow_stairs:
- icon: ''
+ icon: ''
  material: YELLOW_WOOL_STAIRS
 wool_yellow_slabs:
- icon: ''
+ icon: ''
  material: YELLOW_WOOL_SLAB
 cushion_yellow:
- icon: ''
+ icon: ''
  material: YELLOW_CUSHION
 wool_lime_stairs:
- icon: ''
+ icon: ''
  material: LIME_WOOL_STAIRS
 wool_lime_slabs:
- icon: ''
+ icon: ''
  material: LIME_WOOL_SLAB
 cushion_lime:
- icon: ''
+ icon: ''
  material: LIME_CUSHION
 wool_green_stairs:
- icon: ''
+ icon: ''
  material: GREEN_WOOL_STAIRS
 wool_green_slabs:
- icon: ''
+ icon: ''
  material: GREEN_WOOL_SLAB
 cushion_green:
- icon: ''
+ icon: ''
  material: GREEN_CUSHION
 wool_cyan_stairs:
- icon: ''
+ icon: ''
  material: CYAN_WOOL_STAIRS
 wool_cyan_slabs:
- icon: ''
+ icon: ''
  material: CYAN_WOOL_SLAB
 cushion_cyan:
- icon: ''
+ icon: ''
  material: CYAN_CUSHION
 wool_light_blue_stairs:
- icon: ''
+ icon: ''
  material: LIGHT_BLUE_WOOL_STAIRS
 wool_light_blue_slabs:
- icon: ''
+ icon: ''
  material: LIGHT_BLUE_WOOL_SLAB
 cushion_light_blue:
- icon: ''
+ icon: ''
  material: LIGHT_BLUE_CUSHION
 wool_blue_stairs:
- icon: ''
+ icon: ''
  material: BLUE_WOOL_STAIRS
 wool_blue_slabs:
- icon: ''
+ icon: ''
  material: BLUE_WOOL_SLAB
 cushion_blue:
- icon: ''
+ icon: ''
  material: BLUE_CUSHION
 wool_purple_stairs:
- icon: ''
+ icon: ''
  material: PURPLE_WOOL_STAIRS
 wool_purple_slabs:
- icon: ''
+ icon: ''
  material: PURPLE_WOOL_SLAB
 cushion_purple:
- icon: ''
+ icon: ''
  material: PURPLE_CUSHION
 wool_magenta_stairs:
- icon: ''
+ icon: ''
  material: MAGENTA_WOOL_STAIRS
 wool_magenta_slabs:
- icon: ''
+ icon: ''
  material: MAGENTA_WOOL_SLAB
 cushion_magenta:
- icon: ''
+ icon: ''
  material: MAGENTA_CUSHION
 wool_pink_stairs:
- icon: ''
+ icon: ''
  material: PINK_WOOL_STAIRS
 wool_pink_slabs:
- icon: ''
+ icon: ''
  material: PINK_WOOL_SLAB
 cushion_pink:
- icon: ''
+ icon: ''
  material: PINK_CUSHION
 concrete_stairs_white:
- icon: ''
+ icon: ''
  material: WHITE_CONCRETE_STAIRS
 concrete_slab_white:
- icon: ''
+ icon: ''
  material: WHITE_CONCRETE_SLAB
 concrete_stairs_light_gray:
- icon: ''
+ icon: ''
  material: LIGHT_GRAY_CONCRETE_STAIRS
 concrete_slab_light_gray:
- icon: ''
+ icon: ''
  material: LIGHT_GRAY_CONCRETE_SLAB
 concrete_stairs_gray:
- icon: ''
+ icon: ''
  material: GRAY_CONCRETE_STAIRS
 concrete_slab_gray:
- icon: ''
+ icon: ''
  material: GRAY_CONCRETE_SLAB
 concrete_stairs_black:
- icon: ''
+ icon: ''
  material: BLACK_CONCRETE_STAIRS
 concrete_slab_black:
- icon: ''
+ icon: ''
  material: BLACK_CONCRETE_SLAB
 concrete_stairs_brown:
- icon: ''
+ icon: ''
  material: BROWN_CONCRETE_STAIRS
 concrete_slab_brown:
- icon: ''
+ icon: ''
  material: BROWN_CONCRETE_SLAB
 concrete_stairs_red:
- icon: ''
+ icon: ''
  material: RED_CONCRETE_STAIRS
 concrete_slab_red:
- icon: ''
+ icon: ''
  material: RED_CONCRETE_SLAB
 concrete_stairs_orange:
- icon: ''
+ icon: ''
  material: ORANGE_CONCRETE_STAIRS
 concrete_slab_orange:
- icon: ''
+ icon: ''
  material: ORANGE_CONCRETE_SLAB
 concrete_stairs_yellow:
- icon: ''
+ icon: ''
  material: YELLOW_CONCRETE_STAIRS
 concrete_slab_yellow:
- icon: ''
+ icon: ''
  material: YELLOW_CONCRETE_SLAB
 concrete_stairs_lime:
- icon: ''
+ icon: ''
  material: LIME_CONCRETE_STAIRS
 concrete_slab_lime:
- icon: ''
+ icon: ''
  material: LIME_CONCRETE_SLAB
 concrete_stairs_green:
- icon: ''
+ icon: ''
  material: GREEN_CONCRETE_STAIRS
 concrete_slab_green:
- icon: ''
+ icon: ''
  material: GREEN_CONCRETE_SLAB
 concrete_stairs_cyan:
- icon: ''
+ icon: ''
  material: CYAN_CONCRETE_STAIRS
 concrete_slab_cyan:
- icon: ''
+ icon: ''
  material: CYAN_CONCRETE_SLAB
 concrete_stairs_light_blue:
- icon: ''
+ icon: ''
  material: LIGHT_BLUE_CONCRETE_STAIRS
 concrete_slab_light_blue:
- icon: ''
+ icon: ''
  material: LIGHT_BLUE_CONCRETE_SLAB
 concrete_stairs_blue:
- icon: ''
+ icon: ''
  material: BLUE_CONCRETE_STAIRS
 concrete_slab_blue:
- icon: ''
+ icon: ''
  material: BLUE_CONCRETE_SLAB
 concrete_stairs_purple:
- icon: ''
+ icon: ''
  material: PURPLE_CONCRETE_STAIRS
 concrete_slab_purple:
- icon: ''
+ icon: ''
  material: PURPLE_CONCRETE_SLAB
 concrete_stairs_magenta:
- icon: ''
+ icon: ''
  material: MAGENTA_CONCRETE_STAIRS
 concrete_slab_magenta:
- icon: ''
+ icon: ''
  material: MAGENTA_CONCRETE_SLAB
 concrete_stairs_pink:
- icon: ''
+ icon: ''
  material: PINK_CONCRETE_STAIRS
 concrete_slab_pink:
- icon: ''
+ icon: ''
  material: PINK_CONCRETE_SLAB
 straw_bed:
- icon: ''
+ icon: ''
  material: STRAW_BED
 map_buried_ancient_city:
- icon: ''
+ icon: ''
  material: BURIED_ANCIENT_CITY_MAP
 map_buried_mineshaft:
- icon: ''
+ icon: ''
  material: BURIED_MINESHAFT_MAP
 map_desert_pyramid:
- icon: ''
+ icon: ''
  material: DESERT_PYRAMID_MAP
 map_warm_ocean_ruins:
- icon: ''
+ icon: ''
  material: WARM_OCEAN_RUINS_MAP
 map_camp_bamboo:
- icon: ''
+ icon: ''
  abandoned_camp: filled_map.bamboo_camp_map
 map_camp_birch_forest:
- icon: ''
+ icon: ''
  abandoned_camp: filled_map.birch_forest_camp_map
 map_camp_cherry_grove:
- icon: ''
+ icon: ''
  abandoned_camp: filled_map.cherry_grove_camp_map
 map_camp_dappled_forest:
- icon: ''
+ icon: ''
  abandoned_camp: filled_map.dappled_forest_camp_map
 map_camp_flower_forest:
- icon: ''
+ icon: ''
  abandoned_camp: filled_map.flower_forest_camp_map
 map_camp_pale_garden:
- icon: ''
+ icon: ''
  abandoned_camp: filled_map.pale_garden_camp_map
 map_camp_swamp:
- icon: ''
+ icon: ''
  abandoned_camp: filled_map.swamp_camp_map
 map_camp_windswept_forest:
- icon: ''
+ icon: ''
  abandoned_camp: filled_map.windswept_forest_camp_map
